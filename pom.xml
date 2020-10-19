@@ -33,7 +33,17 @@
     </properties>
 
 	<developers>
-		<developer>
+ 		<developer>
+ 			<id>Yiyons</id>
+ 			<name>Alvaro</name>
+ 			<email>alvaroyiyio1@gmail.com</email>
+			 <url>https://github.com/Yiyons</url>
+ 			<roles>
+ 				<role>leader</role>
+ 			</roles>
+ 		</developer>
+    
+    <developer>
 		<id>enrmorvaz</id>
 		<name>Enrique</name>
 		<email>enrmorvaz@alum.us.es</email>
@@ -41,10 +51,8 @@
 			<role>developer</role>
 		</roles>
 	</developer>
-	
-	
+    
 	</developers>
-
 
     <dependencies>
         <!-- Spring and Spring Boot dependencies -->
