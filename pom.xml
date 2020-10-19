@@ -32,10 +32,22 @@
 
     </properties>
 
-
-  
 	<!-- Developers -->
 	<developers>
+    <developer>
+      <id>Javi</id>
+      <name>Javier</name>
+      <email>javhidrod8@gmail.com</email>
+      <url>http://github.com/javhidrod8</url>
+      <roles>
+      <role>leader</role>
+      </roles>
+      <properties>
+      <picUrl>
+      https://pbs.twimg.com/media/Eh4n9GhUMAAdO8x?format=jpg&#38;name=large
+      </picUrl>
+      </properties>
+    </developer>
  		<developer>
  			<id>Yiyons</id>
  			<name>Alvaro</name>
@@ -84,8 +96,6 @@
           </developer>
         
 	</developers>
-
-
     <dependencies>
         <!-- Spring and Spring Boot dependencies -->
         <dependency>
