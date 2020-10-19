@@ -32,20 +32,6 @@
 
     </properties>
     
-<developers>
-<developer>
-<id>pedcarmor</id>
-<name>Pedro Pablo Carvajal Moreno</name>
-<email>pedcarmor@alum.us.es</email>
-<roles>
-<role>developer</role>
-</roles>
-<properties>
-<picUrl>
-</picUrl>
-</properties>
-</developer>
-</developers>
 
 	<developers>
  		<developer>
@@ -58,15 +44,24 @@
  			</roles>
  		</developer>
     
-    <developer>
-		<id>enrmorvaz</id>
-		<name>Enrique</name>
-		<email>enrmorvaz@alum.us.es</email>
-		<roles>
-			<role>developer</role>
-		</roles>
-	</developer>
-    
+        <developer>
+		    <id>enrmorvaz</id>
+		    <name>Enrique</name>
+		    <email>enrmorvaz@alum.us.es</email>
+		    <roles>
+			    <role>developer</role>
+		    </roles>
+	    </developer>
+        
+        <developer>
+            <id>pedcarmor</id>
+            <name>Pedro Pablo Carvajal Moreno</name>
+            <email>pedcarmor@alum.us.es</email>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+        
 	</developers>
 
     <dependencies>
