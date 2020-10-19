@@ -33,10 +33,10 @@
     </properties>
 <developers>
 <developer>
-<id>Leo</id>
-<name>Leonardo</name>
-<email>leo@tmht.com</email>
-<url>http://www.tmht.com/leo</url>
+<id>Javi</id>
+<name>Javier</name>
+<email>javhidrod8@gmail.com</email>
+<url>http://github.com/javhidrod8</url>
 <roles>
 <role>leader</role>
 </roles>
@@ -46,21 +46,6 @@ https://pbs.twimg.com/media/Eh4n9GhUMAAdO8x?format=jpg&#38;name=large
 </picUrl>
 </properties>
 </developer>
-<developer>
-<id>Donnie</id>
-<name>Donatello</name>
-<email>donnie@tmht.com</email>
-<url>http://www.tmht.com/donnie</url>
-<roles>
-<role>tech master</role>
-</roles>
-<properties>
-<picUrl>
-https://pbs.twimg.com/media/Eh4n9GgUYAAan80?format=jpg&#38;name=large
-</picUrl>
-</properties>
-</developer>
-<!-- More developers ...-->
 </developers> 
     <dependencies>
         <!-- Spring and Spring Boot dependencies -->
