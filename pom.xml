@@ -31,6 +31,8 @@
         <spring-format.version>0.0.19</spring-format.version>
 
     </properties>
+
+
   
 	<!-- Developers -->
 	<developers>
@@ -71,8 +73,18 @@
         		</roles>
         		<properties></properties>
         	</developer>
+    
+        <developer>
+           <id>Pj</id>
+           <name>Pedro Jesus</name>
+           <email>pedmuncif@alum.us.es</email>
+           <roles>
+             <role>Jefe</role>
+           </roles>
+          </developer>
         
 	</developers>
+
 
     <dependencies>
         <!-- Spring and Spring Boot dependencies -->
