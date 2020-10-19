@@ -31,8 +31,8 @@
         <spring-format.version>0.0.19</spring-format.version>
 
     </properties>
-    
-
+  
+	<!-- Developers -->
 	<developers>
  		<developer>
  			<id>Yiyons</id>
@@ -61,6 +61,16 @@
                 <role>developer</role>
             </roles>
         </developer>
+    
+        <developer>
+        		<id>josregmej</id>
+        		<name>Jose_Francisco</name>
+        		<email>josregmej@alum.us.es</email>
+        		<roles>
+        			<role>developer</role>
+        		</roles>
+        		<properties></properties>
+        	</developer>
         
 	</developers>
 
