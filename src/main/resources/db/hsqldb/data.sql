@@ -70,7 +70,7 @@ INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (12, 'Lucky', '2010
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (13, 'Sly', '2012-06-08', 1, 10);
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (14, 'Anubis', '2010-07-09', 2, 11);
 
-INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (14, 'Fran', '2014-09-07', 2, 18);
+INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (19, 'Fran', '2014-09-07', 2, 18);
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (23, 'Jofrillos', '2011-03-17', 1, 25);
 
 INSERT INTO visits(id,pet_id,visit_date,description) VALUES (1, 7, '2013-01-01', 'rabies shot');
