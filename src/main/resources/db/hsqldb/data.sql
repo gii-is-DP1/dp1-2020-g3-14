@@ -1,6 +1,5 @@
 -- One admin user, named admin1 with passwor 4dm1n and authority admin
 INSERT INTO users(username,password,enabled) VALUES ('admin1','4dm1n',TRUE);
-
 INSERT INTO users(username,password,enabled) VALUES ('enrmorvaz','administrador',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (1,'admin1','admin');
 INSERT INTO authorities(id,username,authority) VALUES (8,'enrmorvaz','owner');
@@ -19,7 +18,6 @@ INSERT INTO users(username,password,enabled) VALUES ('pedcarmor','adm1n',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (10,'pedcarmor','owner');
 
 INSERT INTO users(username,password,enabled) VALUES ('pedmuncif','administrador',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (1,'admin1','admin');
 INSERT INTO authorities(id,username,authority) VALUES (20,'pedmuncif','owner');
 
 INSERT INTO vets VALUES (1, 'James', 'Carter');
