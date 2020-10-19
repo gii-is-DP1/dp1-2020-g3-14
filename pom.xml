@@ -40,6 +40,10 @@
 <roles>
 <role>developer</role>
 </roles>
+<properties>
+<picUrl>
+</picUrl>
+</properties>
 </developer>
 </developers>
 
