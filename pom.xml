@@ -12,7 +12,9 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.2.4.RELEASE</version>
     </parent>
-    <name>G3-14</name>
+
+    <name>Proyecto DP1</name>
+
 
     <properties>
 
@@ -31,8 +33,25 @@
         <spring-format.version>0.0.19</spring-format.version>
 
     </properties>
+
+	<!-- Developers -->
 	<developers>
- 		<developer>
+    <developer>
+      <id>Javi</id>
+      <name>Javier</name>
+      <email>javhidrod8@gmail.com</email>
+      <url>http://github.com/javhidrod8</url>
+      <roles>
+      <role>leader</role>
+      </roles>
+      <properties>
+      <picUrl>
+      https://pbs.twimg.com/media/Eh4n9GhUMAAdO8x?format=jpg&#38;name=large
+      </picUrl>
+      </properties>
+    </developer>
+ 		
+    <developer>
  			<id>Yiyons</id>
  			<name>Alvaro</name>
  			<email>alvaroyiyo1@gmail.com</email>
@@ -40,12 +59,44 @@
  			<roles>
  				<role>leader</role>
  			</roles>
- 			<properties>
- 				<picUrl>
-					https://pbs.twimg.com/media/Eh4n9GhUMAAdO8x?format=jpg&#38;name=large
-				</picUrl>
- 			</properties>
  		</developer>
+    
+        <developer>
+		    <id>enrmorvaz</id>
+		    <name>Enrique</name>
+		    <email>enrmorvaz@alum.us.es</email>
+		    <roles>
+			    <role>developer</role>
+		    </roles>
+	    </developer>
+        
+        <developer>
+            <id>pedcarmor</id>
+            <name>Pedro Pablo Carvajal Moreno</name>
+            <email>pedcarmor@alum.us.es</email>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    
+        <developer>
+        		<id>josregmej</id>
+        		<name>Jose_Francisco</name>
+        		<email>josregmej@alum.us.es</email>
+        		<roles>
+        			<role>developer</role>
+        		</roles>
+        		<properties></properties>
+        	</developer>
+    
+        <developer>
+           <id>Pj</id>
+           <name>Pedro Jesus</name>
+           <email>pedmuncif@alum.us.es</email>
+           <roles>
+             <role>Jefe</role>
+           </roles>
+          </developer>
 	</developers>
     <dependencies>
         <!-- Spring and Spring Boot dependencies -->
