@@ -10,6 +10,9 @@ INSERT INTO authorities(id,username,authority) VALUES (2,'owner1','owner');
 -- One owner josregmej, named Jose with passwor usuario
 INSERT INTO users(username,password,enabled) VALUES ('josregmej','usuario',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (4,'josregmej','owner');
+-- One owner  Yiyons, named Alvaro with passwor usuario1
+INSERT INTO users(username,password,enabled) VALUES ('Yiyons','usuario1',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (35,'Yiyons','owner');
 -- One vet user, named vet1 with passwor v3t
 INSERT INTO users(username,password,enabled) VALUES ('vet1','v3t',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (3,'vet1','veterinarian');
@@ -30,6 +33,7 @@ INSERT INTO vets VALUES (3, 'Linda', 'Douglas');
 INSERT INTO vets VALUES (4, 'Rafael', 'Ortega');
 INSERT INTO vets VALUES (5, 'Henry', 'Stevens');
 INSERT INTO vets VALUES (6, 'Sharon', 'Jenkins');
+INSERT INTO vets VALUES (7, 'Manolo', 'Egcarabajo');
 
 INSERT INTO specialties VALUES (1, 'radiology');
 INSERT INTO specialties VALUES (2, 'surgery');
@@ -65,7 +69,7 @@ INSERT INTO owners VALUES (18, 'Enrique', 'Moreno', '111 W. Liberty St.', 'Madis
 INSERT INTO owners VALUES (25, 'Pedro Pablo', 'Carvajal', '18 Severo Ochoa', 'Sevilla', '6085555444', 'owner1');
 INSERT INTO owners VALUES (20, 'Pedro', 'Jesus', 'Juan Ramon Jimenez', 'España', '633897505', 'owner1');
 INSERT INTO owners VALUES (22, 'Javier', 'Hidalgo Rodriguez','17 Reina Mercedes', 'España', '617736165', 'owner1');
-
+INSERT INTO owners VALUES (23, 'Alvaro', 'Sevilla Cabrera', '4 Castillo de Constantina', 'España', '608942375', 'owner1');
 
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (1, 'Leo', '2010-09-07', 1, 1);
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (2, 'Basil', '2012-08-06', 6, 2);
