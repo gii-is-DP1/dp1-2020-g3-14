@@ -33,6 +33,12 @@
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 					<span>Find owners</span>
 				</petclinic:menuItem>
+				
+				<petclinic:menuItem active="${name eq 'agenacts'}" url="/agenacts/find"
+					title="find agenacts">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					<span>Buscar Agencias</span>
+				</petclinic:menuItem>
 
 				<petclinic:menuItem active="${name eq 'vets'}" url="/vets"
 					title="veterinarians">
