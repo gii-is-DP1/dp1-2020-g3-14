@@ -2,21 +2,19 @@ package org.springframework.samples.petclinic.web;
 
 import java.util.Collection;
 import java.util.Map;
-
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.AgenAct;
-import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.service.AgenActService;
-import org.springframework.samples.petclinic.service.exceptions.DuplicatedAgenActNameException;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AgenActController {
@@ -28,46 +26,52 @@ public class AgenActController {
 	public AgenActController(AgenActService agenActService) {
 			this.agenActService = agenActService;
    	}
+	@InitBinder
+	public void setAllowedFields(WebDataBinder dataBinder) {
+		dataBinder.setDisallowedFields("id");
+	}
 	
-	/*@ModelAttribute("agenAct")
-	public AgenAct findAgenAct(@PathVariable("agenactId") int agenactId) {
-		return this.agenActService.findAgenActById(agenactId);
-	}*/
-
 	@GetMapping(value = "/agenacts/new")
-	public String initCreationForm(AgenAct agenAct, ModelMap model) {
+	public String initCreationForm(Map<String, Object> model) {
+		AgenAct agenAct = new AgenAct();
 		model.put("agenacts", agenAct);
 		return VIEWS_AGENACTS_CREATE_OR_UPDATE_FORM;
 	}
 	
 	@PostMapping(value = "/agenacts/new")
-	public String processCreationForm(AgenAct agenAct, BindingResult result, ModelMap model) {		
+	public String processCreationForm(@Valid AgenAct agenAct, BindingResult result) {		
 		if (result.hasErrors()) {
-			model.put("agenacts", agenAct);
 			return VIEWS_AGENACTS_CREATE_OR_UPDATE_FORM;
 		}
 		else {
-                    try{
-                    	
-                    	this.agenActService.saveAgenAct(agenAct);
-                    }catch(DuplicatedAgenActNameException ex){
-                        result.rejectValue("name", "duplicate", "already exists");
-                        return VIEWS_AGENACTS_CREATE_OR_UPDATE_FORM;
-                    }
-                    return "redirect:/agenacts/{agenactId}";
+			this.agenActService.saveAgenAct(agenAct);
+            return "redirect:/agenacts/{agenactId}";
 		}
 	}
 	
 	@GetMapping(value = "/agenacts/{agenactId}/edit")
-	public String initUpdateForm(@PathVariable("agenactId") int agenActId, ModelMap model) {
+	public String initUpdateForm(@PathVariable("agenactId") int agenActId, Model model) {
 		AgenAct agenAct = this.agenActService.findAgenActById(agenActId);
-		model.put("agenacts", agenAct);
+		model.addAttribute(agenAct);
 		return VIEWS_AGENACTS_CREATE_OR_UPDATE_FORM;
 	}
 	
-	@RequestMapping(value = "/agenacts/find",method = RequestMethod.GET)
+	@PostMapping(value = "/agenacts/{agenactId}/edit")
+	public String processUpdateOwnerForm(@Valid AgenAct agenAct, BindingResult result,
+			@PathVariable("agenactId") int agenactId) {
+		if (result.hasErrors()) {
+			return VIEWS_AGENACTS_CREATE_OR_UPDATE_FORM;
+		}
+		else {
+			agenAct.setId(agenactId);
+			this.agenActService.saveAgenAct(agenAct);
+			return "redirect:/owners/{ownerId}";
+		}
+	}
+	
+	@GetMapping(value = "/agenacts/find")
 	public String initFindForm(Map<String, Object> model) {
-		model.put("agenacts", new AgenAct());
+		model.put("agenacts", new AgenAct()); 
 		return "agenacts/findAgenActs";
 	}
 	
@@ -99,4 +103,10 @@ public class AgenActController {
 		}
 	}
 	
+	@GetMapping("/agenacts/{agenactId}")
+	public ModelAndView showAgenAct(@PathVariable("agenactId") int agenactId) {
+		ModelAndView mav = new ModelAndView("agenacts/agenactDetails");
+		mav.addObject(this.agenActService.findAgenActById(agenactId));
+		return mav;
+	}
 }

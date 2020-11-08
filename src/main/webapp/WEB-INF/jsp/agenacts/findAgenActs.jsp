@@ -8,13 +8,13 @@
 	uri="http://www.springframework.org/security/tags"%>
 <!--  >%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%-->
 
-<petclinic:layout pageName="agenacts">
+<petclinic:layout pageName="agenact">
 
     <h2>Buscar Agencias de Actividades</h2>
 
     
-    <form:form  action="/agenacts" method="get" class="form-horizontal"
-               id="search-agenacts-form" modelAttribute="agenacts">
+    <form:form  modelAttribute="agenacts" action="/agenacts" method="get" class="form-horizontal"
+               id="search-agenacts-form" >
         <div class="form-group">
             <div class="control-group" id="nombre">
                 <label class="col-sm-2 control-label">Nombre </label>
@@ -29,6 +29,9 @@
                 <button type="submit" class="btn btn-default">Buscar</button>
             </div>
         </div>
-
     </form:form>	
+    <br/> 
+    <sec:authorize access="hasAuthority('admin')">
+		<a class="btn btn-default" href='<spring:url value="/agenacts/new" htmlEscape="true"/>'>Añadir Agencia</a>
+	</sec:authorize>
 </petclinic:layout>

@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
-<petclinic:layout pageName="agenacts">
+<petclinic:layout pageName="agenact">
     <h2>Agencias de actividades</h2>
 
     <table id="agenactsTable" class="table table-striped">
@@ -21,7 +21,7 @@
             <tr>
                 <td>
                     <spring:url value="/agenacts/{agenactId}" var="agenactUrl">
-                        <spring:param name="agenactId" value="${agenact.agenact_id}"/>
+                        <spring:param name="agenactId" value="${agenact.id}"/>
                     </spring:url>
                     <a href="${fn:escapeXml(agenactUrl)}"><c:out value="${agenact.nombre}"/></a>
                 </td>

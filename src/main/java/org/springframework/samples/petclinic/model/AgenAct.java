@@ -3,7 +3,10 @@ package org.springframework.samples.petclinic.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotEmpty;
 
+import org.springframework.core.style.ToStringCreator;
 
 
 @Entity
@@ -11,21 +14,20 @@ import javax.persistence.Table;
 public class AgenAct extends BaseEntity {
 	
 	@Column(name = "nombre")
+	@NotEmpty
 	private String nombre;
 
 	@Column(name = "sede")
+	@NotEmpty
 	private String sede;
 	
 	@Column(name = "telefono")
-	private Integer telefono;
+	@NotEmpty
+	@Digits(fraction = 0, integer = 10)
+	private String telefono;
 	
-	/* PARA FINALIZAR
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "actividad", fetch = FetchType.EAGER)
-	private Set<Visit> visits;
-	*/
-
 	public String getNombre() {
-		return nombre;
+		return this.nombre;
 	}
 
 	public void setNombre(String nombre) {
@@ -33,18 +35,25 @@ public class AgenAct extends BaseEntity {
 	}
 
 	public String getSede() {
-		return sede;
+		return this.sede;
 	}
 
 	public void setSede(String sede) {
 		this.sede = sede;
 	}
 
-	public Integer getTelefono() {
-		return telefono;
+	public String getTelefono() {
+		return this.telefono;
 	}
 
-	public void setTelefono(Integer telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}	
+	
+	public String toString() {
+		return new ToStringCreator(this)
+
+				.append("id", this.getId()).append("new", this.isNew()).append("nombre", this.getNombre())
+				.append("sede", this.sede).append("telefono", this.telefono).toString();
+	}
 }
