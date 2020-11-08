@@ -99,5 +99,5 @@ INSERT INTO visits(id,pet_id,visit_date,description) VALUES (4, 7, '2013-01-04',
 
 INSERT INTO agenacts VALUES (1,'AgenciaPrueba','Sevilla', '2333333');
 INSERT INTO agenacts VALUES (2,'AgenciaPrueba2','Huelva', '21111111');
-
+INSERT INTO agenacts VALUES (3,'Enrique','Gines', '21111111');
 

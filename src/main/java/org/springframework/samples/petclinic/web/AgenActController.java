@@ -9,9 +9,7 @@ import org.springframework.samples.petclinic.service.AgenActService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,10 +24,6 @@ public class AgenActController {
 	public AgenActController(AgenActService agenActService) {
 			this.agenActService = agenActService;
    	}
-	@InitBinder
-	public void setAllowedFields(WebDataBinder dataBinder) {
-		dataBinder.setDisallowedFields("id");
-	}
 	
 	@GetMapping(value = "/agenacts/new")
 	public String initCreationForm(Map<String, Object> model) {
@@ -65,7 +59,7 @@ public class AgenActController {
 		else {
 			agenAct.setId(agenactId);
 			this.agenActService.saveAgenAct(agenAct);
-			return "redirect:/owners/{ownerId}";
+			return "redirect:/agenacts/{agenactId}";
 		}
 	}
 	
@@ -79,25 +73,20 @@ public class AgenActController {
 	@GetMapping(value = "/agenacts")
 	public String processFindForm(AgenAct agenact, BindingResult result, Map<String, Object> model) {
 
-		// allow parameterless GET request for /owners to return all records
 		if (agenact.getNombre() == null) {
 			agenact.setNombre(""); // empty string signifies broadest possible search
 		}
 
-		// find owners by last name
 		Collection<AgenAct> results = this.agenActService.findByNombre(agenact.getNombre());
 		if (results.isEmpty()) {
-			// no owners found
 			result.rejectValue("nombre", "notFound", "not found");
 			return "agenacts/findAgenActs";
 		}
 		else if (results.size() == 1) {
-			// 1 owner found
 			agenact = results.iterator().next();
 			return "redirect:/agenacts/" + agenact.getId();
 		}
 		else {
-			// multiple owners found
 			model.put("selections", results);
 			return "agenacts/agenActsList";
 		}
