@@ -9,7 +9,9 @@ import org.springframework.samples.petclinic.service.AgenActService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,6 +26,10 @@ public class AgenActController {
 	public AgenActController(AgenActService agenActService) {
 			this.agenActService = agenActService;
    	}
+	@InitBinder
+	public void setAllowedFields(WebDataBinder dataBinder) {
+		dataBinder.setDisallowedFields("id");
+	}
 	
 	@GetMapping(value = "/agenacts/new")
 	public String initCreationForm(Map<String, Object> model) {
@@ -51,7 +57,7 @@ public class AgenActController {
 	}
 	
 	@PostMapping(value = "/agenacts/{agenactId}/edit")
-	public String processUpdateOwnerForm(@Valid AgenAct agenAct, BindingResult result,
+	public String processUpdateAgenActForm(@Valid AgenAct agenAct, BindingResult result,
 			@PathVariable("agenactId") int agenactId) {
 		if (result.hasErrors()) {
 			return VIEWS_AGENACTS_CREATE_OR_UPDATE_FORM;
