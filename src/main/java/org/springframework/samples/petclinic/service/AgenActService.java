@@ -21,16 +21,14 @@ public class AgenActService {
 	@Autowired
 	public AgenActService(AgenActRepository agenActRepository) {
 		this.agenActRepository = agenActRepository;
-
 	}
-	
 	
 	@Transactional(readOnly = true)
 	public AgenAct findAgenActById(int id) throws DataAccessException {
 		return agenActRepository.findById(id);
 	}
 
-	
+	@Transactional
 	public void saveAgenAct(AgenAct agenAct) throws DataAccessException {
 		agenActRepository.save(agenAct);                
 	}

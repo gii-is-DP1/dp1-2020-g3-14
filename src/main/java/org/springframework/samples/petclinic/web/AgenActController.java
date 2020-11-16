@@ -3,11 +3,14 @@ package org.springframework.samples.petclinic.web;
 import java.util.Collection;
 import java.util.Map;
 import javax.validation.Valid;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.AgenAct;
 import org.springframework.samples.petclinic.service.AgenActService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,20 +53,21 @@ public class AgenActController {
 	}
 	
 	@GetMapping(value = "/agenacts/{agenactId}/edit")
-	public String initUpdateForm(@PathVariable("agenactId") int agenActId, Model model) {
+	public String initUpdateForm(@PathVariable("agenactId") int agenActId, ModelMap model) {
 		AgenAct agenAct = this.agenActService.findAgenActById(agenActId);
-		model.addAttribute(agenAct);
+		model.put("agenacts",agenAct);
 		return VIEWS_AGENACTS_CREATE_OR_UPDATE_FORM;
 	}
 	
 	@PostMapping(value = "/agenacts/{agenactId}/edit")
 	public String processUpdateAgenActForm(@Valid AgenAct agenAct, BindingResult result,
-			@PathVariable("agenactId") int agenactId) {
+			@PathVariable("agenactId") int agenactId,ModelMap model) {
 		if (result.hasErrors()) {
+			model.put("agenacts",agenAct);
 			return VIEWS_AGENACTS_CREATE_OR_UPDATE_FORM;
 		}
 		else {
-			agenAct.setId(agenactId);
+			agenAct.setId(agenactId);			
 			this.agenActService.saveAgenAct(agenAct);
 			return "redirect:/agenacts/{agenactId}";
 		}
@@ -101,7 +105,7 @@ public class AgenActController {
 	@GetMapping("/agenacts/{agenactId}")
 	public ModelAndView showAgenAct(@PathVariable("agenactId") int agenactId) {
 		ModelAndView mav = new ModelAndView("agenacts/agenactDetails");
-		mav.addObject(this.agenActService.findAgenActById(agenactId));
+		mav.addObject("agenact", this.agenActService.findAgenActById(agenactId));
 		return mav;
 	}
 }

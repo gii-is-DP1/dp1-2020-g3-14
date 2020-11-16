@@ -23,7 +23,8 @@
                     <spring:url value="/agenacts/{agenactId}" var="agenactUrl">
                         <spring:param name="agenactId" value="${agenact.id}"/>
                     </spring:url>
-                    <a href="${fn:escapeXml(agenactUrl)}"><c:out value="${agenact.nombre}"/></a>
+                    <a href="${fn:escapeXml(agenactUrl)}">
+                    <c:out value="${agenact.nombre}"/></a>
                 </td>
                 <td>
                     <c:out value="${agenact.sede}"/>

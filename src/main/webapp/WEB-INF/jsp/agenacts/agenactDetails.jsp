@@ -8,7 +8,9 @@
 
     <h2>Información de Agencia de Actividades</h2>
 
-
+	<spring:url value="/agenacts/{agenactId}/edit" var="editUrl">
+        <spring:param name="agenactId" value="${agenact.id}"/>
+    </spring:url>
     <table class="table table-striped">
         <tr>
             <th>Nombre</th>
@@ -23,12 +25,7 @@
             <td><c:out value="${agenact.telefono}"/></td>
         </tr>
     </table>
-
-    <spring:url value="agenacts/{agenactId}/edit" var="editUrl">
-        <spring:param name="agenactId" value="${agenact.id}"/>
-    </spring:url>
     <a href="${fn:escapeXml(editUrl)}" class="btn btn-default">Editar Agencia</a>
-
     <br/>
     <br/>
     <br/>
