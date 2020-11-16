@@ -39,11 +39,11 @@
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 					<span>Buscar Agencias</span>
 				</petclinic:menuItem>
-
-				<petclinic:menuItem active="${name eq 'vets'}" url="/vets"
-					title="veterinarians">
+				
+				<petclinic:menuItem active="${name eq 'vuelos'}" url="/vuelos/find"
+					title="vuelos">
 					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-					<span>Veterinarians</span>
+					<span>Vuelos</span>
 				</petclinic:menuItem>
 
 				<petclinic:menuItem active="${name eq 'error'}" url="/oups"
