@@ -101,3 +101,6 @@ INSERT INTO agenacts VALUES (1,'AgenciaPrueba','Sevilla', '2333333');
 INSERT INTO agenacts VALUES (2,'AgenciaPrueba2','Huelva', '21111111');
 INSERT INTO agenacts VALUES (3,'Enrique','Gines', '21111111');
 
+INSERT INTO hoteles VALUES (1,'Calle Enrique','HOTEL 0','Sevilla',5,'2333333');
+INSERT INTO hoteles VALUES (2,'Calle Fran','HOTEL 1','Sevilla',5,'2333333');
+
