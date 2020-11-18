@@ -5,25 +5,37 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
-
 <petclinic:layout pageName="vuelos">
+<jsp:attribute name="customScript">
+        <script>
+            $(function () {
+                $("#fechaIda").datepicker({dateFormat: 'yy/mm/dd'});
+            });
+        </script>
+        <script>
+            $(function () {
+                $("#fechaVuelta").datepicker({dateFormat: 'yy/mm/dd'});
+            });
+        </script>
+    </jsp:attribute>
+    
+    <jsp:body>
     <h2>
-        <c:if test="${vuelo['new']}">Añadir </c:if> Vuelo
+        <c:if test="${vuelos['new']}">Añadir </c:if> Vuelo
     </h2>
-    <form:form modelAttribute="vuelos" class="form-horizontal" id="add-agenact-form">
+    <form:form modelAttribute="vuelos" class="form-horizontal" id="add-vuelo-form">
         <div class="form-group has-feedback">
+        	<petclinic:inputField label="Número de billetes" name="billetes"/>
+        	<petclinic:inputField label="Destino" name="destino"/>
+        	<petclinic:inputField label="Fecha de ida" name="fechaIda"/>
+        	<petclinic:inputField label="Fecha de vuelta" name="fechaVuelta"/>
             <petclinic:inputField label="Origen" name="origen"/>
-            <petclinic:inputField label="Destino" name="destino"/>
             <petclinic:inputField label="Precio" name="precio"/>
-            <petclinic:inputField label="Fecha de ida" name="fechaIda"/>
-            <petclinic:inputField label="Fecha de vuelta" name="fechaVuelta"/>
-            <petclinic:inputField label="Número de billetes" name="billetes"/>
-
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>
-                    <c:when test="${vuelo['new']}">
+                    <c:when test="${vuelos['new']}">
                         <button class="btn btn-default" type="submit">Añadir Vuelo</button>
                     </c:when>
                     <c:otherwise>
@@ -33,4 +45,5 @@
             </div>
         </div>
     </form:form>
+    </jsp:body>
 </petclinic:layout>

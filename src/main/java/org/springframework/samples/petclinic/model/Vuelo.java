@@ -14,7 +14,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Vuelo extends BaseEntity {
 	
 	@Column(name = "billetes")
-	@NotEmpty
 	private Integer billetes;
 
 	@Column(name = "origen")
@@ -26,17 +25,14 @@ public class Vuelo extends BaseEntity {
 	private String destino;
 	
 	@Column(name = "fechaIda")
-	@NotEmpty
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private LocalDate fechaIda;
 	
 	@Column(name = "fechaVuelta")
-	@NotEmpty
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private LocalDate fechaVuelta;
 	
 	@Column(name = "precio")
-	@NotEmpty
 	private Integer precio;
 
 		

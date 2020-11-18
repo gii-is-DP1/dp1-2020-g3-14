@@ -45,7 +45,7 @@ public class VueloController {
 		}
 		else {
 			this.vueloService.saveVuelo(vuelo);
-            return "redirect:/vuelos/{vueloId}";
+            return "redirect:/vuelos/"+vuelo.getId();
 		}
 	}
 	
