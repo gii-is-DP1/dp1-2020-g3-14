@@ -19,7 +19,7 @@ public class Hotel extends BaseEntity{
 	private String direccion;
 	
 	@Column(name = "estrellas")
-	private Integer sede;
+	private Integer estrellas;
 
 	@Column(name = "provincia")
 	@NotEmpty
@@ -47,12 +47,12 @@ public class Hotel extends BaseEntity{
 		this.direccion = direccion;
 	}
 
-	public Integer getSede() {
-		return sede;
+	public Integer getEstrellas() {
+		return estrellas;
 	}
 
-	public void setSede(Integer sede) {
-		this.sede = sede;
+	public void setEstrellas(Integer estrellas) {
+		this.estrellas = estrellas;
 	}
 
 	public String getProvincia() {

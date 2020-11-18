@@ -48,7 +48,7 @@ public class AgenActController {
 		}
 		else {
 			this.agenActService.saveAgenAct(agenAct);
-            return "redirect:/agenacts/{agenactId}";
+            return "redirect:/agenacts/"+agenAct.getId();
 		}
 	}
 	

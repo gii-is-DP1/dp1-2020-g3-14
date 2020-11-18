@@ -23,18 +23,7 @@
                     <span class="help-inline"><form:errors path="*"/></span>
                 </div>
             </div>
-        </div>
-        
-          <div class="form-group">
-            <div class="control-group" id="provincia">
-                <label class="col-sm-2 control-label">Provincia </label>
-                <div class="col-sm-10">
-                    <form:input class="form-control" path="provincia" size="30" maxlength="80"/>
-                    <span class="help-inline"><form:errors path="*"/></span>
-                </div>
-            </div>
-        </div>
-        
+        </div>        
         
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">

@@ -6,7 +6,6 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.petclinic.model.AgenAct;
 import org.springframework.samples.petclinic.model.Hotel;
 import org.springframework.samples.petclinic.service.HotelService;
 import org.springframework.stereotype.Controller;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HotelController {
@@ -48,9 +48,10 @@ public class HotelController {
 		}
 		else {
 			this.hotelService.saveHotel(hotel);
-            return "redirect:/hoteles/{hotelId}";
+            return "redirect:/hoteles/"+hotel.getId();
 		}
 	}
+	
 	@GetMapping(value = "/hoteles/{hotelId}/edit")
 	public String initUpdateForm(@PathVariable("hotelId") int hotelId, ModelMap model) {
 		Hotel hotel = this.hotelService.findHotelById(hotelId);
@@ -81,16 +82,13 @@ public class HotelController {
 	@GetMapping(value = "/hoteles")
 	public String processFindForm(Hotel hotel, BindingResult result, Map<String, Object> model) {
 
-		if (hotel.getNombre() == null && hotel.getProvincia() == null) {
-			hotel.setNombre("");
-			hotel.setProvincia("");// empty string signifies broadest possible search
+		if (hotel.getNombre() == null) {
+			hotel.setNombre("");// empty string signifies broadest possible search
 		}
 
 		Collection<Hotel> results = this.hotelService.findByNombre(hotel.getNombre());
-		Collection<Hotel> resultsP = this.hotelService.findByProvincia(hotel.getProvincia());
-		if(hotel.getNombre()!= null && hotel.getProvincia()==null) {
 		
-			if (results.isEmpty()) {
+		if (results.isEmpty()) {
 				result.rejectValue("nombre", "notFound", "not found");
 				return "hoteles/findHoteles";
 			}
@@ -102,26 +100,13 @@ public class HotelController {
 				model.put("selections", results);
 				return "hoteles/hotelesList";
 			}
-
-			
-		}else if(hotel.getProvincia() != null && hotel.getNombre()==null) {
-			if (resultsP.isEmpty()) {
-				result.rejectValue("provincia", "notFound", "not found");
-				return "hoteles/findHoteles";
-			}
-			else if (resultsP.size() == 1) {
-				hotel = resultsP.iterator().next();
-				return "redirect:/hoteles/" + hotel.getId();
-			}
-			else {
-				model.put("selections", results);
-				return "hoteles/hotelesList";
-			}
-
-		}
-		return null;
 			
 	}
-
+	@GetMapping("/hoteles/{hotelId}")
+	public ModelAndView showHotel(@PathVariable("hotelId") int hotelId) {
+		ModelAndView mav = new ModelAndView("hoteles/hotelDetails");
+		mav.addObject("hotel", this.hotelService.findHotelById(hotelId));
+		return mav;
+	}
 
 }

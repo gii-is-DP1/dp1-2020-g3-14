@@ -3,29 +3,43 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
-<petclinic:layout pageName="agenacts">
+<petclinic:layout pageName="hoteles">
 
-    <h2>Información de Agencia de Actividades</h2>
+    <h2>Información sobre Hotel</h2>
 
-	<spring:url value="/agenacts/{agenactId}/edit" var="editUrl">
-        <spring:param name="agenactId" value="${agenact.id}"/>
+	<spring:url value="/hoteles/{hotelId}/edit" var="editUrl">
+        <spring:param name="hotelId" value="${hotel.id}"/>
     </spring:url>
     <table class="table table-striped">
         <tr>
             <th>Nombre</th>
-            <td><b><c:out value="${agenact.nombre}"/></b></td>
+            <td><b><c:out value="${hotel.nombre}"/></b></td>
         </tr>
         <tr>
-            <th>Sede</th>
-            <td><c:out value="${agenact.sede}"/></td>
+            <th>Direccion</th>
+            <td><c:out value="${hotel.direccion}"/></td>
+        </tr>
+        <tr>
+            <th>Provincia</th>
+            <td><c:out value="${hotel.provincia}"/></td>
+        </tr>
+        <tr>
+            <th>Estrellas</th>
+            <td><c:out value="${hotel.estrellas}"/></td>
         </tr>
         <tr>
             <th>Telefono</th>
-            <td><c:out value="${agenact.telefono}"/></td>
+            <td><c:out value="${hotel.telefono}"/></td>
         </tr>
     </table>
-    <a href="${fn:escapeXml(editUrl)}" class="btn btn-default">Editar Agencia</a>
+  
+    <sec:authorize access="hasAuthority('admin')">
+		<a class="btn btn-default" href='<spring:url value="/hoteles/${hotel.id}/edit" htmlEscape="true"/>'>Editar hotel</a>
+	</sec:authorize>
+  
     <br/>
     <br/>
     <br/>
