@@ -39,10 +39,12 @@
 					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					<span>Vuelos</span>
 				</petclinic:menuItem>
+				<petclinic:menuItem active="${name eq 'actividades'}" url="/actividades/find"
+					title="actividades">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					<span>Actividades</span>
+				</petclinic:menuItem>
 			</ul>
-
-
-
 
 			<ul class="nav navbar-nav navbar-right">
 				<sec:authorize access="!isAuthenticated()">

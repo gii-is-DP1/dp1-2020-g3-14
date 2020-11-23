@@ -106,3 +106,6 @@ INSERT INTO vuelos VALUES (1, 2, 'Malaga', '2020-12-17', '2020-12-24', 'Sevilla'
 INSERT INTO vuelos VALUES (2, 1, 'Almeria', '2020-12-16', '2020-12-25', 'Malaga', 40);
 INSERT INTO vuelos VALUES (3, 3, 'Cadiz', '2020-12-19', '2020-12-26','Cordoba', 120);
 
+INSERT INTO actividades VALUES (1, 'Playa de Cadiz','Surf Cadiz', 'El mejor Surf en Cadiz', 20, 3);
+INSERT INTO actividades VALUES (2, 'Sierra de Grazalema','Senderismo', 'Increible paisaje', 1 , 4);
+INSERT INTO actividades VALUES (3, 'Ayuntamiento de Sevilla', 'Visita guiada', 'Sevilla es preciosa', 5, 4);
