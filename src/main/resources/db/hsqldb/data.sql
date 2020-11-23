@@ -104,3 +104,9 @@ INSERT INTO agenacts VALUES (3,'Enrique','Gines', '21111111');
 INSERT INTO hoteles VALUES (1,'Calle Enrique',5,'HOTEL 0','Sevilla','2333333');
 INSERT INTO hoteles VALUES (2,'Calle Fran',5,'HOTEL 1','Sevilla','2333333');
 
+INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (123,2,20,true,1);
+INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (456,2,20,true,2);
+INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (789,2,20,false,1);
+INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (012,2,20,false,2);
+INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (756,2,20,true,1);
+INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (345,2,20,true,1);

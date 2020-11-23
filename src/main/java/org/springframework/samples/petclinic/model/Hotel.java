@@ -1,7 +1,11 @@
 package org.springframework.samples.petclinic.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
@@ -30,6 +34,17 @@ public class Hotel extends BaseEntity{
 	@Digits(fraction = 0, integer = 10)
 	private String telefono;
 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel")
+	private Set<Habitacion> habitaciones;
+	
+	
+	public Set<Habitacion> getHabitaciones() {
+		return habitaciones;
+	}
+
+	public void setHabitaciones(Set<Habitacion> habitaciones) {
+		this.habitaciones = habitaciones;
+	}
 
 	public String getNombre() {
 		return nombre;

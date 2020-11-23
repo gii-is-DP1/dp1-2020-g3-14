@@ -35,6 +35,41 @@
             <td><c:out value="${hotel.telefono}"/></td>
         </tr>
     </table>
+
+
+
+  <table class="table table-striped">
+   <h3>Habitaciones</h3>
+        <c:forEach var="habitaciones" items="${hotel.habitaciones}">
+
+            <tr>
+                <td valign="top">
+                    <dl class="dl-horizontal">
+                        <dt>Nº Habitacion</dt>
+                        <dd><c:out value="${habitaciones.nhabitacion}"/></dd>
+                        <dt>Nº de camas</dt>
+                        <dd><c:out value="${habitaciones.ncamas}"/></dd>
+                        <dt>Precio</dt>
+                        <dd><c:out value="${habitaciones.precio}"/></dd>
+                        <dt>Disp.</dt>
+                      <c:if test="${habitaciones.disponible}">
+						<dd>Si</dd>
+					  </c:if>
+                      <c:if test="${!habitaciones.disponible}">
+                       <dd>No</dd>
+                      </c:if>
+                    </dl>
+                </td>
+          </c:forEach>
+  </table>
+
+
+
+
+
+
+
+
   
     <sec:authorize access="hasAuthority('admin')">
 		<a class="btn btn-default" href='<spring:url value="/hoteles/${hotel.id}/edit" htmlEscape="true"/>'>Editar hotel</a>
