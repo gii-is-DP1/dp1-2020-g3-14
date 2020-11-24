@@ -105,3 +105,8 @@ INSERT INTO compvuelos VALUES (1, 'CompañiaPrueba', 'España', 'Sede1');
 INSERT INTO compvuelos VALUES (2, 'CompañiaPrueba2', 'España', 'Sede2');
 INSERT INTO compvuelos VALUES (3, 'CompañiaPrueba3', 'España', 'Sede3');
 
+INSERT INTO vuelos VALUES (1, 2, 'Malaga', '2020-12-17', '2020-12-24', 'Sevilla', 70);
+INSERT INTO vuelos VALUES (2, 1, 'Almeria', '2020-12-16', '2020-12-25', 'Malaga', 40);
+INSERT INTO vuelos VALUES (3, 3, 'Cadiz', '2020-12-19', '2020-12-26','Cordoba', 120);
+INSERT INTO vuelos VALUES (4, 2, 'Jaen', '2020-12-18', '2020-12-23', 'Sevilla', 70);
+
