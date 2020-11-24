@@ -1,10 +1,13 @@
 package org.springframework.samples.petclinic.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
-
 
 
 @Entity
@@ -22,6 +25,17 @@ public class CompVuelos extends BaseEntity {
 	@Column(name = "pais")
 	@NotEmpty
 	private String pais;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "compvuelo")
+	private Set<Vuelo> vuelos;
+		
+	public Set<Vuelo> getVuelos() {
+		return vuelos;
+	}
+
+	public void setVuelos(Set<Vuelo> vuelos) {
+		this.vuelos = vuelos;
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -52,6 +66,5 @@ public class CompVuelos extends BaseEntity {
 		return "CompVuelos [nombre=" + nombre + ", sede=" + sede + ", pais=" + pais + "]";
 	}
 	
-	
-	
+
 }
