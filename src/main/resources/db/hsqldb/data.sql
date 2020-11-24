@@ -101,6 +101,9 @@ INSERT INTO agenacts VALUES (1,'AgenciaPrueba','Sevilla', '2333333');
 INSERT INTO agenacts VALUES (2,'AgenciaPrueba2','Huelva', '21111111');
 INSERT INTO agenacts VALUES (3,'Enrique','Gines', '21111111');
 
+INSERT INTO compvuelos VALUES (1, 'CompañiaPrueba', 'España', 'Sede1');
+INSERT INTO compvuelos VALUES (2, 'CompañiaPrueba2', 'España', 'Sede2');
+INSERT INTO compvuelos VALUES (3, 'CompañiaPrueba3', 'España', 'Sede3');
 
 INSERT INTO vuelos VALUES (1, 2, 'Malaga', '2020-12-17', '2020-12-24', 'Sevilla', 70);
 INSERT INTO vuelos VALUES (2, 1, 'Almeria', '2020-12-16', '2020-12-25', 'Malaga', 40);
