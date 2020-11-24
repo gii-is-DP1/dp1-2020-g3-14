@@ -2,6 +2,8 @@ package org.springframework.samples.petclinic.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import org.springframework.core.style.ToStringCreator;
@@ -25,6 +27,10 @@ public class Actividad extends BaseEntity {
 	
 	@Column(name = "precio")
 	private Integer precio;
+	
+	@ManyToOne
+	@JoinColumn(name = "agenact_id")
+	private AgenAct agenciaActividades;
 	
 	public String getNombre() {
 		return nombre;
