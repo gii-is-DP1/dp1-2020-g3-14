@@ -33,6 +33,10 @@
             <th>Precio</th>
             <td><c:out value="${actividades.precio}"/></td>
         </tr>
+        <tr>
+        	<th>Agencia</th>
+        	<td><c:out value="${actividades.agenact.nombre}"/></td>
+        </tr>
     </table>
     <sec:authorize access="hasAuthority('admin')">
 		<a class="btn btn-default" href='<spring:url value="/actividades/${actividades.id}/edit" htmlEscape="true"/>'>Editar Actividad</a>

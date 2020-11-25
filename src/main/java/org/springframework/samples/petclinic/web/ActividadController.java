@@ -5,15 +5,20 @@ import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Actividad;
+import org.springframework.samples.petclinic.model.AgenAct;
+import org.springframework.samples.petclinic.model.Hotel;
 import org.springframework.samples.petclinic.service.ActividadService;
+import org.springframework.samples.petclinic.service.AgenActService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -21,13 +26,21 @@ public class ActividadController {
 	
 	private static final String VIEWS_ACTIVIDAD_CREATE_OR_UPDATE_FORM = "actividades/createOrUpdateActividadForm";
 	private final ActividadService actividadService;
+	private final AgenActService agenactsService;
 	
 	@Autowired
-	public ActividadController(ActividadService actividadService) {
+	public ActividadController(ActividadService actividadService,AgenActService agenactsService) {
 			this.actividadService = actividadService;
+			this.agenactsService = agenactsService;
    	}
-	@InitBinder
-	public void setAllowedFields(WebDataBinder dataBinder) {
+	
+/*	@ModelAttribute("agenact")
+	public AgenAct findAgenAct(@PathVariable("agenactId") int agenactId) {
+		return this.agenactsService.findAgenActById(agenactId);
+	}
+*/
+	@InitBinder("agenact")
+	public void intagenactBinder(WebDataBinder dataBinder) {
 		dataBinder.setDisallowedFields("id");
 	}
 	
@@ -66,7 +79,7 @@ public class ActividadController {
 		else {
 			actividad.setId(actividadId);			
 			this.actividadService.saveActividad(actividad);
-			return "redirect:/vuelos/{actividadId}";
+			return "redirect:/actividades/{actividadId}";
 		}
 	}
 	
