@@ -64,7 +64,7 @@
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span>�
+						data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span>
 							<strong><sec:authentication property="name" /></strong> <span
 							class="glyphicon glyphicon-chevron-down"></span>
 					</a>
@@ -96,9 +96,7 @@
 									<div class="row">
 										<div class="col-lg-12">
 											<p>
-												<a href="users/" class="btn btn-primary btn-block">My Profile</a>
-												<a href="#" class="btn btn-danger btn-block">Change
-													Password</a>
+												<a href="users/<sec:authentication property="name" />" class="btn btn-primary btn-block">My Profile</a>
 											</p>
 										</div>
 									</div>
