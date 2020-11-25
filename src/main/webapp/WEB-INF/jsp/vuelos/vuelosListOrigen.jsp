@@ -22,8 +22,8 @@
         <c:forEach items="${selections}" var="vuelo">
             <tr>
                 <td>
-                    <spring:url value="/vuelos/{vueloOrigen}" var="vueloUrl">
-                        <spring:param name="vueloOrigen" value="${vuelo.origen}"/>
+                    <spring:url value="/vuelos/{vueloId}" var="vueloUrl">
+                        <spring:param name="vueloId" value="${vuelo.id}"/>
                     </spring:url>
                     <a href="${fn:escapeXml(vueloUrl)}">
                     <c:out value="${vuelo.origen}"/></a>

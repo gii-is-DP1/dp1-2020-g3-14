@@ -3,6 +3,8 @@ package org.springframework.samples.petclinic.model;
 import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -34,8 +36,20 @@ public class Vuelo extends BaseEntity {
 	
 	@Column(name = "precio")
 	private Integer precio;
+	
+	@ManyToOne
+	@JoinColumn(name = "compvuelo_id")
+	private CompVuelos compVuelo;
+	
+			
+	public CompVuelos getCompVuelo() {
+		return compVuelo;
+	}
 
-		
+	public void setCompVuelo(CompVuelos compVuelo) {
+		this.compVuelo = compVuelo;
+	}
+
 	public Integer getBilletes() {
 		return billetes;
 	}

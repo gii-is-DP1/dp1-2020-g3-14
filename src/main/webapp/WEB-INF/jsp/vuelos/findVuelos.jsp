@@ -11,7 +11,6 @@
 <petclinic:layout pageName="vuelos">
 
     <h2>Buscar Vuelos</h2>
-
     
     <form:form  modelAttribute="vuelos" action="/vuelos" method="get" class="form-horizontal"
                id="search-vuelos-form" >

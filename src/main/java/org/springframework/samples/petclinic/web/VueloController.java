@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Vuelo;
+import org.springframework.samples.petclinic.service.CompVuelosService;
 import org.springframework.samples.petclinic.service.VueloService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,13 +22,16 @@ public class VueloController {
 	
 	private static final String VIEWS_VUELOS_CREATE_OR_UPDATE_FORM = "vuelos/createOrUpdateVueloForm";
 	private final VueloService vueloService;
+	private final CompVuelosService compVueloService;
 	
 	@Autowired
-	public VueloController(VueloService vueloService) {
+	public VueloController(VueloService vueloService,CompVuelosService compVueloService) {
 			this.vueloService = vueloService;
+			this.compVueloService=compVueloService;
    	}
-	@InitBinder
-	public void setAllowedFields(WebDataBinder dataBinder) {
+	
+	@InitBinder("compVuelo")
+	public void initCompVueloBinder(WebDataBinder dataBinder) {
 		dataBinder.setDisallowedFields("id");
 	}
 	
@@ -105,12 +109,4 @@ public class VueloController {
 		mav.addObject("vuelos", this.vueloService.findVueloById(vueloId));
 		return mav;
 	}
-	
-	/*@GetMapping("/vuelos/{vueloOrigen}")
-	public ModelAndView showVueloOrigen(@PathVariable("vueloOrigen") String vueloOrigen) {
-		ModelAndView mav = new ModelAndView("vuelos/vueloListOrigen");
-		mav.addObject("vuelos", this.vueloService.findByOrigen(vueloOrigen));
-		return mav;
-	}
-	*/
 }
