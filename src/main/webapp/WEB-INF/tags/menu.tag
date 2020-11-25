@@ -34,6 +34,12 @@
 					<span>Find owners</span>
 				</petclinic:menuItem>
 				
+				<petclinic:menuItem active="${name eq 'hoteles'}" url="/hoteles/find"
+					title="find hoteles">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					<span>Buscar Hoteles</span>
+				</petclinic:menuItem>
+				
 				<petclinic:menuItem active="${name eq 'agenacts'}" url="/agenacts/find"
 					title="find agenacts">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
