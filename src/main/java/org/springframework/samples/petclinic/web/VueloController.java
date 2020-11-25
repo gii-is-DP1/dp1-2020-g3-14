@@ -95,7 +95,7 @@ public class VueloController {
 		}
 		else {
 			model.put("selections", results);
-			return "vuelos/vuelosList";
+			return "vuelos/vuelosListOrigen";
 		}
 	}
 	
@@ -105,4 +105,12 @@ public class VueloController {
 		mav.addObject("vuelos", this.vueloService.findVueloById(vueloId));
 		return mav;
 	}
+	
+	/*@GetMapping("/vuelos/{vueloOrigen}")
+	public ModelAndView showVueloOrigen(@PathVariable("vueloOrigen") String vueloOrigen) {
+		ModelAndView mav = new ModelAndView("vuelos/vueloListOrigen");
+		mav.addObject("vuelos", this.vueloService.findByOrigen(vueloOrigen));
+		return mav;
+	}
+	*/
 }
