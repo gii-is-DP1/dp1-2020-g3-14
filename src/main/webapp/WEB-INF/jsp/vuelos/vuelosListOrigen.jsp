@@ -16,14 +16,15 @@
             <th style="width: 120px">Precio</th>
             <th style="width: 150px">Fecha ida</th>
             <th style="width: 150px">Fecha vuelta</th>
+            <th style="width: 150px">Compañía aérea</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${selections}" var="vuelo">
             <tr>
                 <td>
-                    <spring:url value="/vuelos/{vueloOrigen}" var="vueloUrl">
-                        <spring:param name="vueloOrigen" value="${vuelo.origen}"/>
+                    <spring:url value="/vuelos/{vueloId}" var="vueloUrl">
+                        <spring:param name="vueloId" value="${vuelo.id}"/>
                     </spring:url>
                     <a href="${fn:escapeXml(vueloUrl)}">
                     <c:out value="${vuelo.origen}"/></a>
@@ -41,8 +42,8 @@
                     <c:out value="${vuelo.fechaVuelta}"/>
                 </td> 
                 <td>
-                    <c:out value="${vuelo.billetes}"/>
-                </td>            
+                    <c:out value="${vuelo.compVuelo.nombre}"/>
+                </td>             
             </tr>
         </c:forEach>
         </tbody>

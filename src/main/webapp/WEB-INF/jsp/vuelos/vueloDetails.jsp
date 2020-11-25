@@ -37,6 +37,10 @@
             <th>Número de billetes</th>
             <td><c:out value="${vuelos.billetes}"/></td>
         </tr>
+        <tr>
+            <th>Compañia Vuelo</th>
+            <td><c:out value="${vuelos.compVuelo.nombre}"/></td>
+        </tr>
     </table>
     <sec:authorize access="hasAuthority('admin')">
 		<a class="btn btn-default" href='<spring:url value="/vuelos/${vuelos.id}/edit" htmlEscape="true"/>'>Editar vuelo</a>

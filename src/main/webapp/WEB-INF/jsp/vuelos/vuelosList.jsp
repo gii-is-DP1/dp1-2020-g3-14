@@ -16,6 +16,7 @@
             <th style="width: 120px">Precio</th>
             <th style="width: 150px">Fecha ida</th>
             <th style="width: 150px">Fecha vuelta</th>
+            <th style="width: 150px">Compañía aérea</th>
         </tr>
         </thead>
         <tbody>
@@ -41,8 +42,8 @@
                     <c:out value="${vuelo.fechaVuelta}"/>
                 </td> 
                 <td>
-                    <c:out value="${vuelo.billetes}"/>
-                </td>            
+                    <c:out value="${vuelo.compVuelo.nombre}"/>
+                </td>                    
             </tr>
         </c:forEach>
         </tbody>

@@ -115,3 +115,12 @@ INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (
 INSERT INTO actividades(id,direccion,nombre,opinion,precio,valoracion,agenact_id) VALUES (1, 'Playa de Cadiz','Surf Cadiz', 'El mejor Surf en Cadiz', 20, 3,1);
 INSERT INTO actividades(id,direccion,nombre,opinion,precio,valoracion,agenact_id) VALUES (2, 'Sierra de Grazalema','Senderismo', 'Increible paisaje', 1 , 4,1);
 INSERT INTO actividades(id,direccion,nombre,opinion,precio,valoracion,agenact_id) VALUES (3, 'Ayuntamiento de Sevilla', 'Visita guiada', 'Sevilla es preciosa', 5, 4,2);
+
+INSERT INTO compvuelos VALUES (1, 'CompañiaPrueba', 'España', 'Sede1');
+INSERT INTO compvuelos VALUES (2, 'CompañiaPrueba2', 'España', 'Sede2');
+INSERT INTO compvuelos VALUES (3, 'CompañiaPrueba3', 'España', 'Sede3');
+
+INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (1, 2, 'Malaga', '2020-12-17', '2020-12-24', 'Sevilla', 70,1);
+INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (2, 1, 'Almeria', '2020-12-16', '2020-12-25', 'Malaga', 40,2);
+INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (3, 3, 'Cadiz', '2020-12-19', '2020-12-26','Cordoba', 120,2);
+INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (4, 2, 'Jaen', '2020-12-18', '2020-12-23', 'Sevilla', 70,3);
