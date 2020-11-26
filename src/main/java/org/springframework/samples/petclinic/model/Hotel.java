@@ -10,6 +10,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 
+import org.hibernate.validator.constraints.Range;
+
 @Entity
 @Table(name = "hoteles")
 public class Hotel extends BaseEntity{
@@ -23,6 +25,7 @@ public class Hotel extends BaseEntity{
 	private String direccion;
 	
 	@Column(name = "estrellas")
+	@Range(min=1,max=5)
 	private Integer estrellas;
 
 	@Column(name = "provincia")
