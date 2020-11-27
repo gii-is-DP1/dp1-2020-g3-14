@@ -79,6 +79,35 @@ public class HotelController {
 		return "hoteles/findHoteles";
 	}
 	
+	@GetMapping(value = "/hoteles/findProvincias")
+	public String initFindProvinciaForm(Map<String, Object> model) {
+		model.put("hoteles", new Hotel()); 
+		return "hoteles/findProvincias";
+	}
+	
+	@GetMapping(value = "/hoteles/provincias")
+	public String processFindProvForm(Hotel hotel, BindingResult result, Map<String, Object> model) {
+
+		if (hotel.getProvincia() == null) {
+			hotel.setProvincia("");// empty string signifies broadest possible search
+		}
+
+		Collection<Hotel> results = this.hotelService.findByProvincia(hotel.getProvincia());
+		
+		if (results.isEmpty()) {
+				result.rejectValue("nombre", "notFound", "not found");
+				return "hoteles/hotelNoEncontrado";
+			}
+			else if (results.size() == 1) {
+				hotel = results.iterator().next();
+				return "redirect:/hoteles/" + hotel.getId();
+			}
+			else {
+				model.put("selections", results);
+				return "hoteles/hotelesListProvincia";
+			}
+	}
+	
 	@GetMapping(value = "/hoteles")
 	public String processFindForm(Hotel hotel, BindingResult result, Map<String, Object> model) {
 
@@ -90,7 +119,7 @@ public class HotelController {
 		
 		if (results.isEmpty()) {
 				result.rejectValue("nombre", "notFound", "not found");
-				return "hoteles/findHoteles";
+				return "hoteles/hotelNoEncontrado";
 			}
 			else if (results.size() == 1) {
 				hotel = results.iterator().next();
