@@ -14,8 +14,8 @@
         <div class="form-group has-feedback">
         	<petclinic:inputField label="Username" name="username"/>
             <petclinic:inputField label="Password" name="password"/>
-            <petclinic:inputField label="DNI" name="dni"/>
             <petclinic:inputField label="Telefono" name="telefono"/>
+            <petclinic:inputField label="DNI" name="dni"/>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">

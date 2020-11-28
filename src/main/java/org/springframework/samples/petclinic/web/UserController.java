@@ -52,7 +52,7 @@ public class UserController {
 		}
 		else {
 			this.userService.saveUser(user);
-			return "redirect:/";
+			return "redirect:/users/"+user.getUsername();
 		}
 	}
 	
@@ -65,7 +65,7 @@ public class UserController {
 	
 	@PostMapping(value = "/users/{username}/edit")
 	public String processUpdateUserForm(@Valid User user, BindingResult result,
-			@PathVariable("username") String username,ModelMap model) {
+			@PathVariable("username") String username, ModelMap model) {
 		if (result.hasErrors()) {
 			model.put("user", user);
 			return VIEWS_USER_CREATE_OR_UPDATE_FORM;
