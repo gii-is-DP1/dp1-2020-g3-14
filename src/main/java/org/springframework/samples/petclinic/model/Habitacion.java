@@ -10,25 +10,25 @@ import javax.validation.constraints.NotEmpty;
 
 import lombok.Data;
 
-@Data
+
 @Entity
 @Table(name = "habitaciones")
 public class Habitacion{
 	
 	@Id
-	@NotEmpty
+	
 	Integer nhabitacion;
 	
 	@Column(name = "ncamas")
-	@NotEmpty
+	
 	private Integer ncamas;
 	
 	@Column(name = "precio")
-	@NotEmpty
+	
 	private Integer precio;
 	
 	@Column(name = "disponible")
-	@NotEmpty
+	
 	private Boolean disponible;
 	
 	@ManyToOne

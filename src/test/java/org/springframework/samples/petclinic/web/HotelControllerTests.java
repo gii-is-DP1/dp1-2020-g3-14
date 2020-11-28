@@ -63,7 +63,7 @@ public class HotelControllerTests {
 	@WithMockUser(value = "spring")
         @Test
 	void testInitCreationForm() throws Exception {
-		mockMvc.perform(get("/hoteles/new")).andExpect(status().isOk()).andExpect(model().attributeExists("hotel"))
+		mockMvc.perform(get("/hoteles/new")).andExpect(status().isOk()).andExpect(model().attributeExists("hoteles"))
 				.andExpect(view().name("hoteles/createOrUpdateHotelForm"));
 	}
 
