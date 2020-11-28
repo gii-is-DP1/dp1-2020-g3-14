@@ -19,7 +19,12 @@
             <petclinic:inputField label="Telephone" name="telephone"/>
             <petclinic:inputField label="Username" name="user.username"/>
             <petclinic:inputField label="Password" name="user.password"/>
+        	
+        	
+        	<center> <input type="checkbox" required> He leído y acepto política de privacidad </center>
+        	
         </div>
+        
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>

@@ -26,7 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class UserController {
 
-	private static final String VIEWS_OWNER_CREATE_FORM = "users/createOwnerForm";
+	private static final String VIEWS_OWNER_CREATE_FORM = "users/createOrUpdateUserForm";
 
 	private final OwnerService ownerService;
 	private final UserService userService;
