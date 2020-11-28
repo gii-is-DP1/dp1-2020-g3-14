@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -25,7 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class UserController {
 
 	private static final String VIEWS_USER_CREATE_OR_UPDATE_FORM = "users/createOrUpdateUserForm";
-
+	private static final String VIEWS_USER_DELETE_FORM = "users/deleteUserForm";
 	private final UserService userService;
 	
 	@Autowired
@@ -83,5 +84,20 @@ public class UserController {
 		mav.addObject("user", this.userService.findByUsername(username));
 		return mav;
 	}
-
+	
+	@GetMapping(value = "/users/{username}/delete")
+	public String initDeleteForm(@PathVariable("username") final String username,Map<String, Object> model) {
+		User user= this.userService.findByUsername(username);
+		model.put("user", user);
+		return VIEWS_USER_DELETE_FORM;
+	}
+	
+	@RequestMapping(value = "/users/{username}/delete")
+	public String deleteUser(@PathVariable("username") final String username, final ModelMap model) {
+		User user= this.userService.findByUsername(username);
+		String pass = user.getPassword();
+		
+		this.userService.deleteUser(user);
+		return "redirect:/";
+	}
 }

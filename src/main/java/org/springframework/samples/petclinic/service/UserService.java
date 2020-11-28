@@ -54,4 +54,9 @@ public class UserService {
 	public User findByUsername(String username) {
 		return userRepository.findByUsername(username);
 	}
+	
+	@Transactional
+	public void deleteUser(User user) throws DataAccessException {
+		userRepository.delete(user);
+	}
 }
