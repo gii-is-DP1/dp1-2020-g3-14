@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
-<petclinic:layout pageName="vuelos">
+<petclinic:layout pageName="actividadesform">
     
     <jsp:body>
     <h2>
@@ -13,11 +13,11 @@
     </h2>
     <form:form modelAttribute="actividades" class="form-horizontal" id="add-actividad-form">
         <div class="form-group has-feedback">
+        	<petclinic:inputField label="Dirección" name="direccion"/>
         	<petclinic:inputField label="Nombre de la actividad" name="nombre"/>
         	<petclinic:inputField label="Opinión" name="opinion"/>
+        	<petclinic:inputField label="Precio" name="precio"/>
         	<petclinic:inputField label="Valoración" name="valoracion"/>
-        	<petclinic:inputField label="Dirección" name="direccion"/>
-            <petclinic:inputField label="Precio" name="precio"/>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
