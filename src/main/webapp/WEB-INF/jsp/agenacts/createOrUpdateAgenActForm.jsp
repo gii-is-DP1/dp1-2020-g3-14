@@ -10,7 +10,7 @@
     <h2>
         <c:if test="${agenacts['new']}">Añadir </c:if> Agencia de actividades
     </h2>
-    <form:form modelAttribute="agenacts" class="form-horizontal" id="add-agenact-form">
+    <form:form modelAttribute="agenact" class="form-horizontal" id="add-agenact-form">
         <div class="form-group has-feedback">
             <petclinic:inputField label="Nombre" name="nombre"/>
             <petclinic:inputField label="Sede" name="sede"/>

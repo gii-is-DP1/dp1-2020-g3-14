@@ -13,7 +13,7 @@
     <h2>Buscar Agencias de Actividades</h2>
 
     
-    <form:form  modelAttribute="agenacts" action="/agenacts" method="get" class="form-horizontal"
+    <form:form  modelAttribute="agenact" action="/agenacts" method="get" class="form-horizontal"
                id="search-agenacts-form" >
         <div class="form-group">
             <div class="control-group" id="nombre">

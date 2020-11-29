@@ -21,7 +21,7 @@
 				<petclinic:menuItem active="${name eq 'compvuelos'}" url="/compvuelos/find"
 					title="find compvuelos">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					<span>CompaÃ±ia de Vuelos</span>
+					<span>Compañia de Vuelos</span>
 				</petclinic:menuItem>
 				
 				<petclinic:menuItem active="${name eq 'hoteles'}" url="/hoteles/find"
@@ -35,12 +35,7 @@
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 					<span>Agencias de Eventos</span>
 				</petclinic:menuItem>
-				
-				<petclinic:menuItem active="${owner eq 'owners'}" url="/owners/find"
-					title="find owners">
-					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					<span>Owners</span>
-				</petclinic:menuItem>
+	
 				
 				<petclinic:menuItem active="${name eq 'vuelos'}" url="/vuelos/find"
 					title="vuelos">
@@ -92,10 +87,10 @@
 								<div class="navbar-login navbar-login-session">
 									<div class="row">
 										<div class="col-lg-12">
-											<p>
-												<a href="users/<sec:authentication property="name" />" class="btn btn-primary btn-block">Mi perfil</a>
-												<a href="users/<sec:authentication property="name" />/delete" class="btn btn-primary btn-block">Borrar mi perfil</a>
-											</p>
+											
+												<a href="/users/<sec:authentication property="name" />" class="btn btn-primary btn-block">Mi perfil</a>
+												<a href="/users/<sec:authentication property="name" />/delete" class="btn btn-primary btn-block">Borrar mi perfil</a>
+											
 										</div>
 									</div>
 								</div>

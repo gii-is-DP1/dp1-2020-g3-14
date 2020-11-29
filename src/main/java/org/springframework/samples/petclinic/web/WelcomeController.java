@@ -25,17 +25,17 @@ public class WelcomeController {
 		pedcarmor.setFirstName("Pedro Pablo");
 		pedcarmor.setLastName("Carvajal Moreno");
 		
-		Person pedmuncif = new Person();
-		pedmuncif.setFirstName("Pedro Jesús");
-		pedmuncif.setLastName("Muñoz Cifuentes");
+		Person javhidrod = new Person();
+		javhidrod.setFirstName("Javier");
+		javhidrod.setLastName("Hidalgo Rodríguez");
 		
 		Person enrmorvaz = new Person();
 		enrmorvaz.setFirstName("Enrique");
 		enrmorvaz.setLastName("Moreno Vázquez");
 		
-		Person javhidrod = new Person();
-		javhidrod.setFirstName("Javier");
-		javhidrod.setLastName("Hidalgo Rodríguez");
+		Person pedmuncif = new Person();
+		pedmuncif.setFirstName("Pedro Jesús");
+		pedmuncif.setLastName("Muñoz Cifuentes");
 		
 		Person alvsevcab = new Person();
 		alvsevcab.setFirstName("Álvaro");
@@ -45,8 +45,8 @@ public class WelcomeController {
 		josregmej.setFirstName("José Francisco");
 		josregmej.setLastName("Regadera Mejías");
 		
-		persons.add(pedcarmor);persons.add(pedmuncif);persons.add(enrmorvaz);
-		persons.add(javhidrod);persons.add(alvsevcab);persons.add(josregmej);
+		persons.add(pedcarmor);persons.add(javhidrod); persons.add(enrmorvaz);
+		persons.add(pedmuncif);persons.add(alvsevcab);persons.add(josregmej);
 		
 		model.put("persons", persons);
 		model.put("title", "Proyecto DP1");
