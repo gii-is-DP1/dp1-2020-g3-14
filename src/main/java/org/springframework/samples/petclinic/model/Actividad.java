@@ -15,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Range;
@@ -24,17 +25,15 @@ import org.springframework.beans.support.PropertyComparator;
 
 @Entity
 @Table(name = "actividades")	
-public class Actividad {
+public class Actividad extends BaseEntity{
 
-	@Id
-	@NotEmpty
-	private Integer id;
 	
 	@Column(name = "nombre")
 	@NotEmpty
 	private String nombre;
 
 	@Column(name = "opinion")
+	@NotEmpty
 	private String opinion;
 	
 	@Column(name = "valoracion")
@@ -42,10 +41,13 @@ public class Actividad {
 	private Integer valoracion;
 	
 	@Column(name = "direccion")
+	@NotEmpty
 	private String direccion;
 	
 	@Column(name = "precio")
-	private Integer precio;
+	@NotEmpty
+	@Digits(fraction = 0, integer = 8)
+	private String precio;
 	
 	@ManyToOne
 	@JoinColumn(name = "agenact_id")
@@ -94,11 +96,11 @@ public class Actividad {
 		this.direccion = direccion;
 	}
 
-	public Integer getPrecio() {
+	public String getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(Integer precio) {
+	public void setPrecio(String precio) {
 		this.precio = precio;
 	}
 
@@ -127,5 +129,4 @@ public class Actividad {
 		this.users = users;
 	}
 
-		
 }

@@ -40,7 +40,8 @@ public class Reserva extends BaseEntity {
 	@JoinColumn(name = "username")
 	private User user;
 	
-	
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "vuelo")
+//	private Set<Vuelo> vuelos;
 //	public Set<Vuelo> getVuelos(){
 //		return vuelos;
 //	}
@@ -79,8 +80,6 @@ public class Reserva extends BaseEntity {
 	protected void setUser(User user) {
 		this.user = user;
 	}
-	
-	
 	
 	
 }
