@@ -72,11 +72,12 @@ class HotelServiceTests {
 	@Test
 	void shouldFindHotelByName() {
 		Hotel hotel = new Hotel();
-		hotel.setNombre("HOTEL 0");
+		hotel.setNombre("HOTEL 2");
 		hotel.setDireccion("Calle Cano");
 		hotel.setEstrellas(2);
 		hotel.setProvincia("Sevilla");
 		hotel.setTelefono("322222222");
+		hotel.setPrecio("10");
 		
 		Habitacion habitacion1= new Habitacion();		
 		habitacion1.setDisponible(true);
@@ -89,7 +90,7 @@ class HotelServiceTests {
 		hotel.setHabitaciones(habitaciones);              
                 
 		this.hotelService.saveHotel(hotel);
-		Collection<Hotel> hoteles = this.hotelService.findByNombre("HOTEL 0");
+		Collection<Hotel> hoteles = this.hotelService.findByNombre("HOTEL 2");
 		assertThat(hoteles.size()).isEqualTo(2);
 
 		hoteles = this.hotelService.findByNombre("Pepes");

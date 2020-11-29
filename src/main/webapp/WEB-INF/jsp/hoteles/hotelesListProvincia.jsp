@@ -14,6 +14,7 @@
             <th style="width: 150px;">Nombre</th>
             <th style="width: 200px;">Direccion</th>
             <th style="width: 120px">Telefono</th>
+            <th style="width: 120px">Precio</th>
             <th style="width: 120px">Provincia</th>
         </tr>
         </thead>
@@ -32,6 +33,9 @@
                 </td>
                 <td>
                 	<c:out value="${hotel.telefono}"/>
+                </td>
+                <td>
+                	<c:out value="${hotel.precio}"/>
                 </td>  
                 <td>
                 	<c:out value="${hotel.provincia}"/>

@@ -36,6 +36,7 @@ class ValidatorTests {
 		hotel.setEstrellas(3);
 		hotel.setProvincia("Sevilla");
 		hotel.setTelefono("32222222");
+		hotel.setPrecio("25");
 		
 		Habitacion habitacion1= new Habitacion();
 		habitacion1.setDisponible(true);

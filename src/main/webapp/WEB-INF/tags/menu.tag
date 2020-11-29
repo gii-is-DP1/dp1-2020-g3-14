@@ -36,6 +36,12 @@
 					<span>Agencias de Eventos</span>
 				</petclinic:menuItem>
 				
+				<petclinic:menuItem active="${owner eq 'owners'}" url="/owners/find"
+					title="find owners">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					<span>Owners</span>
+				</petclinic:menuItem>
+				
 				<petclinic:menuItem active="${name eq 'vuelos'}" url="/vuelos/find"
 					title="vuelos">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
