@@ -1,7 +1,11 @@
 package org.springframework.samples.petclinic.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
@@ -26,6 +30,18 @@ public class AgenAct extends BaseEntity {
 	@Digits(fraction = 0, integer = 10)
 	private String telefono;
 	
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="agenact")
+	private Set<Actividad> actividades;
+	
+	
+	public Set<Actividad> getActividades() {
+		return actividades;
+	}
+
+	public void setActividades(Set<Actividad> actividades) {
+		this.actividades = actividades;
+	}
+
 	public String getNombre() {
 		return this.nombre;
 	}

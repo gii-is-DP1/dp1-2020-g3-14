@@ -101,3 +101,39 @@ INSERT INTO agenacts VALUES (1,'AgenciaPrueba','Sevilla', '2333333');
 INSERT INTO agenacts VALUES (2,'AgenciaPrueba2','Huelva', '21111111');
 INSERT INTO agenacts VALUES (3,'Enrique','Gines', '21111111');
 
+
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (2,'Calle Fran',5,'HOTEL 1','Sevilla','2333333','150');
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (3,'Calle Enrique2',3,'HOTEL 2','Cordoba','2333433','250');
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (10,'Calle Enrique3',3,'HOTEL 9','Cordoba','233433','340');
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (4,'Calle Fran2',4,'HOTEL 3','Cadiz','2333335','100');
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (11,'Calle Fran10',4,'HOTEL 10','Cadiz','2334335','435');
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (5,'Calle Fran3',4,'HOTEL 4','Huelva','2333335','75');
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (12,'Calle Fran11',4,'HOTEL 11','Huelva','2333235','65');
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (6,'Calle Fran4',3,'HOTEL 5','Malaga','2333345','90');
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (13,'Calle Fran13',3,'HOTEL 12','Malaga','2333385','54');
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (7,'Calle Fran6',4,'HOTEL 6','Jaen','2333335','102');
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (14,'Calle Fran15',4,'HOTEL 14','Jaen','2331335','345');
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (8,'Calle Fran7',4,'HOTEL 7','Granada','2333335','348');
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (15,'Calle Fran16',4,'HOTEL 16','Granada','2333635','76');
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (9,'Calle Fran8',3,'HOTEL 8','Almeria','2333345','145');
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (16,'Calle Fran17',3,'HOTEL 17','Almeria','2343345','245');
+
+INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (123,2,20,true,2);
+INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (456,2,20,true,2);
+INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (789,2,20,false,3);
+INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (012,2,20,false,2);
+INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (756,2,20,true,3);
+INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (345,2,20,true,3);
+
+INSERT INTO actividades(id,direccion,nombre,opinion,precio,valoracion,agenact_id) VALUES (1, 'Playa de Cadiz','Surf Cadiz', 'El mejor Surf en Cadiz', 20, 3,1);
+INSERT INTO actividades(id,direccion,nombre,opinion,precio,valoracion,agenact_id) VALUES (2, 'Sierra de Grazalema','Senderismo', 'Increible paisaje', 1 , 4,1);
+INSERT INTO actividades(id,direccion,nombre,opinion,precio,valoracion,agenact_id) VALUES (3, 'Ayuntamiento de Sevilla', 'Visita guiada', 'Sevilla es preciosa', 5, 4,2);
+
+INSERT INTO compvuelos VALUES (1, 'CompañiaPrueba', 'España', 'Sede1');
+INSERT INTO compvuelos VALUES (2, 'CompañiaPrueba2', 'España', 'Sede2');
+INSERT INTO compvuelos VALUES (3, 'CompañiaPrueba3', 'España', 'Sede3');
+
+INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (1, 2, 'Malaga', '2020-12-17', '2020-12-24', 'Sevilla', 70,1);
+INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (2, 1, 'Almeria', '2020-12-16', '2020-12-25', 'Malaga', 40,2);
+INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (3, 3, 'Cadiz', '2020-12-19', '2020-12-26','Cordoba', 120,2);
+INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (4, 2, 'Jaen', '2020-12-18', '2020-12-23', 'Sevilla', 70,3);

@@ -5,29 +5,32 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
-
-<petclinic:layout pageName="agenacts">
+<petclinic:layout pageName="vuelos">
+    
+    <jsp:body>
     <h2>
-        <c:if test="${agenacts['new']}">Añadir </c:if> Agencia de actividades
+        <c:if test="${actividades['new']}">Añadir </c:if> Actividad
     </h2>
-    <form:form modelAttribute="agenacts" class="form-horizontal" id="add-agenact-form">
+    <form:form modelAttribute="actividades" class="form-horizontal" id="add-actividad-form">
         <div class="form-group has-feedback">
-            <petclinic:inputField label="Nombre" name="nombre"/>
-            <petclinic:inputField label="Sede" name="sede"/>
-            <petclinic:inputField label="Telefono" name="telefono"/>
-
+        	<petclinic:inputField label="Nombre de la actividad" name="nombre"/>
+        	<petclinic:inputField label="Opinión" name="opinion"/>
+        	<petclinic:inputField label="Valoración" name="valoracion"/>
+        	<petclinic:inputField label="Dirección" name="direccion"/>
+            <petclinic:inputField label="Precio" name="precio"/>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>
-                    <c:when test="${agenacts['new']}">
-                        <button class="btn btn-default" type="submit">Añadir Agencia</button>
+                    <c:when test="${actividades['new']}">
+                        <button class="btn btn-default" type="submit">Añadir Actividad</button>
                     </c:when>
                     <c:otherwise>
-                        <button class="btn btn-default" type="submit">Editar Agencia</button>
+                        <button class="btn btn-default" type="submit">Editar Actividad</button>
                     </c:otherwise>
                 </c:choose>
             </div>
         </div>
     </form:form>
+    </jsp:body>
 </petclinic:layout>

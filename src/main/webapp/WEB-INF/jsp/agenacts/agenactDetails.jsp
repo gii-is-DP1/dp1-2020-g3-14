@@ -29,5 +29,24 @@
     <br/>
     <br/>
     <br/>
+<table class="table table-striped">
+   <h3>Actividades</h3>
+        <c:forEach var="actividades" items="${agenact.actividades}">
+
+            <tr>
+                <td valign="top">
+                    <dl class="dl-horizontal">
+                        <dt>Nombre</dt>
+                        <dd><c:out value="${actividades.nombre}"/></dd>
+                        <dt>Direccion</dt>
+                        <dd><c:out value="${actividades.direccion}"/></dd>
+                        <dt>Precio</dt>
+                        <dd><c:out value="${actividades.precio}"/></dd>
+                    </dl>
+                </td>
+          </c:forEach>
+  </table>
+
+
 
 </petclinic:layout>

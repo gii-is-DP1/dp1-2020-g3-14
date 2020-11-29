@@ -2,6 +2,7 @@ package org.springframework.samples.petclinic.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
@@ -25,20 +26,35 @@ class ValidatorTests {
 	}
 
 	@Test
-	void shouldNotValidateWhenFirstNameEmpty() {
-
-		LocaleContextHolder.setLocale(Locale.ENGLISH);
-		Person person = new Person();
-		person.setFirstName("");
-		person.setLastName("smith");
+	void shouldNotValidateWhenNombreEmpty() {
+		
+		LocaleContextHolder.setLocale(Locale.getDefault());
+		Hotel hotel = new Hotel();
+		
+		hotel.setNombre("");
+		hotel.setDireccion("Calle Cano");
+		hotel.setEstrellas(3);
+		hotel.setProvincia("Sevilla");
+		hotel.setTelefono("32222222");
+		hotel.setPrecio("25");
+		
+		Habitacion habitacion1= new Habitacion();
+		habitacion1.setDisponible(true);
+		habitacion1.setNcamas(2);
+		habitacion1.setNhabitacion(223);
+		habitacion1.setPrecio(25);
+		habitacion1.setHotel(hotel);
+		Set<Habitacion> habitaciones= new HashSet<Habitacion>();
+		habitaciones.add(habitacion1);
+		hotel.setHabitaciones(habitaciones);
 
 		Validator validator = createValidator();
-		Set<ConstraintViolation<Person>> constraintViolations = validator.validate(person);
+		Set<ConstraintViolation<Hotel>> constraintViolations = validator.validate(hotel);
 
 		assertThat(constraintViolations.size()).isEqualTo(1);
-		ConstraintViolation<Person> violation = constraintViolations.iterator().next();
-		assertThat(violation.getPropertyPath().toString()).isEqualTo("firstName");
-		assertThat(violation.getMessage()).isEqualTo("must not be empty");
+		ConstraintViolation<Hotel> violation = constraintViolations.iterator().next();
+		assertThat(violation.getPropertyPath().toString()).isEqualTo("nombre");
+		assertThat(violation.getMessage()).isEqualTo("no puede estar vacío");
 	}
 
 }

@@ -16,7 +16,6 @@ public interface AgenActRepository extends Repository<AgenAct, Integer>  {
 	@Query(value = "SELECT DISTINCT * FROM AgenActs WHERE nombre LIKE :nombre%", nativeQuery = true)
 	public Collection<AgenAct> findByNombre(@Param("nombre") String nombre);
 
-	
-	@Query(value="SELECT * FROM AgenActs WHERE id LIKE :id%", nativeQuery = true)
+	@Query(value = "SELECT DISTINCT * FROM AgenActs WHERE id LIKE :id%", nativeQuery = true)
 	public AgenAct findById(@Param("id") int id);
 }
