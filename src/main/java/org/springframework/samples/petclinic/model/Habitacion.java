@@ -8,6 +8,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import org.hibernate.validator.constraints.Range;
+
 import lombok.Data;
 
 @Data
@@ -16,19 +18,16 @@ import lombok.Data;
 public class Habitacion{
 	
 	@Id
-	@NotEmpty
 	Integer nhabitacion;
 	
 	@Column(name = "ncamas")
-	@NotEmpty
+	@Range(min=1,max=5)
 	private Integer ncamas;
 	
 	@Column(name = "precio")
-	@NotEmpty
 	private Integer precio;
 	
 	@Column(name = "disponible")
-	@NotEmpty
 	private Boolean disponible;
 	
 	@ManyToOne

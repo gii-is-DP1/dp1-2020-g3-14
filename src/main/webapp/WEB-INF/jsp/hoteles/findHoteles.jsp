@@ -30,8 +30,17 @@
                 <button type="submit" class="btn btn-default">Buscar</button>
             </div>
         </div>
+    </form:form>
+    
+    <form:form  modelAttribute="hoteles" action="/hoteles/findProvincias" method="get" class="form-horizontal"
+               id="search-hotelesprov-form" >
+       
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Buscar por provincia</button>
+            </div>
+        </div>
     </form:form>	
-    <br/> 
     <sec:authorize access="hasAuthority('admin')">
 		<a class="btn btn-default" href='<spring:url value="/hoteles/new" htmlEscape="true"/>'>Añadir Hotel</a>
 	</sec:authorize>
