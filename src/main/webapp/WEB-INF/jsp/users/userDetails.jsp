@@ -6,7 +6,7 @@
 
 <petclinic:layout pageName="users">
 
-    <h2>Informaciï¿½n de Usuario</h2>
+    <h2>Informacion de Usuario</h2>
 
 	<spring:url value="/users/{username}/edit" var="editUrl">
         <spring:param name="username" value="${user.username}"/>
@@ -17,9 +17,19 @@
             <td><b><c:out value="${user.username}"/></b></td>
         </tr>
         <tr>
-            <th>ContraseÃ±a</th>
+            <th>Contraseña</th>
             <td><c:out value="${user.password}"/></td>
         </tr>
+        <tr>
+        <tr>
+            <th>Telefono</th>
+            <td><b><c:out value="${user.telefono}"/></b></td>
+        </tr>
+        <tr>
+            <th>DNI</th>
+            <td><c:out value="${user.dni}"/></td>
+        </tr>
+        
     </table>
     <a href="${fn:escapeXml(editUrl)}" class="btn btn-default">Editar Usuario</a>
     <br/>

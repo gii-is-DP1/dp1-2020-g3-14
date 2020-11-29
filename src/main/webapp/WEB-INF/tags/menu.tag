@@ -21,7 +21,7 @@
 				<petclinic:menuItem active="${name eq 'compvuelos'}" url="/compvuelos/find"
 					title="find compvuelos">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					<span>Compañia de Vuelos</span>
+					<span>CompaÃ±ia de Vuelos</span>
 				</petclinic:menuItem>
 				
 				<petclinic:menuItem active="${name eq 'hoteles'}" url="/hoteles/find"
@@ -61,8 +61,7 @@
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
-
-						data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span> 
+						data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span>Â 
 							<strong><sec:authentication property="name" /></strong> <span
 							class="glyphicon glyphicon-chevron-down"></span>
 					</a>
@@ -94,9 +93,8 @@
 									<div class="row">
 										<div class="col-lg-12">
 											<p>
-												<a href="users/" class="btn btn-primary btn-block">My Profile</a>
-												<a href="#" class="btn btn-danger btn-block">Change
-													Password</a>
+												<a href="users/<sec:authentication property="name" />" class="btn btn-primary btn-block">Mi perfil</a>
+												<a href="users/<sec:authentication property="name" />/delete" class="btn btn-primary btn-block">Borrar mi perfil</a>
 											</p>
 										</div>
 									</div>
