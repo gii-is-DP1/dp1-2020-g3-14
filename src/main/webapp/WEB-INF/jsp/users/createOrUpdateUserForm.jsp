@@ -16,6 +16,7 @@
             <petclinic:inputField label="Password" name="password"/>
             <petclinic:inputField label="Telefono" name="telefono"/>
             <petclinic:inputField label="DNI" name="dni"/>
+            <center> <input type="checkbox" required> He leído y acepto política de privacidad </center>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">

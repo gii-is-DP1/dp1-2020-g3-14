@@ -32,8 +32,7 @@ public class User {
 	String username;
 	
 	@NotEmpty
-	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$ "
-			+ " (mínimo 8 caracteres, una letra minúscula,una letra mayúscula, sin espacios)")
+	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$")
 	String password;
 	
 	@Column(name = "telefono")
@@ -43,8 +42,7 @@ public class User {
 	
 	@Column(name = "dni")
 	@NotEmpty
-	@Pattern(regexp = "^[0-9]{8,8}[A-Za-z]$"
-			+ " (8 números y una letra)")
+	@Pattern(regexp = "^[0-9]{8,8}[A-Za-z]$")
 	private String dni;
 	
 	boolean enabled;
