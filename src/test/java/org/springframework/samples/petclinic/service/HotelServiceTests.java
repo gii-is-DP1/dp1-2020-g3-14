@@ -31,6 +31,71 @@ import org.springframework.transaction.annotation.Transactional;
 
 	
 	//Test dar de alta hotel
+	
+/**
+ * Integration test of the Service and the Repository layer.
+ * <p>
+ * ClinicServiceSpringDataJpaTests subclasses benefit from the following services provided
+ * by the Spring TestContext Framework:
+ * </p>
+ * <ul>
+ * <li><strong>Spring IoC container caching</strong> which spares us unnecessary set up
+ * time between test execution.</li>
+ * <li><strong>Dependency Injection</strong> of test fixture instances, meaning that we
+ * don't need to perform application context lookups. See the use of
+ * {@link Autowired @Autowired} on the <code>{@link
+ * OwnerServiceTests#clinicService clinicService}</code> instance variable, which uses
+ * autowiring <em>by type</em>.
+ * <li><strong>Transaction management</strong>, meaning each test method is executed in
+ * its own transaction, which is automatically rolled back by default. Thus, even if tests
+ * insert or otherwise change database state, there is no need for a teardown or cleanup
+ * script.
+ * <li>An {@link org.springframework.context.ApplicationContext ApplicationContext} is
+ * also inherited and can be used for explicit bean lookup if necessary.</li>
+ * </ul>
+ *
+ * @author Ken Krebs
+ * @author Rod Johnson
+ * @author Juergen Hoeller
+ * @author Sam Brannen
+ * @author Michael Isvy
+ * @author Dave Syer
+ */
+
+@DataJpaTest(includeFilters = @ComponentScan.Filter(Service.class))
+class HotelServiceTests {                
+        @Autowired
+	protected HotelService hotelService;
+
+            
+        
+	@Test
+	void shouldFindHotelByName() {
+		Hotel hotel = new Hotel();
+		hotel.setNombre("HOTEL 0");
+		hotel.setDireccion("Calle Cano");
+		hotel.setEstrellas(2);
+		hotel.setProvincia("Sevilla");
+		hotel.setTelefono("322222222");
+		
+		Habitacion habitacion1= new Habitacion();		
+		habitacion1.setDisponible(true);
+		habitacion1.setNcamas(2);
+		habitacion1.setNhabitacion(444);
+		habitacion1.setPrecio(25);
+		habitacion1.setHotel(hotel);
+		Set<Habitacion> habitaciones= new HashSet<Habitacion>();
+		habitaciones.add(habitacion1);
+		hotel.setHabitaciones(habitaciones);              
+                
+		this.hotelService.saveHotel(hotel);
+		Collection<Hotel> hoteles = this.hotelService.findByNombre("HOTEL 0");
+		assertThat(hoteles.size()).isEqualTo(2);
+
+		hoteles = this.hotelService.findByNombre("Pepes");
+		assertThat(hoteles.isEmpty()).isTrue();
+	}
+	
 	@Test
 	@Transactional
 	public void shouldInsertHotel() {
@@ -88,94 +153,5 @@ import org.springframework.transaction.annotation.Transactional;
 		System.out.println("Hotel Sunset encontrado. Found= "+hoteles.size());
 		System.out.println("==========================================================");
 
-
-/**
- * Integration test of the Service and the Repository layer.
- * <p>
- * ClinicServiceSpringDataJpaTests subclasses benefit from the following services provided
- * by the Spring TestContext Framework:
- * </p>
- * <ul>
- * <li><strong>Spring IoC container caching</strong> which spares us unnecessary set up
- * time between test execution.</li>
- * <li><strong>Dependency Injection</strong> of test fixture instances, meaning that we
- * don't need to perform application context lookups. See the use of
- * {@link Autowired @Autowired} on the <code>{@link
- * OwnerServiceTests#clinicService clinicService}</code> instance variable, which uses
- * autowiring <em>by type</em>.
- * <li><strong>Transaction management</strong>, meaning each test method is executed in
- * its own transaction, which is automatically rolled back by default. Thus, even if tests
- * insert or otherwise change database state, there is no need for a teardown or cleanup
- * script.
- * <li>An {@link org.springframework.context.ApplicationContext ApplicationContext} is
- * also inherited and can be used for explicit bean lookup if necessary.</li>
- * </ul>
- *
- * @author Ken Krebs
- * @author Rod Johnson
- * @author Juergen Hoeller
- * @author Sam Brannen
- * @author Michael Isvy
- * @author Dave Syer
- */
-
-@DataJpaTest(includeFilters = @ComponentScan.Filter(Service.class))
-class HotelServiceTests {                
-        @Autowired
-	protected HotelService hotelService;
-
-	@Test
-	void shouldFindHotelByName() {
-		Hotel hotel = new Hotel();
-		hotel.setNombre("HOTEL 0");
-		hotel.setDireccion("Calle Cano");
-		hotel.setEstrellas(2);
-		hotel.setProvincia("Sevilla");
-		hotel.setTelefono("322222222");
-		
-		Habitacion habitacion1= new Habitacion();		
-		habitacion1.setDisponible(true);
-		habitacion1.setNcamas(2);
-		habitacion1.setNhabitacion(444);
-		habitacion1.setPrecio(25);
-		habitacion1.setHotel(hotel);
-		Set<Habitacion> habitaciones= new HashSet<Habitacion>();
-		habitaciones.add(habitacion1);
-		hotel.setHabitaciones(habitaciones);              
-                
-		this.hotelService.saveHotel(hotel);
-		Collection<Hotel> hoteles = this.hotelService.findByNombre("HOTEL 0");
-		assertThat(hoteles.size()).isEqualTo(2);
-
-		hoteles = this.hotelService.findByNombre("Pepes");
-		assertThat(hoteles.isEmpty()).isTrue();
-	}
-	
-	@Test
-	@Transactional
-	public void shouldInsertHotel() {
-		Collection<Hotel> hoteles = this.hotelService.findByNombre("HOTEL 2");
-
-		Hotel hotel = new Hotel();
-		hotel.setNombre("HOTEL 2");
-		hotel.setDireccion("Calle Cano");
-		hotel.setEstrellas(3);
-		hotel.setProvincia("Sevilla");
-		hotel.setTelefono("32222222");
-		
-		Habitacion habitacion1= new Habitacion();
-		habitacion1.setDisponible(true);
-		habitacion1.setNcamas(2);
-		habitacion1.setNhabitacion(444);
-		habitacion1.setPrecio(25);
-		habitacion1.setHotel(hotel);
-		Set<Habitacion> habitaciones= new HashSet<Habitacion>();
-		habitaciones.add(habitacion1);
-		hotel.setHabitaciones(habitaciones);              
-                
-		this.hotelService.saveHotel(hotel);		
-		hoteles = this.hotelService.findByNombre("HOTEL 2");
-		assertThat(hoteles.size()).isEqualTo(1);
-
-	}
+    }
 }

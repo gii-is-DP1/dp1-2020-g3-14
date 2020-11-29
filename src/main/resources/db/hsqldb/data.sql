@@ -118,12 +118,12 @@ INSERT INTO hoteles VALUES (15,'Calle Fran16',4,'HOTEL 16','Granada','2333635');
 INSERT INTO hoteles VALUES (9,'Calle Fran8',3,'HOTEL 8','Almeria','2333345');
 INSERT INTO hoteles VALUES (16,'Calle Fran17',3,'HOTEL 17','Almeria','2343345');
 
-INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (123,2,20,true,1);
+INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (123,2,20,true,2);
 INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (456,2,20,true,2);
-INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (789,2,20,false,1);
+INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (789,2,20,false,3);
 INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (012,2,20,false,2);
-INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (756,2,20,true,1);
-INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (345,2,20,true,1);
+INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (756,2,20,true,3);
+INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (345,2,20,true,3);
 
 INSERT INTO actividades(id,direccion,nombre,opinion,precio,valoracion,agenact_id) VALUES (1, 'Playa de Cadiz','Surf Cadiz', 'El mejor Surf en Cadiz', 20, 3,1);
 INSERT INTO actividades(id,direccion,nombre,opinion,precio,valoracion,agenact_id) VALUES (2, 'Sierra de Grazalema','Senderismo', 'Increible paisaje', 1 , 4,1);
