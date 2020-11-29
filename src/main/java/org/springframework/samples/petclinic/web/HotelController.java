@@ -39,7 +39,7 @@ public class HotelController {
 	@GetMapping(value = "/hoteles/new")
 	public String initCreationForm(Map<String, Object> model) {
 		Hotel hotel = new Hotel();
-		model.put("hoteles", hotel);
+		model.put("hotel", hotel);
 		return VIEWS_HOTELES_CREATE_OR_UPDATE_FORM;
 	}
 	
@@ -50,14 +50,14 @@ public class HotelController {
 		}
 		else {
 			this.hotelService.saveHotel(hotel);
-            return "redirect:/hoteles/"+hotel.getId();
+			return "redirect:/hoteles/"+hotel.getId();
 		}
 	}
 	
 	@GetMapping(value = "/hoteles/{hotelId}/edit")
 	public String initUpdateForm(@PathVariable("hotelId") int hotelId, ModelMap model) {
 		Hotel hotel = this.hotelService.findHotelById(hotelId);
-		model.put("hoteles",hotel);
+		model.put("hotel",hotel);
 		return VIEWS_HOTELES_CREATE_OR_UPDATE_FORM;
 	}
 	
@@ -65,7 +65,7 @@ public class HotelController {
 	public String processUpdateAgenActForm(@Valid Hotel hotel, BindingResult result,
 			@PathVariable("hotelId") int hotelId,ModelMap model) {
 		if (result.hasErrors()) {
-			model.put("hoteles",hotel);
+			model.put("hotel",hotel);
 			return VIEWS_HOTELES_CREATE_OR_UPDATE_FORM;
 		}
 		else {
@@ -77,13 +77,13 @@ public class HotelController {
 	
 	@GetMapping(value = "/hoteles/find")
 	public String initFindForm(Map<String, Object> model) {
-		model.put("hoteles", new Hotel()); 
+		model.put("hotel", new Hotel()); 
 		return "hoteles/findHoteles";
 	}
 	
 	@GetMapping(value = "/hoteles/findProvincias")
 	public String initFindProvinciaForm(Map<String, Object> model) {
-		model.put("hoteles", new Hotel()); 
+		model.put("hotel", new Hotel()); 
 		return "hoteles/findProvincias";
 	}
 	
@@ -140,9 +140,8 @@ public class HotelController {
 		return mav;
 	}
 	
-	
 	@RequestMapping(value = "/hoteles/{hotelId}/delete")
-	public String deleteUser(@PathVariable("hotelId") final int hotelId, final ModelMap model) {
+	public String deleteHotel(@PathVariable("hotelId") final int hotelId, final ModelMap model) {
 		Hotel hotel= this.hotelService.findHotelById(hotelId);
 		this.hotelService.deleteHotel(hotel);
 		return "redirect:/hoteles";

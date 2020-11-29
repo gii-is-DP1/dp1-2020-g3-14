@@ -8,9 +8,9 @@
 
 <petclinic:layout pageName="hoteles">
     <h2>
-        <c:if test="${hotel['new']}">Añadir </c:if> Hotel
+        <c:if test="${hoteles['new']}">New </c:if> Hotel
     </h2>
-    <form:form modelAttribute="hoteles" class="form-horizontal" id="add-hotel-form">
+    <form:form modelAttribute="hotel" class="form-horizontal" id="add-owner-form">
         <div class="form-group has-feedback">
             <petclinic:inputField label="Direccion" name="direccion"/>
             <petclinic:inputField label="Estrellas" name="estrellas"/>
@@ -18,16 +18,15 @@
             <petclinic:inputField label="Precio" name="precio"/>
             <petclinic:inputField label="Provincia" name="provincia"/>     
             <petclinic:inputField label="Telefono" name="telefono"/>
-
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>
-                    <c:when test="${hotel['new']}">
-                        <button class="btn btn-default" type="submit">Añadir Hotel</button>
+                    <c:when test="${hoteles['new']}">
+                        <button class="btn btn-default" type="submit">Add Hotel</button>
                     </c:when>
                     <c:otherwise>
-                        <button class="btn btn-default" type="submit">Guardar Hotel</button>
+                        <button class="btn btn-default" type="submit">Update Hotel</button>
                     </c:otherwise>
                 </c:choose>
             </div>

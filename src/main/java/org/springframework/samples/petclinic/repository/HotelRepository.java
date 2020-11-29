@@ -20,6 +20,4 @@ public interface HotelRepository extends CrudRepository<Hotel, Integer> {
 	
 	@Query(value="SELECT * FROM Hoteles WHERE id LIKE :id%", nativeQuery = true)
 	public Hotel findById(@Param("id") int id);
-
-	
 }

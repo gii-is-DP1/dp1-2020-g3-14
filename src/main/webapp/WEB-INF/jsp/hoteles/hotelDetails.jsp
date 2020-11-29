@@ -67,14 +67,6 @@
           </c:forEach>
   </table>
 
-
-
-
-
-
-
-
-  
     <sec:authorize access="hasAuthority('admin')">
 		<a class="btn btn-default" href='<spring:url value="/hoteles/${hotel.id}/edit" htmlEscape="true"/>'>Editar hotel</a>
 	</sec:authorize>

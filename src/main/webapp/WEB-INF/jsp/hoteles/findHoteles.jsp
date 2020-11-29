@@ -13,7 +13,7 @@
     <h2>Buscar Hoteles</h2>
 
     
-    <form:form  modelAttribute="hoteles" action="/hoteles" method="get" class="form-horizontal"
+    <form:form  modelAttribute="hotel" action="/hoteles" method="get" class="form-horizontal"
                id="search-hoteles-form" >
         <div class="form-group">
             <div class="control-group" id="nombre">
@@ -32,7 +32,7 @@
         </div>
     </form:form>
     
-    <form:form  modelAttribute="hoteles" action="/hoteles/findProvincias" method="get" class="form-horizontal"
+    <form:form  modelAttribute="hotel" action="/hoteles/findProvincias" method="get" class="form-horizontal"
                id="search-hotelesprov-form" >
        
         <div class="form-group">
