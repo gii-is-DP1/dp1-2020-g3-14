@@ -1,14 +1,25 @@
 package org.springframework.samples.petclinic.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Range;
+import org.springframework.beans.support.MutableSortDefinition;
+import org.springframework.beans.support.PropertyComparator;
 
 
 @Entity
@@ -39,7 +50,10 @@ public class Actividad {
 	@ManyToOne
 	@JoinColumn(name = "agenact_id")
 	private AgenAct agenact;
-
+	
+	@ManyToMany(mappedBy = "actividades")
+	private Set<User> users;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -95,5 +109,23 @@ public class Actividad {
 	public void setAgenact(AgenAct agenact) {
 		this.agenact = agenact;
 	}
+	
+	protected Set<User> getUsersInternal() {
+		if (this.users == null) {
+			this.users = new HashSet<>();
+		}
+		return this.users;
+	}
+
+	public List<User> getUsers() {
+		List<User> sortedUsers = new ArrayList<>(getUsersInternal());
+		PropertyComparator.sort(sortedUsers, new MutableSortDefinition("username", true, true));
+		return Collections.unmodifiableList(sortedUsers);
+	}
+
+	public void setUsersInternal(Set<User> users) {
+		this.users = users;
+	}
+
 		
 }

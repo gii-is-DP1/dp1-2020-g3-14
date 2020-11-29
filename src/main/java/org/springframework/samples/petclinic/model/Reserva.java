@@ -1,5 +1,5 @@
 package org.springframework.samples.petclinic.model;
-import java.time.LocalDate;
+import java.time.LocalDate;  
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,10 +14,7 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import lombok.Data;
 
-
-@Data
 @Entity
 @Table(name="reservas")
 
@@ -36,22 +33,20 @@ public class Reserva extends BaseEntity {
 	private Integer cvc;
 	
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "vuelo")
-	private Set<Vuelo> vuelos;
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "vuelos")
+//	private Set<Vuelo> vuelos;
+//	
+	@ManyToOne
+	@JoinColumn(name = "username")
+	private User user;
 	
 	
-	// LO DEJE COMENTADO POR PRUDENSIA
-	
-	/***
-	
-	
-	
-	public Set<Vuelo> getVuelos(){
-		return vuelos;
-	}
-	public void setVuelos (Set<Vuelo> vuelos) {
-		this.vuelos = vuelos;
-	}
+//	public Set<Vuelo> getVuelos(){
+//		return vuelos;
+//	}
+//	public void setVuelos (Set<Vuelo> vuelos) {
+//		this.vuelos = vuelos;
+//	}
 	
 	public LocalDate getFecha() {
 		return fecha;
@@ -77,7 +72,13 @@ public class Reserva extends BaseEntity {
 		this.cvc = cvc;
 	}
 	
-	**/
+	public User getUser() {
+		return this.user;
+	}
+
+	protected void setUser(User user) {
+		this.user = user;
+	}
 	
 	
 	
