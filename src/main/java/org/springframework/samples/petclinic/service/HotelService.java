@@ -28,6 +28,11 @@ public class HotelService {
 	public void saveHotel(Hotel hotel) throws DataAccessException {
 		hotelRepository.save(hotel);                
 	}
+	
+	@Transactional
+	public void deleteHotel(Hotel hotel) throws DataAccessException {
+		hotelRepository.delete(hotel);                
+	}
 
 	@Transactional(readOnly = true)
 	public Collection<Hotel> findByNombre(String name) throws DataAccessException {

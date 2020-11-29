@@ -4,14 +4,13 @@ import java.util.Collection;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.samples.petclinic.model.Hotel;
 
 
-public interface HotelRepository extends Repository<Hotel, Integer> {
-
-	void save(Hotel hotel) throws DataAccessException;
+public interface HotelRepository extends CrudRepository<Hotel, Integer> {
 	
 	@Query(value = "SELECT DISTINCT * FROM Hoteles WHERE nombre LIKE :nombre%", nativeQuery = true)
 	public Collection<Hotel> findByNombre(@Param("nombre") String nombre);
