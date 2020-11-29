@@ -37,7 +37,7 @@ public class AgenActController {
 	@GetMapping(value = "/agenacts/new")
 	public String initCreationForm(Map<String, Object> model) {
 		AgenAct agenAct = new AgenAct();
-		model.put("agenacts", agenAct);
+		model.put("agenact", agenAct);
 		return VIEWS_AGENACTS_CREATE_OR_UPDATE_FORM;
 	}
 	
@@ -55,7 +55,7 @@ public class AgenActController {
 	@GetMapping(value = "/agenacts/{agenactId}/edit")
 	public String initUpdateForm(@PathVariable("agenactId") int agenActId, ModelMap model) {
 		AgenAct agenAct = this.agenActService.findAgenActById(agenActId);
-		model.put("agenacts",agenAct);
+		model.put("agenact",agenAct);
 		return VIEWS_AGENACTS_CREATE_OR_UPDATE_FORM;
 	}
 	
@@ -63,7 +63,7 @@ public class AgenActController {
 	public String processUpdateAgenActForm(@Valid AgenAct agenAct, BindingResult result,
 			@PathVariable("agenactId") int agenactId,ModelMap model) {
 		if (result.hasErrors()) {
-			model.put("agenacts",agenAct);
+			model.put("agenact",agenAct);
 			return VIEWS_AGENACTS_CREATE_OR_UPDATE_FORM;
 		}
 		else {
@@ -75,7 +75,7 @@ public class AgenActController {
 	
 	@GetMapping(value = "/agenacts/find")
 	public String initFindForm(Map<String, Object> model) {
-		model.put("agenacts", new AgenAct()); 
+		model.put("agenact", new AgenAct()); 
 		return "agenacts/findAgenActs";
 	}
 	

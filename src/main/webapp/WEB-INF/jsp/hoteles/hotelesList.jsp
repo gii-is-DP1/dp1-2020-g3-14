@@ -8,13 +8,12 @@
 <petclinic:layout pageName="hotel">
     <h2>Hotel</h2>
 
-    <table id="agenactsTable" class="table table-striped">
+    <table id="hotelesTable" class="table table-striped">
         <thead>
         <tr>
             <th style="width: 150px;">Nombre</th>
             <th style="width: 200px;">Direccion</th>
             <th style="width: 120px">Telefono</th>
-            <th style="width: 120px">Precio</th>
             <th style="width: 120px">Provincia</th>
             
         </tr>
@@ -34,10 +33,7 @@
                 </td>
                 <td>
                 	<c:out value="${hotel.telefono}"/>
-                </td>     
-                <td>
-                	<c:out value="${hotel.precio}"/>
-                </td>  
+                </td>
                 <td>
                 	<c:out value="${hotel.provincia}"/>
                 </td>           

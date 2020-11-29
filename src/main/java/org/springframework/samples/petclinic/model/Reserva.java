@@ -17,7 +17,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 
 
-@Data
 @Entity
 @Table(name="reservas")
 
@@ -36,50 +35,9 @@ public class Reserva extends BaseEntity {
 	private Integer cvc;
 	
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "vuelo")
-	private Set<Vuelo> vuelos;
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "vuelo")
+//	private Set<Vuelo> vuelos;
 	
 	
-	// LO DEJE COMENTADO POR PRUDENSIA
-	
-	/***
-	
-	
-	
-	public Set<Vuelo> getVuelos(){
-		return vuelos;
-	}
-	public void setVuelos (Set<Vuelo> vuelos) {
-		this.vuelos = vuelos;
-	}
-	
-	public LocalDate getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(LocalDate fecha) {
-		this.fecha = fecha;
-	}
-		
-	public Integer getNumeroTarjeta() {
-		return numeroTarjeta;
-	}
-
-	public void setNumeroTarjeta(Integer numTarjeta) {
-		this.numeroTarjeta = numTarjeta;
-	}
-	
-	public Integer getCvc() {
-		return cvc;
-	}
-
-	public void setCvc(Integer cvc) {
-		this.cvc = cvc;
-	}
-	
-	**/
-	
-	
-	
-	
+	// LO DEJE COMENTADO POR PRUDENSIA	
 }

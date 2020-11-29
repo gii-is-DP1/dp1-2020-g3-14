@@ -34,13 +34,7 @@
             <th>Provincia</th>
             <td><c:out value="${hotel.provincia}"/></td>
         </tr>
-        <tr>
-            <th>Precio</th>
-            <td><c:out value="${hotel.precio}"/></td>
-        </tr>
     </table>
-
-
 
   <table class="table table-striped">
    <h3>Habitaciones</h3>
