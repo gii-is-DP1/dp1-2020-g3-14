@@ -32,22 +32,10 @@ public class Reserva extends BaseEntity {
 	@NotEmpty
 	private Integer cvc;
 	
-	
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "vuelos")
-//	private Set<Vuelo> vuelos;
-//	
+		
 	@ManyToOne
 	@JoinColumn(name = "username")
 	private User user;
-	
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "vuelo")
-//	private Set<Vuelo> vuelos;
-//	public Set<Vuelo> getVuelos(){
-//		return vuelos;
-//	}
-//	public void setVuelos (Set<Vuelo> vuelos) {
-//		this.vuelos = vuelos;
-//	}
 	
 	public LocalDate getFecha() {
 		return fecha;
@@ -79,7 +67,5 @@ public class Reserva extends BaseEntity {
 
 	protected void setUser(User user) {
 		this.user = user;
-	}
-	
-	
+	}	
 }
