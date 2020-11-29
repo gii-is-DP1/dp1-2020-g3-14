@@ -8,7 +8,7 @@
 
 <petclinic:layout pageName="hoteles">
 
-    <h2>Información sobre Hotel</h2>
+    <h2>Informaciï¿½n sobre Hotel</h2>
 
 	<spring:url value="/hoteles/{hotelId}/edit" var="editUrl">
         <spring:param name="hotelId" value="${hotel.id}"/>
@@ -31,6 +31,10 @@
             <td><c:out value="${hotel.estrellas}"/></td>
         </tr>
         <tr>
+            <th>Precio</th>
+            <td><c:out value="${hotel.precio}"/></td>
+        </tr>
+        <tr>
             <th>Telefono</th>
             <td><c:out value="${hotel.telefono}"/></td>
         </tr>
@@ -45,9 +49,9 @@
             <tr>
                 <td valign="top">
                     <dl class="dl-horizontal">
-                        <dt>Nº Habitacion</dt>
+                        <dt>Nï¿½ Habitacion</dt>
                         <dd><c:out value="${habitaciones.nhabitacion}"/></dd>
-                        <dt>Nº de camas</dt>
+                        <dt>Nï¿½ de camas</dt>
                         <dd><c:out value="${habitaciones.ncamas}"/></dd>
                         <dt>Precio</dt>
                         <dd><c:out value="${habitaciones.precio}"/></dd>

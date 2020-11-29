@@ -12,7 +12,7 @@ import org.hibernate.validator.constraints.Range;
 
 import lombok.Data;
 
-@Data
+
 @Entity
 @Table(name = "habitaciones")
 public class Habitacion{
