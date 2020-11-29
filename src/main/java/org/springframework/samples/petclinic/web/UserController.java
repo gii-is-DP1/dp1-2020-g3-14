@@ -26,7 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class UserController {
 
 	private static final String VIEWS_USER_CREATE_OR_UPDATE_FORM = "users/createOrUpdateUserForm";
-	private static final String VIEWS_USER_DELETE_FORM = "users/deleteUserForm";
+	private static final String VIEWS_USER_DELETE_EXITO= "users/exitoDelete";
 	private final UserService userService;
 	
 	@Autowired
@@ -85,19 +85,10 @@ public class UserController {
 		return mav;
 	}
 	
-	@GetMapping(value = "/users/{username}/delete")
-	public String initDeleteForm(@PathVariable("username") final String username,Map<String, Object> model) {
-		User user= this.userService.findByUsername(username);
-		model.put("user", user);
-		return VIEWS_USER_DELETE_FORM;
-	}
-	
 	@RequestMapping(value = "/users/{username}/delete")
-	public String deleteUser(@PathVariable("username") final String username, final ModelMap model) {
-		User user= this.userService.findByUsername(username);
-		String pass = user.getPassword();
-		
-		this.userService.deleteUser(user);
-		return "redirect:/";
-	}
+    public String deleteUser(@PathVariable("username") final String username, final ModelMap model) {
+        User user= this.userService.findByUsername(username);
+        this.userService.deleteUser(user);
+        return VIEWS_USER_DELETE_EXITO;
+    }
 }

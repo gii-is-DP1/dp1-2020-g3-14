@@ -96,7 +96,8 @@
 									<div class="row">
 										<div class="col-lg-12">
 											<p>
-												<a href="users/<sec:authentication property="name" />" class="btn btn-primary btn-block">My Profile</a>
+												<a href="users/<sec:authentication property="name" />" class="btn btn-primary btn-block">Mi perfil</a>
+												<a href="users/<sec:authentication property="name" />/delete" class="btn btn-primary btn-block">Borrar mi perfil</a>
 											</p>
 										</div>
 									</div>
