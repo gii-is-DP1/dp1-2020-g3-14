@@ -67,8 +67,6 @@ class HotelServiceTests {
         @Autowired
 	protected HotelService hotelService;
 
-            
-        
 	@Test
 	void shouldFindHotelByName() {
 		Hotel hotel = new Hotel();
@@ -153,6 +151,5 @@ class HotelServiceTests {
 		assertThat(hoteles.size()).isEqualTo(found+1);
 		System.out.println("Hotel Sunset encontrado. Found= "+hoteles.size());
 		System.out.println("==========================================================");
-
     }
 }

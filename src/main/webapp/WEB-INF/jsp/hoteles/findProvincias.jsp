@@ -12,7 +12,7 @@
 
     <h2>Buscar Hoteles por provincias</h2>
     
-    <form:form  modelAttribute="hotel" action="/hoteles/provincias" method="get" class="form-horizontal"
+    <form:form  modelAttribute="hoteles" action="/hoteles/provincias" method="get" class="form-horizontal"
                id="search-hotelesprov-form" >
        <div class="form-group">
             <div class="control-group" id="provincia">

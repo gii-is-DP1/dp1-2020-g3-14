@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/vuelos/{vueloId}")
 public class ReservaController {
 
 	private final ReservaService reservaService;
@@ -24,16 +23,7 @@ public class ReservaController {
 			this.reservaService = reservaService;
 			this.vueloService= vueloService;
    	}
-	
-	@ModelAttribute("vuelo")
-	public Vuelo findVuelo(@PathVariable("vueloId") int vueloId) {
-		return this.vueloService.findVueloById(vueloId);
-	}
-	
-	@InitBinder("vuelo")
-	public void initVueloBinder(WebDataBinder dataBinder) {
-		dataBinder.setDisallowedFields("id");
-	}
+
 	
 	
 }

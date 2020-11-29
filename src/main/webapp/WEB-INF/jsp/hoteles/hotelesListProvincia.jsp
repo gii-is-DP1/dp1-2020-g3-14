@@ -8,7 +8,7 @@
 <petclinic:layout pageName="hotel">
     <h2>Hotel</h2>
 
-    <table id="agenactsTable" class="table table-striped">
+    <table id="hotelesTable" class="table table-striped">
         <thead>
         <tr>
             <th style="width: 150px;">Nombre</th>
