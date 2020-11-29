@@ -102,8 +102,21 @@ INSERT INTO agenacts VALUES (2,'AgenciaPrueba2','Huelva', '21111111');
 INSERT INTO agenacts VALUES (3,'Enrique','Gines', '21111111');
 
 
-INSERT INTO hoteles(id, direccion, estrellas, nombre, precio, provincia, telefono) VALUES (1,'Calle Enrique',5,'HOTEL 0','45127','Sevilla','2333333');
-INSERT INTO hoteles(id, direccion, estrellas, nombre, precio, provincia, telefono) VALUES (2,'Calle Fran',5,'HOTEL 1','748513','Sevilla','2333333');
+INSERT INTO hoteles VALUES (2,'Calle Fran',5,'HOTEL 1','Sevilla','2333333');
+INSERT INTO hoteles VALUES (3,'Calle Enrique2',3,'HOTEL 2','Cordoba','2333433');
+INSERT INTO hoteles VALUES (10,'Calle Enrique3',3,'HOTEL 9','Cordoba','233433');
+INSERT INTO hoteles VALUES (4,'Calle Fran2',4,'HOTEL 3','Cadiz','2333335');
+INSERT INTO hoteles VALUES (11,'Calle Fran10',4,'HOTEL 10','Cadiz','2334335');
+INSERT INTO hoteles VALUES (5,'Calle Fran3',4,'HOTEL 4','Huelva','2333335');
+INSERT INTO hoteles VALUES (12,'Calle Fran11',4,'HOTEL 11','Huelva','2333235');
+INSERT INTO hoteles VALUES (6,'Calle Fran4',3,'HOTEL 5','Malaga','2333345');
+INSERT INTO hoteles VALUES (13,'Calle Fran13',3,'HOTEL 12','Malaga','2333385');
+INSERT INTO hoteles VALUES (7,'Calle Fran6',4,'HOTEL 6','Jaen','2333335');
+INSERT INTO hoteles VALUES (14,'Calle Fran15',4,'HOTEL 14','Jaen','2331335');
+INSERT INTO hoteles VALUES (8,'Calle Fran7',4,'HOTEL 7','Granada','2333335');
+INSERT INTO hoteles VALUES (15,'Calle Fran16',4,'HOTEL 16','Granada','2333635');
+INSERT INTO hoteles VALUES (9,'Calle Fran8',3,'HOTEL 8','Almeria','2333345');
+INSERT INTO hoteles VALUES (16,'Calle Fran17',3,'HOTEL 17','Almeria','2343345');
 
 INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (123,2,20,true,1);
 INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (456,2,20,true,2);

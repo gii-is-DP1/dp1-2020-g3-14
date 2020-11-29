@@ -8,7 +8,7 @@
 <petclinic:layout pageName="home">
     <h2><fmt:message key="welcome"/></h2>
     <div class="row">
-    <h2>${title} </h2>
+    <p><h2>${title}</h2><p>
     <p><h2>${group}</h2><p>
     <p><ul>
     <c:forEach items="${persons}" var="person">
@@ -19,7 +19,7 @@
     <div class="row">
         <div class="col-md-12">
             <spring:url value="/resources/images/logo.png" htmlEscape="true" var="petsImage"/>
-            <img style="width: 20%;" class="img-responsive" src="${petsImage}"/>
+            <img style="width: 15%;" class="img-responsive" src="${petsImage}"/>
         </div>
     </div>
 </petclinic:layout>

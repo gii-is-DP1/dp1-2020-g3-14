@@ -9,16 +9,6 @@
 
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container">
-		<div class="navbar-header">
-			<a class="navbar-brand"
-				href="<spring:url value="/" htmlEscape="true" />"><span></span></a>
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target="#main-navbar">
-				<span class="sr-only"><os-p>Toggle navigation</os-p></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-		</div>
 		<div class="navbar-collapse collapse" id="main-navbar">
 			<ul class="nav navbar-nav">
 
@@ -31,24 +21,24 @@
 				<petclinic:menuItem active="${name eq 'compvuelos'}" url="/compvuelos/find"
 					title="find compvuelos">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					<span>Buscar compvuelos</span>
+					<span>Compañia de Vuelos</span>
 				</petclinic:menuItem>
 				
 				<petclinic:menuItem active="${name eq 'hoteles'}" url="/hoteles/find"
 					title="find hoteles">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					<span>Buscar Hoteles</span>
+					<span>Hoteles</span>
 				</petclinic:menuItem>
 				
 				<petclinic:menuItem active="${name eq 'agenacts'}" url="/agenacts/find"
 					title="find agenacts">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					<span>Buscar Agencias</span>
+					<span>Agencias de Eventos</span>
 				</petclinic:menuItem>
 				
 				<petclinic:menuItem active="${name eq 'vuelos'}" url="/vuelos/find"
 					title="vuelos">
-					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 					<span>Vuelos</span>
 				</petclinic:menuItem>
 				<petclinic:menuItem active="${name eq 'actividades'}" url="/actividades/find"
@@ -66,7 +56,7 @@
 				<sec:authorize access="isAuthenticated()">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 
-						data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span>Â 
+						data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span> 
 							<strong><sec:authentication property="name" /></strong> <span
 							class="glyphicon glyphicon-chevron-down"></span>
 					</a>
@@ -111,8 +101,5 @@
 				</sec:authorize>
 			</ul>
 		</div>
-
-
-
 	</div>
 </nav>

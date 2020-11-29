@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Hotel;
+import org.springframework.samples.petclinic.model.User;
 import org.springframework.samples.petclinic.service.HotelService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -79,6 +81,35 @@ public class HotelController {
 		return "hoteles/findHoteles";
 	}
 	
+	@GetMapping(value = "/hoteles/findProvincias")
+	public String initFindProvinciaForm(Map<String, Object> model) {
+		model.put("hoteles", new Hotel()); 
+		return "hoteles/findProvincias";
+	}
+	
+	@GetMapping(value = "/hoteles/provincias")
+	public String processFindProvForm(Hotel hotel, BindingResult result, Map<String, Object> model) {
+
+		if (hotel.getProvincia() == null) {
+			hotel.setProvincia("");// empty string signifies broadest possible search
+		}
+
+		Collection<Hotel> results = this.hotelService.findByProvincia(hotel.getProvincia());
+		
+		if (results.isEmpty()) {
+				result.rejectValue("nombre", "notFound", "not found");
+				return "hoteles/hotelNoEncontrado";
+			}
+			else if (results.size() == 1) {
+				hotel = results.iterator().next();
+				return "redirect:/hoteles/" + hotel.getId();
+			}
+			else {
+				model.put("selections", results);
+				return "hoteles/hotelesListProvincia";
+			}
+	}
+	
 	@GetMapping(value = "/hoteles")
 	public String processFindForm(Hotel hotel, BindingResult result, Map<String, Object> model) {
 
@@ -90,7 +121,7 @@ public class HotelController {
 		
 		if (results.isEmpty()) {
 				result.rejectValue("nombre", "notFound", "not found");
-				return "hoteles/findHoteles";
+				return "hoteles/hotelNoEncontrado";
 			}
 			else if (results.size() == 1) {
 				hotel = results.iterator().next();
@@ -108,5 +139,12 @@ public class HotelController {
 		mav.addObject("hotel", this.hotelService.findHotelById(hotelId));
 		return mav;
 	}
-
+	
+	
+	@RequestMapping(value = "/hoteles/{hotelId}/delete")
+	public String deleteUser(@PathVariable("hotelId") final int hotelId, final ModelMap model) {
+		Hotel hotel= this.hotelService.findHotelById(hotelId);
+		this.hotelService.deleteHotel(hotel);
+		return "redirect:/hoteles";
+	}
 }
