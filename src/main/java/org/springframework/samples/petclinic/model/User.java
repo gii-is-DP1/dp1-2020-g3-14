@@ -54,10 +54,9 @@ public class User {
 	private Set<Reserva> reservas;
 	
 	@ManyToMany(cascade = {
-			CascadeType.PERSIST,
-			CascadeType.MERGE})
+			CascadeType.ALL})
 	@JoinTable(
-			name = "personas_actividades",
+			name = "users_actividades",
 			joinColumns = {@JoinColumn(name = "username")},
 	        inverseJoinColumns = {@JoinColumn(name = "actividades_id")}
 			)

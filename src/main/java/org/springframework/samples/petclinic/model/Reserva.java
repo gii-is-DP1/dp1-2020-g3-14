@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotEmpty;
 
+import org.hibernate.validator.constraints.CreditCardNumber;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
@@ -26,6 +27,7 @@ public class Reserva extends BaseEntity {
 	
 	@Column(name = "numeroTarjeta")
 	@NotEmpty
+	@CreditCardNumber
 	private Integer numeroTarjeta;
 	
 	@Column(name = "cvc")
