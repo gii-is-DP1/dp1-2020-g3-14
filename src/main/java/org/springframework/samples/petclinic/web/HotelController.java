@@ -62,7 +62,7 @@ public class HotelController {
 	}
 	
 	@PostMapping(value = "/hoteles/{hotelId}/edit")
-	public String processUpdateAgenActForm(@Valid Hotel hotel, BindingResult result,
+	public String processUpdateHotelForm(@Valid Hotel hotel, BindingResult result,
 			@PathVariable("hotelId") int hotelId,ModelMap model) {
 		if (result.hasErrors()) {
 			model.put("hotel",hotel);
@@ -118,6 +118,7 @@ public class HotelController {
 		}
 
 		Collection<Hotel> results = this.hotelService.findByNombre(hotel.getNombre());
+		Collection<String> resultsProv = this.hotelService.findProvincias();
 		
 		if (results.isEmpty()) {
 				result.rejectValue("nombre", "notFound", "not found");
@@ -129,6 +130,7 @@ public class HotelController {
 			}
 			else {
 				model.put("selections", results);
+				model.put("provincias", resultsProv);
 				return "hoteles/hotelesList";
 			}
 			

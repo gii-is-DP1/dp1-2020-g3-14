@@ -31,7 +31,7 @@ public class HotelService {
 	
 	@Transactional
 	public void deleteHotel(Hotel hotel) throws DataAccessException {
-		hotelRepository.delete(hotel);                
+		hotelRepository.delete(hotel);            
 	}
 
 	@Transactional(readOnly = true)
@@ -42,6 +42,11 @@ public class HotelService {
 	@Transactional(readOnly = true)
 	public Collection<Hotel> findByProvincia(String provincia) throws DataAccessException {
 		return hotelRepository.findByProvincia(provincia);
+	}
+	
+	@Transactional(readOnly = true)
+	public Collection<String> findProvincias() throws DataAccessException {
+		return hotelRepository.findProvincias();
 	}
 	
 }

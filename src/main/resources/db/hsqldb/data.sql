@@ -103,6 +103,7 @@ INSERT INTO agenacts VALUES (3,'Enrique','Gines', '21111111');
 
 
 INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (2,'Calle Fran',5,'HOTEL 1','Sevilla','2333333','150');
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (75,'Calle Funciona',5,'HOTEL Filtrado','Sevilla','2333383','159');
 INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (3,'Calle Enrique2',3,'HOTEL 2','Cordoba','2333433','250');
 INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (10,'Calle Enrique3',3,'HOTEL 9','Cordoba','233433','340');
 INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (4,'Calle Fran2',4,'HOTEL 3','Cadiz','2333335','100');

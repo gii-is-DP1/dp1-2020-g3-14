@@ -18,6 +18,10 @@ public interface HotelRepository extends CrudRepository<Hotel, Integer> {
 	@Query(value = "SELECT DISTINCT * FROM Hoteles WHERE provincia LIKE :provincia%", nativeQuery = true)
 	public Collection<Hotel> findByProvincia(@Param("provincia") String provincia);
 	
+	@Query(value = "SELECT DISTINCT provincia FROM Hoteles", nativeQuery = true)
+	public Collection<String> findProvincias();
+	
 	@Query(value="SELECT * FROM Hoteles WHERE id LIKE :id%", nativeQuery = true)
 	public Hotel findById(@Param("id") int id);
+	
 }

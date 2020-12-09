@@ -26,11 +26,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.samples.petclinic.model.Habitacion;
 import org.springframework.samples.petclinic.model.Hotel;
+import org.springframework.samples.petclinic.repository.HotelRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-	
-	//Test dar de alta hotel
 	
 /**
  * Integration test of the Service and the Repository layer.
@@ -66,7 +65,8 @@ import org.springframework.transaction.annotation.Transactional;
 class HotelServiceTests {                
         @Autowired
 	protected HotelService hotelService;
-
+        
+        
 	@Test
 	void shouldFindHotelByName() {
 		Hotel hotel = new Hotel();
@@ -152,4 +152,25 @@ class HotelServiceTests {
 		System.out.println("Hotel Sunset encontrado. Found= "+hoteles.size());
 		System.out.println("==========================================================");
     }
+	
+	@Test
+	void shouldDeleteHotel() {	
+		
+		Hotel hotel = new Hotel();
+		hotel.setNombre("HOTEL 0");
+		hotel.setDireccion("Calle Cano");
+		hotel.setEstrellas(2);
+		hotel.setProvincia("Sevilla");
+		hotel.setTelefono("322222222");
+		hotel.setPrecio("10");
+		
+				
+		this.hotelService.saveHotel(hotel);
+		System.out.println("ID HOTEL: "+hotel.getId());
+
+		this.hotelService.deleteHotel(hotel);
+		System.out.println("assertThat"+hotel.getId());
+		assertThat(hotel.getId()).isEqualTo(null);
+		
+	}
 }
