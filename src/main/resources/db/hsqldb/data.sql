@@ -135,6 +135,7 @@ INSERT INTO compvuelos VALUES (2, 'CompañiaPrueba2', 'España', 'Sede2');
 INSERT INTO compvuelos VALUES (3, 'CompañiaPrueba3', 'España', 'Sede3');
 
 INSERT INTO users_actividades(username, actividades_id) VALUES ('enrmorvaz', 3);
+INSERT INTO users_habitaciones(username, nhabitacion) VALUES ('enrmorvaz', 789);
 
 INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (1, 2, 'Malaga', '2020-12-17', '2020-12-24', 'Sevilla', 70,1);
 INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (2, 1, 'Almeria', '2020-12-16', '2020-12-25', 'Malaga', 40,2);

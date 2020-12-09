@@ -62,6 +62,15 @@ public class User {
 			)
 	private Set<Actividad> actividades;
 	
+	@ManyToMany(cascade = {
+			CascadeType.ALL})
+	@JoinTable(
+			name = "users_habitaciones",
+			joinColumns = {@JoinColumn(name = "username")},
+	        inverseJoinColumns = {@JoinColumn(name = "nhabitacion")}
+			)
+	private Set<Habitacion> habitaciones;
+	
 	public String getUsername() {
 		return username;
 	}
@@ -136,6 +145,31 @@ public class User {
 		return getReservasInternal().remove(reserva);
 	}
 	
+	protected Set<Habitacion> getHabitacionesInternal() {
+		if (this.habitaciones == null) {
+			this.habitaciones = new HashSet<>();
+		}
+		return this.habitaciones;
+	}
+
+	protected void setHabitacionesInternal(Set<Habitacion> habitaciones) {
+		this.habitaciones = habitaciones;
+	}
+
+	public List<Habitacion> getHabitaciones() {
+		List<Habitacion> sortedHabitaciones = new ArrayList<>(getHabitacionesInternal());
+		PropertyComparator.sort(sortedHabitaciones, new MutableSortDefinition("nombre", true, true));
+		return Collections.unmodifiableList(sortedHabitaciones);
+	}
+
+	public void addHabitacion(Habitacion habitacion) {
+		getHabitacionesInternal().add(habitacion);
+	}
+	
+	public boolean removeHabitacion(Habitacion habitacion) {
+		return getHabitacionesInternal().remove(habitacion);
+	}
+	
 	protected Set<Actividad> getActividadesInternal() {
 		if (this.actividades == null) {
 			this.actividades = new HashSet<>();
@@ -165,3 +199,5 @@ public class User {
 		return this.username == null;
 	}
 }
+
+
