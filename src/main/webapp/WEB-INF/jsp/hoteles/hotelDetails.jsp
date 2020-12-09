@@ -55,7 +55,12 @@
 					  </c:if>
                       <c:if test="${!habitaciones.disponible}">
                        <dd>No</dd>
+                       <c:forEach items="${habitaciones.users}" var="usuarios">
+                        <dt>Huésped</dt>
+                        <dd><c:out value="${usuarios.username}"/></dd>
+                        </c:forEach>
                       </c:if>
+                      
                     </dl>
                 </td>
           </c:forEach>
