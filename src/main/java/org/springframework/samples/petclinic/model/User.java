@@ -65,6 +65,13 @@ public class User {
 	@ManyToMany(cascade = {
 			CascadeType.ALL})
 	@JoinTable(
+
+			name = "users_vuelos",
+			joinColumns = {@JoinColumn(name = "username")},
+	        inverseJoinColumns = {@JoinColumn(name = "vuelos_id")}
+			)
+	private Set<Vuelo> vuelos;
+
 			name = "users_habitaciones",
 			joinColumns = {@JoinColumn(name = "username")},
 	        inverseJoinColumns = {@JoinColumn(name = "nhabitacion")}
@@ -129,7 +136,7 @@ public class User {
 	protected void setReservasInternal(Set<Reserva> reservas) {
 		this.reservas = reservas;
 	}
-
+	
 	public List<Reserva> getReservas() {
 		List<Reserva> sortedReservas = new ArrayList<>(getReservasInternal());
 		PropertyComparator.sort(sortedReservas, new MutableSortDefinition("fecha", true, true));
@@ -193,6 +200,23 @@ public class User {
 	
 	public boolean removeActividad(Actividad actividad) {
 		return getActividadesInternal().remove(actividad);
+	}
+	
+	protected Set<Vuelo> getVuelosInternal() {
+		if (this.vuelos == null) {
+			this.vuelos = new HashSet<>();
+		}
+		return this.vuelos;
+	}
+
+	protected void setVuelosInternal(Set<Vuelo> vuelos) {
+		this.vuelos = vuelos;
+	}
+
+	public List<Vuelo> getVuelos() {
+		List<Vuelo> sortedVuelo = new ArrayList<>(getVuelosInternal());
+		PropertyComparator.sort(sortedVuelo, new MutableSortDefinition("origen", true, true));
+		return Collections.unmodifiableList(sortedVuelo);
 	}
 	
 	public boolean isNew() {

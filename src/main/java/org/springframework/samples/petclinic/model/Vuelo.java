@@ -1,13 +1,22 @@
 package org.springframework.samples.petclinic.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import org.springframework.beans.support.MutableSortDefinition;
+import org.springframework.beans.support.PropertyComparator;
 import org.springframework.core.style.ToStringCreator;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -40,6 +49,9 @@ public class Vuelo extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "compvuelo_id")
 	private CompVuelos compVuelo;
+	
+	@ManyToMany(mappedBy = "vuelos")
+	private Set<User> users;
 	
 			
 	public CompVuelos getCompVuelo() {
@@ -96,6 +108,23 @@ public class Vuelo extends BaseEntity {
 
 	public void setPrecio(Integer precio) {
 		this.precio = precio;
+	}
+	
+	protected Set<User> getUsersInternal() {
+		if (this.users == null) {
+			this.users = new HashSet<>();
+		}
+		return this.users;
+	}
+
+	public List<User> getUsers() {
+		List<User> sortedUsers = new ArrayList<>(getUsersInternal());
+		PropertyComparator.sort(sortedUsers, new MutableSortDefinition("username", true, true));
+		return Collections.unmodifiableList(sortedUsers);
+	}
+
+	public void setUsersInternal(Set<User> users) {
+		this.users = users;
 	}
 	
 	public String toString() {
