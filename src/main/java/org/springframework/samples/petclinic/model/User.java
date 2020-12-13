@@ -78,6 +78,7 @@ public class User {
 			joinColumns = {@JoinColumn(name = "username")},
 	        inverseJoinColumns = {@JoinColumn(name = "nhabitacion")}
 			)
+	
 	private Set<Habitacion> habitaciones;
 	
 	public String getUsername() {

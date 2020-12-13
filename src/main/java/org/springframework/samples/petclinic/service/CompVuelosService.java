@@ -32,7 +32,7 @@ public class CompVuelosService {
 
 	@Transactional(readOnly = true)
 	public Collection<CompVuelos> findByNombre(String name) throws DataAccessException {
-		return compVuelosRepository.findByNombre(name);
+		return compVuelosRepository.findByNombreLike(name);
 	}
 	
 }
