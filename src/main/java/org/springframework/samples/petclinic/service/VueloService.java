@@ -31,7 +31,7 @@ public class VueloService {
 
 	@Transactional(readOnly = true)
 	public Collection<Vuelo> findByOrigen(String origen) throws DataAccessException {
-		return vueloRepository.findByOrigen(origen);
+		return vueloRepository.findByOrigenLike(origen);
 	}
 	
 }
