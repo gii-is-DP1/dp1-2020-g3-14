@@ -36,17 +36,16 @@ public class HotelService {
 
 	@Transactional(readOnly = true)
 	public Collection<Hotel> findByNombre(String name) throws DataAccessException {
-		return hotelRepository.findByNombre(name);
+		return hotelRepository.findByNombreLike(name);
 	}
 	
 	@Transactional(readOnly = true)
 	public Collection<Hotel> findByProvincia(String provincia) throws DataAccessException {
-		return hotelRepository.findByProvincia(provincia);
+		return hotelRepository.findByProvinciaLike(provincia);
 	}
 	
 	@Transactional(readOnly = true)
 	public Collection<String> findProvincias() throws DataAccessException {
 		return hotelRepository.findProvincias();
 	}
-	
 }

@@ -114,12 +114,12 @@ public class HotelController {
 	public String processFindForm(Hotel hotel, BindingResult result, Map<String, Object> model) {
 
 		if (hotel.getNombre() == null) {
-			hotel.setNombre("");// empty string signifies broadest possible search
+			hotel.setNombre("");
 		}
 
 		Collection<Hotel> results = this.hotelService.findByNombre(hotel.getNombre());
 		Collection<String> resultsProv = this.hotelService.findProvincias();
-		
+
 		if (results.isEmpty()) {
 				result.rejectValue("nombre", "notFound", "not found");
 				return "hoteles/hotelNoEncontrado";
@@ -132,9 +132,9 @@ public class HotelController {
 				model.put("selections", results);
 				model.put("provincias", resultsProv);
 				return "hoteles/hotelesList";
-			}
-			
+			}	
 	}
+	
 	@GetMapping("/hoteles/{hotelId}")
 	public ModelAndView showHotel(@PathVariable("hotelId") int hotelId) {
 		ModelAndView mav = new ModelAndView("hoteles/hotelDetails");

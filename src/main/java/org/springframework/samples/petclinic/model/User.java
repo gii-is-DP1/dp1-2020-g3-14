@@ -71,7 +71,9 @@ public class User {
 	        inverseJoinColumns = {@JoinColumn(name = "vuelos_id")}
 			)
 	private Set<Vuelo> vuelos;
-
+	@ManyToMany(cascade = {
+			CascadeType.ALL})
+	@JoinTable(
 			name = "users_habitaciones",
 			joinColumns = {@JoinColumn(name = "username")},
 	        inverseJoinColumns = {@JoinColumn(name = "nhabitacion")}

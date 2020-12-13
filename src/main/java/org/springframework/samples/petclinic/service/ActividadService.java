@@ -31,6 +31,6 @@ public class ActividadService {
 
 	@Transactional(readOnly = true)
 	public Collection<Actividad> findByNombre(String nombre) throws DataAccessException {
-		return actividadRepository.findByNombre(nombre);
+		return actividadRepository.findByNombreLike(nombre);
 	}
 }
