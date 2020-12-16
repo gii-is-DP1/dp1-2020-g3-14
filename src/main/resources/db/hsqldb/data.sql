@@ -103,6 +103,7 @@ INSERT INTO agenacts VALUES (3,'Enrique','Gines', '21111111');
 
 
 INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (2,'Calle Fran',5,'HOTEL 1','Sevilla','2333333','150');
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (75,'Calle Funciona',5,'HOTEL Filtrado','Sevilla','2333383','159');
 INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (3,'Calle Enrique2',3,'HOTEL 2','Cordoba','2333433','250');
 INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (10,'Calle Enrique3',3,'HOTEL 9','Cordoba','233433','340');
 INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (4,'Calle Fran2',4,'HOTEL 3','Cadiz','2333335','100');
@@ -133,7 +134,12 @@ INSERT INTO compvuelos VALUES (1, 'CompañiaPrueba', 'España', 'Sede1');
 INSERT INTO compvuelos VALUES (2, 'CompañiaPrueba2', 'España', 'Sede2');
 INSERT INTO compvuelos VALUES (3, 'CompañiaPrueba3', 'España', 'Sede3');
 
+INSERT INTO users_actividades(username, actividades_id) VALUES ('enrmorvaz', 3);
+INSERT INTO users_habitaciones(username, nhabitacion) VALUES ('enrmorvaz', 789);
+
 INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (1, 2, 'Malaga', '2020-12-17', '2020-12-24', 'Sevilla', 70,1);
 INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (2, 1, 'Almeria', '2020-12-16', '2020-12-25', 'Malaga', 40,2);
 INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (3, 3, 'Cadiz', '2020-12-19', '2020-12-26','Cordoba', 120,2);
 INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (4, 2, 'Jaen', '2020-12-18', '2020-12-23', 'Sevilla', 70,3);
+
+INSERT INTO users_vuelos(username, vuelos_id) VALUES ('enrmorvaz', 3);

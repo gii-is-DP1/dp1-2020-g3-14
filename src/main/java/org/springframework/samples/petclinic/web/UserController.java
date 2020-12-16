@@ -73,7 +73,11 @@ public class UserController {
 			return VIEWS_USER_CREATE_OR_UPDATE_FORM;
 		}
 		else {
-			user.setUsername(username);	
+			if (user.getUsername().equals(username)) {
+				user.setUsername(user.getUsername());
+			}else {
+				user.setUsername(username);
+			}
 			this.userService.saveUser(user);
 			return "redirect:/users/{username}";
 		}

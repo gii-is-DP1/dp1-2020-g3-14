@@ -6,7 +6,7 @@
 
 <petclinic:layout pageName="agenacts">
 
-    <h2>Información de Agencia de Actividades</h2>
+    <h2>Informaciï¿½n de Agencia de Actividades</h2>
 
 	<spring:url value="/agenacts/{agenactId}/edit" var="editUrl">
         <spring:param name="agenactId" value="${agenact.id}"/>
@@ -42,6 +42,10 @@
                         <dd><c:out value="${actividades.direccion}"/></dd>
                         <dt>Precio</dt>
                         <dd><c:out value="${actividades.precio}"/></dd>
+                        <c:forEach items="${actividades.users}" var="usuarios">
+                        <dt>Tonto de turno</dt>
+                        <dd><c:out value="${usuarios.username}"/></dd>
+                        </c:forEach>
                     </dl>
                 </td>
           </c:forEach>

@@ -1,21 +1,18 @@
 package org.springframework.samples.petclinic.repository;
 
 import java.util.Collection;
-
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.Repository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.samples.petclinic.model.AgenAct;
 
 
-public interface AgenActRepository extends Repository<AgenAct, Integer>  {
+public interface AgenActRepository extends JpaRepository<AgenAct, Integer>  {
 	
-	void save(AgenAct agen) throws DataAccessException;
-	
-	@Query(value = "SELECT DISTINCT * FROM AgenActs WHERE nombre LIKE :nombre%", nativeQuery = true)
-	public Collection<AgenAct> findByNombre(@Param("nombre") String nombre);
 
-	@Query(value = "SELECT DISTINCT * FROM AgenActs WHERE id LIKE :id%", nativeQuery = true)
-	public AgenAct findById(@Param("id") int id);
+    @Query("select a from AgenAct a where a.nombre like %?1")
+    Collection<AgenAct> findByNombreLike(String nombre);
+
+	AgenAct findById(int id) throws DataAccessException;
+
 }

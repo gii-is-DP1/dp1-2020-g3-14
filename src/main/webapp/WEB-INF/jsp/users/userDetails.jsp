@@ -23,20 +23,29 @@
         <tr>
         <tr>
             <th>Telefono</th>
-            <td><b><c:out value="${user.telefono}"/></b></td>
+            <td><c:out value="${user.telefono}"/></td>
         </tr>
         <tr>
             <th>DNI</th>
             <td><c:out value="${user.dni}"/></td>
         </tr>
+        </table>
+        <table class="table table-striped">
   		<h3>Actividades</h3>
         <c:forEach var="actividad" items="${user.actividades}">
-
             <tr>
                 <td valign="top">
                     <dl class="dl-horizontal">
                         <dt>Nombre</dt>
                         <dd><c:out value="${actividad.nombre}"/></dd>
+                        <dt>Opinion</dt>
+                        <dd><c:out value="${actividad.opinion}"/></dd>
+                        <dt>Valoracion</dt>
+                        <dd><c:out value="${actividad.valoracion}"/></dd>
+                        <dt>Direccion</dt>
+                        <dd><c:out value="${actividad.direccion}"/></dd>
+                        <dt>Precio</dt>
+                        <dd><c:out value="${actividad.precio}"/></dd>
                     </dl>
                 </td>
           </c:forEach>
@@ -44,6 +53,6 @@
     <a href="${fn:escapeXml(editUrl)}" class="btn btn-default">Editar Usuario</a>
     <br/>
     <br/>
-    <br/>
+
 
 </petclinic:layout>

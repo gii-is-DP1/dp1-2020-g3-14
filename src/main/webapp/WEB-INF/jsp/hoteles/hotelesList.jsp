@@ -18,6 +18,8 @@
             
         </tr>
         </thead>
+        
+        
         <tbody>
         <c:forEach items="${selections}" var="hotel">
             <tr>
@@ -35,7 +37,11 @@
                 	<c:out value="${hotel.telefono}"/>
                 </td>
                 <td>
-                	<c:out value="${hotel.provincia}"/>
+                	<spring:url value="/hoteles/provincias?provincia={hotelProvincia}" var="hotelProvUrl">
+                		<spring:param name="hotelProvincia" value="${hotel.provincia}"/>
+                    </spring:url>
+                    <a href="${fn:escapeXml(hotelProvUrl)}">
+                	<c:out value="${hotel.provincia}"/></a>
                 </td>           
             </tr>
         </c:forEach>
