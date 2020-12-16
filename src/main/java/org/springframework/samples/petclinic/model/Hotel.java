@@ -61,6 +61,18 @@ public class Hotel extends BaseEntity{
 	public void setHabitaciones(Set<Habitacion> habitaciones) {
 		this.habitaciones = habitaciones;
 	}
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel")
+	private Set<Comentario> comentarios;
+	
+	
+	public Set<Comentario> getComentarios() {
+		return comentarios;
+	}
+	
+	public void setComentarios(Set<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
 
 	public String getNombre() {
 		return nombre;
