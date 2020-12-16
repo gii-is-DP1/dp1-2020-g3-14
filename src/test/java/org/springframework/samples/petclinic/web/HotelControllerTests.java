@@ -55,7 +55,6 @@ public class HotelControllerTests {
 		hotelazo.setTelefono("945122241");
 		//Deberá devolver el hotel
 		given(this.hotelService.findHotelById(TEST_HOTEL_ID)).willReturn(hotelazo);
-		System.out.println(hotelazo);
 
 	}
 	
