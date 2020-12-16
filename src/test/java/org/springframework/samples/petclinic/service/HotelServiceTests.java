@@ -155,22 +155,54 @@ class HotelServiceTests {
 	
 	@Test
 	void shouldDeleteHotel() {	
-		
 		Hotel hotel = new Hotel();
-		hotel.setNombre("HOTEL 0");
-		hotel.setDireccion("Calle Cano");
-		hotel.setEstrellas(2);
-		hotel.setProvincia("Sevilla");
-		hotel.setTelefono("322222222");
-		hotel.setPrecio("10");
-		
-				
-		this.hotelService.saveHotel(hotel);
+		hotel.setNombre("Sunset");
+		hotel.setDireccion("Calle Overdrive");
+		hotel.setEstrellas(4);
+		hotel.setProvincia("Granada");
+		hotel.setPrecio("4521");
+		hotel.setTelefono("666555111");
+		System.out.println("HOTEL: "+hotel);
 		System.out.println("ID HOTEL: "+hotel.getId());
-
-		this.hotelService.deleteHotel(hotel);
-		System.out.println("assertThat"+hotel.getId());
-		assertThat(hotel.getId()).isEqualTo(null);
+//		hotel.setId(1234);
+		System.out.println("ID HOTEL: "+hotel.getId());
+			//Opcional, como está relacionado con habitaciones le creo 2 habitaciones
+			Habitacion hab1=new Habitacion();
+				hab1.setNhabitacion(001);
+				hab1.setNcamas(2);
+				hab1.setPrecio(541);
+				hab1.setDisponible(true);
+				hab1.setHotel(hotel);
+				System.out.println(hab1);
+				
+			Habitacion hab2=new Habitacion();
+				hab2.setNhabitacion(002);
+				hab2.setNcamas(2);
+				hab2.setPrecio(541);
+				hab2.setDisponible(true);
+				hab2.setHotel(hotel);
+                
+				System.out.println(hab2);
+				
+			Set<Habitacion> habitaciones=new HashSet<Habitacion>(); 
+				habitaciones.add(hab1);
+				habitaciones.add(hab2);
+        
+        //Añado las habitaciones
+        hotel.setHabitaciones(habitaciones);
+         
+		this.hotelService.saveHotel(hotel);
+		Collection<Hotel> hoteles = this.hotelService.findByNombre("Sunset");
+		int found = hoteles.size();
+		//Tamaño 1
+		System.out.println("==========================================================");
+		System.out.println("Hotel Sunset encontrado. Found= "+found);
+		System.out.println("==========================================================");
 		
+		//Comprobamos que se ha añadido sin problemas
+		this.hotelService.deleteHotel(hotel);
+		hoteles = this.hotelService.findByNombre("Sunset");
+		assertThat(hoteles.size()).isEqualTo(found-1);
+		System.out.println("Hotel Sunset no encontrado. Found= "+hoteles.size());
 	}
 }
