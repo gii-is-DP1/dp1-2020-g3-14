@@ -19,54 +19,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.samples.petclinic.model.Habitacion;
 import org.springframework.samples.petclinic.model.Hotel;
-import org.springframework.samples.petclinic.repository.HotelRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-	
-/**
- * Integration test of the Service and the Repository layer.
- * <p>
- * ClinicServiceSpringDataJpaTests subclasses benefit from the following services provided
- * by the Spring TestContext Framework:
- * </p>
- * <ul>
- * <li><strong>Spring IoC container caching</strong> which spares us unnecessary set up
- * time between test execution.</li>
- * <li><strong>Dependency Injection</strong> of test fixture instances, meaning that we
- * don't need to perform application context lookups. See the use of
- * {@link Autowired @Autowired} on the <code>{@link
- * OwnerServiceTests#clinicService clinicService}</code> instance variable, which uses
- * autowiring <em>by type</em>.
- * <li><strong>Transaction management</strong>, meaning each test method is executed in
- * its own transaction, which is automatically rolled back by default. Thus, even if tests
- * insert or otherwise change database state, there is no need for a teardown or cleanup
- * script.
- * <li>An {@link org.springframework.context.ApplicationContext ApplicationContext} is
- * also inherited and can be used for explicit bean lookup if necessary.</li>
- * </ul>
- *
- * @author Ken Krebs
- * @author Rod Johnson
- * @author Juergen Hoeller
- * @author Sam Brannen
- * @author Michael Isvy
- * @author Dave Syer
- */
 
 @DataJpaTest(includeFilters = @ComponentScan.Filter(Service.class))
 class HotelServiceTests {                
         @Autowired
 	protected HotelService hotelService;
         
-        
+    //Prueba H1+E1 Busqueda general de hoteles
 	@Test
 	void shouldFindHotelByName() {
 		Hotel hotel = new Hotel();
@@ -90,11 +58,24 @@ class HotelServiceTests {
 		this.hotelService.saveHotel(hotel);
 		Collection<Hotel> hoteles = this.hotelService.findByNombre("HOTEL 2");
 		assertThat(hoteles.size()).isEqualTo(2);
-
-		hoteles = this.hotelService.findByNombre("Pepes");
+	}
+	
+	//Prueba H1+E2 Busqueda de hotel dentro de una provincia
+	@Test
+	void shouldFindHotelByProvincia() {
+		Collection<Hotel> hoteles = this.hotelService.findByProvincia("Sevilla");
+		int encontrados= hoteles.size();
+		assertThat(encontrados).isEqualTo(2);
+	}
+	
+	//Prueba H1-E1 Busqueda de hotel no existente
+	@Test
+	void shouldNotFindHotelByName() {
+		Collection<Hotel> hoteles = this.hotelService.findByNombre("NH");
 		assertThat(hoteles.isEmpty()).isTrue();
 	}
 	
+	//Prueba H2+E1 - Alta de un hotel
 	@Test
 	@Transactional
 	public void shouldInsertHotel() {
@@ -153,6 +134,24 @@ class HotelServiceTests {
 		System.out.println("==========================================================");
     }
 	
+	//Prueba H2-E1 - Alta de un hotel sin nombre, provincia, precio
+	@Test
+	@Transactional
+	public void shouldInsertHotelVacio() {
+		Hotel hotel = new Hotel();
+		hotel.setNombre("");
+		hotel.setDireccion("Calle Overdrive");
+		hotel.setEstrellas(4);
+		hotel.setProvincia("");
+		hotel.setPrecio("");
+		hotel.setTelefono("666555111");
+		
+        assertThat(hotel.getNombre().isEmpty()).isTrue();
+		assertThat(hotel.getProvincia().isEmpty()).isTrue();
+		assertThat(hotel.getPrecio().isEmpty()).isTrue();
+    }
+	
+	//Prueba H3+E1 - Baja de un hotel
 	@Test
 	void shouldDeleteHotel() {	
 		Hotel hotel = new Hotel();
