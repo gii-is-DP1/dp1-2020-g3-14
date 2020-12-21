@@ -94,5 +94,4 @@ public class HotelControllerTests {
 				.andExpect(model().attributeHasFieldErrors("hotel", "precio"))
 				.andExpect(view().name("hoteles/createOrUpdateHotelForm"));
 	}
-
 }

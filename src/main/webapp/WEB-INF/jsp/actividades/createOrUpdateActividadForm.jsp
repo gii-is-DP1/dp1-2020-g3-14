@@ -11,7 +11,7 @@
     <h2>
         <c:if test="${actividades['new']}">Añadir </c:if> Actividad
     </h2>
-    <form:form modelAttribute="actividades" class="form-horizontal" id="add-actividad-form">
+    <form:form modelAttribute="actividades" class="form-horizontal" id="add-actividades-form">
         <div class="form-group has-feedback">
         	<petclinic:inputField label="Dirección" name="direccion"/>
         	<petclinic:inputField label="Nombre de la actividad" name="nombre"/>

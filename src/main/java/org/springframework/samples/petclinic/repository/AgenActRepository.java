@@ -8,11 +8,9 @@ import org.springframework.samples.petclinic.model.AgenAct;
 
 
 public interface AgenActRepository extends JpaRepository<AgenAct, Integer>  {
-	
 
     @Query("select a from AgenAct a where a.nombre like %?1")
     Collection<AgenAct> findByNombreLike(String nombre);
 
 	AgenAct findById(int id) throws DataAccessException;
-
 }

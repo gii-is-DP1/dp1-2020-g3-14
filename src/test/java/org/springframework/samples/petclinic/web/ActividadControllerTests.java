@@ -28,7 +28,10 @@ excludeAutoConfiguration= SecurityConfiguration.class)
 public class ActividadControllerTests {
 	
 	private static final int TEST_ACTIVIDAD_ID = 1;
-
+	
+	@Autowired
+	private ActividadController actividadController;
+	
 	@MockBean
 	private ActividadService actividadService;
 	
@@ -50,7 +53,7 @@ public class ActividadControllerTests {
 		actividad.setValoracion(4);
 		actividad.setDireccion("Sierra de Grazalema");
 		actividad.setPrecio("2");
-		//Deberá devolver el hotel
+		
 		given(this.actividadService.findActividadById(TEST_ACTIVIDAD_ID)).willReturn(actividad);
 		System.out.println(actividad);
 	}
@@ -80,13 +83,13 @@ public class ActividadControllerTests {
 		mockMvc.perform(post("/actividades/new")
 							.with(csrf())
 							.param("nombre", "Ruta guiada")
-							.param("opinion", "Buena ruta")
+							.param("opinion", "")
 							.param("valoracion", "4")
 							.param("direccion", "123 Prueba Street")
 							.param("precio", "4175"))
 				.andExpect(status().isOk())
-				.andExpect(model().attributeHasErrors("actividades"))
-				.andExpect(model().attributeHasFieldErrors("actividades", "opinion"))
+				.andExpect(model().attributeHasErrors("actividad"))
+				.andExpect(model().attributeHasFieldErrors("actividad", "opinion"))
 				.andExpect(view().name("actividades/createOrUpdateActividadForm"));
 	}
 }
