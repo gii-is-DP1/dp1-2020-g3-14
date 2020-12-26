@@ -64,14 +64,14 @@ public class Hotel extends BaseEntity{
 	}
 	
 	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "hotel")
-	private List<Comentario> comentarios;
+	private List<ComentarioHotel> comentarios;
 	
 	
-	public List<Comentario> getComentarios() {
+	public List<ComentarioHotel> getComentarios() {
 		return comentarios;
 	}
 	
-	public void setComentarios(List<Comentario> comentarios) {
+	public void setComentarios(List<ComentarioHotel> comentarios) {
 		this.comentarios = comentarios;
 	}
 

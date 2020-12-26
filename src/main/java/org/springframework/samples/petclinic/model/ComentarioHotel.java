@@ -12,8 +12,8 @@ import org.hibernate.validator.constraints.Range;
 import com.sun.istack.NotNull;
 
 @Entity
-@Table(name = "Comentarios")
-public class Comentario extends BaseEntity{
+@Table(name = "comentarioshotel")
+public class ComentarioHotel extends BaseEntity{
 	
 	@Column(name = "puntuacion")
 	@NotNull

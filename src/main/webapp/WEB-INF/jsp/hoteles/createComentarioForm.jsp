@@ -6,11 +6,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
-<petclinic:layout pageName="comentarios">
+<petclinic:layout pageName="comentarioshotel">
     <h2>
         Anadir Comentario
     </h2>
-    <form:form modelAttribute="comentario" class="form-horizontal" id="add-comentario-form">
+    <form:form modelAttribute="comentario" class="form-horizontal" id="add-comentarioHotel-form">
         <div class="form-group has-feedback">
             
             <petclinic:inputField label="Mensaje" name="mensaje"/>
