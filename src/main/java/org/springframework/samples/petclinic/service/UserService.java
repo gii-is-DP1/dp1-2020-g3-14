@@ -50,4 +50,13 @@ public class UserService {
 	public Optional<User> findUser(String username) {
 		return userRepository.findById(username);
 	}
+	
+	public User findByUsername(String username) {
+		return userRepository.findByUsername(username);
+	}
+	
+	@Transactional
+	public void deleteUser(User user) throws DataAccessException {
+		userRepository.delete(user);
+	}
 }
