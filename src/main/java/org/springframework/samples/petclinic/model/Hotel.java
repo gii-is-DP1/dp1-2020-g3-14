@@ -63,7 +63,7 @@ public class Hotel extends BaseEntity{
 		this.habitaciones = habitaciones;
 	}
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel")
+	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "hotel")
 	private List<Comentario> comentarios;
 	
 	

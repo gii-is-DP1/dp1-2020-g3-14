@@ -74,7 +74,7 @@
                     <dl class="dl-horizontal">
                         <dt>Puntuacion</dt>
                         <dd><c:out value="${comentarios.puntuacion}"/></dd>
-                        <dt>texto by fran</dt>
+                        <dt>Mensaje</dt>
                         <dd><c:out value="${comentarios.mensaje}"/></dd>
                     </dl>
                 </td>
