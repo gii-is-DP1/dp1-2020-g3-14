@@ -5,17 +5,46 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
-<petclinic:layout pageName="vuelo">
-    <h2>Listado de Vuelos</h2>
-	<button>
-	<a href="/search">
-                    Buscar todos los hoteles y todos los vuelos</a>
-    </button>
-    <table id="vuelosTable" class="table table-striped">
+<petclinic:layout pageName="search">
+    <h2>Estos son los hoteles y vuelos de vacaciones </h2> 
+
+    <table id="hotelesTable" class="table table-striped" align="left">
+        <thead>
+        <tr>
+            <th style="width: 150px;">Nombre</th>
+            <th style="width: 200px;">Direccion</th>
+            <th style="width: 120px">Telefono</th>
+            <th style="width: 120px">Provincia</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${selectionsH}" var="hotel">
+            <tr>
+                <td>
+                    <spring:url value="/hoteles/{hotelId}" var="hotelUrl">
+                        <spring:param name="hotelId" value="${hotel.id}"/>
+                    </spring:url>
+                    <a href="${fn:escapeXml(hotelUrl)}">
+                    <c:out value="${hotel.nombre}"/></a>
+                </td>
+                <td>
+                    <c:out value="${hotel.direccion}"/>
+                </td>
+                <td>
+                	<c:out value="${hotel.telefono}"/>
+                </td> 
+                <td>
+                	<c:out value="${hotel.provincia}"/>
+                </td>              
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+    <table id="vuelosTable" class="table table-striped" align="right">
         <thead>
         <tr>
             <th style="width: 150px;">Origen</th>
-            <th style="width: 200px;">Destino</th>
+            <th style="width: 150px;">Destino</th>
             <th style="width: 120px">Precio</th>
             <th style="width: 150px">Fecha ida</th>
             <th style="width: 150px">Fecha vuelta</th>
@@ -23,7 +52,7 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${selections}" var="vuelo">
+        <c:forEach items="${selectionsV}" var="vuelo">
             <tr>
                 <td>
                     <spring:url value="/vuelos/{vueloId}" var="vueloUrl">
@@ -33,15 +62,11 @@
                     <c:out value="${vuelo.origen}"/></a>
                 </td>
                 <td>
-                    <spring:url value="/search?provincia={vacaciones}" var="searchUrl">
-                		<spring:param name="vacaciones" value="${vuelo.destino}"/>
-                    </spring:url>
-                    <a href="${fn:escapeXml(searchUrl)}">
-                	<c:out value="${vuelo.destino}"/></a>
+                    <c:out value="${vuelo.destino}"/>
                 </td>
                 <td>
                     <c:out value="${vuelo.precio}"/>
-                </td>       
+                </td>         
                 <td>
                     <c:out value="${vuelo.fechaIda}"/>
                 </td>  
@@ -50,9 +75,9 @@
                 </td> 
                 <td>
                     <c:out value="${vuelo.compVuelo.nombre}"/>
-                </td>             
+                </td>                    
             </tr>
         </c:forEach>
         </tbody>
-    </table>
+      </table>
 </petclinic:layout>

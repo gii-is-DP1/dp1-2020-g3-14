@@ -17,11 +17,11 @@
 					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 					<span>Home</span>
 				</petclinic:menuItem>
-
+				
 				<petclinic:menuItem active="${name eq 'compvuelos'}" url="/compvuelos/find"
 					title="find compvuelos">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					<span>Compañia de Vuelos</span>
+					<span>Compaï¿½ia de Vuelos</span>
 				</petclinic:menuItem>
 				
 				<petclinic:menuItem active="${name eq 'hoteles'}" url="/hoteles/find"
