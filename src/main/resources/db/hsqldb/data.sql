@@ -131,6 +131,8 @@ INSERT INTO actividades(id,direccion,nombre,opinion,precio,valoracion,agenact_id
 INSERT INTO actividades(id,direccion,nombre,opinion,precio,valoracion,agenact_id) VALUES (2, 'Sierra de Grazalema','Senderismo', 'Increible paisaje', '1' , 4,1);
 INSERT INTO actividades(id,direccion,nombre,opinion,precio,valoracion,agenact_id) VALUES (3, 'Ayuntamiento de Sevilla', 'Visita guiada', 'Sevilla es preciosa', '5', 4,2);
 
+INSERT INTO comentariosactividad(id,puntuacion,mensaje,actividad_id) VALUES (1,10,'Bonitas vistas!',1);
+
 INSERT INTO compvuelos VALUES (1, 'CompañiaPrueba', 'España', 'Sede1');
 INSERT INTO compvuelos VALUES (2, 'CompañiaPrueba2', 'España', 'Sede2');
 INSERT INTO compvuelos VALUES (3, 'CompañiaPrueba3', 'España', 'Sede3');

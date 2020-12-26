@@ -38,6 +38,24 @@
         	<td><c:out value="${actividades.agenact.nombre}"/></td>
         </tr>
     </table>
+    
+    <table>
+  <h3>Comentarios</h3>
+        <c:forEach var="comentarios" items="${actividades.comentarios}">
+            <tr>
+                <td valign="top">
+                    <dl class="dl-horizontal">
+                        <dt>Puntuacion</dt>
+                        <dd><c:out value="${comentarios.puntuacion}"/></dd>
+                        <dt>Mensaje</dt>
+                        <dd><c:out value="${comentarios.mensaje}"/></dd>
+                    </dl>
+                </td>
+          </c:forEach>
+  </table>
+    <sec:authorize access="isAuthenticated()">
+	<a class="btn btn-default" href='<spring:url value="/actividades/${actividades.id}/comentarios/new" htmlEscape="true"/>'>Anadir comentario</a>
+	</sec:authorize>
     <sec:authorize access="hasAuthority('admin')">
 		<a class="btn btn-default" href='<spring:url value="/actividades/${actividades.id}/edit" htmlEscape="true"/>'>Editar Actividad</a>
 	</sec:authorize>
