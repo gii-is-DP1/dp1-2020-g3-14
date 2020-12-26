@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.samples.petclinic.model.Comentario;
 
 
-public interface ComentarioRepository extends JpaRepository<Comentario, Integer>{
+public interface ComentarioRepository extends JpaRepository<Comentario, String>{
 	
 	Comentario findById(int id) throws DataAccessException;
 }

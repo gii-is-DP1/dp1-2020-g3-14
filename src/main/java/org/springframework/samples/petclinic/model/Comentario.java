@@ -20,9 +20,9 @@ public class Comentario extends BaseEntity{
 	@Range(min=1,max=10)
 	private Integer puntuacion;
 	
-	@Column(name = "comentario")
+	@Column(name = "mensaje")
 	@NotEmpty
-	private String comentario;
+	private String mensaje;
 	
 	@ManyToOne
 	@JoinColumn(name = "hotel_id")
@@ -44,12 +44,12 @@ public class Comentario extends BaseEntity{
 		this.puntuacion = puntuacion;
 	}
 
-	public String getComentario() {
-		return comentario;
+	public String getMensaje() {
+		return mensaje;
 	}
 
-	public void setComentario(String comentario) {
-		this.comentario = comentario;
+	public void setMensaje(String mensaje) {
+		this.mensaje = mensaje;
 	}
 
 }

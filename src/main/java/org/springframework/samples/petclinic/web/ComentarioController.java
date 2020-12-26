@@ -53,7 +53,7 @@ public class ComentarioController {
 			return VIEWS_COMENTARIO_FORM;
 		}
 		else {
-			this.comentarioService.saveComentario(comentario);
+			this.comentarioService.savec(hotelId, comentario);
             return "redirect:/hoteles/"+hotelId;
 		}
 	}

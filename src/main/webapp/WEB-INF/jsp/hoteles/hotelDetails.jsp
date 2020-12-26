@@ -74,8 +74,8 @@
                     <dl class="dl-horizontal">
                         <dt>Puntuacion</dt>
                         <dd><c:out value="${comentarios.puntuacion}"/></dd>
-                        <dt>Comentario</dt>
-                        <dd><c:out value="${comentarios.comentario}"/></dd>
+                        <dt>texto by fran</dt>
+                        <dd><c:out value="${comentarios.mensaje}"/></dd>
                     </dl>
                 </td>
           </c:forEach>

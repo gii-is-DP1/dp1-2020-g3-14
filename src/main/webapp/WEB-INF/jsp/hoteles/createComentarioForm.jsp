@@ -13,7 +13,7 @@
     <form:form modelAttribute="comentario" class="form-horizontal" id="add-comentario-form">
         <div class="form-group has-feedback">
             
-            <petclinic:inputField label="Comentario" name="comentario"/>
+            <petclinic:inputField label="Mensaje" name="mensaje"/>
             <petclinic:inputField label="Puntuacion" name="puntuacion"/>
            
         </div>
