@@ -7,7 +7,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Hotel;
-import org.springframework.samples.petclinic.model.User;
 import org.springframework.samples.petclinic.service.HotelService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
