@@ -90,14 +90,14 @@ public class VueloControllerTests {
 		mockMvc.perform(post("/vuelos/new")
 							.with(csrf())
 							.param("billetes", "3")
-							.param("destino", "Malaga")
+							.param("destino", "")
 							.param("origen", "Sevilla")
-							.param("precio", "")
+							.param("precio", "24")
 							.param("fechaIda", "2020/10/26")
 							.param("fechaVuelta", "2020/11/04"))
 				.andExpect(status().isOk())
-				.andExpect(model().attributeHasErrors("vuelos"))
-				.andExpect(model().attributeHasFieldErrors("vuelos", "precio"))
+				.andExpect(model().attributeHasErrors("vuelo"))
+				.andExpect(model().attributeHasFieldErrors("vuelo", "destino"))
 				.andExpect(view().name("vuelos/createOrUpdateVueloForm"));
 	}
 }
