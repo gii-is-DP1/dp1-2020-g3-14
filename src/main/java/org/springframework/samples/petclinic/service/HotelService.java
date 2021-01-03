@@ -30,6 +30,11 @@ public class HotelService {
 	}
 	
 	@Transactional
+	public void saveHotelSolicitud(Hotel hotel) throws DataAccessException {
+		hotelRepository.saveSolicitud(hotel);                
+	}
+	
+	@Transactional
 	public void deleteHotel(Hotel hotel) throws DataAccessException {
 		hotelRepository.delete(hotel);            
 	}
@@ -37,6 +42,11 @@ public class HotelService {
 	@Transactional(readOnly = true)
 	public Collection<Hotel> findByNombre(String name) throws DataAccessException {
 		return hotelRepository.findByNombreLike(name);
+	}
+	
+	@Transactional(readOnly = true)
+	public Collection<Hotel> findByNombreSolicitud(String name) throws DataAccessException {
+		return hotelRepository.findByNombreSolicitudLike(name);
 	}
 	
 	@Transactional(readOnly = true)

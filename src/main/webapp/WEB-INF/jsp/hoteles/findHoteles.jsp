@@ -44,4 +44,9 @@
     <sec:authorize access="hasAuthority('admin')">
 		<a class="btn btn-default" href='<spring:url value="/hoteles/new" htmlEscape="true"/>'>Añadir Hotel</a>
 	</sec:authorize>
+
+ 
+    <sec:authorize access="hasAuthority('admin')">
+		<a class="btn btn-default" href='<spring:url value="/hoteles/solicitud" htmlEscape="true"/>'>Crear Solicitud</a>
+	</sec:authorize>
 </petclinic:layout>

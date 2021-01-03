@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class HotelController {
 	
 	private static final String VIEWS_HOTELES_CREATE_OR_UPDATE_FORM = "hoteles/createOrUpdateHotelForm";
+	private static final String VIEWS_HOTEL_SOLICITUD = "hoteles/solicitud";
 	private final HotelService hotelService;
 
 	@Autowired
@@ -43,6 +44,8 @@ public class HotelController {
 		return VIEWS_HOTELES_CREATE_OR_UPDATE_FORM;
 	}
 	
+	
+	
 	@PostMapping(value = "/hoteles/new")
 	public String processCreationForm(@Valid Hotel hotel, BindingResult result) {		
 		if (result.hasErrors()) {
@@ -51,6 +54,24 @@ public class HotelController {
 		else {
 			this.hotelService.saveHotel(hotel);
 			return "redirect:/hoteles/"+hotel.getId();
+		}
+	}
+	
+	@GetMapping(value = "/hoteles/solicitud")
+	public String initCreationForm2(Map<String, Object> model) {
+		Hotel hotel = new Hotel();
+		model.put("hotel", hotel);
+		return "hoteles/solicitudHotelForm";
+	}
+	
+	@PostMapping(value = "/hoteles/solicitud")
+	public String processCreationForm2(@Valid Hotel hotel, BindingResult result) {		
+		if (result.hasErrors()) {
+			return "hoteles/solicitudHotelForm";
+		}
+		else {
+			this.hotelService.saveHotelSolicitud(hotel);
+			return "hoteles/hotelSolicitudEnviada";
 		}
 	}
 	
@@ -132,6 +153,27 @@ public class HotelController {
 				model.put("selections", results);
 				model.put("provincias", resultsProv);
 				return "hoteles/hotelesList";
+			}	
+	}
+	
+	@GetMapping(value = "/hoteles/solicitudes")
+	public String processFindForm2(Hotel hotel, BindingResult result, Map<String, Object> model) {
+
+		Collection<Hotel> results2 = this.hotelService.findByNombreSolicitud(hotel.getNombreSolicitud());
+		
+
+		if (results2.isEmpty()) {
+				result.rejectValue("nombreSolicitud", "notFound", "not found");
+				return "hoteles/hotelNoEncontrado";
+			}
+			else if (results2.size() == 1) {
+				hotel = results2.iterator().next();
+				return "hoteles/solicitudesList";
+			}
+			else {
+				model.put("selections", results2);
+				
+				return "hoteles/solicitudesList";
 			}	
 	}
 	

@@ -19,6 +19,10 @@ public class Hotel extends BaseEntity{
 	@Column(name = "nombre")
 	@NotEmpty
 	private String nombre;
+	
+	@Column(name = "nombreSolicitud")
+	@NotEmpty
+	private String nombreSolicitud;
 
 	@Column(name = "direccion")
 	@NotEmpty
@@ -101,6 +105,15 @@ public class Hotel extends BaseEntity{
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+
+	public String getNombreSolicitud() {
+		return nombreSolicitud;
+	}
+
+	public void setNombreSolicitud(String nombreSolicitud) {
+		this.nombreSolicitud = nombreSolicitud;
+	}
+	
 	
 	
 
