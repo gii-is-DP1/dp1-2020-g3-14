@@ -20,8 +20,8 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                        <button class="btn btn-default" type="submit">Enviar Inscripcion</button>
-                  
+                        <button class="btn btn-default" type="submit">Enviar Inscripcion</button>  
+                                    
             </div>
         </div>
     </form:form>

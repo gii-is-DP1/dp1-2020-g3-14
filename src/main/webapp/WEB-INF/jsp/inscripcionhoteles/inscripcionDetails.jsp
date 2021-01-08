@@ -33,7 +33,6 @@
         </tr>
     </table>
     
-      <a class="btn btn-default" href='<spring:url value="/inscripciones" htmlEscape="true"/>'>Ir a solicitud</a>
 </petclinic:layout>
 
 
