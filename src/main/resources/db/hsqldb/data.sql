@@ -125,6 +125,10 @@ INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (
 INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (756,2,20,true,3);
 INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (345,2,20,true,3);
 
+INSERT INTO inscripcionhoteles(id,actividades,direccion,nombre,provincia) VALUES (2,'Calle Fran','elpe','INSCRIPCION1','Sevilla');
+INSERT INTO inscripcionhoteles(id,actividades,direccion,nombre,provincia) VALUES (3,'Calle eooeo','elqpe','INSCRIPCION2','Sevilla');
+
+
 INSERT INTO comentarioshotel(id,puntuacion,mensaje,hotel_id) VALUES (1,10,'HOTEL CHULO!',75);
 
 INSERT INTO actividades(id,direccion,nombre,opinion,precio,valoracion,agenact_id) VALUES (1, 'Playa de Cadiz','Surf Cadiz', 'El mejor Surf en Cadiz', '20', 3,1);
