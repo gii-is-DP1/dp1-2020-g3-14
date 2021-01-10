@@ -10,6 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.time.LocalDate;
 
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,9 @@ import org.springframework.samples.petclinic.service.VueloService;
 import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.hasProperty;
 
 @WebMvcTest(controllers=VueloController.class,
 excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = WebSecurityConfigurer.class),
@@ -100,4 +104,81 @@ public class VueloControllerTests {
 				.andExpect(model().attributeHasFieldErrors("vuelo", "destino"))
 				.andExpect(view().name("vuelos/createOrUpdateVueloForm"));
 	}
+	
+	@WithMockUser(value = "spring")
+    @Test
+    void testInitFindForm() throws Exception {
+	    mockMvc.perform(get("/vuelos/find")).andExpect(status().isOk()).andExpect(model().attributeExists("vuelos"))
+		    .andExpect(view().name("vuelos/findVuelos"));
+    }
+	
+	@WithMockUser(value = "spring")
+	@Test
+	void testShowVuelo() throws Exception {
+		mockMvc.perform(get("/vuelos/{vueloId}", TEST_VUELO_ID)).andExpect(status().isOk())
+				.andExpect(model().attribute("vuelos", hasProperty("billetes", is(2))))
+				.andExpect(model().attribute("vuelos", hasProperty("origen", is("Sevilla"))))
+				.andExpect(model().attribute("vuelos", hasProperty("destino", is("Malaga"))))
+				.andExpect(model().attribute("vuelos", hasProperty("precio", is(12))))
+				.andExpect(model().attribute("vuelos", hasProperty("fechaIda", is(LocalDate.of(2020, 10, 26)))))
+				.andExpect(model().attribute("vuelos", hasProperty("fechaVuelta", is(LocalDate.of(2020, 11, 4)))))
+				.andExpect(view().name("vuelos/vueloDetails"));
+	}
+	
+	   @WithMockUser(value = "spring")
+		@Test
+		void testProcessUpdateVueloFormSuccess() throws Exception {
+			mockMvc.perform(post("/vuelos/{vueloId}/edit", TEST_VUELO_ID)
+								.with(csrf())
+								.param("billetes", "4")
+								.param("origen", "Sevilla")
+								.param("destino", "Malaga")
+								.param("precio", "12")
+								.param("fechaIda", "2020/10/26")
+								.param("fechaIda", "2020/11/04"))
+					.andExpect(status().is3xxRedirection())
+					.andExpect(view().name("redirect:/vuelos/{vueloId}"));
+		}
+	   
+	   @WithMockUser(value = "spring")
+		@Test
+		void testProcessUpdateVueloFormHasErrors() throws Exception {
+			mockMvc.perform(post("/vuelos/{vueloId}/edit", TEST_VUELO_ID)
+								.with(csrf())
+								.param("billetes", "2")
+								.param("origen", "")
+								.param("destino", "Malaga")
+								.param("precio", "12")
+								.param("fechaIda", "2020/10/26")
+								.param("fechaVuelta", "2020/11/04"))
+			    .andExpect(status().isOk())
+			    .andExpect(model().attributeHasErrors("vuelo"))
+			    .andExpect(model().attributeHasFieldErrors("vuelo", "origen"))
+			    .andExpect(view().name("vuelos/createOrUpdateVueloForm"));
+		}
+	   
+	   @WithMockUser(value = "spring")
+		@Test
+		void testInitUpdateVueloForm() throws Exception {
+			mockMvc.perform(get("/vuelos/{vueloId}/edit", TEST_VUELO_ID)).andExpect(status().isOk())
+					.andExpect(model().attributeExists("vuelos"))
+					.andExpect(model().attribute("vuelos", hasProperty("billetes", is(2))))
+					.andExpect(model().attribute("vuelos", hasProperty("origen", is("Sevilla"))))
+					.andExpect(model().attribute("vuelos", hasProperty("destino", is("Malaga"))))
+					.andExpect(model().attribute("vuelos", hasProperty("precio", is(12))))
+					.andExpect(model().attribute("vuelos", hasProperty("fechaIda", is(LocalDate.of(2020, 10, 26)))))
+					.andExpect(model().attribute("vuelos", hasProperty("fechaVuelta", is(LocalDate.of(2020, 11, 4)))))
+					.andExpect(view().name("vuelos/createOrUpdateVueloForm"));
+		}
+	   
+	   @WithMockUser(value = "spring")
+       @Test
+	void testProcessFindFormSuccess() throws Exception {
+		given(this.vueloService.findByOrigen("Sevilla")).willReturn(Lists.newArrayList(vuelo, new Vuelo()));
+
+		mockMvc.perform(get("/vuelos")).andExpect(status().isOk()).andExpect(view().name("vuelos/findVuelos"));
+	}
+
+	
+	
 }
