@@ -101,7 +101,6 @@ INSERT INTO agenacts VALUES (1,'AgenciaPrueba','Sevilla', '2333333');
 INSERT INTO agenacts VALUES (2,'AgenciaPrueba2','Huelva', '21111111');
 INSERT INTO agenacts VALUES (3,'Enrique','Gines', '21111111');
 
-
 INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (2,'Calle Fran',5,'HOTEL 1','Sevilla','2333333','150');
 INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (75,'Calle Funciona',5,'HOTEL Filtrado','Sevilla','2333383','159');
 INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono,precio) VALUES (3,'Calle Enrique2',3,'HOTEL 2','Cordoba','2333433','250');
@@ -126,9 +125,17 @@ INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (
 INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (756,2,20,true,3);
 INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (345,2,20,true,3);
 
+INSERT INTO inscripcionhoteles(id,actividades,direccion,nombre,provincia) VALUES (2,'Calle Fran','elpe','INSCRIPCION1','Sevilla');
+INSERT INTO inscripcionhoteles(id,actividades,direccion,nombre,provincia) VALUES (3,'Calle eooeo','elqpe','INSCRIPCION2','Sevilla');
+
+
+INSERT INTO comentarioshotel(id,puntuacion,mensaje,hotel_id) VALUES (1,10,'HOTEL CHULO!',75);
+
 INSERT INTO actividades(id,direccion,nombre,opinion,precio,valoracion,agenact_id) VALUES (1, 'Playa de Cadiz','Surf Cadiz', 'El mejor Surf en Cadiz', '20', 3,1);
 INSERT INTO actividades(id,direccion,nombre,opinion,precio,valoracion,agenact_id) VALUES (2, 'Sierra de Grazalema','Senderismo', 'Increible paisaje', '1' , 4,1);
 INSERT INTO actividades(id,direccion,nombre,opinion,precio,valoracion,agenact_id) VALUES (3, 'Ayuntamiento de Sevilla', 'Visita guiada', 'Sevilla es preciosa', '5', 4,2);
+
+INSERT INTO comentariosactividad(id,puntuacion,mensaje,actividad_id) VALUES (1,10,'Bonitas vistas!',1);
 
 INSERT INTO compvuelos VALUES (1, 'CompañiaPrueba', 'España', 'Sede1');
 INSERT INTO compvuelos VALUES (2, 'CompañiaPrueba2', 'España', 'Sede2');

@@ -65,7 +65,25 @@
                 </td>
           </c:forEach>
   </table>
+  <table>
+  <h3>Comentarios</h3>
+        <c:forEach var="comentarios" items="${hotel.comentarios}">
 
+            <tr>
+                <td valign="top">
+                    <dl class="dl-horizontal">
+                        <dt>Puntuacion</dt>
+                        <dd><c:out value="${comentarios.puntuacion}"/></dd>
+                        <dt>Mensaje</dt>
+                        <dd><c:out value="${comentarios.mensaje}"/></dd>
+                    </dl>
+                </td>
+          </c:forEach>
+  </table>
+  
+	<sec:authorize access="isAuthenticated()">
+	<a class="btn btn-default" href='<spring:url value="/hoteles/${hotel.id}/comentarios/new" htmlEscape="true"/>'>Anadir comentario</a>
+	</sec:authorize>
     <sec:authorize access="hasAuthority('admin')">
 		<a class="btn btn-default" href='<spring:url value="/hoteles/${hotel.id}/edit" htmlEscape="true"/>'>Editar hotel</a>
 	</sec:authorize>

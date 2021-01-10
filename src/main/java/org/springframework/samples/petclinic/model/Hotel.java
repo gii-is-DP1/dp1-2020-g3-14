@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -60,6 +61,18 @@ public class Hotel extends BaseEntity{
 
 	public void setHabitaciones(Set<Habitacion> habitaciones) {
 		this.habitaciones = habitaciones;
+	}
+	
+	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "hotel")
+	private List<ComentarioHotel> comentarios;
+	
+	
+	public List<ComentarioHotel> getComentarios() {
+		return comentarios;
+	}
+	
+	public void setComentarios(List<ComentarioHotel> comentarios) {
+		this.comentarios = comentarios;
 	}
 
 	public String getNombre() {

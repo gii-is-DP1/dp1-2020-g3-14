@@ -6,29 +6,22 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
-<petclinic:layout pageName="hoteles">
+<petclinic:layout pageName="inscripciones">
     <h2>
-        <c:if test="${hoteles['new']}">New </c:if> Hotel
+         Inscripcion Hotel
     </h2>
-    <form:form modelAttribute="hotel" class="form-horizontal" id="add-hotel-form">
+    <form:form modelAttribute="inscripcionHotel" class="form-horizontal" id="add-hotel-form">
         <div class="form-group has-feedback">
             <petclinic:inputField label="Direccion" name="direccion"/>
-            <petclinic:inputField label="Estrellas" name="estrellas"/>
             <petclinic:inputField label="Nombre" name="nombre"/>
-            <petclinic:inputField label="Precio" name="precio"/>
+            <petclinic:inputField label="Descripcion" name="descripcion"/>
             <petclinic:inputField label="Provincia" name="provincia"/>     
-            <petclinic:inputField label="Telefono" name="telefono"/>
+            <petclinic:inputField label="Actividad" name="actividades"/>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <c:choose>
-                    <c:when test="${hoteles['new']}">
-                        <button class="btn btn-default" type="submit">Add Hotel</button>
-                    </c:when>
-                    <c:otherwise>
-                        <button class="btn btn-default" type="submit">Update Hotel</button>
-                    </c:otherwise>
-                </c:choose>
+                        <button class="btn btn-default" type="submit">Enviar Inscripcion</button>  
+                                    
             </div>
         </div>
     </form:form>
