@@ -42,7 +42,7 @@ class HotelServiceTests {
 		hotel.setEstrellas(2);
 		hotel.setProvincia("Sevilla");
 		hotel.setTelefono("322222222");
-		hotel.setPrecio("10");
+		
 		
 		Habitacion habitacion1= new Habitacion();		
 		habitacion1.setDisponible(true);
@@ -91,7 +91,6 @@ class HotelServiceTests {
 		hotel.setDireccion("Calle Overdrive");
 		hotel.setEstrellas(4);
 		hotel.setProvincia("Granada");
-		hotel.setPrecio("4521");
 		hotel.setTelefono("666555111");
 		System.out.println("HOTEL: "+hotel);
 		System.out.println("ID HOTEL: "+hotel.getId());
@@ -142,12 +141,12 @@ class HotelServiceTests {
 		hotel.setDireccion("Calle Overdrive");
 		hotel.setEstrellas(4);
 		hotel.setProvincia("");
-		hotel.setPrecio("");
+	
 		hotel.setTelefono("666555111");
 		
         assertThat(hotel.getNombre().isEmpty()).isTrue();
 		assertThat(hotel.getProvincia().isEmpty()).isTrue();
-		assertThat(hotel.getPrecio().isEmpty()).isTrue();
+		
     }
 	
 	//Prueba H3+E1 - Baja de un hotel
@@ -158,7 +157,7 @@ class HotelServiceTests {
 		hotel.setDireccion("Calle Overdrive");
 		hotel.setEstrellas(4);
 		hotel.setProvincia("Granada");
-		hotel.setPrecio("4521");
+		
 		hotel.setTelefono("666555111");
 		System.out.println("HOTEL: "+hotel);
 		System.out.println("ID HOTEL: "+hotel.getId());

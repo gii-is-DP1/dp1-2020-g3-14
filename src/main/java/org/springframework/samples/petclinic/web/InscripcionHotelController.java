@@ -79,16 +79,11 @@ public class InscripcionHotelController {
 				return "inscripcionhoteles/inscripcionList";
 			}	
 	}
-	
-	
-	
+
 	@GetMapping("/inscripciones/{inscripcionHotelId}")
     public ModelAndView showInscricpcionHotel(@PathVariable("inscripcionHotelId") int inscripcionHotelId) {
         ModelAndView mav = new ModelAndView("inscripcionhoteles/inscripcionDetails");
         mav.addObject("inscripcionHotel", this.inscripcionHotelService.findInscripcionHotelById(inscripcionHotelId));
         return mav;
     }
-	
-	
-
 }
