@@ -97,13 +97,18 @@ public class HotelControllerTests {
 				.andExpect(view().name("hoteles/createOrUpdateHotelForm"));
 	}
 
-	 @WithMockUser(value = "spring")
+	  @WithMockUser(value = "spring")
 		@Test
-		void testInitUpdateForm() throws Exception {
-			mockMvc.perform(get("/hoteles/{hotelId}/edit", TEST_HOTEL_ID))
-					.andExpect(status().isOk()).andExpect(model().attributeExists("hotel"))
+		void testInitUpdateOwnerForm() throws Exception {
+			mockMvc.perform(get("/hoteles/{hotelId}/edit", TEST_HOTEL_ID)).andExpect(status().isOk())
+			.andExpect(model().attribute("hotel", hasProperty("nombre", is("Hotelazo"))))
+			.andExpect(model().attribute("hotel", hasProperty("direccion", is("Calle normal"))))
+			.andExpect(model().attribute("hotel", hasProperty("estrellas", is(5))))
+			.andExpect(model().attribute("hotel", hasProperty("provincia", is("Cadiz"))))
+			.andExpect(model().attribute("hotel", hasProperty("telefono", is("945122241"))))
 					.andExpect(view().name("hoteles/createOrUpdateHotelForm"));
 		}
+
 	
 	@WithMockUser(value = "spring")
 	@Test
