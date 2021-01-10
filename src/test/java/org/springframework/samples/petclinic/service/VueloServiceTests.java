@@ -35,7 +35,7 @@ class VueloServiceTests {
 		
 		this.vueloService.saveVuelo(vuelo);
 		Collection<Vuelo> vuelos = this.vueloService.findByOrigen("Sevilla");
-		assertThat(vuelos.size()).isEqualTo(3);
+		assertThat(vuelos.size()).isEqualTo(4);
 	}
 	
 	//Prueba H6-E1 Búsqueda de vuelo inexistente
