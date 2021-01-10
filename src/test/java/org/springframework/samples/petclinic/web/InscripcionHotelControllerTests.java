@@ -7,7 +7,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.hasProperty;
 
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,7 +75,25 @@ private static final int TEST_HOTEL_ID = 1;
 						.param("provincia", "Malaga")
 						.param("actividades", "013167638"))
 			.andExpect(status().is2xxSuccessful());
-	}	
+	}
 
+	@WithMockUser(value = "spring")
+    @Test
+    void testProcessFindFormSuccess() throws Exception {
+		given(this.inscripcionHotelService.findAll()).willReturn(Lists.newArrayList(inscripcionaza, new InscripcionHotel()));
+		mockMvc.perform(get("/inscripciones")).andExpect(status().isOk()).andExpect(view().name("inscripcionhoteles/inscripcionList"));
+	}
+	
+	@WithMockUser(value = "spring")
+	@Test
+	void testShowInscripcionHotel() throws Exception {
+		mockMvc.perform(get("/inscripciones/{inscripcionHotelId}", TEST_HOTEL_ID)).andExpect(status().isOk())
+				.andExpect(model().attribute("inscripcionHotel", hasProperty("nombre", is("Hotelazo"))))
+				.andExpect(model().attribute("inscripcionHotel", hasProperty("direccion", is("Calle normal"))))
+				.andExpect(model().attribute("inscripcionHotel", hasProperty("provincia", is("Cadiz"))))
+				.andExpect(model().attribute("inscripcionHotel", hasProperty("descripcion", is("Nope"))))
+				.andExpect(model().attribute("inscripcionHotel", hasProperty("actividades", is("Nope"))))
+				.andExpect(view().name("inscripcionhoteles/inscripcionDetails"));
+		}
 
 }
