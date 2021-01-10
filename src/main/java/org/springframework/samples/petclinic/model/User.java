@@ -32,7 +32,7 @@ public class User {
 	String username;
 	
 	@NotEmpty
-	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$")
+	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$", message = "La contraseña debe tener un mínimo de: 8 caracteres, 1 mayúscula, 1 minúscula, 1 número")
 	String password;
 	
 	@Column(name = "telefono")
