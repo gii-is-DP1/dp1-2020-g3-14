@@ -47,7 +47,7 @@ public class ReservaHotelController {
 
 	
 	//Te rellena la entidad con los datos del formulario
-		//Falta el parametro USUARIO
+		
 	@PostMapping(value = "/reservaHoteles/new")
 	public String processCreationForm(@PathVariable("habitacionId") final int habitacionId, 
 			@PathVariable("hotelId") final int hotelId,
@@ -64,7 +64,7 @@ public class ReservaHotelController {
 			
 			reservaHotel.setUser(username2);
 			reservaHotel.setHotel(hotel);
-			reservaHotel.setHabitacion(habitacion);
+			//reservaHotel.setHabitacion(habitacion);
 			
 
 
