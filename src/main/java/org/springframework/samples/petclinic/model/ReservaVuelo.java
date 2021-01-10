@@ -1,13 +1,10 @@
 package org.springframework.samples.petclinic.model;
 import java.time.LocalDate;  
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotEmpty;
@@ -37,12 +34,13 @@ public class ReservaVuelo extends BaseEntity {
 	
 	//Atributo otras clases 
 	@ManyToOne
-	@JoinColumn(name = "username")
+	@JoinColumn(name = "users")
 	private User user;
 	
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "vuelo")
-	private Set<Vuelo> vuelos;
+	@ManyToOne
+	@JoinColumn(name = "vuelos")
+	private Vuelo vuelo;
 	
 	
 	//Getters y setters todos los atributos
@@ -77,17 +75,17 @@ public class ReservaVuelo extends BaseEntity {
 		return this.user;
 	}
 
-	protected void setUser(User user) {
+	public void setUser(User user) {
 		this.user = user;
 	}	
 			//Parametro vuelos
 	
-	public Set<Vuelo> getVuelos() {
-		return vuelos;
+	public Vuelo getVuelo() {
+		return vuelo;
 	}
 	
-	public void setVuelos (Set<Vuelo> newVuelos) {
-		this.vuelos = newVuelos;
+	public void setVuelo (Vuelo Vuelo) {
+		this.vuelo = Vuelo;
 	}
 	
 	

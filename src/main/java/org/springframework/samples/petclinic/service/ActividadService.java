@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class ActividadService {
 	
-	private ActividadRepository actividadRepository;
+	private static ActividadRepository actividadRepository;
 	
 	@Autowired
 	public ActividadService(ActividadRepository actividadRepository) {
@@ -20,7 +20,7 @@ public class ActividadService {
 	}
 	
 	@Transactional(readOnly = true)
-	public Actividad findActividadById(int id) throws DataAccessException {
+	public static Actividad findActividadById(int id) throws DataAccessException {
 		return actividadRepository.findById(id);
 	}
 

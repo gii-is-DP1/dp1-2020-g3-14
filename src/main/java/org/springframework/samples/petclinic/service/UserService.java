@@ -34,7 +34,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class UserService {
 
-	private UserRepository userRepository;
+	private static UserRepository userRepository;
 
 	@Autowired
 	public UserService(UserRepository userRepository) {
@@ -51,7 +51,7 @@ public class UserService {
 		return userRepository.findById(username);
 	}
 	
-	public User findByUsername(String username) {
+	public static User findByUsername(String username) {
 		return userRepository.findByUsername(username);
 	}
 	

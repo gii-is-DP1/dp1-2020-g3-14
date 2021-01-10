@@ -24,7 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ActividadController {
 	
-	private static final String VIEWS_ACTIVIDAD_CREATE_OR_UPDATE_FORM = "actividades/createOrUpdateActividadForm";
+	private static final String VIEWS_ACTIVIDAD_CREATE_OR_UPDATE_FORM = "ReservaActividades/createOrUpdateActividadForm";
 	private final ActividadService actividadService;
 	private final AgenActService agenactsService;
 	

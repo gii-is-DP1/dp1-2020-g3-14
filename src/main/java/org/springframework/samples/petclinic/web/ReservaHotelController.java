@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ReservaHotelController {
 
 	private ReservaHotelService reservaHotelService;
-	private static final String VIEWS_RESERVAHOTEL_CREATE_FORM = "reservaHoteles/createRentalForm";
+	private static final String VIEWS_RESERVAHOTEL_CREATE_FORM = "reservaHoteles/createReservaHotelForm";
 	
 	@Autowired
 	public ReservaHotelController(final ReservaHotelService reservaHotelService ) {
@@ -37,7 +37,7 @@ public class ReservaHotelController {
 	
 	
 	//Preparacion de creacion de reserva, direccionamiento a formulario
-	@GetMapping(value = "/reservaHotel/new")
+	@GetMapping(value = "/reservaHoteles/new")
 	public String initCreationForm(Map<String, Object> model) {
 		ReservaHotel reservaHotel = new ReservaHotel();
 
@@ -48,9 +48,10 @@ public class ReservaHotelController {
 	
 	//Te rellena la entidad con los datos del formulario
 		//Falta el parametro USUARIO
-	@PostMapping(value = "/reservaHotel/new")
+	@PostMapping(value = "/reservaHoteles/new")
 	public String processCreationForm(@PathVariable("habitacionId") final int habitacionId, 
 			@PathVariable("hotelId") final int hotelId,
+			@PathVariable("username") final User username,
 			@Valid final ReservaHotel reservaHotel, final BindingResult result) {
 
 		if (result.hasErrors()) {
@@ -59,7 +60,9 @@ public class ReservaHotelController {
 			
 			Habitacion habitacion = HabitacionService.findHabitacionById(habitacionId);
 			Hotel hotel = HotelService.findHotelById(hotelId);
+			User username2 = UserService.findByUsername(username.getUsername());
 			
+			reservaHotel.setUser(username2);
 			reservaHotel.setHotel(hotel);
 			reservaHotel.setHabitacion(habitacion);
 			

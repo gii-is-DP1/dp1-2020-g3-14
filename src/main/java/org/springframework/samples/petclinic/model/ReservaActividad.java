@@ -1,57 +1,51 @@
 package org.springframework.samples.petclinic.model;
 
-import java.time.LocalDate;
 
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
 import javax.persistence.Table;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
 @Entity
-@Table(name="reservasHotel")
+@Table(name="reservasActividad")
 
-public class ReservaHotel extends BaseEntity{
-	
+public class ReservaActividad extends BaseEntity {	
 
 		
 		//Atributos clase
+	@Column(name = "fecha")
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	@Future
+	private LocalDate fecha;
+	
+	@Column(name = "numeroTarjeta")
+	@NotEmpty
+	private Integer numeroTarjeta;
+	
+	@Column(name = "cvc")
+	@NotEmpty
+	private Integer cvc;
 		
-		@Column(name = "fecha")
-		@DateTimeFormat(pattern = "yyyy/MM/dd")
-		@Future
-		private LocalDate fecha;
 		
-		@Column(name = "numeroTarjeta")
-		@NotEmpty
-		private Integer numeroTarjeta;
 		
-		@Column(name = "cvc")
-		@NotEmpty
-		private Integer cvc;
 		
 		//Atributo otras clases 
+		
 		@ManyToOne
 		@JoinColumn(name = "users")
 		private User user;
 		
 		@ManyToOne
-		@JoinColumn(name = "hotel")
-		private Hotel hotel;
-		
-		@ManyToOne
-		@JoinColumn(name = "habitacion")
-		private Habitacion habitacion;
-
+		@JoinColumn(name = "actividades")
+		private Actividad actividad;
 			
 		//Getters y setters todos los atributos
-		
 		
 		public LocalDate getFecha() {
 			return fecha;
@@ -78,32 +72,26 @@ public class ReservaHotel extends BaseEntity{
 		}
 		
 				//Parametro Usuario
+		
 		public User getUser() {
 			return this.user;
 		}
-
+		
 		public void setUser(User user) {
 			this.user = user;
 		}	
-				//Parametro Hotel
-		public Hotel getHotel() {
-			return hotel;
+				//Parametro Actividad
+		
+		public Actividad getActividad() {
+			return this.actividad;
 		}
 		
-		public void setHotel(Hotel hotelito) {
-			this.hotel = hotelito;
-		}
-		
-			//Parametro Habitacion
-		
-		public Habitacion getHabitacion() {
-			return habitacion;
-		}
-
-		public void setHabitacion(Habitacion habitacion) {
-			this.habitacion = habitacion;
+		public void setActividad(Actividad actividad) {
+			this.actividad = actividad;
 		}	
-		
-		
-		
 }
+
+
+
+
+
