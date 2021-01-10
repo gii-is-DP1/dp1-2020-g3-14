@@ -1,14 +1,17 @@
 package org.springframework.samples.petclinic.model;
 
 import java.time.LocalDate;
+import java.util.Set;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
+import javax.persistence.OneToMany;
+import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotEmpty;
 
@@ -30,25 +33,31 @@ public class ReservaHotel extends BaseEntity{
 		
 		@Column(name = "numeroTarjeta")
 		@NotEmpty
-		private Integer numeroTarjeta;
+		@Digits(fraction = 0, integer = 16)
+		private String numeroTarjeta;
 		
+		@Id
 		@Column(name = "cvc")
 		@NotEmpty
 		private Integer cvc;
 		
+		
+		
 		//Atributo otras clases 
+		
 		@ManyToOne
-		@JoinColumn(name = "users")
+		@JoinColumn(name = "username")
 		private User user;
 		
-		@ManyToOne
-		@JoinColumn(name = "hotel")
-		private Hotel hotel;
 		
 		@ManyToOne
-		@JoinColumn(name = "habitacion")
-		private Habitacion habitacion;
-
+		@JoinColumn(name = "hotel_id")
+		private Hotel hotel;
+		
+		
+		@OneToMany(cascade = CascadeType.ALL, mappedBy = "reservaHotel")
+		private Set<Habitacion> habitaciones;
+		
 			
 		//Getters y setters todos los atributos
 		
@@ -61,11 +70,11 @@ public class ReservaHotel extends BaseEntity{
 			this.fecha = fecha;
 		}
 			
-		public Integer getNumeroTarjeta() {
+		public String getNumeroTarjeta() {
 			return numeroTarjeta;
 		}
 
-		public void setNumeroTarjeta(Integer numTarjeta) {
+		public void setNumeroTarjeta(String numTarjeta) {
 			this.numeroTarjeta = numTarjeta;
 		}
 		
@@ -85,7 +94,9 @@ public class ReservaHotel extends BaseEntity{
 		public void setUser(User user) {
 			this.user = user;
 		}	
+		
 				//Parametro Hotel
+		
 		public Hotel getHotel() {
 			return hotel;
 		}
@@ -94,14 +105,14 @@ public class ReservaHotel extends BaseEntity{
 			this.hotel = hotelito;
 		}
 		
-			//Parametro Habitacion
+			//Parametro Habitaciones
 		
-		public Habitacion getHabitacion() {
-			return habitacion;
+		public Set<Habitacion> getHabitaciones() {
+			return habitaciones;
 		}
 
-		public void setHabitacion(Habitacion habitacion) {
-			this.habitacion = habitacion;
+		public void setHabitaciones(Set<Habitacion> habitaciones) {
+			this.habitaciones = habitaciones;
 		}	
 		
 		

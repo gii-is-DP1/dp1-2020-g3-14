@@ -46,15 +46,50 @@ public class User {
 	
 	boolean enabled;
 	
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private Set<Authorities> authorities;
+	
+	public Set<Authorities> getAuthorities() {
+		return authorities;
+	}
+
+	public void setAuthorities(Set<Authorities> authorities) {
+		this.authorities = authorities;
+	}
+	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private Set<ReservaVuelo> reservasVuelo;
 	
+	public Set<ReservaVuelo> getReservasVuelo() {
+		return reservasVuelo;
+	}
+
+	public void setReservasVuelo(Set<ReservaVuelo> reservasVuelo) {
+		this.reservasVuelo = reservasVuelo;
+	}
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private Set<ReservaHotel> reservasHotel;
 	
+	public Set<ReservaHotel> getReservasHotel() {
+		return reservasHotel;
+	}
+
+	public void setReservasHotel(Set<ReservaHotel> reservasHotel) {
+		this.reservasHotel = reservasHotel;
+	}
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	private Set<ReservaActividad> reservasActividad;
+	
+	public Set<ReservaActividad> getReservasActividad() {
+		return reservasActividad;
+	}
+
+	public void setReservasActividad(Set<ReservaActividad> reservasActividad) {
+		this.reservasActividad = reservasActividad;
+	}
 	
 	@ManyToMany(cascade = {
 			CascadeType.PERSIST,
@@ -65,6 +100,8 @@ public class User {
 	        inverseJoinColumns = {@JoinColumn(name = "actividades_id")}
 			)
 	private Set<Actividad> actividades;
+	
+	
 	
 	public String getUsername() {
 		return username;
@@ -105,65 +142,6 @@ public class User {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
-
-	public Set<Authorities> getAuthorities() {
-		return authorities;
-	}
-
-	public void setAuthorities(Set<Authorities> authorities) {
-		this.authorities = authorities;
-	}
-	
-	protected Set<ReservaVuelo> getReservasVueloInternal() {
-		if (this.reservasVuelo == null) {
-			this.reservasVuelo = new HashSet<>();
-		}
-		return this.reservasVuelo;
-	}
-	protected Set<ReservaHotel> getReservasHotelInternal() {
-		if (this.reservasHotel == null) {
-			this.reservasHotel = new HashSet<>();
-		}
-		return this.reservasHotel;
-	}
-	protected void setReservasVueloInternal(Set<ReservaVuelo> reservasVuelo) {
-		this.reservasVuelo = reservasVuelo;
-	}
-	protected void setReservasHotelInternal(Set<ReservaHotel> reservasHotel) {
-		this.reservasHotel = reservasHotel;
-	}
-
-	public List<ReservaVuelo> getReservasVuelo() {
-		List<ReservaVuelo> sortedReservasVuelo = new ArrayList<>(getReservasVueloInternal());
-		PropertyComparator.sort(sortedReservasVuelo, new MutableSortDefinition("fecha", true, true));
-		return Collections.unmodifiableList(sortedReservasVuelo);
-	}
-	public List<ReservaHotel> getReservasHotel() {
-		List<ReservaHotel> sortedReservasHotel = new ArrayList<>(getReservasHotelInternal());
-		PropertyComparator.sort(sortedReservasHotel, new MutableSortDefinition("fecha", true, true));
-		return Collections.unmodifiableList(sortedReservasHotel);
-	}
-	
-
-	public void addReservaVuelo(ReservaVuelo reservaVuelo) {
-		getReservasVueloInternal().add(reservaVuelo);
-		reservaVuelo.setUser(this);
-	}
-	
-	public void addReservaHotel(ReservaHotel reservaHotel) {
-		getReservasHotelInternal().add(reservaHotel);
-		reservaHotel.setUser(this);
-	}
-	
-	public boolean removeReservaVuelo(ReservaVuelo reservaVuelo) {
-		return getReservasVueloInternal().remove(reservaVuelo);
-	}
-	
-	public boolean removeReservaHotel(ReservaHotel reservaHotel) {
-		return getReservasHotelInternal().remove(reservaHotel);
-	}
-	
-	
 	
 	protected Set<Actividad> getActividadesInternal() {
 		if (this.actividades == null) {

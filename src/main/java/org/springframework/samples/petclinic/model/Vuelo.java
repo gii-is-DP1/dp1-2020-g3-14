@@ -1,10 +1,14 @@
 package org.springframework.samples.petclinic.model;
 
 import java.time.LocalDate;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -50,6 +54,20 @@ public class Vuelo extends BaseEntity {
 		this.compVuelo = compVuelo;
 	}
 
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "vuelo")
+	private Set<ReservaVuelo> reservasVuelo;
+	
+	public Set<ReservaVuelo> getReservasVuelo() {
+		return reservasVuelo;
+	}
+
+	public void setReservasVuelo(Set<ReservaVuelo> reservasVuelo) {
+		this.reservasVuelo = reservasVuelo;
+	}
+	
+	
+	
 	public Integer getBilletes() {
 		return billetes;
 	}

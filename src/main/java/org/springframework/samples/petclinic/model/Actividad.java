@@ -49,6 +49,18 @@ public class Actividad extends BaseEntity{
 	@Digits(fraction = 0, integer = 8)
 	private String precio;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "actividad")
+	private Set<ReservaActividad> reservasActividad;
+	
+	public Set<ReservaActividad> getReservasVuelo() {
+		return reservasActividad;
+	}
+
+	public void setReservasActividad(Set<ReservaActividad> reservasActividad) {
+		this.reservasActividad = reservasActividad;
+	}
+	
+	
 	@ManyToOne
 	@JoinColumn(name = "agenact_id")
 	private AgenAct agenact;

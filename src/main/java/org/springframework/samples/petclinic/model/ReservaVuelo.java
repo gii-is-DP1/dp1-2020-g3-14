@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotEmpty;
 
@@ -23,23 +25,23 @@ public class ReservaVuelo extends BaseEntity {
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	@Future
 	private LocalDate fecha;
-	
 	@Column(name = "numeroTarjeta")
 	@NotEmpty
-	private Integer numeroTarjeta;
-	
+	@Digits(fraction = 0, integer = 16)
+	private String numeroTarjeta;
+	@Id
 	@Column(name = "cvc")
 	@NotEmpty
 	private Integer cvc;
 	
 	//Atributo otras clases 
+	
 	@ManyToOne
-	@JoinColumn(name = "users")
+	@JoinColumn(name = "username")
 	private User user;
-	
-	
+
 	@ManyToOne
-	@JoinColumn(name = "vuelos")
+	@JoinColumn(name = "vuelos_id")
 	private Vuelo vuelo;
 	
 	
@@ -54,11 +56,11 @@ public class ReservaVuelo extends BaseEntity {
 		this.fecha = fecha;
 	}
 		
-	public Integer getNumeroTarjeta() {
+	public String getNumeroTarjeta() {
 		return numeroTarjeta;
 	}
 
-	public void setNumeroTarjeta(Integer numTarjeta) {
+	public void setNumeroTarjeta(String numTarjeta) {
 		this.numeroTarjeta = numTarjeta;
 	}
 	
