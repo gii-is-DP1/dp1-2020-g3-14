@@ -10,6 +10,7 @@ import org.springframework.samples.petclinic.model.ComentarioActividad;
 import org.springframework.samples.petclinic.service.ActividadService;
 import org.springframework.samples.petclinic.service.ComentarioActividadService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,8 +50,9 @@ public class ComentarioActividadController {
 	}
 	
 	@PostMapping(value = "actividades/{actividadId}/comentarios/new")
-	public String processCreationForm(@PathVariable("actividadId") int actividadId, @Valid ComentarioActividad comentario, BindingResult result) {		
+	public String processCreationForm(@PathVariable("actividadId") int actividadId, @Valid ComentarioActividad comentario, BindingResult result, ModelMap model) {		
 		if (result.hasErrors()) {
+			model.put("comentario",comentario);
 			return VIEWS_COMENTARIO_FORM;
 		}
 		else {

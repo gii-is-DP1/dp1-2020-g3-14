@@ -38,18 +38,10 @@ public class Hotel extends BaseEntity{
 	@Digits(fraction = 0, integer = 10)
 	private String telefono;
 	
-	@Column(name = "precio")
-	@NotEmpty
-	@Digits(fraction = 0, integer = 8)
-	private String precio;
+	
 
-	public String getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(String precio) {
-		this.precio = precio;
-	}
+	
+	
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel")
 	private Set<Habitacion> habitaciones;

@@ -51,7 +51,7 @@ public class HotelControllerTests {
 		hotelazo.setDireccion("Calle normal");
 		hotelazo.setProvincia("Cadiz");
 		hotelazo.setEstrellas(5);
-		hotelazo.setPrecio("45210");
+		
 		hotelazo.setTelefono("945122241");
 		//Deberá devolver el hotel
 		given(this.hotelService.findHotelById(TEST_HOTEL_ID)).willReturn(hotelazo);
@@ -74,8 +74,7 @@ public class HotelControllerTests {
 							.param("direccion", "123 Prueba Street")
 							.param("estrellas", "4")
 							.param("provincia", "Malaga")
-							.param("telefono", "013167638")
-							.param("precio", "4175"))
+							.param("telefono", "013167638"))
 				.andExpect(status().is3xxRedirection());
 	}
 
@@ -87,11 +86,11 @@ public class HotelControllerTests {
 							.param("nombre", "Joe")
 							.param("direccion", "123 Prueba Street")
 							.param("estrellas", "4")
-							.param("provincia", "Malaga")
+							.param("provincia", "")
 							.param("telefono", "013167638"))
 				.andExpect(status().isOk())
 				.andExpect(model().attributeHasErrors("hotel"))
-				.andExpect(model().attributeHasFieldErrors("hotel", "precio"))
+				.andExpect(model().attributeHasFieldErrors("hotel","provincia"))
 				.andExpect(view().name("hoteles/createOrUpdateHotelForm"));
 	}
 }
