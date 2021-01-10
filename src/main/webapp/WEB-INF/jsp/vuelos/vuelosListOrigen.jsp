@@ -7,7 +7,10 @@
 
 <petclinic:layout pageName="vuelo">
     <h2>Listado de Vuelos</h2>
-
+	<button>
+	<a href="/search">
+                    Buscar todos los hoteles y todos los vuelos</a>
+    </button>
     <table id="vuelosTable" class="table table-striped">
         <thead>
         <tr>
@@ -16,7 +19,7 @@
             <th style="width: 120px">Precio</th>
             <th style="width: 150px">Fecha ida</th>
             <th style="width: 150px">Fecha vuelta</th>
-            <th style="width: 150px">Compañía aérea</th>
+            <th style="width: 150px">Compaï¿½ï¿½a aï¿½rea</th>
         </tr>
         </thead>
         <tbody>
@@ -30,7 +33,11 @@
                     <c:out value="${vuelo.origen}"/></a>
                 </td>
                 <td>
-                    <c:out value="${vuelo.destino}"/>
+                    <spring:url value="/search?provincia={vacaciones}" var="searchUrl">
+                		<spring:param name="vacaciones" value="${vuelo.destino}"/>
+                    </spring:url>
+                    <a href="${fn:escapeXml(searchUrl)}">
+                	<c:out value="${vuelo.destino}"/></a>
                 </td>
                 <td>
                     <c:out value="${vuelo.precio}"/>

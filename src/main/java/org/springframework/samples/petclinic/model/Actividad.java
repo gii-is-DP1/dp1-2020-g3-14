@@ -56,6 +56,19 @@ public class Actividad extends BaseEntity{
 	@ManyToMany(mappedBy = "actividades")
 	private Set<User> users;
 	
+	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "actividad")
+	private List<ComentarioActividad> comentarios;
+	
+	
+	public List<ComentarioActividad> getComentarios() {
+		return comentarios;
+	}
+	
+	public void setComentarios(List<ComentarioActividad> comentarios) {
+		this.comentarios = comentarios;
+	}
+
+	
 	public Integer getId() {
 		return id;
 	}

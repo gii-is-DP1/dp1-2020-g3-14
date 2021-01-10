@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic.web;
 
+import java.util.Collection;
 import java.util.Map; 
 
 import javax.validation.Valid;
@@ -72,7 +73,11 @@ public class UserController {
 			return VIEWS_USER_CREATE_OR_UPDATE_FORM;
 		}
 		else {
-			user.setUsername(username);	
+			if (user.getUsername().equals(username)) {
+				user.setUsername(user.getUsername());
+			}else {
+				user.setUsername(username);
+			}
 			this.userService.saveUser(user);
 			return "redirect:/users/{username}";
 		}

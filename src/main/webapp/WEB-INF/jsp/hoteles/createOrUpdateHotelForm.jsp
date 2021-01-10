@@ -10,7 +10,7 @@
     <h2>
         <c:if test="${hoteles['new']}">New </c:if> Hotel
     </h2>
-    <form:form modelAttribute="hotel" class="form-horizontal" id="add-owner-form">
+    <form:form modelAttribute="hotel" class="form-horizontal" id="add-hotel-form">
         <div class="form-group has-feedback">
             <petclinic:inputField label="Direccion" name="direccion"/>
             <petclinic:inputField label="Estrellas" name="estrellas"/>

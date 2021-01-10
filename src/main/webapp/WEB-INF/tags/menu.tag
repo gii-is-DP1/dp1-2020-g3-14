@@ -17,11 +17,38 @@
 					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 					<span>Home</span>
 				</petclinic:menuItem>
+				
+				<petclinic:menuItem active="${name eq 'search'}" url="/search/find"
+					title="search">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					<span>Search</span>
+				</petclinic:menuItem>
+				
+
+
+				<sec:authorize access="hasAuthority('owner')">
+				<petclinic:menuItem active="${name eq 'inscripciones'}" url="/inscripciones/new"
+					title="inscripciones">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Inscripciones</span>
+				</petclinic:menuItem>
+				</sec:authorize>
+				
+				<sec:authorize access="hasAuthority('admin')">
+				<petclinic:menuItem active="${name eq 'inscripciones'}" url="/inscripciones"
+					title="inscripciones">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+					<span>Inscripciones</span>
+				</petclinic:menuItem>
+				</sec:authorize>
+				
+				
+
 
 				<petclinic:menuItem active="${name eq 'compvuelos'}" url="/compvuelos/find"
 					title="find compvuelos">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					<span>Compañia de Vuelos</span>
+					<span>Compaï¿½ia de Vuelos</span>
 				</petclinic:menuItem>
 				
 				<petclinic:menuItem active="${name eq 'hoteles'}" url="/hoteles/find"
@@ -29,6 +56,7 @@
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 					<span>Hoteles</span>
 				</petclinic:menuItem>
+				
 				
 				<petclinic:menuItem active="${name eq 'agenacts'}" url="/agenacts/find"
 					title="find agenacts">

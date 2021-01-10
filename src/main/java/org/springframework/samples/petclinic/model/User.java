@@ -32,7 +32,7 @@ public class User {
 	String username;
 	
 	@NotEmpty
-	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$")
+	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$", message="La contraseña debe tener 8 cáracteres minimo, una letra mayúscula y una minúscula, al menos un número")
 	String password;
 	
 	@Column(name = "telefono")
@@ -54,14 +54,32 @@ public class User {
 	private Set<Reserva> reservas;
 	
 	@ManyToMany(cascade = {
-			CascadeType.PERSIST,
-			CascadeType.MERGE})
+			CascadeType.ALL})
 	@JoinTable(
-			name = "personas_actividades",
+			name = "users_actividades",
 			joinColumns = {@JoinColumn(name = "username")},
 	        inverseJoinColumns = {@JoinColumn(name = "actividades_id")}
 			)
 	private Set<Actividad> actividades;
+	
+	@ManyToMany(cascade = {
+			CascadeType.ALL})
+	@JoinTable(
+
+			name = "users_vuelos",
+			joinColumns = {@JoinColumn(name = "username")},
+	        inverseJoinColumns = {@JoinColumn(name = "vuelos_id")}
+			)
+	private Set<Vuelo> vuelos;
+	@ManyToMany(cascade = {
+			CascadeType.ALL})
+	@JoinTable(
+			name = "users_habitaciones",
+			joinColumns = {@JoinColumn(name = "username")},
+	        inverseJoinColumns = {@JoinColumn(name = "nhabitacion")}
+			)
+	
+	private Set<Habitacion> habitaciones;
 	
 	public String getUsername() {
 		return username;
@@ -121,7 +139,7 @@ public class User {
 	protected void setReservasInternal(Set<Reserva> reservas) {
 		this.reservas = reservas;
 	}
-
+	
 	public List<Reserva> getReservas() {
 		List<Reserva> sortedReservas = new ArrayList<>(getReservasInternal());
 		PropertyComparator.sort(sortedReservas, new MutableSortDefinition("fecha", true, true));
@@ -135,6 +153,31 @@ public class User {
 	
 	public boolean removeReserva(Reserva reserva) {
 		return getReservasInternal().remove(reserva);
+	}
+	
+	protected Set<Habitacion> getHabitacionesInternal() {
+		if (this.habitaciones == null) {
+			this.habitaciones = new HashSet<>();
+		}
+		return this.habitaciones;
+	}
+
+	protected void setHabitacionesInternal(Set<Habitacion> habitaciones) {
+		this.habitaciones = habitaciones;
+	}
+
+	public List<Habitacion> getHabitaciones() {
+		List<Habitacion> sortedHabitaciones = new ArrayList<>(getHabitacionesInternal());
+		PropertyComparator.sort(sortedHabitaciones, new MutableSortDefinition("nombre", true, true));
+		return Collections.unmodifiableList(sortedHabitaciones);
+	}
+
+	public void addHabitacion(Habitacion habitacion) {
+		getHabitacionesInternal().add(habitacion);
+	}
+	
+	public boolean removeHabitacion(Habitacion habitacion) {
+		return getHabitacionesInternal().remove(habitacion);
 	}
 	
 	protected Set<Actividad> getActividadesInternal() {
@@ -162,7 +205,26 @@ public class User {
 		return getActividadesInternal().remove(actividad);
 	}
 	
+	protected Set<Vuelo> getVuelosInternal() {
+		if (this.vuelos == null) {
+			this.vuelos = new HashSet<>();
+		}
+		return this.vuelos;
+	}
+
+	protected void setVuelosInternal(Set<Vuelo> vuelos) {
+		this.vuelos = vuelos;
+	}
+
+	public List<Vuelo> getVuelos() {
+		List<Vuelo> sortedVuelo = new ArrayList<>(getVuelosInternal());
+		PropertyComparator.sort(sortedVuelo, new MutableSortDefinition("origen", true, true));
+		return Collections.unmodifiableList(sortedVuelo);
+	}
+	
 	public boolean isNew() {
 		return this.username == null;
 	}
 }
+
+

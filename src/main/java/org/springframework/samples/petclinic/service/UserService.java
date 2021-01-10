@@ -16,6 +16,7 @@
 package org.springframework.samples.petclinic.service;
 
 
+import java.util.Collection;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +53,7 @@ public class UserService {
 	}
 	
 	public User findByUsername(String username) {
-		return userRepository.findByUsername(username);
+		return userRepository.findByUsernameLike(username);
 	}
 	
 	@Transactional

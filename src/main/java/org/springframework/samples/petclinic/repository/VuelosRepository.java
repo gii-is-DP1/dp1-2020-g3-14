@@ -1,22 +1,24 @@
 package org.springframework.samples.petclinic.repository;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.Repository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.samples.petclinic.model.Vuelo;
 
 
-public interface VuelosRepository extends Repository<Vuelo, Integer>  {
+public interface VuelosRepository extends JpaRepository<Vuelo, Integer>  {
 	
-	void save(Vuelo vuelo) throws DataAccessException;
-	
-	@Query(value = "SELECT DISTINCT * FROM Vuelos WHERE origen LIKE :origen%", nativeQuery = true)
-	public Collection<Vuelo> findByOrigen(@Param("origen") String origen);
+	@Query("select v from Vuelo v where v.origen like %?1")
+	public Collection<Vuelo> findByOrigenLike(String origen);
 
+	@Query("select v from Vuelo v where v.destino like %?1")
+	public Collection<Vuelo> findByDestinoLike(String destino);
 	
-	@Query(value="SELECT * FROM Vuelos WHERE id LIKE :id%", nativeQuery = true)
-	public Vuelo findById(@Param("id") int id);
+	@Query("select v from Vuelo v")
+	public List<Vuelo> findAllDestinos();
+	
+	Vuelo findById(int id) throws DataAccessException;
 }

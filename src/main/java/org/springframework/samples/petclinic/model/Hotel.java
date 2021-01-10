@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -37,18 +38,10 @@ public class Hotel extends BaseEntity{
 	@Digits(fraction = 0, integer = 10)
 	private String telefono;
 	
-	@Column(name = "precio")
-	@NotEmpty
-	@Digits(fraction = 0, integer = 8)
-	private String precio;
+	
 
-	public String getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(String precio) {
-		this.precio = precio;
-	}
+	
+	
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel")
 	private Set<Habitacion> habitaciones;
@@ -60,6 +53,18 @@ public class Hotel extends BaseEntity{
 
 	public void setHabitaciones(Set<Habitacion> habitaciones) {
 		this.habitaciones = habitaciones;
+	}
+	
+	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "hotel")
+	private List<ComentarioHotel> comentarios;
+	
+	
+	public List<ComentarioHotel> getComentarios() {
+		return comentarios;
+	}
+	
+	public void setComentarios(List<ComentarioHotel> comentarios) {
+		this.comentarios = comentarios;
 	}
 
 	public String getNombre() {

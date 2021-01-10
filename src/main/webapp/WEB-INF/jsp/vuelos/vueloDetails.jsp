@@ -41,6 +41,13 @@
             <th>Compañia Vuelo</th>
             <td><c:out value="${vuelos.compVuelo.nombre}"/></td>
         </tr>
+        
+        <c:forEach var="usuarios" items="${vuelos.users}">
+            <tr>
+           		<th>Usuario</th>
+                <td><c:out value="${usuarios.username}"/></td>
+              </tr>      
+          </c:forEach>
     </table>
     <sec:authorize access="hasAuthority('admin')">
 		<a class="btn btn-default" href='<spring:url value="/vuelos/${vuelos.id}/edit" htmlEscape="true"/>'>Editar vuelo</a>

@@ -1,20 +1,14 @@
 package org.springframework.samples.petclinic.repository;
 
 import java.util.Collection;
-
-import org.springframework.dao.DataAccessException;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.Repository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.samples.petclinic.model.Actividad;
 
-public interface ActividadRepository extends Repository<Actividad, Integer>  {
+public interface ActividadRepository extends JpaRepository<Actividad, Long>  {
 	
-	void save(Actividad actividad) throws DataAccessException;
-	
-	@Query(value = "SELECT DISTINCT * FROM Actividades WHERE nombre LIKE :nombre%", nativeQuery = true)
-	public Collection<Actividad> findByNombre(@Param("nombre") String nombre);
+	@Query("select u from Actividad u where u.nombre like %?1")
+	Collection<Actividad> findByNombreLike(String nombre);
 
-	@Query(value="SELECT * FROM actividades WHERE id LIKE :id%", nativeQuery = true)
-	public Actividad findById(@Param("id") int id);
+	Actividad findById(int id);
 }

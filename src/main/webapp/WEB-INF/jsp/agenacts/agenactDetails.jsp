@@ -3,10 +3,12 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 <petclinic:layout pageName="agenacts">
 
-    <h2>Información de Agencia de Actividades</h2>
+    <h2>Informaciï¿½n de Agencia de Actividades</h2>
 
 	<spring:url value="/agenacts/{agenactId}/edit" var="editUrl">
         <spring:param name="agenactId" value="${agenact.id}"/>
@@ -25,7 +27,9 @@
             <td><c:out value="${agenact.telefono}"/></td>
         </tr>
     </table>
+    <sec:authorize access="hasAuthority('admin')">
     <a href="${fn:escapeXml(editUrl)}" class="btn btn-default">Editar Agencia</a>
+    </sec:authorize>
     <br/>
     <br/>
     <br/>
@@ -42,6 +46,10 @@
                         <dd><c:out value="${actividades.direccion}"/></dd>
                         <dt>Precio</dt>
                         <dd><c:out value="${actividades.precio}"/></dd>
+                        <c:forEach items="${actividades.users}" var="usuarios">
+                        <dt>Tonto de turno</dt>
+                        <dd><c:out value="${usuarios.username}"/></dd>
+                        </c:forEach>
                     </dl>
                 </td>
           </c:forEach>

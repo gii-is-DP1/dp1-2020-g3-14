@@ -35,7 +35,7 @@ public class AgenActService {
 
 	@Transactional(readOnly = true)
 	public Collection<AgenAct> findByNombre(String name) throws DataAccessException {
-		return agenActRepository.findByNombre(name);
+		return agenActRepository.findByNombreLike(name);
 	}
 	
 }

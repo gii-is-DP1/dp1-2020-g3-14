@@ -1,16 +1,24 @@
 package org.springframework.samples.petclinic.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Range;
+import org.springframework.beans.support.MutableSortDefinition;
+import org.springframework.beans.support.PropertyComparator;
 
-import lombok.Data;
+
 
 
 @Entity
@@ -33,6 +41,11 @@ public class Habitacion{
 	@ManyToOne
 	@JoinColumn(name = "hotel_id")
 	private Hotel hotel;
+	
+	@ManyToMany(mappedBy = "habitaciones")
+	private Set<User> users;
+	
+	
 	
 	public Hotel getHotel() {
 		return hotel;
@@ -73,6 +86,24 @@ public class Habitacion{
 	public void setDisponible(Boolean disponible) {
 		this.disponible = disponible;
 	}
+	
+	protected Set<User> getUsersInternal() {
+		if (this.users == null) {
+			this.users = new HashSet<>();
+		}
+		return this.users;
+	}
+
+	public List<User> getUsers() {
+		List<User> sortedUsers = new ArrayList<>(getUsersInternal());
+		PropertyComparator.sort(sortedUsers, new MutableSortDefinition("username", true, true));
+		return Collections.unmodifiableList(sortedUsers);
+	}
+
+	public void setUsersInternal(Set<User> users) {
+		this.users = users;
+	}
+
 	
 	
 
