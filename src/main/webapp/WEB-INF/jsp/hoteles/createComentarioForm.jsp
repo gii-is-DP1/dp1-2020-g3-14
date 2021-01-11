@@ -10,12 +10,11 @@
     <h2>
         Anadir Comentario
     </h2>
-    <form:form modelAttribute="comentario" class="form-horizontal" id="add-comentarioHotel-form">
+    <form:form modelAttribute="comentarioHotel" class="form-horizontal" id="add-comentarioHotel-form">
         <div class="form-group has-feedback">
-            
-            <petclinic:inputField label="Mensaje" name="mensaje"/>
+        
             <petclinic:inputField label="Puntuacion" name="puntuacion"/>
-           
+            <petclinic:inputField label="Mensaje" name="mensaje"/>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">

@@ -15,7 +15,6 @@
             <petclinic:inputField label="Direccion" name="direccion"/>
             <petclinic:inputField label="Estrellas" name="estrellas"/>
             <petclinic:inputField label="Nombre" name="nombre"/>
-            <petclinic:inputField label="Precio" name="precio"/>
             <petclinic:inputField label="Provincia" name="provincia"/>     
             <petclinic:inputField label="Telefono" name="telefono"/>
         </div>

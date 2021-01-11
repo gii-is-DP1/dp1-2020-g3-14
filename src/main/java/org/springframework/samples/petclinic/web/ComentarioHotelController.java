@@ -43,7 +43,7 @@ public class ComentarioHotelController {
 	@GetMapping(value = "hoteles/{hotelId}/comentarios/new")
 	public String initCreationForm(Map<String, Object> model) {
 		ComentarioHotel comentario = new ComentarioHotel();
-		model.put("comentario", comentario);
+		model.put("comentarioHotel", comentario);
 		return VIEWS_COMENTARIO_FORM;
 	}
 	

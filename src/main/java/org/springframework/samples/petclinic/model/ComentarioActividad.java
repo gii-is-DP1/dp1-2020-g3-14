@@ -16,7 +16,6 @@ import com.sun.istack.NotNull;
 public class ComentarioActividad extends BaseEntity{
 
 	@Column(name = "puntuacion")
-	@NotNull
 	@Range(min=1,max=10)
 	private Integer puntuacion;
 	
