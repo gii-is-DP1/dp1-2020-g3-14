@@ -12,14 +12,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Range;
 import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
-
-
-
 
 @Entity
 @Table(name = "habitaciones")
@@ -45,6 +43,9 @@ public class Habitacion{
 	@ManyToMany(mappedBy = "habitaciones")
 	private Set<User> users;
 	
+	@OneToOne
+	@JoinColumn(name = "reservahabitacion")
+	private ReservaHabitacion reservahabitacion;
 	
 	
 	public Hotel getHotel() {
@@ -104,7 +105,15 @@ public class Habitacion{
 		this.users = users;
 	}
 
-	
-	
+	public ReservaHabitacion getReservaHabitacion() {
+		return reservahabitacion;
+	}
 
+	public void setReservaHabitacion(ReservaHabitacion reservaHabitacion) {
+		this.reservahabitacion = reservaHabitacion;
+	}
+
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
 }
