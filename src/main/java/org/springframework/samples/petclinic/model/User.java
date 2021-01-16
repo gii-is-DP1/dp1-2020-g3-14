@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
@@ -50,9 +49,6 @@ public class User {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private Set<Authorities> authorities;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-	private Set<Reserva> reservas;
-	
 	@ManyToMany(cascade = {
 			CascadeType.ALL})
 	@JoinTable(
@@ -78,9 +74,33 @@ public class User {
 			joinColumns = {@JoinColumn(name = "username")},
 	        inverseJoinColumns = {@JoinColumn(name = "nhabitacion")}
 			)
-	
 	private Set<Habitacion> habitaciones;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	private Set<ReservaHabitacion> reservaHabitacion;
+	
+	
+	
+	public Set<ReservaHabitacion> getReservaHabitacion() {
+		return reservaHabitacion;
+	}
+
+	public void setReservaHabitacion(Set<ReservaHabitacion> reservaHabitacion) {
+		this.reservaHabitacion = reservaHabitacion;
+	}
+
+	public void setActividades(Set<Actividad> actividades) {
+		this.actividades = actividades;
+	}
+
+	public void setVuelos(Set<Vuelo> vuelos) {
+		this.vuelos = vuelos;
+	}
+
+	public void setHabitaciones(Set<Habitacion> habitaciones) {
+		this.habitaciones = habitaciones;
+	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -128,33 +148,7 @@ public class User {
 	public void setAuthorities(Set<Authorities> authorities) {
 		this.authorities = authorities;
 	}
-	
-	protected Set<Reserva> getReservasInternal() {
-		if (this.reservas == null) {
-			this.reservas = new HashSet<>();
-		}
-		return this.reservas;
-	}
 
-	protected void setReservasInternal(Set<Reserva> reservas) {
-		this.reservas = reservas;
-	}
-	
-	public List<Reserva> getReservas() {
-		List<Reserva> sortedReservas = new ArrayList<>(getReservasInternal());
-		PropertyComparator.sort(sortedReservas, new MutableSortDefinition("fecha", true, true));
-		return Collections.unmodifiableList(sortedReservas);
-	}
-
-	public void addReserva(Reserva reserva) {
-		getReservasInternal().add(reserva);
-		reserva.setUser(this);
-	}
-	
-	public boolean removeReserva(Reserva reserva) {
-		return getReservasInternal().remove(reserva);
-	}
-	
 	protected Set<Habitacion> getHabitacionesInternal() {
 		if (this.habitaciones == null) {
 			this.habitaciones = new HashSet<>();

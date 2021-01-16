@@ -2,7 +2,6 @@ package org.springframework.samples.petclinic.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Hotel;
-import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.service.HabitacionService;
 import org.springframework.samples.petclinic.service.HotelService;
 import org.springframework.stereotype.Controller;

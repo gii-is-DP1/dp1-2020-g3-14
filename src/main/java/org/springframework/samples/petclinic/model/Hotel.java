@@ -37,11 +37,6 @@ public class Hotel extends BaseEntity{
 	@NotEmpty
 	@Digits(fraction = 0, integer = 10)
 	private String telefono;
-	
-	
-
-	
-	
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel")
 	private Set<Habitacion> habitaciones;
