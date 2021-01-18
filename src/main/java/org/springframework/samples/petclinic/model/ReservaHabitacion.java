@@ -41,6 +41,9 @@ public class ReservaHabitacion extends BaseEntity{
 		@Pattern(regexp="\\d{3}")
 		private String cvc;
 		
+		@Column(name="precio")
+		private Integer precioFinal;
+		
 		@ManyToOne
 		@JoinColumn(name = "username")
 		private User user;
@@ -48,6 +51,14 @@ public class ReservaHabitacion extends BaseEntity{
 		@OneToOne
 		@JoinColumn(name = "habitacion_id")
 		private Habitacion habitacion;
+
+		public Integer getPrecioFinal() {
+			return precioFinal;
+		}
+
+		public void setPrecioFinal(Integer precioFinal) {
+			this.precioFinal = precioFinal;
+		}
 
 		public LocalDate getFechaReserva() {
 			return fechaReserva;

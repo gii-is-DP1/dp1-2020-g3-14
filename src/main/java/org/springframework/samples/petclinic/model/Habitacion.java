@@ -87,21 +87,12 @@ public class Habitacion{
 	public void setDisponible(Boolean disponible) {
 		this.disponible = disponible;
 	}
-	
-	protected Set<User> getUsersInternal() {
-		if (this.users == null) {
-			this.users = new HashSet<>();
-		}
-		return this.users;
+
+	public Set<User> getUsers() {
+		return users;
 	}
 
-	public List<User> getUsers() {
-		List<User> sortedUsers = new ArrayList<>(getUsersInternal());
-		PropertyComparator.sort(sortedUsers, new MutableSortDefinition("username", true, true));
-		return Collections.unmodifiableList(sortedUsers);
-	}
-
-	public void setUsersInternal(Set<User> users) {
+	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
 
@@ -111,9 +102,5 @@ public class Habitacion{
 
 	public void setReservaHabitacion(ReservaHabitacion reservaHabitacion) {
 		this.reservahabitacion = reservaHabitacion;
-	}
-
-	public void setUsers(Set<User> users) {
-		this.users = users;
 	}
 }
