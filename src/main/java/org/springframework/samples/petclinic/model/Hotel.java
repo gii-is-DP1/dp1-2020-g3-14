@@ -37,6 +37,9 @@ public class Hotel extends BaseEntity{
 	@NotEmpty
 	@Digits(fraction = 0, integer = 10)
 	private String telefono;
+	
+	@Column(name = "valido")
+	private Boolean valido;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel")
 	private Set<Habitacion> habitaciones;
@@ -101,7 +104,12 @@ public class Hotel extends BaseEntity{
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	
-	
+    
+    public Boolean getValido() {
+		return valido;
+	}
 
+	public void setValido(Boolean valido) {
+		this.valido = valido;
+	}
 }
