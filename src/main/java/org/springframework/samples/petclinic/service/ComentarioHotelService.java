@@ -1,5 +1,8 @@
 package org.springframework.samples.petclinic.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.ComentarioHotel;
