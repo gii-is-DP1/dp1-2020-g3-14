@@ -19,6 +19,7 @@
         </thead>
         <tbody>
         <c:forEach items="${selectionsH}" var="hotel">
+        <c:if test="${hotel.valido}">
             <tr>
                 <td>
                     <spring:url value="/hoteles/{hotelId}" var="hotelUrl">
@@ -37,6 +38,7 @@
                 	<c:out value="${hotel.provincia}"/>
                 </td>              
             </tr>
+            </c:if>
         </c:forEach>
         </tbody>
     </table>
