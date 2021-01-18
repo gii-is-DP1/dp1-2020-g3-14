@@ -39,8 +39,7 @@
   <table class="table table-striped">
    <h3>Habitaciones</h3>
         <c:forEach var="habitaciones" items="${hotel.habitaciones}">
-
-            <tr>
+			<tr>
                 <td valign="top">
                     <dl class="dl-horizontal">
                         <dt>Nº Habitacion</dt>
@@ -52,18 +51,19 @@
                         <dt>Disp.</dt>
                       <c:if test="${habitaciones.disponible}">
 						<dd>Si</dd>
+						<a class="btn btn-default" href='<spring:url value="/hoteles/${hotel.id}/${habitaciones.nhabitacion}/reservaHabitacion/new" htmlEscape="true"/>'>Reservar</a>
 					  </c:if>
                       <c:if test="${!habitaciones.disponible}">
                        <dd>No</dd>
                        <c:forEach items="${habitaciones.users}" var="usuarios">
                         <dt>Huésped</dt>
                         <dd><c:out value="${usuarios.username}"/></dd>
-                        </c:forEach>
+                       </c:forEach>
                       </c:if>
-                      
                     </dl>
                 </td>
-          </c:forEach>
+           </tr>
+      </c:forEach>
   </table>
   <table>
   <h3>Comentarios</h3>
