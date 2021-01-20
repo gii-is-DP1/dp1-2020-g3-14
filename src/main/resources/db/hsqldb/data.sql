@@ -91,6 +91,9 @@ INSERT INTO compvuelos VALUES (1, 'CompañiaPrueba', 'España', 'Sede1');
 INSERT INTO compvuelos VALUES (2, 'CompañiaPrueba2', 'España', 'Sede2');
 INSERT INTO compvuelos VALUES (3, 'CompañiaPrueba3', 'España', 'Sede3');
 
+INSERT INTO codigo(patron, nvecesusado, valido) VALUES ('QuiquePerro', 5, true);
+INSERT INTO codigo(patron, nvecesusado, valido) VALUES ('reserva', 1, true);
+
 INSERT INTO users_actividades(username, actividades_id) VALUES ('enrmorvaz', 3);
 INSERT INTO users_habitaciones(username, nhabitacion) VALUES ('enrmorvaz', 789);
 

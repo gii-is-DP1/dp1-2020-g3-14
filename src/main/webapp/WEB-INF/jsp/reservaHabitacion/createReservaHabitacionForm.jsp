@@ -27,7 +27,7 @@
         <div class="form-group has-feedback">
             <petclinic:inputField label="Fecha de entrada" name="entrada"/>
             <petclinic:inputField label="Fecha de salida" name="salida"/>
-            <petclinic:inputField label="Número de tarjeta" name="numeroTarjeta"/>
+            <petclinic:inputField label="Nï¿½mero de tarjeta" name="numeroTarjeta"/>
             <petclinic:inputField label="CVC" name="cvc"/>
         </div>
         <div class="form-group">

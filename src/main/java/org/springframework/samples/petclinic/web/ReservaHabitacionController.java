@@ -6,9 +6,11 @@ import java.util.Set;
 import static java.time.temporal.ChronoUnit.DAYS;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.model.Codigo;
 import org.springframework.samples.petclinic.model.Habitacion;
 import org.springframework.samples.petclinic.model.ReservaHabitacion;
 import org.springframework.samples.petclinic.model.User;
+import org.springframework.samples.petclinic.service.CodigoService;
 import org.springframework.samples.petclinic.service.HabitacionService;
 import org.springframework.samples.petclinic.service.ReservaHabitacionService;
 import org.springframework.samples.petclinic.service.UserService;
@@ -29,6 +31,7 @@ public class ReservaHabitacionController {
 	private ReservaHabitacionService reservaHabitacionService;
 	private HabitacionService habitacionService;
 	private UserService userService;
+	private CodigoService codigoService;
 	private static final String VIEWS_RESERVAHABITACION_CREATE_FORM = "reservaHabitacion/createReservaHabitacionForm";
 	
 	@Autowired
@@ -41,13 +44,16 @@ public class ReservaHabitacionController {
 	@GetMapping(value = "reservaHabitacion/new")
 	public String initCreationForm(Map<String, Object> model) {
 		ReservaHabitacion reservaHabitacion = new ReservaHabitacion();
+		Codigo codigo = new Codigo();
 		model.put("reservaHabitacion", reservaHabitacion);
+		model.put("descuento", codigo);
 		return VIEWS_RESERVAHABITACION_CREATE_FORM;
 	}
 
 	@PostMapping(value = "reservaHabitacion/new")
 	public String processCreationForm(@PathVariable("nhabitacion") int nhabitacion,
-			@Valid final ReservaHabitacion reservaHabitacion, final BindingResult result) {
+			@Valid final ReservaHabitacion reservaHabitacion, final BindingResult result,
+			@Valid final Codigo codigo, Map<String, Object> model) {
 		reservaHabitacion.setFechaReserva(LocalDate.now());
 		if (result.hasErrors()) {
 			return VIEWS_RESERVAHABITACION_CREATE_FORM;
@@ -72,6 +78,7 @@ public class ReservaHabitacionController {
 			Integer precio = dias*h.getPrecio();
 			reservaHabitacion.setPrecioFinal(precio);
 			this.reservaHabitacionService.saveReservaHabitacion(reservaHabitacion);
+			this.codigoService.findCodigoByPatron(codigo.getPatron());
 			return "redirect:"+reservaHabitacion.getId();
 		}
 	}
