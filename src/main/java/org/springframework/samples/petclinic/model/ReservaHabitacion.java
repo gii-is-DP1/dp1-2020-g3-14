@@ -9,7 +9,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
@@ -27,10 +30,14 @@ public class ReservaHabitacion extends BaseEntity{
 		
 		@Column(name = "entrada")
 		@DateTimeFormat(pattern = "yyyy/MM/dd")
+		@FutureOrPresent
+	    @NotNull
 		private LocalDate entrada;
 		
 		@Column(name = "salida")
 		@DateTimeFormat(pattern = "yyyy/MM/dd")
+		@Future
+	    @NotNull
 		private LocalDate salida;
 		
 		@Column(name = "numeroTarjeta")
