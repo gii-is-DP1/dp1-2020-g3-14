@@ -18,8 +18,8 @@
             <td><b><c:out value="${actividades.nombre}"/></b></td>
         </tr>
         <tr>
-            <th>Opinión</th>
-            <td><c:out value="${actividades.opinion}"/></td>
+            <th>Descripcion</th>
+            <td><c:out value="${actividades.descripcion}"/></td>
         </tr>
         <tr>
             <th>Valoración</th>
@@ -32,6 +32,10 @@
         <tr>
             <th>Precio</th>
             <td><c:out value="${actividades.precio}"/></td>
+        </tr>
+         <tr>
+            <th>Fecha</th>
+            <td><c:out value="${actividades.fecha}"/></td>
         </tr>
         <tr>
         	<th>Agencia</th>

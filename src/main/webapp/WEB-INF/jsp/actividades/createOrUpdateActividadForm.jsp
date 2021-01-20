@@ -6,7 +6,13 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 <petclinic:layout pageName="actividadesform">
-    
+    <jsp:attribute name="customScript">
+        <script>
+            $(function () {
+                $("#fecha").datepicker({dateFormat: 'yy/mm/dd'});
+            });
+        </script>
+    </jsp:attribute>
     <jsp:body>
     <h2>
         <c:if test="${actividades['new']}">Añadir </c:if> Actividad
@@ -15,9 +21,10 @@
         <div class="form-group has-feedback">
         	<petclinic:inputField label="Dirección" name="direccion"/>
         	<petclinic:inputField label="Nombre de la actividad" name="nombre"/>
-        	<petclinic:inputField label="Opinión" name="opinion"/>
+        	<petclinic:inputField label="Descripcion" name="descripcion"/>
         	<petclinic:inputField label="Precio" name="precio"/>
         	<petclinic:inputField label="Valoración" name="valoracion"/>
+        	<petclinic:inputField label="Fecha" name="fecha"/>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">

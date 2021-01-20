@@ -44,7 +44,7 @@ class ActividadServiceTests {
 
     	Actividad actividad = new Actividad();
     	actividad.setNombre("Escalada");
-    	actividad.setOpinion("Muy buena ruta para realizar con los amigos y muy facil");
+    	actividad.setDescripcion("Muy buena ruta para realizar con los amigos y muy facil");
     	actividad.setDireccion("Sierra de Grazalema");
     	actividad.setValoracion(4);
     	actividad.setPrecio("2");
@@ -66,13 +66,13 @@ class ActividadServiceTests {
     public void shouldInsertActividadVacio() {
     	Actividad actividad = new Actividad();
     	actividad.setNombre("");
-    	actividad.setOpinion("");
+    	actividad.setDescripcion("");
     	actividad.setDireccion("Sierra de Grazalema");
     	actividad.setValoracion(4);
     	actividad.setPrecio("");
     		
         assertThat(actividad.getNombre().isEmpty()).isTrue();
-    	assertThat(actividad.getOpinion().isEmpty()).isTrue();
+    	assertThat(actividad.getDescripcion().isEmpty()).isTrue();
     	assertThat(actividad.getPrecio().isEmpty()).isTrue();
     }
     
@@ -81,7 +81,7 @@ class ActividadServiceTests {
 	void shouldFindActividadByName() {
 		Actividad actividad = new Actividad();
 		actividad.setNombre("Escalada");
-		actividad.setOpinion("Muy buena ruta para realizar con los amigos y muy facil");
+		actividad.setDescripcion("Muy buena ruta para realizar con los amigos y muy facil");
 		actividad.setDireccion("Sierra de Grazalema");
 		actividad.setValoracion(4);
 		actividad.setPrecio("2");           

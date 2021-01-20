@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -21,6 +22,7 @@ import javax.validation.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.beans.support.MutableSortDefinition;
 import org.springframework.beans.support.PropertyComparator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -32,9 +34,9 @@ public class Actividad extends BaseEntity{
 	@NotEmpty
 	private String nombre;
 
-	@Column(name = "opinion")
+	@Column(name = "descripcion")
 	@NotEmpty
-	private String opinion;
+	private String descripcion;
 	
 	@Column(name = "valoracion")
 	@Range(min=1,max=5)
@@ -48,6 +50,10 @@ public class Actividad extends BaseEntity{
 	@NotEmpty
 	@Digits(fraction = 0, integer = 8)
 	private String precio;
+	
+	@Column(name = "fecha")
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	private LocalDate fecha;
 	
 	@ManyToOne
 	@JoinColumn(name = "agenact_id")
@@ -85,12 +91,12 @@ public class Actividad extends BaseEntity{
 		this.nombre = nombre;
 	}
 
-	public String getOpinion() {
-		return opinion;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setOpinion(String opinion) {
-		this.opinion = opinion;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	public Integer getValoracion() {
@@ -115,6 +121,14 @@ public class Actividad extends BaseEntity{
 
 	public void setPrecio(String precio) {
 		this.precio = precio;
+	}
+
+	public LocalDate getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(LocalDate fecha) {
+		this.fecha = fecha;
 	}
 
 	public AgenAct getAgenact() {
