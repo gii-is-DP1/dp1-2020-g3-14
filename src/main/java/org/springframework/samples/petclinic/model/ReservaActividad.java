@@ -9,7 +9,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.FutureOrPresent;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -25,7 +24,6 @@ public class ReservaActividad extends BaseEntity{
 		@Column(name = "entrada")
 		@DateTimeFormat(pattern = "yyyy/MM/dd")
 		@FutureOrPresent
-	    @NotNull
 		private LocalDate entrada;
 		
 		@Column(name = "numeroTarjeta")

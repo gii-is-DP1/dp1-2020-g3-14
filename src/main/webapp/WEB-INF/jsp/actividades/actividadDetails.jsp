@@ -43,6 +43,12 @@
         </tr>
     </table>
     
+    <sec:authorize access="isAuthenticated()">
+	<a class="btn btn-default" href='<spring:url value="/actividades/${actividades.id}/reservaActividad/new" htmlEscape="true"/>'>Reservar</a>
+    </sec:authorize>
+    <br/>
+    <br/>
+    
     <table>
   <h3>Comentarios</h3>
         <c:forEach var="comentarios" items="${actividades.comentarios}">

@@ -81,9 +81,9 @@ INSERT INTO inscripcionhoteles(id,actividades,direccion,nombre,provincia) VALUES
 
 INSERT INTO comentarioshotel(id,puntuacion,mensaje,hotel_id) VALUES (1,10,'HOTEL CHULO!',75);
 
-INSERT INTO actividades(id,direccion,nombre,descripcion,precio,valoracion,fecha,agenact_id) VALUES (1, 'Playa de Cadiz','Surf Cadiz', 'El mejor Surf en Cadiz', '20', 3,'2020-12-17',1);
-INSERT INTO actividades(id,direccion,nombre,descripcion,precio,valoracion,fecha,agenact_id) VALUES (2, 'Sierra de Grazalema','Senderismo', 'Increible paisaje', '1' , 4,'2020-12-17',1);
-INSERT INTO actividades(id,direccion,nombre,descripcion,precio,valoracion,fecha,agenact_id) VALUES (3, 'Ayuntamiento de Sevilla', 'Visita guiada', 'Sevilla es preciosa', '5', 4,'2020-12-17',2);
+INSERT INTO actividades(id,direccion,nombre,descripcion,precio,valoracion,fecha,agenact_id) VALUES (1, 'Playa de Cadiz','Surf Cadiz', 'El mejor Surf en Cadiz', '20', 3,'2021-12-17',1);
+INSERT INTO actividades(id,direccion,nombre,descripcion,precio,valoracion,fecha,agenact_id) VALUES (2, 'Sierra de Grazalema','Senderismo', 'Increible paisaje', '1' , 4,'2021-12-17',1);
+INSERT INTO actividades(id,direccion,nombre,descripcion,precio,valoracion,fecha,agenact_id) VALUES (3, 'Ayuntamiento de Sevilla', 'Visita guiada', 'Sevilla es preciosa', '5', 4,'2021-12-17',2);
 
 INSERT INTO comentariosactividad(id,puntuacion,mensaje,actividad_id) VALUES (1,10,'Bonitas vistas!',1);
 

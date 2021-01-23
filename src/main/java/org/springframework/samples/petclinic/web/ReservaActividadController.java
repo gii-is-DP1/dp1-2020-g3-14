@@ -49,7 +49,9 @@ public class ReservaActividadController {
 	public String processCreationForm(@PathVariable("actividadId") int actividadId,
 			@Valid final ReservaActividad reservaActividad, final BindingResult result) {
 		reservaActividad.setFechaReserva(LocalDate.now());
-		if (result.hasErrors()) {
+		Actividad a = this.actividadService.findActividadById(actividadId);
+		reservaActividad.setEntrada(a.getFecha());
+		if (result.hasErrors()) {			
 			return VIEWS_RESERVAACTIVIDAD_CREATE_FORM;
 		} else {
 			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -59,10 +61,10 @@ public class ReservaActividadController {
 				}
 			String userName = userDetails.getUsername();
 			User user= this.userService.findByUsername(userName);
-			Actividad a = this.actividadService.findActividadById(actividadId);
 			Set<User> ls = a.getUsers();
 			ls.add(user);
 			a.setUsers(ls);
+			reservaActividad.setPrecioFinal(Integer.valueOf(a.getPrecio()));
 			reservaActividad.setActivdad(a);
 			reservaActividad.setUser(user);
 			this.reservaActividadService.saveReservaActividad(reservaActividad);
