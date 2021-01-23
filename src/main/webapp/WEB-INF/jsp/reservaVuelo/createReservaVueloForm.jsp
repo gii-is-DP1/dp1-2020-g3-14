@@ -7,26 +7,13 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <petclinic:layout pageName="reservasVuelo">
-<jsp:attribute name="customScript">
-        <script>
-            $(function () {
-                $("#entrada").datepicker({dateFormat: 'yy/mm/dd'});
-            });
-        </script>
-        <script>
-            $(function () {
-                $("#salida").datepicker({dateFormat: 'yy/mm/dd'});
-            });
-        </script>
-    </jsp:attribute>
+
     <jsp:body>
     <h2>
         Reservar Vuelo
     </h2>
     <form:form modelAttribute="reservaVuelo" class="form-horizontal" id="add-reservaVuelo-form">
         <div class="form-group has-feedback">
-            <petclinic:inputField label="Fecha de entrada" name="entrada"/>
-            <petclinic:inputField label="Fecha de salida" name="salida"/>
             <petclinic:inputField label="Número de tarjeta" name="numeroTarjeta"/>
             <petclinic:inputField label="CVC" name="cvc"/>
         </div>

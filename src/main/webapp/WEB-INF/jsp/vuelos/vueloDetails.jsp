@@ -42,6 +42,13 @@
             <td><c:out value="${vuelos.compVuelo.nombre}"/></td>
         </tr>
         
+        <a class="btn btn-default" href='<spring:url value="/vuelos/${vuelos.id}/reservaVuelo/new" htmlEscape="true"/>'>Reservar</a>
+		
+        
+        
+        
+        
+        
         <c:forEach var="usuarios" items="${vuelos.users}">
             <tr>
            		<th>Usuario</th>

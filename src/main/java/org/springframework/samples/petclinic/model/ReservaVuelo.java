@@ -22,43 +22,38 @@ public class ReservaVuelo extends BaseEntity {
 	
 	@Column(name = "fechareserva")
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
-	private LocalDate fechaReserva;
+	private LocalDate fechaReserva;					//Es por defecto la fecha del sistema en el momento de realizar la reserva
 	
-	@Column(name = "entrada")
+	@Column(name = "fechaida")
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	@FutureOrPresent
     @NotNull
-	private LocalDate entrada;
+	private LocalDate ida;							//Es por defecto la fecha en la que sale el vuelo (Parametro de vuelo)
 	
-	
-	@Column(name = "salida")
+	@Column(name = "fechavuelta")
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	@Future
     @NotNull
-	private LocalDate salida;
-	
-	
-	
-	
+	private LocalDate vuelta;                      	// No tiene sentido a no ser que escojas un vuelo de vuelta
 	
 	@Column(name = "numeroTarjeta")
 	@Pattern(regexp="\\d{16}")
-	private String numeroTarjeta;
+	private String numeroTarjeta;					//Se introduce al realizar la reserva
 	
 	@Column(name = "cvc")
 	@Pattern(regexp="\\d{3}")
-	private String cvc;
+	private String cvc;								//Se introduce al realizar la reserva
 	
 	@Column(name="precio")
-	private Integer precioFinal;
+	private Integer precio;						    //Es por defecto el precio del vuelo (Parametro de vuelo)
 	
 	@ManyToOne
 	@JoinColumn(name = "username")
-	private User user;
+	private User user;								//Es por defecto el usuario que realiza la reserva 
 	
 	@OneToOne
 	@JoinColumn(name = "vuelo_id")
-	private Vuelo vuelo;
+	private Vuelo vuelo;							//Es por defecto el id_Vuelo del Vuelo reservado
 	
 	
 	
@@ -86,12 +81,12 @@ public class ReservaVuelo extends BaseEntity {
 	
 	
 	
-	public Integer getPrecioFinal() {
-		return precioFinal;
+	public Integer getPrecio() {
+		return precio;
 	}
 
-	public void setPrecioFinal(Integer precioFinal) {
-		this.precioFinal = precioFinal;
+	public void setPrecio(Integer precioFinal) {
+		this.precio = precioFinal;
 	}
 
 	public LocalDate getFechaReserva() {
@@ -102,20 +97,21 @@ public class ReservaVuelo extends BaseEntity {
 		this.fechaReserva = fechaReserva;
 	}
 
-	public LocalDate getEntrada() {
-		return entrada;
+	
+	public LocalDate getFechaIda() {
+		return ida;
 	}
 
-	public void setEntrada(LocalDate entrada) {
-		this.entrada = entrada;
+	public void setFechaIda(LocalDate ida) {
+		this.ida = ida;
 	}
 
-	public LocalDate getSalida() {
-		return salida;
+	public LocalDate getFechaVuelta() {
+		return vuelta;
 	}
 
-	public void setSalida(LocalDate salida) {
-		this.salida = salida;
+	public void setFechaVuelta(LocalDate vuelta) {
+		this.vuelta = vuelta;
 	}
 
 	public String getNumeroTarjeta() {

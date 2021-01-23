@@ -126,7 +126,7 @@ public class Vuelo extends BaseEntity {
 		this.precio = precio;
 	}
 	
-	protected Set<User> getUsersInternal() {
+	public Set<User> getUsersInternal() {
 		if (this.users == null) {
 			this.users = new HashSet<>();
 		}

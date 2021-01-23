@@ -1,9 +1,8 @@
 package org.springframework.samples.petclinic.web;
 
-import static java.time.temporal.ChronoUnit.DAYS;
 
 import java.time.LocalDate;
-import java.util.List;
+
 import java.util.Map;
 import java.util.Set;
 
@@ -34,7 +33,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-@RequestMapping("/vuelos/{vueloId}")
+@RequestMapping("/vuelos/{vueloId}/")
 public class ReservaVueloController {
 	
 	
@@ -72,32 +71,39 @@ public class ReservaVueloController {
 		if (result.hasErrors()) {
 			return VIEWS_RESERVAVUELO_CREATE_FORM;
 		} else {
+			
 			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			UserDetails userDetails = null;
+			
 			if (principal instanceof UserDetails) {
 				userDetails = (UserDetails) principal;
 				}
+			
 			String userName = userDetails.getUsername();
+			
+			//Asignamos usuario y vuelo	
 			
 			User user= this.userService.findByUsername(userName);
 			
 			Vuelo v = this.vueloService.findVueloById(vueloId);
 			
-			Set<User> ls = v.getUsers();    //Falla porque users es un Set<User> en TipoVuelo, pero el metodo getUsers de TipoVuelo es una Lista<User>
+			//Añadimos el usuario a VUELO
+			Set<User> ls = v.getUsersInternal();    
 			ls.add(user);
 			v.setUsers(ls);
-		
 			
+			//Valores por defecto para RESERVAVUELO
+			reservaVuelo.setFechaReserva(LocalDate.now());
+			
+			//Sacamos de vuelo para RESEVAVUELO
+			reservaVuelo.setFechaIda(v.getFechaIda()); 
+			reservaVuelo.setFechaVuelta(v.getFechaVuelta()); 
+			reservaVuelo.setPrecio(v.getPrecio());
 			reservaVuelo.setVuelo(v);
+			
+			//Sacamos de usuario para RESERVAVUELO
 			reservaVuelo.setUser(user);
 			
-			
-			LocalDate entrada = reservaVuelo.getEntrada();
-			LocalDate vuelta = reservaVuelo.getSalida();
-		
-			Integer dias = (int) DAYS.between(entrada, vuelta);
-			Integer precio = v.getPrecio();
-			reservaVuelo.setPrecioFinal(precio);
 			this.reservaVueloService.saveReservaVuelo(reservaVuelo);
 			return "redirect:"+reservaVuelo.getId();
 		}
