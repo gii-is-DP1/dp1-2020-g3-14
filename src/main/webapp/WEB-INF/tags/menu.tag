@@ -24,7 +24,11 @@
 					<span>Search</span>
 				</petclinic:menuItem>
 				
-
+				<petclinic:menuItem active="${name eq 'Hotel+Actividad'}" url="/hotelActividad/find"
+					title="search">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					<span>Hotel+Actividad</span>
+				</petclinic:menuItem>
 
 				<sec:authorize access="hasAuthority('owner')">
 				<petclinic:menuItem active="${name eq 'inscripciones'}" url="/inscripciones/new"

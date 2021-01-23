@@ -9,7 +9,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -43,6 +42,9 @@ public class Actividad extends BaseEntity{
 	@Column(name = "direccion")
 	@NotEmpty
 	private String direccion;
+
+	@Column(name = "provincia")
+	private String provincia;
 	
 	@Column(name = "precio")
 	@NotEmpty
@@ -115,6 +117,14 @@ public class Actividad extends BaseEntity{
 
 	public void setPrecio(String precio) {
 		this.precio = precio;
+	}
+	
+	public String getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
 	}
 
 	public AgenAct getAgenact() {
