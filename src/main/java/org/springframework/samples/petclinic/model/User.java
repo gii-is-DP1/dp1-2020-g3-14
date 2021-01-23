@@ -76,10 +76,9 @@ public class User {
 			)
 	private Set<Habitacion> habitaciones;
 	
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private Set<ReservaHabitacion> reservaHabitacion;
-	
-	
 	
 	public Set<ReservaHabitacion> getReservaHabitacion() {
 		return reservaHabitacion;
@@ -89,6 +88,34 @@ public class User {
 		this.reservaHabitacion = reservaHabitacion;
 	}
 
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	private Set<ReservaVuelo> reservaVuelo;
+	
+	public Set<ReservaVuelo> getReservaVuelo() {
+		return reservaVuelo;
+	}
+
+	public void setReservaVuelo(Set<ReservaVuelo> reservaVuelo) {
+		this.reservaVuelo = reservaVuelo;
+	}
+	
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	private Set<ReservaActividad> reservaActividad;
+	
+	public Set<ReservaActividad> getReservaActividad() {
+		return reservaActividad;
+	}
+
+	public void setReservaActividad(Set<ReservaActividad> reservaActividad) {
+		this.reservaActividad = reservaActividad;
+	}
+	
+	
+	
+	
+	
 	public void setActividades(Set<Actividad> actividades) {
 		this.actividades = actividades;
 	}
@@ -149,6 +176,7 @@ public class User {
 		this.authorities = authorities;
 	}
 
+	
 	protected Set<Habitacion> getHabitacionesInternal() {
 		if (this.habitaciones == null) {
 			this.habitaciones = new HashSet<>();
@@ -173,6 +201,8 @@ public class User {
 	public boolean removeHabitacion(Habitacion habitacion) {
 		return getHabitacionesInternal().remove(habitacion);
 	}
+	
+	
 	
 	protected Set<Actividad> getActividadesInternal() {
 		if (this.actividades == null) {
@@ -199,6 +229,8 @@ public class User {
 		return getActividadesInternal().remove(actividad);
 	}
 	
+	
+	
 	protected Set<Vuelo> getVuelosInternal() {
 		if (this.vuelos == null) {
 			this.vuelos = new HashSet<>();
@@ -215,6 +247,12 @@ public class User {
 		PropertyComparator.sort(sortedVuelo, new MutableSortDefinition("origen", true, true));
 		return Collections.unmodifiableList(sortedVuelo);
 	}
+
+	
+	
+	
+	
+	
 	
 	public boolean isNew() {
 		return this.username == null;
