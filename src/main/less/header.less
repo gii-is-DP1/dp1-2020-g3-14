@@ -1,15 +1,15 @@
 .navbar {
-  border-top: 4px solid #6db33f;
-  background-color: #34302d;
+  border-top: 4px solid  #4a8d96; //Barra de arriba del todo
+  background-color: #4a8d96; //Color de fondo del menu
   margin-bottom: 0px;
   border-bottom: 0;
   border-left: 0;
   border-right: 0;
+  
 }
 
 .navbar a.navbar-brand {
-  background: url("../images/spring-logo-dataflow.png") -1px -1px no-repeat;
-  margin: 12px 0 6px;
+  background: url("../images/merlantico-logo-dataflow.png") -1px -1px no-repeat;
   width: 229px;
   height: 46px;
   display: inline-block;
@@ -21,7 +21,7 @@
   display: block;
   width: 229px;
   height: 46px;
-  background: url("../images/spring-logo-dataflow.png") -1px -48px no-repeat;
+  background: url("../images/merlantico-logo-dataflow.png") -1px -48px no-repeat;
   opacity: 0;
   -moz-transition: opacity 0.12s ease-in-out;
   -webkit-transition: opacity 0.12s ease-in-out;
@@ -48,6 +48,13 @@
 
 .navbar li > a {
   text-transform: uppercase;
+  border-bottom: 4px solid rgb(220, 235, 237) ;
+  border-left: 4px solid rgb(220, 235, 237) ;
+  border-right: 4px solid rgb(220, 235, 237) ;
+  border-top: 4px solid rgb(220, 235, 237) ;
+  border-style: outset; 
+  margin-right: 10px;
+  margin-bottom: 4px;
 }
 
 .navbar .navbar-text {
@@ -56,11 +63,11 @@
 }
 .navbar li:hover > a {
   color: #eeeeee;
-  background-color: #6db33f;
+  background-color: rgb(0, 128, 255); //no sabemos
 }
 
 .navbar-toggle {
-  border-width: 0;
+  border-width: 10;
 
   .icon-bar + .icon-bar {
     margin-top: 3px;
