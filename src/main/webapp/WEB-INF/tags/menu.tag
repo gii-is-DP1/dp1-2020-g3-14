@@ -8,9 +8,12 @@
 	description="Name of the active menu: home, owners, vets or error"%>
 
 <nav class="navbar navbar-default" role="navigation">
-	<div class="container">
-		<div class="navbar-collapse collapse" id="main-navbar">
-			<ul class="nav navbar-nav">
+<div class="container">
+        
+        <div class="navbar-collapse collapse" id="main-navbar">
+            <ul class="nav navbar-nav navbar-right">
+	
+
 
 				<petclinic:menuItem active="${name eq 'home'}" url="/"
 					title="home page">
@@ -48,7 +51,7 @@
 				<petclinic:menuItem active="${name eq 'compvuelos'}" url="/compvuelos/find"
 					title="find compvuelos">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					<span>Compaï¿½ia de Vuelos</span>
+					<span>Compañia de Vuelos</span>
 				</petclinic:menuItem>
 				
 				<petclinic:menuItem active="${name eq 'hoteles'}" url="/hoteles/find"
@@ -76,6 +79,7 @@
 					<span>Actividades</span>
 				</petclinic:menuItem>
 			</ul>
+			
 
 			<ul class="nav navbar-nav navbar-right">
 				<sec:authorize access="!isAuthenticated()">
@@ -127,6 +131,13 @@
 						</ul></li>
 				</sec:authorize>
 			</ul>
+			<div class="navbar-header">
+            <a class="navbar-brand" href="<spring:url value="/" htmlEscape="true" />"><span></span></a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+                <span class="sr-only"><os-p>Toggle navigation</os-p></span>
+                
+            </button>
+        </div>
 		</div>
 	</div>
 </nav>
