@@ -12,10 +12,11 @@
         <thead>
         <tr>
             <th style="width: 150px;">Nombre</th>
-            <th style="width: 200px;">Opinión</th>
+            <th style="width: 200px;">Descripcion</th>
             <th style="width: 120px">Valoración</th>
             <th style="width: 150px">Dirección</th>
             <th style="width: 150px">Precio</th>
+            <th style="width: 150px">Fecha</th>
         </tr>
         </thead>
         <tbody>
@@ -29,7 +30,7 @@
                     <c:out value="${actividad.nombre}"/></a>
                 </td>
                 <td>
-                    <c:out value="${actividad.opinion}"/>
+                    <c:out value="${actividad.descripcion}"/>
                 </td>
                 <td>
                     <c:out value="${actividad.valoracion}"/>
@@ -39,7 +40,10 @@
                 </td>  
                 <td>
                     <c:out value="${actividad.precio}"/>
-                </td>            
+                </td>
+                <td>
+                    <c:out value="${actividad.fecha}"/>
+                </td>              
             </tr>
         </c:forEach>
         </tbody>

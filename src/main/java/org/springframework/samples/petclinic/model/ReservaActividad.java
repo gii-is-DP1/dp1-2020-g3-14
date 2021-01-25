@@ -8,21 +8,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Future;
 import javax.validation.constraints.FutureOrPresent;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-
-import org.hibernate.validator.constraints.CreditCardNumber;
-import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="reservashabitacion")
+@Table(name="reservasactividad")
 
-public class ReservaHabitacion extends BaseEntity{
+public class ReservaActividad extends BaseEntity{
 
 		@Column(name = "fechareserva")
 		@DateTimeFormat(pattern = "yyyy/MM/dd")
@@ -31,14 +24,7 @@ public class ReservaHabitacion extends BaseEntity{
 		@Column(name = "entrada")
 		@DateTimeFormat(pattern = "yyyy/MM/dd")
 		@FutureOrPresent
-	    @NotNull
 		private LocalDate entrada;
-		
-		@Column(name = "salida")
-		@DateTimeFormat(pattern = "yyyy/MM/dd")
-		@Future
-	    @NotNull
-		private LocalDate salida;
 		
 		@Column(name = "numeroTarjeta")
 		@Pattern(regexp="\\d{16}")
@@ -56,8 +42,8 @@ public class ReservaHabitacion extends BaseEntity{
 		private User user;
 		
 		@OneToOne
-		@JoinColumn(name = "habitacion_id")
-		private Habitacion habitacion;
+		@JoinColumn(name = "actividad_id")
+		private Actividad actividad;
 
 		public Integer getPrecioFinal() {
 			return precioFinal;
@@ -81,14 +67,6 @@ public class ReservaHabitacion extends BaseEntity{
 
 		public void setEntrada(LocalDate entrada) {
 			this.entrada = entrada;
-		}
-
-		public LocalDate getSalida() {
-			return salida;
-		}
-
-		public void setSalida(LocalDate salida) {
-			this.salida = salida;
 		}
 
 		public String getNumeroTarjeta() {
@@ -115,12 +93,12 @@ public class ReservaHabitacion extends BaseEntity{
 			this.user = user;
 		}
 
-		public Habitacion getHabitacion() {
-			return habitacion;
+		public Actividad getActividad() {
+			return actividad;
 		}
 
-		public void setHabitacion(Habitacion habitacion) {
-			this.habitacion = habitacion;
+		public void setActivdad(Actividad actividad) {
+			this.actividad = actividad;
 		}
 		
 }
