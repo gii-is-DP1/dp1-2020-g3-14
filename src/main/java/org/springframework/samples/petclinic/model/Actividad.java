@@ -40,6 +40,9 @@ public class Actividad extends BaseEntity{
 	@Column(name = "direccion")
 	@NotEmpty
 	private String direccion;
+
+	@Column(name = "provincia")
+	private String provincia;
 	
 	@Column(name = "precio")
 	@NotEmpty
@@ -116,6 +119,14 @@ public class Actividad extends BaseEntity{
 
 	public void setPrecio(String precio) {
 		this.precio = precio;
+	}
+	
+	public String getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
 	}
 
 	public LocalDate getFecha() {

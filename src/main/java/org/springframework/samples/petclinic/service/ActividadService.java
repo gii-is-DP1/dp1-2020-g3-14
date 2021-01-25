@@ -1,9 +1,12 @@
 package org.springframework.samples.petclinic.service;
 
 import java.util.Collection;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Actividad;
+import org.springframework.samples.petclinic.model.Vuelo;
 import org.springframework.samples.petclinic.repository.ActividadRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,5 +35,10 @@ public class ActividadService {
 	@Transactional(readOnly = true)
 	public Collection<Actividad> findByNombre(String nombre) throws DataAccessException {
 		return actividadRepository.findByNombreLike(nombre);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Actividad> findAllActividades() throws DataAccessException {
+		return actividadRepository.findAllActividades();
 	}
 }
