@@ -49,7 +49,7 @@ public class ActividadControllerTests {
 		actividad = new Actividad();
 		actividad.setId(TEST_ACTIVIDAD_ID);
 		actividad.setNombre("Escalada");
-		actividad.setOpinion("Buena ruta de escala con amigos");
+		actividad.setDescripcion("Buena ruta de escala con amigos");
 		actividad.setValoracion(4);
 		actividad.setDireccion("Sierra de Grazalema");
 		actividad.setPrecio("2");

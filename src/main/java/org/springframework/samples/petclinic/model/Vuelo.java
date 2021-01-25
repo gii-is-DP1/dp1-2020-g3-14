@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -52,6 +53,21 @@ public class Vuelo extends BaseEntity {
 	
 	@ManyToMany(mappedBy = "vuelos")
 	private Set<User> users;
+	
+	
+	@OneToOne
+	@JoinColumn(name = "reservavuelo")
+	private ReservaVuelo reservavuelo;
+	
+	public ReservaVuelo getReservaVuelo() {
+		return reservavuelo;
+	}
+
+	public void setReservaVuelo(ReservaVuelo reservavuelo) {
+		this.reservavuelo = reservavuelo;
+	}
+	
+	
 	
 			
 	public CompVuelos getCompVuelo() {
@@ -110,7 +126,7 @@ public class Vuelo extends BaseEntity {
 		this.precio = precio;
 	}
 	
-	protected Set<User> getUsersInternal() {
+	public Set<User> getUsersInternal() {
 		if (this.users == null) {
 			this.users = new HashSet<>();
 		}
@@ -126,6 +142,12 @@ public class Vuelo extends BaseEntity {
 	public void setUsersInternal(Set<User> users) {
 		this.users = users;
 	}
+	
+	public void setUsers (Set<User> users) {
+		this.users = users;
+	}
+	
+	
 	
 	public String toString() {
 		return new ToStringCreator(this)

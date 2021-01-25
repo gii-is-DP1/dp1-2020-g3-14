@@ -1,9 +1,5 @@
 package org.springframework.samples.petclinic.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -16,8 +12,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Range;
-import org.springframework.beans.support.MutableSortDefinition;
-import org.springframework.beans.support.PropertyComparator;
 
 @Entity
 @Table(name = "habitaciones")
@@ -87,21 +81,12 @@ public class Habitacion{
 	public void setDisponible(Boolean disponible) {
 		this.disponible = disponible;
 	}
-	
-	protected Set<User> getUsersInternal() {
-		if (this.users == null) {
-			this.users = new HashSet<>();
-		}
-		return this.users;
+
+	public Set<User> getUsers() {
+		return users;
 	}
 
-	public List<User> getUsers() {
-		List<User> sortedUsers = new ArrayList<>(getUsersInternal());
-		PropertyComparator.sort(sortedUsers, new MutableSortDefinition("username", true, true));
-		return Collections.unmodifiableList(sortedUsers);
-	}
-
-	public void setUsersInternal(Set<User> users) {
+	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
 
@@ -111,9 +96,5 @@ public class Habitacion{
 
 	public void setReservaHabitacion(ReservaHabitacion reservaHabitacion) {
 		this.reservahabitacion = reservaHabitacion;
-	}
-
-	public void setUsers(Set<User> users) {
-		this.users = users;
 	}
 }
