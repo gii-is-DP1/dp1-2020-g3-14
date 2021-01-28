@@ -94,10 +94,10 @@ INSERT INTO compvuelos VALUES (3, 'CompañiaPrueba3', 'España', 'Sede3');
 INSERT INTO users_actividades(username, actividades_id) VALUES ('enrmorvaz', 3);
 INSERT INTO users_habitaciones(username, nhabitacion) VALUES ('enrmorvaz', 789);
 
-INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (1, 2, 'Malaga', '2020-12-17', '2020-12-24', 'Sevilla', 70,1);
-INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (2, 1, 'Almeria', '2020-12-16', '2020-12-25', 'Malaga', 40,2);
-INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (3, 3, 'Cadiz', '2020-12-19', '2020-12-26','Cordoba', 120,2);
-INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (4, 2, 'Jaen', '2020-12-18', '2020-12-23', 'Sevilla', 70,3);
-INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (5, 1, 'Malaga', '2020-12-17', '2020-12-24', 'Sevilla', 69,3);
+INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (1, 2, 'Malaga', '2021-12-17', '2021-12-24', 'Sevilla', 70,1);
+INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (2, 1, 'Almeria', '2021-12-16', '2021-12-25', 'Malaga', 40,2);
+INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (3, 3, 'Cadiz', '2021-12-19', '2021-12-26','Cordoba', 120,2);
+INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (4, 2, 'Jaen', '2021-12-18', '2021-12-23', 'Sevilla', 70,3);
+INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,compvuelo_id) VALUES (5, 1, 'Malaga', '2021-12-17', '2021-12-24', 'Sevilla', 69,3);
 
 INSERT INTO users_vuelos(username, vuelos_id) VALUES ('enrmorvaz', 3);

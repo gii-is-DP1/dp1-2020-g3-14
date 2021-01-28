@@ -133,22 +133,18 @@ public class Vuelo extends BaseEntity {
 		return this.users;
 	}
 
-	public List<User> getUsers() {
-		List<User> sortedUsers = new ArrayList<>(getUsersInternal());
-		PropertyComparator.sort(sortedUsers, new MutableSortDefinition("username", true, true));
-		return Collections.unmodifiableList(sortedUsers);
-	}
-
 	public void setUsersInternal(Set<User> users) {
 		this.users = users;
 	}
 	
-	public void setUsers (Set<User> users) {
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
-	
-	
-	
+
 	public String toString() {
 		return new ToStringCreator(this)
 

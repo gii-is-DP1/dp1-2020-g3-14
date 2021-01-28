@@ -7,7 +7,6 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <petclinic:layout pageName="reservasVuelo">
-
     <jsp:body>
     <h2>
         Reservar Vuelo

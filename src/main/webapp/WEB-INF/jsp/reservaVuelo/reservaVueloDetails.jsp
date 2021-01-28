@@ -6,9 +6,9 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 
-<petclinic:layout pageName="reservaVuelos">
+<petclinic:layout pageName="reservaVuelo">
 
-    <h2>Información sobre las reservas de tu vuelo</h2>
+    <h2>Información sobre las reservas del Vuelo</h2>
 
     <table class="table table-striped">
         <tr>
@@ -16,34 +16,33 @@
             <td><b><c:out value="${reservaVuelo.fechaReserva}"/></b></td>
         </tr>
         <tr>
-            <th>Fecha de entrada</th>
-            <td><c:out value="${reservaVuelo.entrada}"/></td>
+            <th>Fecha de ida</th>
+            <td><c:out value="${reservaVuelo.ida}"/></td>
         </tr>
         <tr>
-            <th>Fecha de salida</th>
-            <td><c:out value="${reservaVuelo.salida}"/></td>
+            <th>Fecha de vuelta</th>
+            <td><c:out value="${reservaVuelo.vuelta}"/></td>
         </tr>
         <tr>
-            <th>Precio de la reserva</th>
+            <th>Precio del vuelo</th>
             <td><c:out value="${reservaVuelo.precioFinal}"/> euros</td>
+        </tr>
+        <tr>
+        	<th>User</th>
+            <td><c:out value="${reservaVuelo.user.username}"/></td>
         </tr>
 	</table>
   <table class="table table-striped">
-  <h3>Información del Vuelo</h3>
+  <h3>Información del vuelo</h3>
 			<tr>
                 <td valign="top">
                     <dl class="dl-horizontal">
-                        <dt>Origen</dt>
+                        <dt>Lugar de origen</dt>
                         <dd><c:out value="${reservaVuelo.vuelo.origen}"/></dd>
-                        <dt>Destino</dt>
+                        <dt>Lugar de destino</dt>
                         <dd><c:out value="${reservaVuelo.vuelo.destino}"/></dd>
-                        <dt>Precio</dt>
-                        <dd><c:out value="${reservaVuelo.vuelo.precio}"/></dd>
-                        <dt>User</dt>
-                        <dd><c:out value="${reservaVuelo.user.username}"/></dd>
-                         <dt>Compañia Aerea</dt>
-                        <dd><c:out value="${reservaVuelo.vuelo.compVuelo}"/></dd>
-                        
+                        <dt>Agencia de vuelo</dt>
+                        <dd><c:out value="${reservaVuelo.vuelo.compVuelo.nombre}"/></dd>
                     </dl>
                 </td>
 			</tr>
@@ -51,6 +50,6 @@
     <br/>
     <br/>
     <br/>
-	<a class="btn btn-default" href='<spring:url value="/vuelos" htmlEscape="true"/>'>Volver a los vuelos</a>
+	<a class="btn btn-default" href='<spring:url value="/vuelos" htmlEscape="true"/>'>Volver a los Vuelo</a>
 
 </petclinic:layout>
