@@ -42,20 +42,16 @@
             <td><c:out value="${vuelos.compVuelo.nombre}"/></td>
         </tr>
         
-        <a class="btn btn-default" href='<spring:url value="/vuelos/${vuelos.id}/reservaVuelo/new" htmlEscape="true"/>'>Reservar</a>
-		
-        
-        
-        
-        
-        
-        <c:forEach var="usuarios" items="${vuelos.users}">
+          <c:forEach var="usuarios" items="${vuelos.users}">
             <tr>
            		<th>Usuario</th>
                 <td><c:out value="${usuarios.username}"/></td>
               </tr>      
           </c:forEach>
     </table>
+    <sec:authorize access="isAuthenticated()">
+	<a class="btn btn-default" href='<spring:url value="/vuelos/${vuelos.id}/reservaVuelo/new" htmlEscape="true"/>'>Reservar</a>
+    </sec:authorize>
     <sec:authorize access="hasAuthority('admin')">
 		<a class="btn btn-default" href='<spring:url value="/vuelos/${vuelos.id}/edit" htmlEscape="true"/>'>Editar vuelo</a>
 	</sec:authorize>

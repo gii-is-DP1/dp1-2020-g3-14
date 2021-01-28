@@ -8,128 +8,112 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Future;
 import javax.validation.constraints.FutureOrPresent;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="reservasvuelo")
-public class ReservaVuelo extends BaseEntity {
-	
-	
-	@Column(name = "fechareserva")
-	@DateTimeFormat(pattern = "yyyy/MM/dd")
-	private LocalDate fechaReserva;					//Es por defecto la fecha del sistema en el momento de realizar la reserva
-	
-	@Column(name = "fechaida")
-	@DateTimeFormat(pattern = "yyyy/MM/dd")
-	@FutureOrPresent
-    @NotNull
-	private LocalDate ida;							//Es por defecto la fecha en la que sale el vuelo (Parametro de vuelo)
-	
-	@Column(name = "fechavuelta")
-	@DateTimeFormat(pattern = "yyyy/MM/dd")
-	@Future
-    @NotNull
-	private LocalDate vuelta;                      	// No tiene sentido a no ser que escojas un vuelo de vuelta
-	
-	@Column(name = "numeroTarjeta")
-	@Pattern(regexp="\\d{16}")
-	private String numeroTarjeta;					//Se introduce al realizar la reserva
-	
-	@Column(name = "cvc")
-	@Pattern(regexp="\\d{3}")
-	private String cvc;								//Se introduce al realizar la reserva
-	
-	@Column(name="precio")
-	private Integer precio;						    //Es por defecto el precio del vuelo (Parametro de vuelo)
-	
-	@ManyToOne
-	@JoinColumn(name = "username")
-	private User user;								//Es por defecto el usuario que realiza la reserva 
-	
-	@OneToOne
-	@JoinColumn(name = "vuelo_id")
-	private Vuelo vuelo;							//Es por defecto el id_Vuelo del Vuelo reservado
-	
-	
-	
-	
-	
-	
-	
-	public Vuelo getVuelo() {
-		return vuelo;
-	}
 
-	public void setVuelo(Vuelo vuelo) {
-		this.vuelo = vuelo;
-	}
-	
-	public User getUser() {
-		return this.user;
-	}
+public class ReservaVuelo extends BaseEntity{
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+		@Column(name = "fechareserva")
+		@DateTimeFormat(pattern = "yyyy/MM/dd")
+		private LocalDate fechaReserva;
+		
+		@Column(name = "ida")
+		@DateTimeFormat(pattern = "yyyy/MM/dd")
+		@FutureOrPresent
+		private LocalDate ida;
+		
+		@Column(name = "vuelta")
+		@DateTimeFormat(pattern = "yyyy/MM/dd")
+		@FutureOrPresent
+		private LocalDate vuelta;
+		
+		@Column(name = "numeroTarjeta")
+		@Pattern(regexp="\\d{16}")
+		private String numeroTarjeta;
+		
+		@Column(name = "cvc")
+		@Pattern(regexp="\\d{3}")
+		private String cvc;
+		
+		@Column(name="precio")
+		private Integer precioFinal;
+		
+		@ManyToOne
+		@JoinColumn(name = "username")
+		private User user;
+		
+		@OneToOne
+		@JoinColumn(name = "vuelo_id")
+		private Vuelo vuelo;
 
-	
-	
-	
-	
-	public Integer getPrecio() {
-		return precio;
-	}
+		public LocalDate getFechaReserva() {
+			return fechaReserva;
+		}
 
-	public void setPrecio(Integer precioFinal) {
-		this.precio = precioFinal;
-	}
+		public void setFechaReserva(LocalDate fechaReserva) {
+			this.fechaReserva = fechaReserva;
+		}
 
-	public LocalDate getFechaReserva() {
-		return fechaReserva;
-	}
+		public LocalDate getIda() {
+			return ida;
+		}
 
-	public void setFechaReserva(LocalDate fechaReserva) {
-		this.fechaReserva = fechaReserva;
-	}
+		public void setIda(LocalDate ida) {
+			this.ida = ida;
+		}
 
-	
-	public LocalDate getFechaIda() {
-		return ida;
-	}
+		public LocalDate getVuelta() {
+			return vuelta;
+		}
 
-	public void setFechaIda(LocalDate ida) {
-		this.ida = ida;
-	}
+		public void setVuelta(LocalDate vuelta) {
+			this.vuelta = vuelta;
+		}
 
-	public LocalDate getFechaVuelta() {
-		return vuelta;
-	}
+		public String getNumeroTarjeta() {
+			return numeroTarjeta;
+		}
 
-	public void setFechaVuelta(LocalDate vuelta) {
-		this.vuelta = vuelta;
-	}
+		public void setNumeroTarjeta(String numeroTarjeta) {
+			this.numeroTarjeta = numeroTarjeta;
+		}
 
-	public String getNumeroTarjeta() {
-		return numeroTarjeta;
-	}
+		public String getCvc() {
+			return cvc;
+		}
 
-	public void setNumeroTarjeta(String numTarjeta) {
-		this.numeroTarjeta = numTarjeta;
-	}
-	
-	public String getCvc() {
-		return cvc;
-	}
+		public void setCvc(String cvc) {
+			this.cvc = cvc;
+		}
 
-	public void setCvc(String cvc) {
-		this.cvc = cvc;
-	}
+		public Integer getPrecioFinal() {
+			return precioFinal;
+		}
 
+		public void setPrecioFinal(Integer precioFinal) {
+			this.precioFinal = precioFinal;
+		}
 
-	
+		public User getUser() {
+			return user;
+		}
+
+		public void setUser(User user) {
+			this.user = user;
+		}
+
+		public Vuelo getVuelo() {
+			return vuelo;
+		}
+
+		public void setVuelo(Vuelo vuelo) {
+			this.vuelo = vuelo;
+		}
+
+		
+		
 }
