@@ -69,6 +69,7 @@ public class ReservaVueloController {
 			Set<User> ls = v.getUsers();
 			ls.add(user);
 			v.setUsers(ls);
+			v.setNumeroPlazas(v.getNumeroPlazas()-v.getBilletes());
 			reservaVuelo.setPrecioFinal(Integer.valueOf(v.getPrecio()*v.getBilletes()));
 			reservaVuelo.setIda(v.getFechaIda());
 			reservaVuelo.setVuelta(v.getFechaVuelta());
