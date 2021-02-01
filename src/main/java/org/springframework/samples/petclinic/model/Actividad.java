@@ -34,7 +34,7 @@ public class Actividad extends BaseEntity{
 	private String descripcion;
 	
 	@Column(name = "valoracion")
-	@Range(min=1,max=5)
+	@Range(min=0,max=10)
 	private Integer valoracion;
 	
 	@Column(name = "direccion")
