@@ -125,6 +125,7 @@
 										<div class="col-lg-12">
 											
 												<a href="/users/<sec:authentication property="name" />" class="btn btn-primary btn-block">Mi perfil</a>
+												<a href="/users/<sec:authentication property="name" />/historial" class="btn btn-primary btn-block">Historial</a>
 												<a href="/users/<sec:authentication property="name" />/delete" class="btn btn-primary btn-block">Borrar mi perfil</a>
 											
 										</div>
