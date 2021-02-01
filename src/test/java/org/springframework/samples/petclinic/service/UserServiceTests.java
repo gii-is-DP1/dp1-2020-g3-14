@@ -21,20 +21,19 @@ class UserServiceTests {
         @Autowired
 	protected UserService userService;
         //Prueba busqueda de usuario
-//        @Test
-//    	void shouldFindUserByUserName() {
-//    		 User user=new User();
-//    		 user.setUsername("pruebador");
-//    		 user.setPassword("Contrasen4");
-//    		 user.setTelefono("645985985");
-//    		 user.setDni("20061859V");
-//
-//    		 this.userService.saveUser(user);
-//    		 User usuario = this.userService.findByUsername("pruebador");
-//    		 assertThat(usuario.getUsername()).isEqualTo(user.getUsername());
-//
-//    	}
-//        
+        @Test
+    	void shouldFindUserByUserName() {
+    		 User user=new User();
+    		 user.setUsername("pruebador");
+    		 user.setPassword("Contrasen4");
+    		 user.setTelefono("645985985");
+    		 user.setDni("20061859V");
+
+    		 this.userService.saveUser(user);
+    		 User usuario = this.userService.findByUsername("pruebador");
+    		 assertThat(usuario.getUsername()).isEqualTo(user.getUsername());
+    	}
+       
         //Prueba H4 Alta de cliente
         @Test
     	@Transactional
@@ -71,7 +70,6 @@ class UserServiceTests {
     		usuarios = this.userService.findByUsername("pruebador");
 
     		assertThat(usuarios).isNull();
-    		
         }
 
 }
