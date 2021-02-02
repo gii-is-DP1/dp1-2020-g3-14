@@ -38,7 +38,7 @@
             <td><c:out value="${vuelos.billetes}"/></td>
         </tr>
         <tr>
-            <th>Compañia Vuelo</th>
+            <th>Compañia Aérea</th>
             <td><c:out value="${vuelos.compVuelo.nombre}"/></td>
         </tr>
         
