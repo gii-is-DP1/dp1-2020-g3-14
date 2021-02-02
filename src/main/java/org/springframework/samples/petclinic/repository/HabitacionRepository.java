@@ -6,6 +6,6 @@ import org.springframework.samples.petclinic.model.Habitacion;
 
 public interface HabitacionRepository  extends JpaRepository<Habitacion, Long> {
 
-	@Query("select u from Habitacion u where u.nhabitacion like %?1")
+	@Query("select u from Habitacion u where u.nhabitacion like ?1")
 	Habitacion findByNhabitacionLike(Integer nhabitacion);
 }

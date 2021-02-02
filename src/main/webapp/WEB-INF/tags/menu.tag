@@ -43,6 +43,12 @@
 
 						</ul></li>
 				
+				<petclinic:menuItem active="${name eq 'Hotel+Actividad'}" url="/hotelActividad/find"
+					title="search">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					<span>Hotel+Actividad</span>
+				</petclinic:menuItem>
+
 				<sec:authorize access="hasAuthority('owner')">
 				<petclinic:menuItem active="${name eq 'inscripciones'}" url="/inscripciones/new"
 					title="inscripciones">
@@ -63,7 +69,7 @@
 				<petclinic:menuItem active="${name eq 'compvuelos'}" url="/compvuelos/find"
 					title="find compvuelos">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					<span>Compañia de Vuelos</span>
+					<span>CompaÃ±ia de Vuelos</span>
 				</petclinic:menuItem>
 				</sec:authorize>
 
@@ -88,7 +94,7 @@
 								<div class="navbar-login navbar-login-session">
 									<div class="row">
 										<div class="col-lg-12">
-												<a href="/login" class="btn btn-primary btn-block">Iniciar sesión</a>
+												<a href="/login" class="btn btn-primary btn-block">Iniciar sesiÃ³n</a>
 												<a href="/users/new" class="btn btn-primary btn-block">Registrarse</a>
 										</div>
 									</div>

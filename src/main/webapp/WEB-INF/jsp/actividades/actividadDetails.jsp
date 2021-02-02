@@ -18,8 +18,8 @@
             <td><b><c:out value="${actividades.nombre}"/></b></td>
         </tr>
         <tr>
-            <th>Opinión</th>
-            <td><c:out value="${actividades.opinion}"/></td>
+            <th>Descripcion</th>
+            <td><c:out value="${actividades.descripcion}"/></td>
         </tr>
         <tr>
             <th>Valoración</th>
@@ -33,11 +33,21 @@
             <th>Precio</th>
             <td><c:out value="${actividades.precio}"/></td>
         </tr>
+         <tr>
+            <th>Fecha</th>
+            <td><c:out value="${actividades.fecha}"/></td>
+        </tr>
         <tr>
         	<th>Agencia</th>
         	<td><c:out value="${actividades.agenact.nombre}"/></td>
         </tr>
     </table>
+    
+    <sec:authorize access="isAuthenticated()">
+	<a class="btn btn-default" href='<spring:url value="/actividades/${actividades.id}/reservaActividad/new" htmlEscape="true"/>'>Reservar</a>
+    </sec:authorize>
+    <br/>
+    <br/>
     
     <table>
   <h3>Comentarios</h3>

@@ -23,6 +23,10 @@
             <th>Fecha de salida</th>
             <td><c:out value="${reservaHabitacion.salida}"/></td>
         </tr>
+        <tr>
+            <th>Precio de la reserva</th>
+            <td><c:out value="${reservaHabitacion.precioFinal}"/> euros</td>
+        </tr>
 	</table>
   <table class="table table-striped">
   <h3>Información de la habitación</h3>
@@ -33,8 +37,10 @@
                         <dd><c:out value="${reservaHabitacion.habitacion.nhabitacion}"/></dd>
                         <dt>Nº de camas</dt>
                         <dd><c:out value="${reservaHabitacion.habitacion.ncamas}"/></dd>
-                        <dt>Precio</dt>
+                        <dt>Precio por dia</dt>
                         <dd><c:out value="${reservaHabitacion.habitacion.precio}"/></dd>
+                        <dt>User</dt>
+                        <dd><c:out value="${reservaHabitacion.user.username}"/></dd>
                     </dl>
                 </td>
 			</tr>
