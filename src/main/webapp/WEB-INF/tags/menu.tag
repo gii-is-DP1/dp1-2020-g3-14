@@ -31,23 +31,17 @@
 								<div class="navbar-login navbar-login-session">
 									<div class="row">
 										<div class="col-lg-12">
-											
 												<a href="/actividades/find" class="btn btn-primary btn-block">Actividades</a>
 												<a href="/vuelos/find"class="btn btn-primary btn-block">Vuelos</a>
 												<a href="/hoteles/find"class="btn btn-primary btn-block">Hoteles</a>
 												<a href="/search/find"class="btn btn-primary btn-block">Hotel + Vuelo</a>
+												<a href="/hotelActividad/find"class="btn btn-primary btn-block">Hotel + Actividad</a>
 										</div>
 									</div>
 								</div>
 							</li>
 
 						</ul></li>
-				
-				<petclinic:menuItem active="${name eq 'Hotel+Actividad'}" url="/hotelActividad/find"
-					title="search">
-					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					<span>Hotel+Actividad</span>
-				</petclinic:menuItem>
 
 				<sec:authorize access="hasAuthority('owner')">
 				<petclinic:menuItem active="${name eq 'inscripciones'}" url="/inscripciones/new"
