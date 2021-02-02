@@ -68,8 +68,8 @@ public class ReservaHabitacionController {
 			reservaHabitacion.setUser(user);
 			LocalDate entrada = reservaHabitacion.getEntrada();
 			LocalDate salida = reservaHabitacion.getSalida();
-			Integer dias = (int) DAYS.between(entrada, salida);
-			Integer precio = dias*h.getPrecio();
+			Double dias = (double) DAYS.between(entrada, salida);
+			Double precio = dias*h.getPrecio();
 			reservaHabitacion.setPrecioFinal(precio);
 			this.reservaHabitacionService.saveReservaHabitacion(reservaHabitacion);
 			return "redirect:"+reservaHabitacion.getId();

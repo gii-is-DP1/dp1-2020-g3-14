@@ -66,6 +66,7 @@ public class ReservaActividadController {
 			a.setUsers(ls);
 			if(reservaActividad.getCodigo()=="BIENVENIDODP") {
 				reservaActividad.setPrecioFinal(Double.valueOf(a.getPrecio())*0.95);
+				user.setCodigo(false);
 			}else {
 				reservaActividad.setPrecioFinal(Double.valueOf(a.getPrecio()));
 			}

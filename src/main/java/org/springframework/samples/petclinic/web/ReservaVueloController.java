@@ -54,8 +54,6 @@ public class ReservaVueloController {
 			@Valid final ReservaVuelo reservaVuelo, final BindingResult result) {
 		reservaVuelo.setFechaReserva(LocalDate.now());
 		Vuelo v = this.vueloService.findVueloById(vueloId);
-		System.out.println("============MENSAJES DE ERROR===============");
-		System.out.println(result.getAllErrors());
 		if (result.hasErrors()) {			
 			return VIEWS_RESERVAVUELO_CREATE_FORM;
 		} else {
@@ -70,12 +68,21 @@ public class ReservaVueloController {
 			ls.add(user);
 			v.setUsers(ls);
 			v.setNumeroPlazas(v.getNumeroPlazas()-v.getBilletes());
-			reservaVuelo.setPrecioFinal(Integer.valueOf(v.getPrecio()*v.getBilletes()));
+			boolean ca = user.getCodigo();
+			if(reservaVuelo.getCodigo().equals("BIENVENIDODP") && user.getCodigo()) {
+				reservaVuelo.setPrecioFinal(Double.valueOf(v.getPrecio()*v.getBilletes())*0.95);
+				ca = false;
+			}else {
+				reservaVuelo.setPrecioFinal(Double.valueOf(v.getPrecio()*v.getBilletes()));
+			}
+			
 			reservaVuelo.setIda(v.getFechaIda());
 			reservaVuelo.setVuelta(v.getFechaVuelta());
 			reservaVuelo.setVuelo(v);
+			user.setCodigo(ca);
 			reservaVuelo.setUser(user);
 			this.reservaVueloService.saveReservaVuelo(reservaVuelo);
+			this.userService.saveUser(user);
 			return "redirect:"+reservaVuelo.getId();
 		}
 	}

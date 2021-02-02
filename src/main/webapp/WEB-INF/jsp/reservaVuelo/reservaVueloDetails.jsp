@@ -23,6 +23,12 @@
             <th>Fecha de vuelta</th>
             <td><c:out value="${reservaVuelo.vuelta}"/></td>
         </tr>
+        <c:if test="${reservaVuelo.precioFinal!=reservaVuelo.vuelo.precio*reservaVuelo.vuelo.billetes}">
+         <tr>
+            <th>Descuento</th>
+            <td><c:out value="${reservaVuelo.vuelo.precio*reservaVuelo.vuelo.billetes*0.05}"/> euros</td>
+        </tr>
+        </c:if>     
         <tr>
             <th>Precio del vuelo</th>
             <td><c:out value="${reservaVuelo.precioFinal}"/> euros</td>

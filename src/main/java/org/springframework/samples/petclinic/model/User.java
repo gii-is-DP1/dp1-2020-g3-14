@@ -45,7 +45,7 @@ public class User {
 	private String dni;
 	
 	@Column(name = "codigo")
-	private Boolean codigo;
+	private boolean codigo;
 	
 	boolean enabled;
 	
@@ -163,11 +163,11 @@ public class User {
 		this.dni = dni;
 	}
 	
-	public Boolean getCodigo() {
+	public boolean getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(Boolean codigo) {
+	public void setCodigo(boolean codigo) {
 		this.codigo = codigo;
 	}
 

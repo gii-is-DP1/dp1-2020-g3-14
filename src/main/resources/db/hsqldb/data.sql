@@ -1,51 +1,27 @@
 -- One admin user, named admin1 with passwor 4dm1n and authority admin
-INSERT INTO users(username,password,enabled) VALUES ('admin1','4dm1n', TRUE);
-INSERT INTO users(username,password,enabled) VALUES ('enrmorvaz','administrador',TRUE);
+INSERT INTO users(username,password,enabled,codigo) VALUES ('admin1','4dm1n', TRUE,FALSE);
+INSERT INTO users(username,password,enabled,codigo) VALUES ('enrmorvaz','administrador',TRUE,TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (1,'admin1','admin');
 INSERT INTO authorities(id,username,authority) VALUES (8,'enrmorvaz','owner');
 
 -- One owner user, named owner1 with passwor 0wn3r
-INSERT INTO users(username,password,enabled) VALUES ('owner1','0wn3r',TRUE);
+INSERT INTO users(username,password,enabled,codigo) VALUES ('owner1','0wn3r',TRUE,TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (2,'owner1','owner');
 -- One owner josregmej, named Jose with passwor usuario
-INSERT INTO users(username,password,enabled) VALUES ('josregmej','usuario',TRUE);
+INSERT INTO users(username,password,enabled,codigo) VALUES ('josregmej','usuario',TRUE,TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (4,'josregmej','owner');
 -- One owner  Yiyons, named Alvaro with passwor usuario1
-INSERT INTO users(username,password,enabled) VALUES ('Yiyons','usuario1',TRUE);
+INSERT INTO users(username,password,enabled,codigo) VALUES ('Yiyons','usuario1',TRUE,FALSE);
 INSERT INTO authorities(id,username,authority) VALUES (35,'Yiyons','owner');
--- One vet user, named vet1 with passwor v3t
-INSERT INTO users(username,password,enabled) VALUES ('vet1','v3t',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (3,'vet1','veterinarian');
 
-INSERT INTO users(username,password,enabled) VALUES ('pedcarmor','adm1n',TRUE);
+INSERT INTO users(username,password,enabled,codigo) VALUES ('pedcarmor','adm1n',TRUE,TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (10,'pedcarmor','owner');
 
-INSERT INTO users(username,password,enabled) VALUES ('pedmuncif','administrador',TRUE);
+INSERT INTO users(username,password,enabled,codigo) VALUES ('pedmuncif','administrador',TRUE,TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (20,'pedmuncif','owner');
 
-INSERT INTO users(username,password,telefono,dni,enabled) VALUES ('javhidrod1','A6min','617736165','31023797V',TRUE);
+INSERT INTO users(username,password,telefono,dni,enabled,codigo) VALUES ('javhidrod1','A6min','617736165','31023797V',TRUE,TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (17,'javhidrod1','owner');
-
-
-INSERT INTO owners VALUES (1, 'George', 'Franklin', '110 W. Liberty St.', 'Madison', '6085551023', 'owner1');
-INSERT INTO owners VALUES (2, 'Betty', 'Davis', '638 Cardinal Ave.', 'Sun Prairie', '6085551749', 'owner1');
-INSERT INTO owners VALUES (3, 'Eduardo', 'Rodriquez', '2693 Commerce St.', 'McFarland', '6085558763', 'owner1');
-INSERT INTO owners VALUES (4, 'Harold', 'Davis', '563 Friendly St.', 'Windsor', '6085553198', 'owner1');
-INSERT INTO owners VALUES (5, 'Peter', 'McTavish', '2387 S. Fair Way', 'Madison', '6085552765', 'owner1');
-INSERT INTO owners VALUES (6, 'Jean', 'Coleman', '105 N. Lake St.', 'Monona', '6085552654', 'owner1');
-INSERT INTO owners VALUES (7, 'Jeff', 'Black', '1450 Oak Blvd.', 'Monona', '6085555387', 'owner1');
-INSERT INTO owners VALUES (8, 'Maria', 'Escobito', '345 Maple St.', 'Madison', '6085557683', 'owner1');
-INSERT INTO owners VALUES (9, 'David', 'Schroeder', '2749 Blackhawk Trail', 'Madison', '6085559435', 'owner1');
-INSERT INTO owners VALUES (10, 'Carlos', 'Estaban', '2335 Independence La.', 'Waunakee', '6085555487', 'owner1');
-
-INSERT INTO owners VALUES (11, 'Jose', 'Francisco', '110 W. UNLiberty St.', 'Iowa', '6085661023', 'josregmej');
-
-INSERT INTO owners VALUES (18, 'Enrique', 'Moreno', '111 W. Liberty St.', 'Madison', '6085533023', 'owner1');
-INSERT INTO owners VALUES (25, 'Pedro Pablo', 'Carvajal', '18 Severo Ochoa', 'Sevilla', '6085555444', 'owner1');
-INSERT INTO owners VALUES (20, 'Pedro', 'Jesus', 'Juan Ramon Jimenez', 'España', '633897505', 'owner1');
-INSERT INTO owners VALUES (22, 'Javier', 'Hidalgo Rodriguez','17 Reina Mercedes', 'España', '617736165', 'owner1');
-INSERT INTO owners VALUES (23, 'Alvaro', 'Sevilla Cabrera', '4 Castillo de Constantina', 'España', '608942375', 'owner1');
-
 
 INSERT INTO agenacts VALUES (1,'AgenciaPrueba','Sevilla', '2333333');
 INSERT INTO agenacts VALUES (2,'AgenciaPrueba2','Huelva', '21111111');
