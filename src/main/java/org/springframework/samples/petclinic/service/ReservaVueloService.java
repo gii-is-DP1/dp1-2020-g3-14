@@ -1,5 +1,7 @@
 package org.springframework.samples.petclinic.service;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.ReservaVuelo;
@@ -30,6 +32,11 @@ public class ReservaVueloService {
 	@Transactional(readOnly = true)
 	public ReservaVuelo findReservaVueloById(int id) throws DataAccessException {
 		return reservaVueloRepository.findById(id);
+	}
+	
+	@Transactional(readOnly = true)
+	public Collection<ReservaVuelo> buscarReservaVuelo(String username) throws DataAccessException {
+		return reservaVueloRepository.findReservaVueloByUserLike(username);                
 	}
 	
 //	@Transactional(readOnly = true)

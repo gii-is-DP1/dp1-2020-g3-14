@@ -1,11 +1,18 @@
 package org.springframework.samples.petclinic.web;
 
+import java.util.Collection;
 import java.util.Map; 
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.model.ReservaActividad;
+import org.springframework.samples.petclinic.model.ReservaHabitacion;
+import org.springframework.samples.petclinic.model.ReservaVuelo;
 import org.springframework.samples.petclinic.model.User;
+import org.springframework.samples.petclinic.service.ReservaActividadService;
+import org.springframework.samples.petclinic.service.ReservaHabitacionService;
+import org.springframework.samples.petclinic.service.ReservaVueloService;
 import org.springframework.samples.petclinic.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -27,11 +34,19 @@ public class UserController {
 
 	private static final String VIEWS_USER_CREATE_OR_UPDATE_FORM = "users/createOrUpdateUserForm";
 	private static final String VIEWS_USER_DELETE_EXITO= "users/exitoDelete";
+	private static final String VIEW_USER_HISTORIAL = "users/historial";
 	private final UserService userService;
+	private final ReservaActividadService reservaActividadService;
+	private final ReservaVueloService reservaVueloService;
+	private final ReservaHabitacionService reservaHabitacionService;
 	
 	@Autowired
-	public UserController(UserService userservice) {
+	public UserController(UserService userservice,ReservaActividadService reservaActividadService,ReservaHabitacionService reservaHabitacionService,ReservaVueloService reservaVueloService) {
 		this.userService = userservice;
+		this.reservaActividadService = reservaActividadService;
+		this.reservaVueloService = reservaVueloService;
+		this.reservaHabitacionService = reservaHabitacionService;
+		
 	}
 
 //	@InitBinder
@@ -94,5 +109,16 @@ public class UserController {
         User user= this.userService.findByUsername(username);
         this.userService.deleteUser(user);
         return VIEWS_USER_DELETE_EXITO;
+    }
+	
+	@RequestMapping(value = "/users/{username}/historial")
+    public String historialUser(@PathVariable("username") final String username, Map<String, Object> model) {
+        Collection<ReservaHabitacion> hh = this.reservaHabitacionService.buscarReservaHabitacion(username);
+    	model.put("selectionsHabitacion", hh);
+        Collection<ReservaActividad> ha = this.reservaActividadService.buscarReservaActividad(username);
+        model.put("selectionsActividad", ha);
+        Collection<ReservaVuelo> hv = this.reservaVueloService.buscarReservaVuelo(username);
+        model.put("selectionsVuelo", hv);
+        return VIEW_USER_HISTORIAL;
     }
 }
