@@ -22,4 +22,10 @@ public class HabitacionService {
 	public Habitacion findHabitacionById(int id) throws DataAccessException {
 		return habitacionRepository.findByNhabitacionLike(id);
 	}
+	
+	@Transactional
+	public void saveHabitacion(Habitacion habitacion) throws DataAccessException {
+		habitacion.setDisponible(true);
+		habitacionRepository.save(habitacion);                
+	}
 }

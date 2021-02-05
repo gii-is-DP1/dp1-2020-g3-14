@@ -89,11 +89,11 @@ public class HotelControllerTests {
 							.param("nombre", "Joe")
 							.param("direccion", "123 Prueba Street")
 							.param("estrellas", "4")
-							.param("provincia", "")
-							.param("telefono", "013167638"))
+							.param("provincia", "Sevilla")
+							.param("telefono", "01316763284325234"))
 				.andExpect(status().isOk())
 				.andExpect(model().attributeHasErrors("hotel"))
-				.andExpect(model().attributeHasFieldErrors("hotel","provincia"))
+				.andExpect(model().attributeHasFieldErrors("hotel","telefono"))
 				.andExpect(view().name("hoteles/createOrUpdateHotelForm"));
 	}
 
