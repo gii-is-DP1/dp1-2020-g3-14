@@ -82,8 +82,8 @@ public class AgenActControllerTests {
 							.param("sede", "Sevilla")
 							.param("telefono", "9854783922222"))
 				.andExpect(status().isOk())
-				.andExpect(model().attributeHasErrors("agenact"))
-				.andExpect(model().attributeHasFieldErrors("agenact","telefono"))
+				.andExpect(model().attributeHasErrors("agenAct"))
+				.andExpect(model().attributeHasFieldErrors("agenAct","telefono"))
 				.andExpect(view().name("agenacts/createOrUpdateAgenActForm"));
 	}
 	
@@ -118,7 +118,7 @@ public class AgenActControllerTests {
 								.param("nombre", "Agencia 3")
 								.param("sede", "Malaga")
 								.param("telefono", "222222222222222222222222"))
-					.andExpect(model().attributeHasErrors("agenact")).andExpect(status().isOk())
+					.andExpect(model().attributeHasErrors("agenAct")).andExpect(status().isOk())
 					.andExpect(view().name("agenacts/createOrUpdateAgenActForm"));
 		}
 	 @WithMockUser(value = "spring")
