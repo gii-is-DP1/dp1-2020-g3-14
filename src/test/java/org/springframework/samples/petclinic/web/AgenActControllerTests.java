@@ -74,17 +74,17 @@ public class AgenActControllerTests {
 	}
 
 	@WithMockUser(value = "spring")
-        @Test
-	void testProcessCreationFormHasErrors() throws Exception {
-		mockMvc.perform(post("/agenacts/new")
-							.with(csrf())
-							.param("nombre", "Agencia 1")
-							.param("sede", "Sevilla")
-							.param("telefono", "9854783922222"))
-				.andExpect(status().isOk())
-				.andExpect(model().attributeHasErrors("agenact"))
-				.andExpect(model().attributeHasFieldErrors("agenact","telefono"))
-				.andExpect(view().name("agenacts/createOrUpdateAgenActForm"));
+    @Test
+    void testProcessCreationFormHasErrors() throws Exception {
+    mockMvc.perform(post("/agenacts/new")
+                        .with(csrf())
+                        .param("nombre", "Agencia 1")
+                        .param("sede", "Sevilla")
+                        .param("telefono", "9854783922222"))
+            .andExpect(status().isOk())
+            .andExpect(model().attributeHasErrors("agenAct"))
+            .andExpect(model().attributeHasFieldErrors("agenAct","telefono"))
+            .andExpect(view().name("agenacts/createOrUpdateAgenActForm"));
 	}
 	
 	 @WithMockUser(value = "spring")
@@ -110,17 +110,19 @@ public class AgenActControllerTests {
 				.andExpect(view().name("redirect:/agenacts/{agenactId}"));
 	}
 	
-	 @WithMockUser(value = "spring")
-		@Test
-		void testProcessUpdateFormHasErrors() throws Exception {
-			mockMvc.perform(post("/agenacts/{agenactId}/edit", TEST_AGENACT_ID)
-								.with(csrf())
-								.param("nombre", "Agencia 3")
-								.param("sede", "Malaga")
-								.param("telefono", "222222222222222222222222"))
-					.andExpect(model().attributeHasErrors("agenact")).andExpect(status().isOk())
-					.andExpect(view().name("agenacts/createOrUpdateAgenActForm"));
-		}
+
+	@WithMockUser(value = "spring")
+    @Test
+    void testProcessUpdateFormHasErrors() throws Exception {
+        mockMvc.perform(post("/agenacts/{agenactId}/edit", TEST_AGENACT_ID)
+                            .with(csrf())
+                            .param("nombre", "Agencia 3")
+                            .param("sede", "Malaga")
+                            .param("telefono", "222222222222222222222222"))
+                .andExpect(model().attributeHasErrors("agenAct")).andExpect(status().isOk())
+                .andExpect(view().name("agenacts/createOrUpdateAgenActForm"));
+    }
+	
 	 @WithMockUser(value = "spring")
 	 	@Test
 	void testInitFindForm() throws Exception {
