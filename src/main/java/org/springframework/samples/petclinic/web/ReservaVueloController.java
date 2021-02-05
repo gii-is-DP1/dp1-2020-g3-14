@@ -51,7 +51,7 @@ public class ReservaVueloController {
 
 	@PostMapping(value = "reservaVuelo/new")
 	public String processCreationForm(@PathVariable("vueloId") int vueloId,
-			@Valid final ReservaVuelo reservaVuelo, final BindingResult result) {
+			@Valid ReservaVuelo reservaVuelo, BindingResult result) {
 		reservaVuelo.setFechaReserva(LocalDate.now());
 		Vuelo v = this.vueloService.findVueloById(vueloId);
 		System.out.println("============MENSAJES DE ERROR===============");
