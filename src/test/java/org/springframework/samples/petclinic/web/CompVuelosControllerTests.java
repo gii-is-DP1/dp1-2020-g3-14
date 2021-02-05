@@ -85,8 +85,8 @@ public class CompVuelosControllerTests {
 							.param("pais", "")
 							.param("sede", "Londres"))
 				.andExpect(status().isOk())
-				.andExpect(model().attributeHasErrors("compvuelos"))
-				.andExpect(model().attributeHasFieldErrors("compvuelos", "pais"))
+				.andExpect(model().attributeHasErrors("compVuelos"))
+				.andExpect(model().attributeHasFieldErrors("compVuelos", "pais"))
 				.andExpect(view().name("compvuelos/createOrUpdateCompVuelosForm"));
 	}
 	
@@ -128,8 +128,8 @@ public class CompVuelosControllerTests {
 								.param("pais", "")
 								.param("sede", "Londres"))
 			    .andExpect(status().isOk())
-			    .andExpect(model().attributeHasErrors("compvuelos"))
-			    .andExpect(model().attributeHasFieldErrors("compvuelos", "pais"))
+			    .andExpect(model().attributeHasErrors("compVuelos"))
+			    .andExpect(model().attributeHasFieldErrors("compVuelos", "pais"))
 			    .andExpect(view().name("compvuelos/createOrUpdateCompVuelosForm"));
 		}
 	   
