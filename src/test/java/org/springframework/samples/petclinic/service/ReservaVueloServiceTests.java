@@ -25,6 +25,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.samples.petclinic.model.ReservaVuelo;
 import org.springframework.samples.petclinic.model.User;
+import org.springframework.samples.petclinic.model.Vuelo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,10 +45,21 @@ class ReservaVueloServiceTests {
     	System.out.println("ReservaVuelo Usuario enrmorvaz no encontrada. Found= "+found);
     	System.out.println("==========================================================");
 
+    	Vuelo vuelo = new Vuelo();
+		vuelo.setBilletes(451);
+		vuelo.setDestino("Cadiz");
+		vuelo.setOrigen("Sevilla");
+		vuelo.setPrecio(12);
+		LocalDate fechaIda=LocalDate.of(2021, 10, 26);
+		vuelo.setFechaIda(fechaIda);
+		LocalDate fechaVuelta=LocalDate.of(2021, 11, 4);
+		vuelo.setFechaIda(fechaVuelta);
+		vuelo.setBilletes(3);
+    	
     	ReservaVuelo reservaVuelo = new ReservaVuelo();
     	reservaVuelo.setFechaReserva(LocalDate.now());
-    	reservaVuelo.setIda(LocalDate.of(2021, 3, 3));
-    	reservaVuelo.setVuelta(LocalDate.of(2021, 3, 22));
+    	reservaVuelo.setIda(vuelo.getFechaIda());
+    	reservaVuelo.setVuelta(vuelo.getFechaVuelta());
     	reservaVuelo.setNumeroTarjeta("1111111111111111");
     	reservaVuelo.setCvc("123");
     	reservaVuelo.setPrecioFinal(20);
@@ -71,10 +83,21 @@ class ReservaVueloServiceTests {
     @Transactional
     public void shouldInsertReservaVueloVacio() {
     	
+    	Vuelo vuelo = new Vuelo();
+		vuelo.setBilletes(451);
+		vuelo.setDestino("Cadiz");
+		vuelo.setOrigen("Sevilla");
+		vuelo.setPrecio(12);
+		LocalDate fechaIda=LocalDate.of(2021, 10, 26);
+		vuelo.setFechaIda(fechaIda);
+		LocalDate fechaVuelta=LocalDate.of(2021, 11, 4);
+		vuelo.setFechaIda(fechaVuelta);
+		vuelo.setBilletes(3);
+    	
     	ReservaVuelo reservaVuelo = new ReservaVuelo();
     	reservaVuelo.setFechaReserva(LocalDate.now());
-    	reservaVuelo.setIda(LocalDate.of(2021, 3, 3));
-    	reservaVuelo.setVuelta(LocalDate.of(2021, 3, 22));
+    	reservaVuelo.setIda(vuelo.getFechaIda());
+    	reservaVuelo.setVuelta(vuelo.getFechaVuelta());
     	reservaVuelo.setNumeroTarjeta("");
     	reservaVuelo.setCvc("");
     	reservaVuelo.setPrecioFinal(20);
@@ -88,10 +111,21 @@ class ReservaVueloServiceTests {
 
 	@Test
 	void shouldFindReservaVueloByName() {
+		Vuelo vuelo = new Vuelo();
+		vuelo.setBilletes(451);
+		vuelo.setDestino("Cadiz");
+		vuelo.setOrigen("Sevilla");
+		vuelo.setPrecio(12);
+		LocalDate fechaIda=LocalDate.of(2021, 10, 26);
+		vuelo.setFechaIda(fechaIda);
+		LocalDate fechaVuelta=LocalDate.of(2021, 11, 4);
+		vuelo.setFechaIda(fechaVuelta);
+		vuelo.setBilletes(3);
+		
 		ReservaVuelo reservaVuelo = new ReservaVuelo();
     	reservaVuelo.setFechaReserva(LocalDate.now());
-    	reservaVuelo.setIda(LocalDate.of(2021, 3, 3));
-    	reservaVuelo.setVuelta(LocalDate.of(2021, 3, 22));
+    	reservaVuelo.setIda(vuelo.getFechaIda());
+    	reservaVuelo.setVuelta(vuelo.getFechaVuelta());
     	reservaVuelo.setNumeroTarjeta("1111111111111111");
     	reservaVuelo.setCvc("123");
     	reservaVuelo.setPrecioFinal(20);
