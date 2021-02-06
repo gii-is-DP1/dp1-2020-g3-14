@@ -43,10 +43,7 @@ public class User {
 	@NotEmpty
 	@Pattern(regexp = "^[0-9]{8,8}[A-Za-z]$")
 	private String dni;
-	
-	@Column(name = "codigo")
-	private boolean codigo;
-	
+		
 	boolean enabled;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
@@ -163,14 +160,6 @@ public class User {
 		this.dni = dni;
 	}
 	
-	public boolean getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(boolean codigo) {
-		this.codigo = codigo;
-	}
-
 	public boolean isEnabled() {
 		return enabled;
 	}

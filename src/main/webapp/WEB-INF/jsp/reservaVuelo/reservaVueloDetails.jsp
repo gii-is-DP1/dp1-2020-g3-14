@@ -26,7 +26,12 @@
         <c:if test="${reservaVuelo.precioFinal!=reservaVuelo.vuelo.precio*reservaVuelo.vuelo.billetes}">
          <tr>
             <th>Descuento</th>
+            <c:if test="${reservaVuelo.codigo eq 'BIENVENIDODP'}">
             <td><c:out value="${reservaVuelo.vuelo.precio*reservaVuelo.vuelo.billetes*0.05}"/> euros</td>
+            </c:if>
+             <c:if test="${reservaVuelo.codigo eq 'DESCUENTO10'}">
+              <td><c:out value="${reservaVuelo.vuelo.precio*reservaVuelo.vuelo.billetes*0.10}"/> euros</td>
+             </c:if>
         </tr>
         </c:if>     
         <tr>

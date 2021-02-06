@@ -1,26 +1,26 @@
 -- One admin user, named admin1 with passwor 4dm1n and authority admin
-INSERT INTO users(username,password,enabled,codigo) VALUES ('admin1','4dm1n', TRUE,FALSE);
-INSERT INTO users(username,password,enabled,codigo) VALUES ('enrmorvaz','administrador',TRUE,TRUE);
+INSERT INTO users(username,password,enabled) VALUES ('admin1','4dm1n', TRUE);
+INSERT INTO users(username,password,enabled) VALUES ('enrmorvaz','administrador',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (1,'admin1','admin');
 INSERT INTO authorities(id,username,authority) VALUES (8,'enrmorvaz','owner');
 
 -- One owner user, named owner1 with passwor 0wn3r
-INSERT INTO users(username,password,enabled,codigo) VALUES ('owner1','0wn3r',TRUE,TRUE);
+INSERT INTO users(username,password,enabled) VALUES ('owner1','0wn3r',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (2,'owner1','owner');
 -- One owner josregmej, named Jose with passwor usuario
-INSERT INTO users(username,password,enabled,codigo) VALUES ('josregmej','usuario',TRUE,TRUE);
+INSERT INTO users(username,password,enabled) VALUES ('josregmej','usuario',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (4,'josregmej','owner');
 -- One owner  Yiyons, named Alvaro with passwor usuario1
-INSERT INTO users(username,password,enabled,codigo) VALUES ('Yiyons','usuario1',TRUE,FALSE);
+INSERT INTO users(username,password,enabled) VALUES ('Yiyons','usuario1',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (35,'Yiyons','owner');
 
-INSERT INTO users(username,password,enabled,codigo) VALUES ('pedcarmor','adm1n',TRUE,TRUE);
+INSERT INTO users(username,password,enabled) VALUES ('pedcarmor','adm1n',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (10,'pedcarmor','owner');
 
-INSERT INTO users(username,password,enabled,codigo) VALUES ('pedmuncif','administrador',TRUE,TRUE);
+INSERT INTO users(username,password,enabled) VALUES ('pedmuncif','administrador',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (20,'pedmuncif','owner');
 
-INSERT INTO users(username,password,telefono,dni,enabled,codigo) VALUES ('javhidrod1','A6min','617736165','31023797V',TRUE,TRUE);
+INSERT INTO users(username,password,telefono,dni,enabled) VALUES ('javhidrod1','A6min','617736165','31023797V',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (17,'javhidrod1','owner');
 
 INSERT INTO agenacts VALUES (1,'AgenciaPrueba','Sevilla', '2333333');

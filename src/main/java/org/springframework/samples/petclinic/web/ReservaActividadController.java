@@ -64,12 +64,8 @@ public class ReservaActividadController {
 			Set<User> ls = a.getUsers();
 			ls.add(user);
 			a.setUsers(ls);
-			if(reservaActividad.getCodigo()=="BIENVENIDODP") {
-				reservaActividad.setPrecioFinal(Double.valueOf(a.getPrecio())*0.95);
-				user.setCodigo(false);
-			}else {
-				reservaActividad.setPrecioFinal(Double.valueOf(a.getPrecio()));
-			}
+			reservaActividad.setPrecioFinal(Double.valueOf(a.getPrecio()));
+			
 			reservaActividad.setActivdad(a);
 			reservaActividad.setUser(user);
 			this.reservaActividadService.saveReservaActividad(reservaActividad);

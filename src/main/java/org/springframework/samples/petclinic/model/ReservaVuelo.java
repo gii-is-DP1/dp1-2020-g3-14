@@ -43,7 +43,7 @@ public class ReservaVuelo extends BaseEntity{
 		private Double precioFinal;
 		
 		@Column(name="codigo")
-		@Pattern(regexp="^[B][I][E][N][V][E][N][I][D][O][D][P]|^$")
+		@Pattern(regexp="^[B][I][E][N][V][E][N][I][D][O][D][P]|[D][E][S][C][U][E][N][T][O][1][0]|^$")
 		private String codigo;
 		
 		@ManyToOne

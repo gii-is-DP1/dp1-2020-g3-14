@@ -68,10 +68,10 @@ public class ReservaVueloController {
 			ls.add(user);
 			v.setUsers(ls);
 			v.setNumeroPlazas(v.getNumeroPlazas()-v.getBilletes());
-			boolean ca = user.getCodigo();
-			if(reservaVuelo.getCodigo().equals("BIENVENIDODP") && user.getCodigo()) {
+			if(reservaVuelo.getCodigo().equals("BIENVENIDODP")) {
 				reservaVuelo.setPrecioFinal(Double.valueOf(v.getPrecio()*v.getBilletes())*0.95);
-				ca = false;
+			}else if(reservaVuelo.getCodigo().equals("DESCUENTO10")) {
+				reservaVuelo.setPrecioFinal(Double.valueOf(v.getPrecio()*v.getBilletes())*0.90);
 			}else {
 				reservaVuelo.setPrecioFinal(Double.valueOf(v.getPrecio()*v.getBilletes()));
 			}
@@ -79,10 +79,9 @@ public class ReservaVueloController {
 			reservaVuelo.setIda(v.getFechaIda());
 			reservaVuelo.setVuelta(v.getFechaVuelta());
 			reservaVuelo.setVuelo(v);
-			user.setCodigo(ca);
 			reservaVuelo.setUser(user);
 			this.reservaVueloService.saveReservaVuelo(reservaVuelo);
-			this.userService.saveUser(user);
+			
 			return "redirect:"+reservaVuelo.getId();
 		}
 	}
