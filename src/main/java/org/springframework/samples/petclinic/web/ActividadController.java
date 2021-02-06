@@ -43,8 +43,9 @@ public class ActividadController {
 	}
 	
 	@PostMapping(value = "/actividades/new")
-	public String processCreationForm(@Valid Actividad actividad, BindingResult result) {		
+	public String processCreationForm(@Valid Actividad actividad, BindingResult result,Map<String, Object> model) {		
 		if (result.hasErrors()) {
+			model.put("actividades", actividad);
 			return VIEWS_ACTIVIDAD_CREATE_OR_UPDATE_FORM;
 		}
 		else {

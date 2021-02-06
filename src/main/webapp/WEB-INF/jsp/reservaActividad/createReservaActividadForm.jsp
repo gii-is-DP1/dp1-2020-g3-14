@@ -11,7 +11,7 @@
     <h2>
         Reservar Activdad
     </h2>
-    <form:form modelAttribute="reservaActividad" class="form-horizontal" id="add-reservaActividad-form">
+    <form:form modelAttribute="reservaactividad" class="form-horizontal" id="add-reservaActividad-form">
         <div class="form-group has-feedback">
             <petclinic:inputField label="Número de tarjeta" name="numeroTarjeta"/>
             <petclinic:inputField label="CVC" name="cvc"/>
