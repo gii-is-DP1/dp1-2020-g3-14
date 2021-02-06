@@ -33,7 +33,7 @@
 					<span>Hotel+Actividad</span>
 				</petclinic:menuItem>
 
-				<sec:authorize access="hasAuthority('owner')">
+				<sec:authorize access="hasAuthority('propietario')">
 				<petclinic:menuItem active="${name eq 'inscripciones'}" url="/inscripciones/new"
 					title="inscripciones">
 					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
