@@ -71,8 +71,8 @@ public class ComentarioHotelControllerTests {
 	@WithMockUser(value = "spring")
         @Test
 	void testInitCreationForm() throws Exception {
-		mockMvc.perform(get("/hoteles/{hotelId}/comentarios/new",TEST_HOTEL_ID)).andExpect(status().isOk()).andExpect(model().attributeExists("comentario"))
-				.andExpect(view().name("hoteles/createComentarioForm")).andExpect(model().attributeExists("comentario"));
+		mockMvc.perform(get("/hoteles/{hotelId}/comentarios/new",TEST_HOTEL_ID)).andExpect(status().isOk()).andExpect(model().attributeExists("comentarioHotel"))
+				.andExpect(view().name("hoteles/createComentarioForm")).andExpect(model().attributeExists("comentarioHotel"));
 	}
 
 	@WithMockUser(value = "spring")
