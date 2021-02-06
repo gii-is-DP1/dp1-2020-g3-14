@@ -50,6 +50,6 @@
     <br/>
     <br/>
     <br/>
-	<a class="btn btn-default" href='<spring:url value="/vuelos" htmlEscape="true"/>'>Volver a los Vuelo</a>
+	<a class="btn btn-default" href='<spring:url value="/vuelos" htmlEscape="true"/>'>Volver a los Vuelos</a>
 
 </petclinic:layout>

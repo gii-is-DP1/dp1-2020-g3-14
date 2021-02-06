@@ -89,17 +89,17 @@ public class HotelControllerTests {
 							.param("nombre", "Joe")
 							.param("direccion", "123 Prueba Street")
 							.param("estrellas", "4")
-							.param("provincia", "")
-							.param("telefono", "013167638"))
+							.param("provincia", "Sevilla")
+							.param("telefono", "01316763284325234"))
 				.andExpect(status().isOk())
 				.andExpect(model().attributeHasErrors("hotel"))
-				.andExpect(model().attributeHasFieldErrors("hotel","provincia"))
+				.andExpect(model().attributeHasFieldErrors("hotel","telefono"))
 				.andExpect(view().name("hoteles/createOrUpdateHotelForm"));
 	}
 
 	  @WithMockUser(value = "spring")
 		@Test
-		void testInitUpdateOwnerForm() throws Exception {
+		void testInitUpdateHotelForm() throws Exception {
 			mockMvc.perform(get("/hoteles/{hotelId}/edit", TEST_HOTEL_ID)).andExpect(status().isOk())
 			.andExpect(model().attribute("hotel", hasProperty("nombre", is("Hotelazo"))))
 			.andExpect(model().attribute("hotel", hasProperty("direccion", is("Calle normal"))))
@@ -168,7 +168,7 @@ public class HotelControllerTests {
 	 
      @WithMockUser(value = "spring")
 	@Test
-	void testShowOwner() throws Exception {
+	void testShowHotel() throws Exception {
 		mockMvc.perform(get("/hoteles/{hotelId}/", TEST_HOTEL_ID)).andExpect(status().isOk())
 				.andExpect(model().attribute("hotel", hasProperty("nombre", is("Hotelazo"))))
 				.andExpect(model().attribute("hotel", hasProperty("direccion", is("Calle normal"))))

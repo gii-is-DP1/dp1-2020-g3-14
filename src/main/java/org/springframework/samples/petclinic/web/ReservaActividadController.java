@@ -47,12 +47,14 @@ public class ReservaActividadController {
 
 	@PostMapping(value = "reservaActividad/new")
 	public String processCreationForm(@PathVariable("actividadId") int actividadId,
+
 			@Valid ReservaActividad reservaActividad, BindingResult result,Map<String, Object> model) {
 		reservaActividad.setFechaReserva(LocalDate.now());
 		Actividad a = this.actividadService.findActividadById(actividadId);
 		reservaActividad.setEntrada(a.getFecha());
 		if (result.hasErrors()) {
 			model.put("reservaactividad", reservaActividad);
+
 			return VIEWS_RESERVAACTIVIDAD_CREATE_FORM;
 		} else {
 			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

@@ -86,6 +86,9 @@
 	<sec:authorize access="hasAuthority('admin')">
 		<a class="btn btn-default" href='<spring:url value="/hoteles/${hotel.id}/delete" htmlEscape="true"/>'>Baja de hotel</a>
 	</sec:authorize>
+	<sec:authorize access="hasAuthority('admin')">
+		<a class="btn btn-default" href='<spring:url value="/hoteles/${hotel.id}/habitaciones/new" htmlEscape="true"/>'>Añadir habitacion</a>
+	</sec:authorize>
   
     <br/>
     <br/>

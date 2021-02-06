@@ -42,15 +42,16 @@ public class AgenActController {
 	}
 	
 	@PostMapping(value = "/agenacts/new")
-	public String processCreationForm(@Valid AgenAct agenAct, BindingResult result) {		
-		if (result.hasErrors()) {
-			return VIEWS_AGENACTS_CREATE_OR_UPDATE_FORM;
-		}
-		else {
-			this.agenActService.saveAgenAct(agenAct);
+    public String processCreationForm(@Valid AgenAct agenAct, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            model.put("agenact",agenAct);
+            return VIEWS_AGENACTS_CREATE_OR_UPDATE_FORM;
+        }
+        else {
+            this.agenActService.saveAgenAct(agenAct);
             return "redirect:/agenacts/"+agenAct.getId();
-		}
-	}
+        }
+    }
 	
 	@GetMapping(value = "/agenacts/{agenactId}/edit")
 	public String initUpdateForm(@PathVariable("agenactId") int agenActId, ModelMap model) {
