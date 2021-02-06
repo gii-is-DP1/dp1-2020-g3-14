@@ -67,7 +67,8 @@ public class ReservaActividadController {
 			Set<User> ls = a.getUsers();
 			ls.add(user);
 			a.setUsers(ls);
-			reservaActividad.setPrecioFinal(Integer.valueOf(a.getPrecio()));
+			reservaActividad.setPrecioFinal(Double.valueOf(a.getPrecio()));
+			
 			reservaActividad.setActivdad(a);
 			reservaActividad.setUser(user);
 			this.reservaActividadService.saveReservaActividad(reservaActividad);

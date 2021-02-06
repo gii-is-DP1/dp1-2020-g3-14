@@ -54,6 +54,7 @@ public class ReservaVueloController {
 			@Valid ReservaVuelo reservaVuelo, BindingResult result, Map<String, Object> model) {
 		reservaVuelo.setFechaReserva(LocalDate.now());
 		Vuelo v = this.vueloService.findVueloById(vueloId);
+
 		System.out.println("============MENSAJES DE ERROR===============");
 		System.out.println(result.getAllErrors());
 		if (result.hasErrors()) {	
@@ -71,12 +72,20 @@ public class ReservaVueloController {
 			ls.add(user);
 			v.setUsers(ls);
 			v.setNumeroPlazas(v.getNumeroPlazas()-v.getBilletes());
-			reservaVuelo.setPrecioFinal(Integer.valueOf(v.getPrecio()*v.getBilletes()));
+			if(reservaVuelo.getCodigo().equals("BIENVENIDODP")) {
+				reservaVuelo.setPrecioFinal(Double.valueOf(v.getPrecio()*v.getBilletes())*0.95);
+			}else if(reservaVuelo.getCodigo().equals("DESCUENTO10")) {
+				reservaVuelo.setPrecioFinal(Double.valueOf(v.getPrecio()*v.getBilletes())*0.90);
+			}else {
+				reservaVuelo.setPrecioFinal(Double.valueOf(v.getPrecio()*v.getBilletes()));
+			}
+			
 			reservaVuelo.setIda(v.getFechaIda());
 			reservaVuelo.setVuelta(v.getFechaVuelta());
 			reservaVuelo.setVuelo(v);
 			reservaVuelo.setUser(user);
 			this.reservaVueloService.saveReservaVuelo(reservaVuelo);
+			
 			return "redirect:"+reservaVuelo.getId();
 		}
 	}
