@@ -51,12 +51,13 @@ public class ReservaVueloController {
 
 	@PostMapping(value = "reservaVuelo/new")
 	public String processCreationForm(@PathVariable("vueloId") int vueloId,
-			@Valid ReservaVuelo reservaVuelo, BindingResult result) {
+			@Valid ReservaVuelo reservaVuelo, BindingResult result, Map<String, Object> model) {
 		reservaVuelo.setFechaReserva(LocalDate.now());
 		Vuelo v = this.vueloService.findVueloById(vueloId);
 		System.out.println("============MENSAJES DE ERROR===============");
 		System.out.println(result.getAllErrors());
-		if (result.hasErrors()) {			
+		if (result.hasErrors()) {	
+			model.put("reservaVuelo", reservaVuelo);
 			return VIEWS_RESERVAVUELO_CREATE_FORM;
 		} else {
 			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

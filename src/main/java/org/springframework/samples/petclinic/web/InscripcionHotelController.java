@@ -39,8 +39,9 @@ public class InscripcionHotelController {
 	}
 	
 	@PostMapping(value = "/inscripciones/new")
-	public String processCreationForm(@Valid InscripcionHotel inscripcionHotel, BindingResult result) {		
+	public String processCreationForm(@Valid InscripcionHotel inscripcionHotel, BindingResult result, Map<String, Object> model) {		
 		if (result.hasErrors()) {
+			model.put("inscripcionHotel", inscripcionHotel);
 			return VIEWS_INSCRIPCIONES_CREATE_OR_UPDATE_FORM;
 		}
 		else {

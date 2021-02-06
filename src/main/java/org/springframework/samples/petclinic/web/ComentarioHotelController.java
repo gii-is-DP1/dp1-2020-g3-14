@@ -48,8 +48,10 @@ public class ComentarioHotelController {
 	}
 	
 	@PostMapping(value = "hoteles/{hotelId}/comentarios/new")
-	public String processCreationForm(@PathVariable("hotelId") int hotelId, @Valid ComentarioHotel comentario, BindingResult result) {		
+	public String processCreationForm(@PathVariable("hotelId") int hotelId, @Valid ComentarioHotel comentario, BindingResult result,
+			Map<String, Object> model) {		
 		if (result.hasErrors()) {
+			model.put("comentarioHotel", comentario);
 			return VIEWS_COMENTARIO_FORM;
 		}
 		else {
