@@ -9,86 +9,95 @@
 
 <nav class="navbar navbar-default" role="navigation">
 <div class="container">
-        
+       <div class="navbar-header">
+            <a class="navbar-brand" href="<spring:url value="/" htmlEscape="true" />"><span></span></a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+                <span class="sr-only"><os-p>Toggle navigation</os-p></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+
+            </button>
+        </div>
         <div class="navbar-collapse collapse" id="main-navbar">
             <ul class="nav navbar-nav navbar-right">
 	
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+							<strong>BUSCADOR</strong> <span
+							class="glyphicon glyphicon-chevron-down"></span>
+					</a>
+						<ul class="dropdown-menu">
+                            <li> 
+								<div class="navbar-login navbar-login-session">
+									<div class="row">
+										<div class="col-lg-12">
+												<a href="/actividades/find" class="btn btn-primary btn-block">Actividades</a>
+												<a href="/vuelos/find"class="btn btn-primary btn-block">Vuelos</a>
+												<a href="/hoteles/find"class="btn btn-primary btn-block">Hoteles</a>
+												<a href="/search/find"class="btn btn-primary btn-block">Hotel + Vuelo</a>
+												<a href="/hotelActividad/find"class="btn btn-primary btn-block">Hotel + Actividad</a>
+										</div>
+									</div>
+								</div>
+							</li>
 
-
-				<petclinic:menuItem active="${name eq 'home'}" url="/"
-					title="home page">
-					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-					<span>Home</span>
-				</petclinic:menuItem>
-				
-				<petclinic:menuItem active="${name eq 'search'}" url="/search/find"
-					title="search">
-					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					<span>Search</span>
-				</petclinic:menuItem>
-				
-				<petclinic:menuItem active="${name eq 'Hotel+Actividad'}" url="/hotelActividad/find"
-					title="search">
-					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					<span>Hotel+Actividad</span>
-				</petclinic:menuItem>
+						</ul></li>
 
 				<sec:authorize access="hasAuthority('propietario')">
 				<petclinic:menuItem active="${name eq 'inscripciones'}" url="/inscripciones/new"
 					title="inscripciones">
-					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-					<span>Inscripciones</span>
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					<span>Inscripciones de hotel</span>
 				</petclinic:menuItem>
 				</sec:authorize>
 				
 				<sec:authorize access="hasAuthority('admin')">
 				<petclinic:menuItem active="${name eq 'inscripciones'}" url="/inscripciones"
 					title="inscripciones">
-					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-					<span>Inscripciones</span>
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					<span>Inscripciones de hotel</span>
 				</petclinic:menuItem>
 				</sec:authorize>
 				
-				
-
-
+				<sec:authorize access="hasAuthority('admin')">
 				<petclinic:menuItem active="${name eq 'compvuelos'}" url="/compvuelos/find"
 					title="find compvuelos">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					<span>Compa�ia de Vuelos</span>
+					<span>Compañia de Vuelos</span>
 				</petclinic:menuItem>
-				
-				<petclinic:menuItem active="${name eq 'hoteles'}" url="/hoteles/find"
-					title="find hoteles">
-					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					<span>Hoteles</span>
-				</petclinic:menuItem>
-				
-				
+				</sec:authorize>
+
+				<sec:authorize access="hasAuthority('admin')">
 				<petclinic:menuItem active="${name eq 'agenacts'}" url="/agenacts/find"
 					title="find agenacts">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 					<span>Agencias de Eventos</span>
 				</petclinic:menuItem>
-	
+				</sec:authorize>
 				
-				<petclinic:menuItem active="${name eq 'vuelos'}" url="/vuelos/find"
-					title="vuelos">
-					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					<span>Vuelos</span>
-				</petclinic:menuItem>
-				<petclinic:menuItem active="${name eq 'actividades'}" url="/actividades/find"
-					title="actividades">
-					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					<span>Actividades</span>
-				</petclinic:menuItem>
-			</ul>
-			
-
-			<ul class="nav navbar-nav navbar-right">
 				<sec:authorize access="!isAuthenticated()">
-					<li><a href="<c:url value="/login" />">Login</a></li>
-					<li><a href="<c:url value="/users/new" />">Register</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span>
+							 <span
+							class="glyphicon glyphicon-chevron-down"></span>
+					</a>
+						<ul class="dropdown-menu">
+							<li class="divider"></li>
+ 							
+                            <li> 
+								<div class="navbar-login navbar-login-session">
+									<div class="row">
+										<div class="col-lg-12">
+												<a href="/login" class="btn btn-primary btn-block">Iniciar sesión</a>
+												<a href="/users/new" class="btn btn-primary btn-block">Registrarse</a>
+										</div>
+									</div>
+								</div>
+							</li>
+
+						</ul></li>
+					
+					
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -136,13 +145,7 @@
 						</ul></li>
 				</sec:authorize>
 			</ul>
-			<div class="navbar-header">
-            <a class="navbar-brand" href="<spring:url value="/" htmlEscape="true" />"><span></span></a>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
-                <span class="sr-only"><os-p>Toggle navigation</os-p></span>
-                
-            </button>
-        </div>
+			
 		</div>
 	</div>
 </nav>

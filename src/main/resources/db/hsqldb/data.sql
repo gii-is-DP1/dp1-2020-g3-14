@@ -85,3 +85,4 @@ INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,nume
 INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,numero_plazas,compvuelo_id) VALUES (3, 3, 'Cadiz', '2021-12-19', '2021-12-26','Cordoba', 120,32,2);
 INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,numero_plazas,compvuelo_id) VALUES (4, 2, 'Jaen', '2021-12-18', '2021-12-23', 'Sevilla', 70,2,3);
 INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,numero_plazas,compvuelo_id) VALUES (5, 1, 'Malaga', '2021-12-17', '2021-12-24', 'Sevilla', 69,3,3);
+

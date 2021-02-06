@@ -44,19 +44,19 @@ public class ComentarioActividadController {
 	
 	@GetMapping(value = "actividades/{actividadId}/comentarios/new")
 	public String initCreationForm(Map<String, Object> model) {
-		ComentarioActividad comentario = new ComentarioActividad();
-		model.put("comentario", comentario);
+		ComentarioActividad comentarioActividad = new ComentarioActividad();
+		model.put("comentario", comentarioActividad);
 		return VIEWS_COMENTARIO_FORM;
 	}
 	
 	@PostMapping(value = "actividades/{actividadId}/comentarios/new")
-	public String processCreationForm(@PathVariable("actividadId") int actividadId, @Valid ComentarioActividad comentario, BindingResult result, ModelMap model) {		
+	public String processCreationForm(@PathVariable("actividadId") int actividadId, @Valid ComentarioActividad comentarioActividad, BindingResult result, Map<String, Object> model) {		
 		if (result.hasErrors()) {
-			model.put("comentario",comentario);
+			model.put("comentario",comentarioActividad);
 			return VIEWS_COMENTARIO_FORM;
 		}
 		else {
-			this.comentarioService.savec(actividadId, comentario);
+			this.comentarioService.savec(actividadId, comentarioActividad);
             return "redirect:/actividades/"+actividadId;
 		}
 	}

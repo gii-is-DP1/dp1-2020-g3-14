@@ -43,8 +43,9 @@ public class VueloController {
 	}
 	
 	@PostMapping(value = "/vuelos/new")
-	public String processCreationForm(@Valid Vuelo vuelo, BindingResult result) {		
+	public String processCreationForm(@Valid Vuelo vuelo, BindingResult result, Map<String, Object> model) {		
 		if (result.hasErrors()) {
+			model.put("vuelos", vuelo);
 			return VIEWS_VUELOS_CREATE_OR_UPDATE_FORM;
 		}
 		else {
