@@ -47,7 +47,7 @@ public class ReservaActividadController {
 
 	@PostMapping(value = "reservaActividad/new")
 	public String processCreationForm(@PathVariable("actividadId") int actividadId,
-			@Valid final ReservaActividad reservaActividad, final BindingResult result) {
+			@Valid ReservaActividad reservaActividad, BindingResult result) {
 		reservaActividad.setFechaReserva(LocalDate.now());
 		Actividad a = this.actividadService.findActividadById(actividadId);
 		reservaActividad.setEntrada(a.getFecha());

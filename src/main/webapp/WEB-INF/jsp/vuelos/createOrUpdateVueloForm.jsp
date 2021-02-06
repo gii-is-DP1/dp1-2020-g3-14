@@ -29,6 +29,7 @@
         	<petclinic:inputField label="Destino" name="destino"/>
         	<petclinic:inputField label="Fecha de ida" name="fechaIda"/>
         	<petclinic:inputField label="Fecha de vuelta" name="fechaVuelta"/>
+        	<petclinic:inputField label="Numero de plazas" name="numeroPlazas"/>
             <petclinic:inputField label="Origen" name="origen"/>
             <petclinic:inputField label="Precio" name="precio"/>
         </div>

@@ -47,7 +47,7 @@ public class ReservaHabitacionController {
 
 	@PostMapping(value = "reservaHabitacion/new")
 	public String processCreationForm(@PathVariable("nhabitacion") int nhabitacion,
-			@Valid final ReservaHabitacion reservaHabitacion, final BindingResult result) {
+			@Valid ReservaHabitacion reservaHabitacion, BindingResult result) {
 		reservaHabitacion.setFechaReserva(LocalDate.now());
 		if (result.hasErrors()) {
 			return VIEWS_RESERVAHABITACION_CREATE_FORM;

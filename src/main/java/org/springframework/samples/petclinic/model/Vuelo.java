@@ -47,6 +47,9 @@ public class Vuelo extends BaseEntity {
 	@Column(name = "precio")
 	private Integer precio;
 	
+	@Column(name = "numeroPlazas")
+	private Integer numeroPlazas;
+	
 	@ManyToOne
 	@JoinColumn(name = "compvuelo_id")
 	private CompVuelos compVuelo;
@@ -125,6 +128,15 @@ public class Vuelo extends BaseEntity {
 	public void setPrecio(Integer precio) {
 		this.precio = precio;
 	}
+	
+	public Integer getNumeroPlazas() {
+		return numeroPlazas;
+	}
+
+	public void setNumeroPlazas(Integer numeroPlazas) {
+		this.numeroPlazas = numeroPlazas;
+	}
+	
 	
 	public Set<User> getUsersInternal() {
 		if (this.users == null) {
