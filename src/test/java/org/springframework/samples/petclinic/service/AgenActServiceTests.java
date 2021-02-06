@@ -56,7 +56,7 @@ class AgenActServiceTests {
     	actividad.setDescripcion("Muy buena ruta para realizar con los amigos y muy facil");
     	actividad.setDireccion("Sierra de Grazalema");
     	actividad.setValoracion(4);
-    	actividad.setPrecio("2");
+    	actividad.setPrecio(2);
     	Set<Actividad> actividades = new HashSet<Actividad>();	
     	actividades.add(actividad);
     	agenAct.setActividades(actividades);
@@ -94,7 +94,7 @@ class AgenActServiceTests {
     	actividad.setDescripcion("Muy buena ruta para realizar con los amigos y muy facil");
     	actividad.setDireccion("Sierra de Grazalema");
     	actividad.setValoracion(4);
-    	actividad.setPrecio("2");
+    	actividad.setPrecio(2);
     	Set<Actividad> actividades = new HashSet<Actividad>();	
     	actividades.add(actividad);
     	agenAct.setActividades(actividades);         

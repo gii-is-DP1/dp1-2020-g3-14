@@ -103,6 +103,34 @@ public class ActividadController {
 		}
 	}
 	
+	@GetMapping(value = "/actividades/findActividadesPrecio")
+	public String initFindFormPrecio(Map<String, Object> model) {
+		model.put("actividad", new Actividad()); 
+		return "actividades/findActividadesPrecio";
+	}
+	
+	@GetMapping(value = "/actividades/precio")
+	public String processFindFormPrecio(Actividad actividad, BindingResult result, Map<String, Object> model) {
+
+		if (actividad.getPrecio() == null) {
+			actividad.setPrecio(999999); // empty string signifies broadest possible search
+		}
+
+		Collection<Actividad> results = this.actividadService.findByPrecio(actividad.getPrecio());
+		if (results.isEmpty()) {
+			result.rejectValue("precio", "notFound", "not found");
+			return "actividades/findActividadesPrecio";
+		}
+		else if (results.size() == 1) {
+			actividad = results.iterator().next();
+			return "redirect:/actividades/" + actividad.getId();
+		}
+		else {
+			model.put("selections", results);
+			return "actividades/actividadesListPrecio";
+		}
+	}
+	
 	@GetMapping("/actividades/{actividadId}")
 	public ModelAndView showActividad(@PathVariable("actividadId") int actividadId) {
 		ModelAndView mav = new ModelAndView("actividades/actividadDetails");

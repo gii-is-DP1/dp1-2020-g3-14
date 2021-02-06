@@ -60,7 +60,7 @@ public class ComentarioActividadControllerTests {
 		actividad.setDescripcion("Buena ruta de escala con amigos");
 		actividad.setValoracion(4);
 		actividad.setDireccion("Sierra de Grazalema");
-		actividad.setPrecio("2");
+		actividad.setPrecio(2);
 		
 		comentario=new ComentarioActividad();
 		comentario.setActividad(actividad);;

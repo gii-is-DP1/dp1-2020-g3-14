@@ -95,7 +95,7 @@ public class ReservaActividadControllerTests {
 	@WithMockUser(value = "spring")
         @Test
 	void testProcessCreationFormHasErrors() throws Exception {
-		mockMvc.perform(post("/actividades/{actividadId}/reservaActividad/new",1)
+		mockMvc.perform(post("/actividades/{actividadId}/reservaActividad/new",TEST_RESERVAACTIVIDAD_ID)
 							.with(csrf())
 							.param("fechaReserva", "2021/10/24")
 							.param("entrada", "2021/10/26")

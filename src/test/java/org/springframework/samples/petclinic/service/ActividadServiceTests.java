@@ -47,7 +47,7 @@ class ActividadServiceTests {
     	actividad.setDescripcion("Muy buena ruta para realizar con los amigos y muy facil");
     	actividad.setDireccion("Sierra de Grazalema");
     	actividad.setValoracion(4);
-    	actividad.setPrecio("2");
+    	actividad.setPrecio(2);
     		  
     	this.actividadService.saveActividad(actividad);
     	System.out.println("assertThat"+actividad.getId());
@@ -69,11 +69,11 @@ class ActividadServiceTests {
     	actividad.setDescripcion("");
     	actividad.setDireccion("Sierra de Grazalema");
     	actividad.setValoracion(4);
-    	actividad.setPrecio("");
+    	actividad.setPrecio(5);
     		
         assertThat(actividad.getNombre().isEmpty()).isTrue();
     	assertThat(actividad.getDescripcion().isEmpty()).isTrue();
-    	assertThat(actividad.getPrecio().isEmpty()).isTrue();
+    	
     }
     
     //Prueba H11+E1 - Búsqueda de actividades
@@ -84,7 +84,7 @@ class ActividadServiceTests {
 		actividad.setDescripcion("Muy buena ruta para realizar con los amigos y muy facil");
 		actividad.setDireccion("Sierra de Grazalema");
 		actividad.setValoracion(4);
-		actividad.setPrecio("2");           
+		actividad.setPrecio(2);           
                 
 		this.actividadService.saveActividad(actividad);
 		Collection<Actividad> actividades = this.actividadService.findByNombre("Escalada");
