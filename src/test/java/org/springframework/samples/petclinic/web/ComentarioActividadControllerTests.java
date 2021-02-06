@@ -48,7 +48,7 @@ public class ComentarioActividadControllerTests {
 	@Autowired
 	private MockMvc mockMvc;
 
-	private ComentarioActividad comentario;
+	private ComentarioActividad comentarioActividades;
 	
 	//Creamos el hotel
 	@BeforeEach
@@ -62,20 +62,20 @@ public class ComentarioActividadControllerTests {
 		actividad.setDireccion("Sierra de Grazalema");
 		actividad.setPrecio("2");
 		
-		comentario=new ComentarioActividad();
-		comentario.setActividad(actividad);;
-		comentario.setMensaje("Bueno");
-		comentario.setId(TEST_COMENTARIOACTIVIDAD_ID);
-		comentario.setPuntuacion(6);
+		comentarioActividades=new ComentarioActividad();
+		comentarioActividades.setActividad(actividad);;
+		comentarioActividades.setMensaje("Bueno");
+		comentarioActividades.setId(TEST_COMENTARIOACTIVIDAD_ID);
+		comentarioActividades.setPuntuacion(6);
 
-		given(this.comentarioActividadService.findComentarioById(TEST_COMENTARIOACTIVIDAD_ID)).willReturn(new ComentarioActividad());
-		given(this.actividadService.findActividadById(TEST_ACTIVIDAD_ID)).willReturn(new Actividad());
+		given(this.comentarioActividadService.findComentarioById(TEST_COMENTARIOACTIVIDAD_ID)).willReturn(comentarioActividades);
+		given(this.actividadService.findActividadById(TEST_ACTIVIDAD_ID)).willReturn(actividad);
 	}
 	
 	@WithMockUser(value = "spring")
         @Test
 	void testInitCreationForm() throws Exception {
-		mockMvc.perform(get("/actividades/{actividadId}/comentarios/new",TEST_ACTIVIDAD_ID)).andExpect(status().isOk()).andExpect(model().attributeExists("comentario"))
+		mockMvc.perform(get("/actividades/{actividadId}/comentarios/new",TEST_ACTIVIDAD_ID)).andExpect(status().isOk())
 				.andExpect(view().name("actividades/createComentarioForm")).andExpect(model().attributeExists("comentario"));
 	}
 
@@ -96,10 +96,9 @@ public class ComentarioActividadControllerTests {
 		mockMvc.perform(post("/actividades/{actividadId}/comentarios/new",TEST_ACTIVIDAD_ID)
 							.with(csrf())
 							.param("mensaje", "")
-							.param("puntuacion", "4")
 							)
-				.andExpect(model().attributeHasNoErrors("actividad"))
 				.andExpect(status().isOk())
+				.andExpect(model().attributeHasFieldErrors("comentarioActividad"))
 				.andExpect(view().name("actividades/createComentarioForm"));
 	}
 }
