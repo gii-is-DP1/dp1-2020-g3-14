@@ -99,7 +99,7 @@ public class HotelControllerTests {
 
 	  @WithMockUser(value = "spring")
 		@Test
-		void testInitUpdateOwnerForm() throws Exception {
+		void testInitUpdateHotelForm() throws Exception {
 			mockMvc.perform(get("/hoteles/{hotelId}/edit", TEST_HOTEL_ID)).andExpect(status().isOk())
 			.andExpect(model().attribute("hotel", hasProperty("nombre", is("Hotelazo"))))
 			.andExpect(model().attribute("hotel", hasProperty("direccion", is("Calle normal"))))

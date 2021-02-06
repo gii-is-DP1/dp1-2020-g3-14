@@ -1,8 +1,8 @@
 package org.springframework.samples.petclinic.web;
 
-import static org.hamcrest.Matchers.hasProperty;
-import static org.hamcrest.Matchers.is;
 import static org.mockito.BDDMockito.given;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.hasProperty;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -10,6 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,10 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.samples.petclinic.configuration.SecurityConfiguration;
 import org.springframework.samples.petclinic.model.Hotel;
 import org.springframework.samples.petclinic.model.User;
+import org.springframework.samples.petclinic.service.HotelService;
+import org.springframework.samples.petclinic.service.ReservaActividadService;
+import org.springframework.samples.petclinic.service.ReservaHabitacionService;
+import org.springframework.samples.petclinic.service.ReservaVueloService;
 import org.springframework.samples.petclinic.service.UserService;
 import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -29,58 +34,122 @@ import org.springframework.test.web.servlet.MockMvc;
 excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = WebSecurityConfigurer.class),
 excludeAutoConfiguration= SecurityConfiguration.class)
 public class UserControllerTests {
-
-	private static final String TEST_USERNAME = "enrmorvaz";
+	
+	private static final String TEST_USER_ID = "luigi";
 	
 	@Autowired
 	private UserController userController;
 
 	@MockBean
 	private UserService userService;
-        
+    @MockBean
+    private ReservaActividadService reservaActividadService;
+    @MockBean
+    private ReservaHabitacionService reservaHabitacionService;
+    @MockBean
+    private ReservaVueloService reservaVueloService;
     
 	@Autowired
 	private MockMvc mockMvc;
 
 	private User user;
 	
+	//Creamos el usuario
 	@BeforeEach
 	void setup() {
 
 		user = new User();
-		user.setUsername(TEST_USERNAME);
-		user.setPassword("prueba");
-		user.setEnabled(true);
-		user.setDni("20061859V");
-		user.setTelefono("999666999");
-		
-		given(this.userService.findByUsername(TEST_USERNAME)).willReturn(user);
+		user.setUsername("mario");
+		user.setPassword("Elpepe013");
+		user.setTelefono("956444876");
+		user.setDni("44068802R");
+		//Deberá devolver el hotel
+		given(this.userService.findByUsername(TEST_USER_ID)).willReturn(user);
 
 	}
 	
+
 	@WithMockUser(value = "spring")
-	@Test
-	void testInitUpdateUserForm() throws Exception {
-		mockMvc.perform(get("/users/{username}/edit", TEST_USERNAME)).andExpect(status().isOk())
-		.andExpect(model().attribute("user", hasProperty("username", is("Enrique"))))
-		.andExpect(model().attribute("user", hasProperty("password", is("Contraseña0"))))
-		.andExpect(model().attribute("user", hasProperty("telefono", is("666666666"))))
-		.andExpect(model().attribute("user", hasProperty("dni", is("20061859V"))))
+        @Test
+	void testInitCreationForm() throws Exception {
+		mockMvc.perform(get("/users/new")).andExpect(status().isOk()).andExpect(model().attributeExists("user"))
 				.andExpect(view().name("users/createOrUpdateUserForm"));
 	}
 
+	@WithMockUser(value = "spring")
+        @Test
+	void testProcessCreationFormSuccess() throws Exception {
+		mockMvc.perform(post("/users/new").param("username", "mario")
+							.with(csrf())
+							.param("password", "Elpepe013")
+							.param("telefono", "956444876")
+							.param("dni", "44068802R"))
+				.andExpect(status().is3xxRedirection());
+	}
 
+	@WithMockUser(value = "spring")
+        @Test
+	void testProcessCreationFormHasErrors() throws Exception {
+		mockMvc.perform(post("/users/new").param("username", "mario")
+				.with(csrf())
+				.param("password", "Elpepe013")
+				.param("telefono", "")
+				.param("dni", "44068802R"))
+				.andExpect(status().isOk())
+				.andExpect(model().attributeHasErrors("user"))
+				.andExpect(model().attributeHasFieldErrors("user","telefono"))
+				.andExpect(view().name("users/createOrUpdateUserForm"));
+	}
+	
+
+	  @WithMockUser(value = "spring")
+		@Test
+		void testInitUpdateUserForm() throws Exception {
+			mockMvc.perform(get("/users/{username}/edit", TEST_USER_ID)).andExpect(status().isOk())
+			.andExpect(model().attribute("user", hasProperty("username", is("mario"))))
+			.andExpect(model().attribute("user", hasProperty("password", is("Elpepe013"))))
+			.andExpect(model().attribute("user", hasProperty("telefono", is("956444876"))))
+			.andExpect(model().attribute("user", hasProperty("dni", is("44068802R"))))
+			.andExpect(view().name("users/createOrUpdateUserForm"));
+		}
+
+	  
 	@WithMockUser(value = "spring")
 	@Test
 	void testProcessUpdateFormSuccess() throws Exception {
-		mockMvc.perform(post("/users/{username}/edit", TEST_USERNAME)
-						.with(csrf())
-						.param("username", "Enrique")
-						.param("password", "Contraseña0")
-						.param("telefono", "666666666")
-						.param("dni", "20061859V"))
-			.andExpect(status().is3xxRedirection())
-			.andExpect(view().name("redirect:/users/{username}"));
+		mockMvc.perform(post("/users/{username}/edit", TEST_USER_ID)
+				.with(csrf())
+				.param("username", "mario")
+				.param("password", "Elpepe013")
+				.param("telefono", "633897503")
+				.param("dni", "44068802R"))
+				.andExpect(status().is3xxRedirection())
+				.andExpect(view().name("redirect:/users/{username}"));
+	}
+	
+	
+	 @WithMockUser(value = "spring")
+		@Test
+		void testProcessUpdateFormHasErrors() throws Exception {
+		    mockMvc.perform(post("/users/{username}/edit", TEST_USER_ID)
+								.with(csrf())
+								.param("username", "mario")
+								.param("password", "Elpepe013")
+								.param("telefono", "")
+								.param("dni", "44068802R"))
+					.andExpect(model().attributeHasErrors("user")).andExpect(status().isOk())
+					.andExpect(view().name("users/createOrUpdateUserForm"));
+		}
+	 
+     @WithMockUser(value = "spring")
+	@Test
+	void testShowUser() throws Exception {
+		mockMvc.perform(get("/users/{username}/", TEST_USER_ID)).andExpect(status().isOk())
+		.andExpect(model().attribute("user", hasProperty("username", is("mario"))))
+		.andExpect(model().attribute("user", hasProperty("password", is("Elpepe013"))))
+		.andExpect(model().attribute("user", hasProperty("telefono", is("956444876"))))
+		.andExpect(model().attribute("user", hasProperty("dni", is("44068802R"))))
+				.andExpect(view().name("users/userDetails"));
 	}
 	
 }
