@@ -8,18 +8,18 @@
 	uri="http://www.springframework.org/security/tags"%>
 <!--  >%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%-->
 
-<petclinic:layout pageName="actividades">
+<petclinic:layout pageName="actividad">
 
     <h2>Buscar Actividades</h2>
 
     
-    <form:form  modelAttribute="actividades" action="/actividades" method="get" class="form-horizontal"
+    <form:form  modelAttribute="actividad" action="/actividades/precio" method="get" class="form-horizontal"
                id="search-vuelos-form" >
         <div class="form-group">
-            <div class="control-group" id="nombre">
-                <label class="col-sm-2 control-label">Nombre </label>
+            <div class="control-group" id="precio">
+                <label class="col-sm-2 control-label">Precio </label>
                 <div class="col-sm-10">
-                    <form:input class="form-control" path="nombre" size="30" maxlength="80"/>
+                    <form:input class="form-control" path="precio" />
                     <span class="help-inline"><form:errors path="*"/></span>
                 </div>
             </div>
@@ -30,18 +30,6 @@
             </div>
         </div>
     </form:form>	
-    
-     <form:form  modelAttribute="actividad" action="/actividades/findActividadesPrecio" method="get" class="form-horizontal"
-               id="search-hotelesprov-form" >
-       
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">Buscar por precio</button>
-            </div>
-        </div>
-    </form:form>
-    
-    
     <br/> 
     <sec:authorize access="hasAuthority('admin')">
 		<a class="btn btn-default" href='<spring:url value="/actividades/new" htmlEscape="true"/>'>Añadir Actividad</a>

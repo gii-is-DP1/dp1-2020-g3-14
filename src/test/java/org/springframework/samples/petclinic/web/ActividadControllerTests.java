@@ -52,7 +52,7 @@ public class ActividadControllerTests {
 		actividad.setDescripcion("Buena ruta de escala con amigos");
 		actividad.setValoracion(4);
 		actividad.setDireccion("Sierra de Grazalema");
-		actividad.setPrecio("2");
+		actividad.setPrecio(2);
 		
 		given(this.actividadService.findActividadById(TEST_ACTIVIDAD_ID)).willReturn(actividad);
 		System.out.println(actividad);

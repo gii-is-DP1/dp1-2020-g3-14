@@ -57,7 +57,7 @@ class ReservaActividadServiceTests {
     	actividad.setValoracion(3);
     	actividad.setDireccion("DIRECCION");
     	actividad.setProvincia("Sevilla");
-    	actividad.setPrecio("12");
+    	actividad.setPrecio(12);
     	actividad.setFecha(LocalDate.of(2021, 3, 3));
     	//Creamos la agencia
     	AgenAct agenAct = new AgenAct();
@@ -105,7 +105,7 @@ class ReservaActividadServiceTests {
     	actividad.setValoracion(3);
     	actividad.setDireccion("DIRECCION");
     	actividad.setProvincia("Sevilla");
-    	actividad.setPrecio("12");
+    	actividad.setPrecio(12);
     	actividad.setFecha(LocalDate.of(2021, 3, 3));
     	//Creamos la agencia
     	AgenAct agenAct = new AgenAct();
@@ -144,7 +144,7 @@ class ReservaActividadServiceTests {
     	actividad.setValoracion(3);
     	actividad.setDireccion("DIRECCION");
     	actividad.setProvincia("Sevilla");
-    	actividad.setPrecio("12");
+    	actividad.setPrecio(12);
     	actividad.setFecha(LocalDate.of(2021, 3, 3));
     	//Creamos la agencia
     	AgenAct agenAct = new AgenAct();

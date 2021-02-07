@@ -41,4 +41,8 @@ public class ActividadService {
 	public List<Actividad> findAllActividades() throws DataAccessException {
 		return actividadRepository.findAllActividades();
 	}
+    @Transactional(readOnly = true)
+	public Collection<Actividad> findByPrecio(Integer precio) throws DataAccessException{
+		return actividadRepository.findByActividadPrecioLessThanEqual(precio);
+	}
 }

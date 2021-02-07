@@ -46,8 +46,7 @@ public class Actividad extends BaseEntity{
 	
 	@Column(name = "precio")
 	@NotEmpty
-	@Digits(fraction = 0, integer = 8)
-	private String precio;
+	private Integer precio;
 	
 	@Column(name = "fecha")
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
@@ -113,11 +112,11 @@ public class Actividad extends BaseEntity{
 		this.direccion = direccion;
 	}
 
-	public String getPrecio() {
+	public Integer getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(String precio) {
+	public void setPrecio(Integer precio) {
 		this.precio = precio;
 	}
 	

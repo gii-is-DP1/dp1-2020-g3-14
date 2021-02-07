@@ -1,3 +1,4 @@
+
 package org.springframework.samples.petclinic.web;
 
 import static org.mockito.BDDMockito.given;
@@ -76,7 +77,7 @@ public class ReservaActividadControllerTests {
 		reservaActividades = new ReservaActividad();
 		reservaActividades.setFechaReserva(LocalDate.of(2021, 4, 10));
 		reservaActividades.setEntrada(LocalDate.of(2021, 4, 13));
-		reservaActividades.setNumeroTarjeta("1111111111111111");;
+		reservaActividades.setNumeroTarjeta("1111111111111111");
 		reservaActividades.setCvc("333");
 		reservaActividades.setPrecioFinal(100);
 		reservaActividades.setActivdad(actividad);
@@ -134,4 +135,5 @@ public class ReservaActividadControllerTests {
 	}
 	
 }
+
 
