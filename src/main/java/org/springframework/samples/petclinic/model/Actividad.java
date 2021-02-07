@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
@@ -45,9 +46,7 @@ public class Actividad extends BaseEntity{
 	private String provincia;
 	
 	@Column(name = "precio")
-	@NotEmpty
-	@Digits(fraction = 0, integer = 8)
-	private String precio;
+	private Integer precio;
 	
 	@Column(name = "fecha")
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
@@ -63,6 +62,9 @@ public class Actividad extends BaseEntity{
 	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "actividad")
 	private List<ComentarioActividad> comentarios;
 	
+	@OneToOne
+	@JoinColumn(name = "reservaactividad")
+	private ReservaActividad reservaactividad;
 	
 	public List<ComentarioActividad> getComentarios() {
 		return comentarios;
@@ -113,11 +115,11 @@ public class Actividad extends BaseEntity{
 		this.direccion = direccion;
 	}
 
-	public String getPrecio() {
+	public Integer getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(String precio) {
+	public void setPrecio(Integer precio) {
 		this.precio = precio;
 	}
 	
@@ -163,5 +165,15 @@ public class Actividad extends BaseEntity{
 	public void setUsersInternal(Set<User> users) {
 		this.users = users;
 	}
+
+	public ReservaActividad getReservaactividad() {
+		return reservaactividad;
+	}
+
+	public void setReservaactividad(ReservaActividad reservaactividad) {
+		this.reservaactividad = reservaactividad;
+	}
+	
+	
 
 }

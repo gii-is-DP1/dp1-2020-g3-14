@@ -55,7 +55,7 @@ class ReservaHabitacionServiceTests {
     	reservaHabitacion.setSalida(LocalDate.of(2021, 3, 22));
     	reservaHabitacion.setNumeroTarjeta("1111111111111111");
     	reservaHabitacion.setCvc("123");
-    	reservaHabitacion.setPrecioFinal(20);
+    	reservaHabitacion.setPrecioFinal(20.0);
     	//Creamos usuario
     	User usuario = new User();
     	usuario.setUsername("enrmorvaz");
@@ -103,7 +103,7 @@ class ReservaHabitacionServiceTests {
     	reservaHabitacion.setSalida(LocalDate.of(2021, 3, 22));
     	reservaHabitacion.setNumeroTarjeta("");
     	reservaHabitacion.setCvc("");
-    	reservaHabitacion.setPrecioFinal(20);
+    	reservaHabitacion.setPrecioFinal(20.0);
     	//Creamos usuario
     	User usuario = new User();
     	usuario.setUsername("enrmorvaz");
@@ -141,7 +141,7 @@ class ReservaHabitacionServiceTests {
     	reservaHabitacion.setSalida(LocalDate.of(2021, 3, 22));
     	reservaHabitacion.setNumeroTarjeta("1111111111111111");
     	reservaHabitacion.setCvc("123");
-    	reservaHabitacion.setPrecioFinal(20);
+    	reservaHabitacion.setPrecioFinal(20.0);
     	//Creamos usuario
     	User usuario = new User();
     	usuario.setUsername("enrmorvaz");

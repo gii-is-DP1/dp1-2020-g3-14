@@ -16,4 +16,7 @@ public interface ActividadRepository extends JpaRepository<Actividad, Long>  {
 	public List<Actividad> findAllActividades();
 
 	Actividad findById(int id);
+
+	@Query("select a from Actividad a where a.precio <= ?1")
+	Collection<Actividad> findByActividadPrecioLessThanEqual(Integer precio);
 }

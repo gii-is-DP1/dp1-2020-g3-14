@@ -35,8 +35,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 @DataJpaTest(includeFilters = @ComponentScan.Filter(Service.class))
 class ReservaActividadServiceTests {                
-        @Autowired
-	protected ReservaActividadService reservaActividadService; 
+    @Autowired
+	protected ReservaActividadService reservaActividadService;
+    @Autowired
+    protected UserService userService;
+    @Autowired
+    protected ActividadService actividadService;
+    
 
     @Test
     @Transactional
@@ -51,36 +56,31 @@ class ReservaActividadServiceTests {
 
     	//Creamos la actividad
     	Actividad actividad = new Actividad();
-    	actividad.setId(123);
+    	
     	actividad.setNombre("ACTIVIDAD");
     	actividad.setDescripcion("DESC");
     	actividad.setValoracion(3);
     	actividad.setDireccion("DIRECCION");
     	actividad.setProvincia("Sevilla");
-    	actividad.setPrecio("12");
+    	actividad.setPrecio(12);
     	actividad.setFecha(LocalDate.of(2021, 3, 3));
-    	//Creamos la agencia
-    	AgenAct agenAct = new AgenAct();
-    	agenAct.setId(345);
-    	agenAct.setNombre("AGENCIA");
-    	agenAct.setSede("Sevilla");
-    	agenAct.setTelefono("123456789");
-    	Set<Actividad> acs = agenAct.getActividades();
-    	acs.add(actividad);
-    	agenAct.setActividades(acs);
+    	this.actividadService.saveActividad(actividad);
     	//Creamos la reserva
     	ReservaActividad reservaActividad = new ReservaActividad();
     	reservaActividad.setFechaReserva(LocalDate.now());
     	reservaActividad.setEntrada(actividad.getFecha());
     	reservaActividad.setNumeroTarjeta("1111111111111111");
     	reservaActividad.setCvc("123");
-    	reservaActividad.setPrecioFinal(20);
+    	reservaActividad.setPrecioFinal(20.0);
     	reservaActividad.setActivdad(actividad);
     	//Creamos usuario
     	User usuario = new User();
     	usuario.setUsername("enrmorvaz");
+    	usuario.setDni("42932326Q");
+    	usuario.setTelefono("999999999");
+    	usuario.setPassword("Admin123");
     	reservaActividad.setUser(usuario);
-    	
+    	this.userService.saveUser(usuario);
     	this.reservaActividadService.saveReservaActividad(reservaActividad);
     	
     	System.out.println("assertThat"+reservaActividad.getId());
@@ -88,6 +88,9 @@ class ReservaActividadServiceTests {
     		
     	//Comprobamos que se ha añadido sin problemas
     	reservaActividades = this.reservaActividadService.buscarReservaActividad("enrmorvaz");
+    	System.out.println("=====================================");
+    	System.out.println(reservaActividades);
+    	System.out.println("=====================================");
     	assertThat(reservaActividades.size()).isEqualTo(found+1);
     	System.out.println("reservaActividad enrmorvaz encontrada. Found= "+reservaActividades.size());
     	System.out.println("==========================================================");
@@ -105,7 +108,7 @@ class ReservaActividadServiceTests {
     	actividad.setValoracion(3);
     	actividad.setDireccion("DIRECCION");
     	actividad.setProvincia("Sevilla");
-    	actividad.setPrecio("12");
+    	actividad.setPrecio(12);
     	actividad.setFecha(LocalDate.of(2021, 3, 3));
     	//Creamos la agencia
     	AgenAct agenAct = new AgenAct();
@@ -122,7 +125,7 @@ class ReservaActividadServiceTests {
     	reservaActividad.setEntrada(actividad.getFecha());
     	reservaActividad.setNumeroTarjeta("");
     	reservaActividad.setCvc("");
-    	reservaActividad.setPrecioFinal(20);
+    	reservaActividad.setPrecioFinal(20.0);
     	reservaActividad.setActivdad(actividad);
     	//Creamos usuario
     	User usuario = new User();
@@ -137,38 +140,41 @@ class ReservaActividadServiceTests {
 
 	@Test
 	void shouldFindReservaActividadByName() {
+	
+		
 		//Creamos la actividad
     	Actividad actividad = new Actividad();
+    	
     	actividad.setNombre("ACTIVIDAD");
     	actividad.setDescripcion("DESC");
     	actividad.setValoracion(3);
     	actividad.setDireccion("DIRECCION");
     	actividad.setProvincia("Sevilla");
-    	actividad.setPrecio("12");
+    	actividad.setPrecio(12);
     	actividad.setFecha(LocalDate.of(2021, 3, 3));
-    	//Creamos la agencia
-    	AgenAct agenAct = new AgenAct();
-    	agenAct.setNombre("AGENCIA");
-    	agenAct.setSede("Sevilla");
-    	agenAct.setTelefono("123456789");
-    	Set<Actividad> acs = new HashSet<Actividad>();
-    	acs.add(actividad);
-    	agenAct.setActividades(acs);
+    	this.actividadService.saveActividad(actividad);
     	//Creamos la reserva
     	ReservaActividad reservaActividad = new ReservaActividad();
     	reservaActividad.setFechaReserva(LocalDate.now());
     	reservaActividad.setEntrada(actividad.getFecha());
     	reservaActividad.setNumeroTarjeta("1111111111111111");
     	reservaActividad.setCvc("123");
-    	reservaActividad.setPrecioFinal(20);
+    	reservaActividad.setPrecioFinal(20.0);
     	reservaActividad.setActivdad(actividad);
     	//Creamos usuario
     	User usuario = new User();
     	usuario.setUsername("enrmorvaz");
+    	usuario.setDni("42932326Q");
+    	usuario.setTelefono("999999999");
+    	usuario.setPassword("Admin123");
     	reservaActividad.setUser(usuario);
+    	this.userService.saveUser(usuario);
     	              
 		this.reservaActividadService.saveReservaActividad(reservaActividad);
 		Collection<ReservaActividad> reservaActividades = this.reservaActividadService.buscarReservaActividad("enrmorvaz");
+		System.out.println("=====================================");
+		System.out.println(reservaActividades);
+		System.out.println("=====================================");
 		assertThat(reservaActividades.size()).isEqualTo(1);
 	}
 	

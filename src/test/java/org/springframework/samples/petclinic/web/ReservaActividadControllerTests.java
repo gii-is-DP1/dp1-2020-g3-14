@@ -1,3 +1,4 @@
+
 package org.springframework.samples.petclinic.web;
 
 import static org.mockito.BDDMockito.given;
@@ -71,14 +72,14 @@ public class ReservaActividadControllerTests {
 		actividad.setDescripcion("Buena ruta de escala con amigos");
 		actividad.setValoracion(4);
 		actividad.setDireccion("Sierra de Grazalema");
-		actividad.setPrecio("2");
+		actividad.setPrecio(2);
 		
 		reservaActividades = new ReservaActividad();
 		reservaActividades.setFechaReserva(LocalDate.of(2021, 4, 10));
 		reservaActividades.setEntrada(LocalDate.of(2021, 4, 13));
-		reservaActividades.setNumeroTarjeta("1111111111111111");;
+		reservaActividades.setNumeroTarjeta("1111111111111111");
 		reservaActividades.setCvc("333");
-		reservaActividades.setPrecioFinal(100);
+		reservaActividades.setPrecioFinal(100.0);
 		reservaActividades.setActivdad(actividad);
 
 		given(this.reservaActividadService.findReservaActividadById(TEST_RESERVAACTIVIDAD_ID)).willReturn(reservaActividades);
@@ -101,7 +102,7 @@ public class ReservaActividadControllerTests {
 							.param("entrada", "2021/10/14")
 							.param("numeroTarjeta", "2222222222222222")
 							.param("cvc", "333")
-							.param("precioFinal", "100"))
+							.param("precioFinal", "100.0"))
 				.andExpect(status().is2xxSuccessful()).andExpect(view().name("reservaActividad/reservaActividadDetails"));
 	}
 	
@@ -114,7 +115,7 @@ public class ReservaActividadControllerTests {
 							.param("entrada", "2021/10/13")
 							.param("numeroTarjeta", "")
 							.param("cvc", "333")
-							.param("precioFinal", "100"))
+							.param("precioFinal", "100.0"))
 				.andExpect(status().isOk())
 				.andExpect(model().attributeHasErrors("reservaActividad"))
 				.andExpect(model().attributeHasFieldErrors("reservaActividad","numeroTarjeta"))
@@ -129,9 +130,10 @@ public class ReservaActividadControllerTests {
 				.andExpect(model().attribute("reservaActividad", hasProperty("entrada", is(LocalDate.of(2021, 4, 13)))))
 				.andExpect(model().attribute("reservaActividad", hasProperty("numeroTarjeta", is("1111111111111111"))))
 				.andExpect(model().attribute("reservaActividad", hasProperty("cvc", is("333"))))
-				.andExpect(model().attribute("reservaActividad", hasProperty("precioFinal", is(100))))
+				.andExpect(model().attribute("reservaActividad", hasProperty("precioFinal", is(100.0))))
 				.andExpect(view().name("reservaActividad/reservaActividadDetails"));
 	}
 	
 }
+
 
