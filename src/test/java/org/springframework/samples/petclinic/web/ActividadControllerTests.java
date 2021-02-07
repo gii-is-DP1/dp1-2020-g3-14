@@ -71,7 +71,7 @@ public class ActividadControllerTests {
 		mockMvc.perform(post("/actividades/new").param("nombre", "Ruta guiada")
 							.with(csrf())
 							.param("direccion", "123 Prueba Street")
-							.param("opinion", "Buena ruta")
+							.param("descripcion", "Buena ruta")
 							.param("valoracion", "4")
 							.param("precio", "4175"))
 				.andExpect(status().is3xxRedirection());

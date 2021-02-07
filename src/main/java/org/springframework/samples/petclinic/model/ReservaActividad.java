@@ -37,9 +37,9 @@ public class ReservaActividad extends BaseEntity{
 		@Column(name="precio")
 		private Double precioFinal;
 		
-		@Column(name="codigo")
+	/*	@Column(name="codigo")
 		@Pattern(regexp="/^[B][I][E][N][V][E][N][I][D][O][D][P]$/g")
-		private String codigo;
+		private String codigo;*/
 		
 		@ManyToOne
 		@JoinColumn(name = "username")
@@ -90,13 +90,13 @@ public class ReservaActividad extends BaseEntity{
 			this.cvc = cvc;
 		}
 		
-		public String getCodigo() {
+	/*	public String getCodigo() {
 			return codigo;
 		}
 
 		public void setCodigo(String codigo) {
 			this.codigo = codigo;
-		}
+		}*/
 
 		public User getUser() {
 			return this.user;
