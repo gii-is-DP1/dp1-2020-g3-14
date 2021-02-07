@@ -74,7 +74,7 @@ class ReservaActividadServiceTests {
     	reservaActividad.setEntrada(actividad.getFecha());
     	reservaActividad.setNumeroTarjeta("1111111111111111");
     	reservaActividad.setCvc("123");
-    	reservaActividad.setPrecioFinal(20);
+    	reservaActividad.setPrecioFinal(20.0);
     	reservaActividad.setActivdad(actividad);
     	//Creamos usuario
     	User usuario = new User();
@@ -122,7 +122,7 @@ class ReservaActividadServiceTests {
     	reservaActividad.setEntrada(actividad.getFecha());
     	reservaActividad.setNumeroTarjeta("");
     	reservaActividad.setCvc("");
-    	reservaActividad.setPrecioFinal(20);
+    	reservaActividad.setPrecioFinal(20.0);
     	reservaActividad.setActivdad(actividad);
     	//Creamos usuario
     	User usuario = new User();
@@ -160,7 +160,7 @@ class ReservaActividadServiceTests {
     	reservaActividad.setEntrada(actividad.getFecha());
     	reservaActividad.setNumeroTarjeta("1111111111111111");
     	reservaActividad.setCvc("123");
-    	reservaActividad.setPrecioFinal(20);
+    	reservaActividad.setPrecioFinal(20.0);
     	reservaActividad.setActivdad(actividad);
     	//Creamos usuario
     	User usuario = new User();

@@ -45,7 +45,6 @@ public class Actividad extends BaseEntity{
 	private String provincia;
 	
 	@Column(name = "precio")
-	@NotEmpty
 	private Integer precio;
 	
 	@Column(name = "fecha")

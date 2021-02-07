@@ -83,13 +83,13 @@ public class ActividadControllerTests {
 		mockMvc.perform(post("/actividades/new")
 							.with(csrf())
 							.param("nombre", "Ruta guiada")
-							.param("opinion", "")
+							.param("descripcion", "")
 							.param("valoracion", "4")
 							.param("direccion", "123 Prueba Street")
 							.param("precio", "4175"))
 				.andExpect(status().isOk())
 				.andExpect(model().attributeHasErrors("actividad"))
-				.andExpect(model().attributeHasFieldErrors("actividad", "opinion"))
+				.andExpect(model().attributeHasFieldErrors("actividad", "descripcion"))
 				.andExpect(view().name("actividades/createOrUpdateActividadForm"));
 	}
 }

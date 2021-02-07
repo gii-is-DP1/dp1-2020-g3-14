@@ -72,7 +72,7 @@ public class ReservaHabitacionControllerTests {
 		reservaHabitacion.setSalida(LocalDate.of(2021, 4, 20));
 		reservaHabitacion.setNumeroTarjeta("1111111111111111");;
 		reservaHabitacion.setCvc("333");
-		reservaHabitacion.setPrecioFinal(100);
+		reservaHabitacion.setPrecioFinal(100.0);
 
 		//Deberá devolver el hotel
 		given(this.reservaHabitacionService.findReservaHabitacionById(TEST_RESERVAHABITACION_ID)).willReturn(reservaHabitacion);
@@ -96,7 +96,7 @@ public class ReservaHabitacionControllerTests {
 							.param("salida", "2021/10/17")
 							.param("numeroTarjeta", "1111111111111111")
 							.param("cvc", "333")
-							.param("precioFinal", "100"))
+							.param("precioFinal", "100.0"))
 				.andExpect(status().is2xxSuccessful());
 	}
 	
@@ -110,7 +110,7 @@ public class ReservaHabitacionControllerTests {
 							.param("salida", "2021/10/17")
 							.param("numeroTarjeta", "")
 							.param("cvc", "333")
-							.param("precioFinal", "100"))
+							.param("precioFinal", "100.0"))
 				//.andExpect(status().isOk())
 				.andExpect(model().attributeHasErrors("reservaHabitacion"))
 				.andExpect(model().attributeHasFieldErrors("reservaHabitacion","numeroTarjeta"))
@@ -127,7 +127,7 @@ public class ReservaHabitacionControllerTests {
 				.andExpect(model().attribute("reservaHabitacion", hasProperty("salida",is(LocalDate.of(2021, 4, 20)))))
 				.andExpect(model().attribute("reservaHabitacion", hasProperty("numeroTarjeta", is("1111111111111111"))))
 				.andExpect(model().attribute("reservaHabitacion", hasProperty("cvc", is("333"))))
-				.andExpect(model().attribute("reservaHabitacion", hasProperty("precioFinal", is(100))))
+				.andExpect(model().attribute("reservaHabitacion", hasProperty("precioFinal", is(100.0))))
 				.andExpect(view().name("reservaHabitacion/reservaHabitacionDetails"));
 	}
 	

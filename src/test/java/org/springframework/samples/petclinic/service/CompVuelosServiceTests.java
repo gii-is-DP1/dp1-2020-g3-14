@@ -24,7 +24,7 @@ class CompVuelosServiceTests {
 	@Test
 	void shouldFindCompVuelo() {
 		CompVuelos compañia = new CompVuelos();
-		compañia.setNombre("Iberia");
+		compañia.setNombre("Malayo");
 		compañia.setPais("España");
 		compañia.setSede("Madrid");
 		
@@ -43,13 +43,13 @@ class CompVuelosServiceTests {
 		compañia.setVuelos(vuelos);
 		
 		this.compVueloService.saveCompVuelos(compañia);
-		Collection<CompVuelos> compañias = this.compVueloService.findByNombre("Iberia");
+		Collection<CompVuelos> compañias = this.compVueloService.findByNombre("Malayo");
 		assertThat(compañias.size()).isEqualTo(1);
 	}
 	
 	@Test
 	void shouldNotFindCompVueloByName() {
-		Collection<CompVuelos> compañias = this.compVueloService.findByNombre("Iberia");
+		Collection<CompVuelos> compañias = this.compVueloService.findByNombre("Malayo");
 		assertThat(compañias.isEmpty()).isTrue();
 	}
 
@@ -66,11 +66,11 @@ class CompVuelosServiceTests {
 	@Transactional
 	public void shouldInsertVuelo() {
 		
-		Collection<CompVuelos> compañias = this.compVueloService.findByNombre("Ryanair");
+		Collection<CompVuelos> compañias = this.compVueloService.findByNombre("Lacayo");
 		int found = compañias.size();
 
 		CompVuelos compañia = new CompVuelos();
-		compañia.setNombre("Ryanair");
+		compañia.setNombre("Lacayo");
 		compañia.setPais("Reino Unido");
 		compañia.setSede("Londres");
 		
@@ -91,7 +91,7 @@ class CompVuelosServiceTests {
 		this.compVueloService.saveCompVuelos(compañia);
 		assertThat(compañia.getId()).isNotEqualTo(0);
 		
-		compañias = this.compVueloService.findByNombre("Ryanair");
+		compañias = this.compVueloService.findByNombre("Lacayo");
 		assertThat(vuelos.size()).isEqualTo(found+1);
     }
 }
