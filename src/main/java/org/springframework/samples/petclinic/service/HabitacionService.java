@@ -3,6 +3,7 @@ package org.springframework.samples.petclinic.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.model.Habitacion;
+import org.springframework.samples.petclinic.model.Hotel;
 import org.springframework.samples.petclinic.repository.HabitacionRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +26,12 @@ public class HabitacionService {
 	
 	@Transactional
 	public void saveHabitacion(Habitacion habitacion) throws DataAccessException {
-		habitacion.setDisponible(true);
 		habitacionRepository.save(habitacion);                
 	}
+	
+	@Transactional
+	public void deleteHabitacion(Habitacion habitacion) throws DataAccessException {
+		habitacionRepository.delete(habitacion);            
+	}
+
 }

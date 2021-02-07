@@ -35,7 +35,11 @@ public class ReservaActividad extends BaseEntity{
 		private String cvc;
 		
 		@Column(name="precio")
-		private Integer precioFinal;
+		private Double precioFinal;
+		
+		@Column(name="codigo")
+		@Pattern(regexp="/^[B][I][E][N][V][E][N][I][D][O][D][P]$/g")
+		private String codigo;
 		
 		@ManyToOne
 		@JoinColumn(name = "username")
@@ -44,12 +48,13 @@ public class ReservaActividad extends BaseEntity{
 		@OneToOne
 		@JoinColumn(name = "actividad_id")
 		private Actividad actividad;
+		
 
-		public Integer getPrecioFinal() {
+		public Double getPrecioFinal() {
 			return precioFinal;
 		}
 
-		public void setPrecioFinal(Integer precioFinal) {
+		public void setPrecioFinal(Double precioFinal) {
 			this.precioFinal = precioFinal;
 		}
 
@@ -83,6 +88,14 @@ public class ReservaActividad extends BaseEntity{
 
 		public void setCvc(String cvc) {
 			this.cvc = cvc;
+		}
+		
+		public String getCodigo() {
+			return codigo;
+		}
+
+		public void setCodigo(String codigo) {
+			this.codigo = codigo;
 		}
 
 		public User getUser() {

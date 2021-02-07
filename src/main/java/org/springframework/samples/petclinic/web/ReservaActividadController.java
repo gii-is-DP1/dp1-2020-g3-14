@@ -41,17 +41,20 @@ public class ReservaActividadController {
 	@GetMapping(value = "reservaActividad/new")
 	public String initCreationForm(Map<String, Object> model) {
 		ReservaActividad reservaActividad = new ReservaActividad();
-		model.put("reservaActividad", reservaActividad);
+		model.put("reservaactividad", reservaActividad);
 		return VIEWS_RESERVAACTIVIDAD_CREATE_FORM;
 	}
 
 	@PostMapping(value = "reservaActividad/new")
 	public String processCreationForm(@PathVariable("actividadId") int actividadId,
-			@Valid ReservaActividad reservaActividad, BindingResult result) {
+
+			@Valid ReservaActividad reservaActividad, BindingResult result,Map<String, Object> model) {
 		reservaActividad.setFechaReserva(LocalDate.now());
 		Actividad a = this.actividadService.findActividadById(actividadId);
 		reservaActividad.setEntrada(a.getFecha());
-		if (result.hasErrors()) {			
+		if (result.hasErrors()) {
+			model.put("reservaactividad", reservaActividad);
+
 			return VIEWS_RESERVAACTIVIDAD_CREATE_FORM;
 		} else {
 			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -64,7 +67,8 @@ public class ReservaActividadController {
 			Set<User> ls = a.getUsers();
 			ls.add(user);
 			a.setUsers(ls);
-			reservaActividad.setPrecioFinal(Integer.valueOf(a.getPrecio()));
+			reservaActividad.setPrecioFinal(Double.valueOf(a.getPrecio()));
+			
 			reservaActividad.setActivdad(a);
 			reservaActividad.setUser(user);
 			this.reservaActividadService.saveReservaActividad(reservaActividad);

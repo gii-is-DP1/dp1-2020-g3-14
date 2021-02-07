@@ -1,3 +1,4 @@
+
 package org.springframework.samples.petclinic.web;
 
 import static org.mockito.BDDMockito.given;
@@ -22,6 +23,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.samples.petclinic.configuration.SecurityConfiguration;
+import org.springframework.samples.petclinic.model.Actividad;
 import org.springframework.samples.petclinic.model.Hotel;
 import org.springframework.samples.petclinic.model.ReservaActividad;
 import org.springframework.samples.petclinic.service.ActividadService;
@@ -31,13 +33,17 @@ import org.springframework.samples.petclinic.service.UserService;
 import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+@RequestMapping("/actividades/{actividadId}")
 @WebMvcTest(controllers=ReservaActividadController.class,
 excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = WebSecurityConfigurer.class),
 excludeAutoConfiguration= SecurityConfiguration.class)
 public class ReservaActividadControllerTests {
 	
 	private static final int TEST_RESERVAACTIVIDAD_ID = 1;
+	
+	private static final int TEST_ACTIVIDAD_ID = 2;
 	
 	@Autowired
 	private ReservaActividadController reservaActividadController;
@@ -53,65 +59,73 @@ public class ReservaActividadControllerTests {
 	private MockMvc mockMvc;
 
 	
-	private ReservaActividad reservaActividad;
+	private ReservaActividad reservaActividades;
 	
 	
 	//Creamos la reserva
 	@BeforeEach
 	void setup() {
+		
+		Actividad actividad = new Actividad();
+		actividad.setId(TEST_ACTIVIDAD_ID);
+		actividad.setNombre("Escalada");
+		actividad.setDescripcion("Buena ruta de escala con amigos");
+		actividad.setValoracion(4);
+		actividad.setDireccion("Sierra de Grazalema");
+		actividad.setPrecio("2");
+		
+		reservaActividades = new ReservaActividad();
+		reservaActividades.setFechaReserva(LocalDate.of(2021, 4, 10));
+		reservaActividades.setEntrada(LocalDate.of(2021, 4, 13));
+		reservaActividades.setNumeroTarjeta("1111111111111111");
+		reservaActividades.setCvc("333");
+		reservaActividades.setPrecioFinal(100);
+		reservaActividades.setActivdad(actividad);
 
-		reservaActividad = new ReservaActividad();
-		reservaActividad.setFechaReserva(LocalDate.of(2021, 4, 10));
-		reservaActividad.setEntrada(LocalDate.of(2021, 4, 13));
-		reservaActividad.setNumeroTarjeta("1111111111111111");;
-		reservaActividad.setCvc("333");
-		reservaActividad.setPrecioFinal(100);
-
-		//Deberá devolver el hotel
-		given(this.reservaActividadService.findReservaActividadById(TEST_RESERVAACTIVIDAD_ID)).willReturn(reservaActividad);
-
+		given(this.reservaActividadService.findReservaActividadById(TEST_RESERVAACTIVIDAD_ID)).willReturn(reservaActividades);
+		given(this.actividadService.findActividadById(TEST_ACTIVIDAD_ID)).willReturn(actividad);	
 	}
 	
 
 	@WithMockUser(value = "spring")
         @Test
 	void testInitCreationForm() throws Exception {
-		mockMvc.perform(get("/actividades/{actividadId}/reservaActividad/new",1)).andExpect(status().isOk()).andExpect(model().attributeExists("reservaActividad"))
-				.andExpect(view().name("reservaActividad/createReservaActividadForm"));
+		mockMvc.perform(get("/actividades/{actividadId}/reservaActividad/new",TEST_ACTIVIDAD_ID)).andExpect(status().isOk())
+				.andExpect(view().name("reservaActividad/createReservaActividadForm")).andExpect(model().attributeExists("reservaactividad"));
 	}
 
 	@WithMockUser(value = "spring")
-        @Test
+    @Test
 	void testProcessCreationFormSuccess() throws Exception {
-		mockMvc.perform(post("/actividades/{actividadId}/reservaActividad/new",1).param("fechaReserva", "2021/10/24")
+		mockMvc.perform(post("/actividades/{actividadId}/reservaActividad/new",TEST_ACTIVIDAD_ID).param("fechaReserva", "2021/02/06")
 							.with(csrf())
-							.param("entrada", "2021/10/26")
+							.param("entrada", "2021/10/14")
 							.param("numeroTarjeta", "2222222222222222")
 							.param("cvc", "333")
-							.param("precioFinal", "200"))
-				.andExpect(status().is2xxSuccessful());
+							.param("precioFinal", "100"))
+				.andExpect(status().is2xxSuccessful()).andExpect(view().name("reservaActividad/reservaActividadDetails"));
 	}
 	
 	@WithMockUser(value = "spring")
-        @Test
+    @Test
 	void testProcessCreationFormHasErrors() throws Exception {
-		mockMvc.perform(post("/actividades/{actividadId}/reservaActividad/new",TEST_RESERVAACTIVIDAD_ID)
+		mockMvc.perform(post("/actividades/{actividadId}/reservaActividad/new",TEST_ACTIVIDAD_ID)
 							.with(csrf())
-							.param("fechaReserva", "2021/10/24")
-							.param("entrada", "2021/10/26")
-							.param("numeroTarjeta", "1111111111111111")
+							.param("fechaReserva", "2021/02/06")
+							.param("entrada", "2021/10/13")
+							.param("numeroTarjeta", "")
 							.param("cvc", "333")
-							.param("precioFinal", ""))
+							.param("precioFinal", "100"))
 				.andExpect(status().isOk())
 				.andExpect(model().attributeHasErrors("reservaActividad"))
-				.andExpect(model().attributeHasFieldErrors("reservaActividad","precioFinal"))
+				.andExpect(model().attributeHasFieldErrors("reservaActividad","numeroTarjeta"))
 				.andExpect(view().name("reservaActividad/createReservaActividadForm"));
 	}
 	
-     @WithMockUser(value = "spring")
+    @WithMockUser(value = "spring")
 	@Test
 	void testShowReservaActividad() throws Exception {
-		mockMvc.perform(get("/actividades/{actividadId}/reservaActividad/{reservaActividadId}",1, TEST_RESERVAACTIVIDAD_ID)).andExpect(status().isOk())
+		mockMvc.perform(get("/actividades/{actividadId}/reservaActividad/{reservaActividadId}",TEST_ACTIVIDAD_ID, TEST_RESERVAACTIVIDAD_ID)).andExpect(status().isOk())
 				.andExpect(model().attribute("reservaActividad", hasProperty("fechaReserva", is(LocalDate.of(2021, 4, 10)))))
 				.andExpect(model().attribute("reservaActividad", hasProperty("entrada", is(LocalDate.of(2021, 4, 13)))))
 				.andExpect(model().attribute("reservaActividad", hasProperty("numeroTarjeta", is("1111111111111111"))))
@@ -121,3 +135,5 @@ public class ReservaActividadControllerTests {
 	}
 	
 }
+
+

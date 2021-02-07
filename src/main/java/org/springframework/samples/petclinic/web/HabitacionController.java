@@ -43,9 +43,10 @@ public class HabitacionController {
 	}
 	
 	@PostMapping(value = "/habitaciones/new")
-	public String processCreationForm(@PathVariable("hotelId") int hotelId, @Valid Habitacion habitacion, BindingResult result) {		
+	public String processCreationForm(@PathVariable("hotelId") int hotelId, @Valid Habitacion habitacion, BindingResult result, Map<String, Object> model) {		
 		Hotel hotel = this.hotelService.findHotelById(hotelId);
 		if (result.hasErrors()) {
+			model.put("habitacion", habitacion);
 			return VIEWS_HABITACION_CREATE_OR_UPDATE_FORM;
 		}
 		else {

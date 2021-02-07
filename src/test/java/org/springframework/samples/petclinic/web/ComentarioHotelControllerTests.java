@@ -72,7 +72,8 @@ public class ComentarioHotelControllerTests {
         @Test
 	void testInitCreationForm() throws Exception {
 		mockMvc.perform(get("/hoteles/{hotelId}/comentarios/new",TEST_HOTEL_ID)).andExpect(status().isOk()).andExpect(model().attributeExists("comentarioHotel"))
-				.andExpect(view().name("hoteles/createComentarioForm")).andExpect(model().attributeExists("comentarioHotel"));
+				.andExpect(view().name("hoteles/createComentarioForm"));
+
 	}
 
 	@WithMockUser(value = "spring")
@@ -94,8 +95,9 @@ public class ComentarioHotelControllerTests {
 							.param("mensaje", "")
 							.param("puntuacion", "4")
 							)
-				.andExpect(model().attributeHasNoErrors("hotel"))
-				.andExpect(status().isOk())
-				.andExpect(view().name("hoteles/createComentarioForm"));
+		.andExpect(status().isOk())		
+		.andExpect(model().attributeHasNoErrors("hotel"))
+		.andExpect(model().attributeHasFieldErrors("comentarioHotel"))
+		.andExpect(view().name("hoteles/createComentarioForm"));
 	}
 }

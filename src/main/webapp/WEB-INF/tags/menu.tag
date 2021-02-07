@@ -43,7 +43,7 @@
 
 						</ul></li>
 
-				<sec:authorize access="hasAuthority('owner')">
+				<sec:authorize access="hasAuthority('propietario')">
 				<petclinic:menuItem active="${name eq 'inscripciones'}" url="/inscripciones/new"
 					title="inscripciones">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
