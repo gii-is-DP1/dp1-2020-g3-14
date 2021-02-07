@@ -74,7 +74,21 @@ private static final int TEST_HOTEL_ID = 1;
 						.param("descripcion", "4")
 						.param("provincia", "Malaga")
 						.param("actividades", "013167638"))
-			.andExpect(status().is2xxSuccessful());
+			.andExpect(status().is2xxSuccessful()).andExpect(view().name("inscripcionhoteles/inscripcionExito"));
+	}
+	
+	@WithMockUser(value = "spring")
+    @Test
+    void testProcessCreationFormHasErrors() throws Exception {
+		mockMvc.perform(post("/inscripciones/new").param("nombre", "Lujo")
+						.with(csrf())
+						.param("direccion", "")
+						.param("descripcion", "4")
+						.param("provincia", "Malaga")
+						.param("actividades", "013167638"))
+		.andExpect(status().isOk())
+		.andExpect(model().attributeHasFieldErrors("inscripcionHotel"))
+		.andExpect(view().name("inscripcionhoteles/createOrUpdateInscripcionForm"));
 	}
 
 	@WithMockUser(value = "spring")

@@ -43,8 +43,9 @@ public class HotelController {
 	}
 	
 	@PostMapping(value = "/hoteles/new")
-	public String processCreationForm(@Valid Hotel hotel, BindingResult result) {		
+	public String processCreationForm(@Valid Hotel hotel, BindingResult result, Map<String, Object> model) {		
 		if (result.hasErrors()) {
+			model.put("hotel", hotel);
 			return VIEWS_HOTELES_CREATE_OR_UPDATE_FORM;
 		}
 		else {

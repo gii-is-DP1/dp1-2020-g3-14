@@ -33,4 +33,5 @@ public class HabitacionService {
 	public void deleteHabitacion(Habitacion habitacion) throws DataAccessException {
 		habitacionRepository.delete(habitacion);            
 	}
+
 }

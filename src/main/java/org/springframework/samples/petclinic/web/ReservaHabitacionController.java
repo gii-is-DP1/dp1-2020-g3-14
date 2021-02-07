@@ -47,9 +47,10 @@ public class ReservaHabitacionController {
 
 	@PostMapping(value = "reservaHabitacion/new")
 	public String processCreationForm(@PathVariable("nhabitacion") int nhabitacion,
-			@Valid ReservaHabitacion reservaHabitacion, BindingResult result) {
+			@Valid ReservaHabitacion reservaHabitacion, BindingResult result, Map<String, Object> model) {
 		reservaHabitacion.setFechaReserva(LocalDate.now());
 		if (result.hasErrors()) {
+			model.put("reservaHabitacion", reservaHabitacion);
 			return VIEWS_RESERVAHABITACION_CREATE_FORM;
 		} else {
 			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -68,8 +69,8 @@ public class ReservaHabitacionController {
 			reservaHabitacion.setUser(user);
 			LocalDate entrada = reservaHabitacion.getEntrada();
 			LocalDate salida = reservaHabitacion.getSalida();
-			Integer dias = (int) DAYS.between(entrada, salida);
-			Integer precio = dias*h.getPrecio();
+			Double dias = (double) DAYS.between(entrada, salida);
+			Double precio = dias*h.getPrecio();
 			reservaHabitacion.setPrecioFinal(precio);
 			this.reservaHabitacionService.saveReservaHabitacion(reservaHabitacion);
 			return "redirect:"+reservaHabitacion.getId();

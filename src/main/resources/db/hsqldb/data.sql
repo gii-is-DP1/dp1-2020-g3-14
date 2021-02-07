@@ -1,72 +1,58 @@
--- One admin user, named admin1 with passwor 4dm1n and authority admin
+-- Administrador
 INSERT INTO users(username,password,enabled) VALUES ('admin1','4dm1n', TRUE);
-INSERT INTO users(username,password,enabled) VALUES ('enrmorvaz','administrador',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (1,'admin1','admin');
-INSERT INTO authorities(id,username,authority) VALUES (8,'enrmorvaz','owner');
 
--- One owner user, named owner1 with passwor 0wn3r
-INSERT INTO users(username,password,enabled) VALUES ('owner1','0wn3r',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (2,'owner1','owner');
--- One owner josregmej, named Jose with passwor usuario
+-- Clientes
+INSERT INTO users(username,password,enabled) VALUES ('enrmorvaz','administrador',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (8,'enrmorvaz','cliente');
+
 INSERT INTO users(username,password,enabled) VALUES ('josregmej','usuario',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (4,'josregmej','owner');
--- One owner  Yiyons, named Alvaro with passwor usuario1
+INSERT INTO authorities(id,username,authority) VALUES (4,'josregmej','cliente');
+
 INSERT INTO users(username,password,enabled) VALUES ('Yiyons','usuario1',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (35,'Yiyons','owner');
--- One vet user, named vet1 with passwor v3t
-INSERT INTO users(username,password,enabled) VALUES ('vet1','v3t',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (3,'vet1','veterinarian');
+INSERT INTO authorities(id,username,authority) VALUES (35,'Yiyons','cliente');
 
 INSERT INTO users(username,password,enabled) VALUES ('pedcarmor','adm1n',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (10,'pedcarmor','owner');
+INSERT INTO authorities(id,username,authority) VALUES (10,'pedcarmor','cliente');
 
 INSERT INTO users(username,password,enabled) VALUES ('pedmuncif','administrador',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (20,'pedmuncif','owner');
+INSERT INTO authorities(id,username,authority) VALUES (20,'pedmuncif','cliente');
 
 INSERT INTO users(username,password,telefono,dni,enabled) VALUES ('javhidrod1','A6min','617736165','31023797V',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (17,'javhidrod1','owner');
+INSERT INTO authorities(id,username,authority) VALUES (17,'javhidrod1','cliente');
 
+--Propietarios
 
-INSERT INTO owners VALUES (1, 'George', 'Franklin', '110 W. Liberty St.', 'Madison', '6085551023', 'owner1');
-INSERT INTO owners VALUES (2, 'Betty', 'Davis', '638 Cardinal Ave.', 'Sun Prairie', '6085551749', 'owner1');
-INSERT INTO owners VALUES (3, 'Eduardo', 'Rodriquez', '2693 Commerce St.', 'McFarland', '6085558763', 'owner1');
-INSERT INTO owners VALUES (4, 'Harold', 'Davis', '563 Friendly St.', 'Windsor', '6085553198', 'owner1');
-INSERT INTO owners VALUES (5, 'Peter', 'McTavish', '2387 S. Fair Way', 'Madison', '6085552765', 'owner1');
-INSERT INTO owners VALUES (6, 'Jean', 'Coleman', '105 N. Lake St.', 'Monona', '6085552654', 'owner1');
-INSERT INTO owners VALUES (7, 'Jeff', 'Black', '1450 Oak Blvd.', 'Monona', '6085555387', 'owner1');
-INSERT INTO owners VALUES (8, 'Maria', 'Escobito', '345 Maple St.', 'Madison', '6085557683', 'owner1');
-INSERT INTO owners VALUES (9, 'David', 'Schroeder', '2749 Blackhawk Trail', 'Madison', '6085559435', 'owner1');
-INSERT INTO owners VALUES (10, 'Carlos', 'Estaban', '2335 Independence La.', 'Waunakee', '6085555487', 'owner1');
+INSERT INTO users(username,password,telefono,dni,enabled) VALUES ('manoloP','propietario','317732165','31012797R',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (90,'manoloP','propietario');
 
-INSERT INTO owners VALUES (11, 'Jose', 'Francisco', '110 W. UNLiberty St.', 'Iowa', '6085661023', 'josregmej');
+INSERT INTO users(username,password,telefono,dni,enabled) VALUES ('juanC','propietario','317342165','31212797C',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (91,'juanC','propietario');
 
-INSERT INTO owners VALUES (18, 'Enrique', 'Moreno', '111 W. Liberty St.', 'Madison', '6085533023', 'owner1');
-INSERT INTO owners VALUES (25, 'Pedro Pablo', 'Carvajal', '18 Severo Ochoa', 'Sevilla', '6085555444', 'owner1');
-INSERT INTO owners VALUES (20, 'Pedro', 'Jesus', 'Juan Ramon Jimenez', 'España', '633897505', 'owner1');
-INSERT INTO owners VALUES (22, 'Javier', 'Hidalgo Rodriguez','17 Reina Mercedes', 'España', '617736165', 'owner1');
-INSERT INTO owners VALUES (23, 'Alvaro', 'Sevilla Cabrera', '4 Castillo de Constantina', 'España', '608942375', 'owner1');
+--Agencias
 
+INSERT INTO agenacts VALUES (1,'SurEventos','Sevilla', '687805782');
+INSERT INTO agenacts VALUES (2,'Babalua','Huelva', '662157053');
+INSERT INTO agenacts VALUES (3,'Otravis Eventos','Gines', '954546184');
 
-INSERT INTO agenacts VALUES (1,'AgenciaPrueba','Sevilla', '2333333');
-INSERT INTO agenacts VALUES (2,'AgenciaPrueba2','Huelva', '21111111');
-INSERT INTO agenacts VALUES (3,'Enrique','Gines', '21111111');
+--Hoteles
 
-INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (2,'Calle Fran',5,'HOTEL 1','Sevilla','2333333', true);
-INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (75,'Calle Funciona',5,'HOTEL Filtrado','Sevilla','2333383', true);
-INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (3,'Calle Enrique2',3,'HOTEL 2','Cordoba','2333433', true);
-INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (10,'Calle Enrique3',3,'HOTEL 9','Cordoba','233433', true);
-INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (4,'Calle Fran2',4,'HOTEL 3','Cadiz','2333335', true);
-INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (11,'Calle Fran10',4,'HOTEL 10','Cadiz','2334335', true);
-INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (5,'Calle Fran3',4,'HOTEL 4','Huelva','2333335', true);
-INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (12,'Calle Fran11',4,'HOTEL 11','Huelva','2333235', true);
-INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (6,'Calle Fran4',3,'HOTEL 5','Malaga','2333345', true);
-INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (13,'Calle Fran13',3,'HOTEL 12','Malaga','2333385', true);
-INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (7,'Calle Fran6',4,'HOTEL 6','Jaen','2333335', true);
-INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (14,'Calle Fran15',4,'HOTEL 14','Jaen','2331335', true);
-INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (8,'Calle Fran7',4,'HOTEL 7','Granada','2333335', true);
-INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (15,'Calle Fran16',4,'HOTEL 16','Granada','2333635', true);
-INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (9,'Calle Fran8',3,'HOTEL 8','Almeria','2333345', true);
-INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (16,'Calle Fran17',3,'HOTEL 17','Almeria','2343345', true);
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (2,'Av. Republica Argentina 1',5,'Apartments Vertice Aljarafe','Sevilla','955063360', true);
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (75,'Calle Pages del Corro',5,'Hotel Zenit Sevilla','Sevilla','954347434', true);
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (3,'Calle Marques de Paradas',3,'Hotel NH Sevilla','Sevilla','954901992', true);
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (10,'Calle San Jacinto',3,'Hotel NH Malaga','Malaga','954071323', true);
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (4,'Calle Pacifico',4,'Hotel Vincci Malaga','Malaga','952175060', true);
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (11,'Calle Heroe de Sostoa',4,'Barcelo Malaga','Malaga','952047494', true);
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (5,'Paseo de la Victoria',4,'Eurostars','Cordoba','957760452', true);
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (12,'Plaza de las Tendillas',4,'H10 Palacio Colomera','Cordoba','957216800', true);
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (6,'Av de Cadiz',3,'Exe Ciudad de Cordoba','Cordoba','957013600', true);
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (13,'Calle Argantonio',3,'Hotel Argantonio','Cadiz','956211640', true);
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (7,'Unnamed Road',4,'Wild House Tarifa','Cadiz','64965342', true);
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (14,'Calle Pleamar',4,'Hipotels Gran Conil Hotel & Spa','Cadiz','856905000', true);
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (8,'Calle BailenMotril',4,'Hotel Juleca','Jaen','953326006', true);
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (15,'Calle Cronista Juan de la Torre',4,'Hotel RL Ciudad de Ubeda','Jaen','2333635', true);
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (9,'Calle Magistrado Ruiz',3,'CazorlaPueblo Hotel','Jaen','639789955', true);
+INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (16,'Av Juan Carlos',3,'Hotel Don Angel','Almeria','950328350', true);
 
 INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (123,2,20,true,2);
 INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (456,2,20,true,2);
@@ -75,8 +61,8 @@ INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (
 INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (756,2,20,true,3);
 INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (345,2,20,true,3);
 
-INSERT INTO inscripcionhoteles(id,actividades,direccion,nombre,provincia) VALUES (2,'Calle Fran','elpe','INSCRIPCION1','Sevilla');
-INSERT INTO inscripcionhoteles(id,actividades,direccion,nombre,provincia) VALUES (3,'Calle eooeo','elqpe','INSCRIPCION2','Sevilla');
+INSERT INTO inscripcionhoteles(id,actividades,direccion,nombre,provincia) VALUES (2,'Spa en Sevilla','Calle Aire','INSCRIPCION1','Sevilla');
+INSERT INTO inscripcionhoteles(id,actividades,direccion,nombre,provincia) VALUES (3,'Spa en Malaga','Calle Padel','INSCRIPCION2','Sevilla');
 
 
 INSERT INTO comentarioshotel(id,puntuacion,mensaje,hotel_id) VALUES (1,10,'HOTEL CHULO!',75);
@@ -87,9 +73,9 @@ INSERT INTO actividades(id,direccion,nombre,descripcion,precio,valoracion,fecha,
 
 INSERT INTO comentariosactividad(id,puntuacion,mensaje,actividad_id) VALUES (1,10,'Bonitas vistas!',1);
 
-INSERT INTO compvuelos VALUES (1, 'CompañiaPrueba', 'España', 'Sede1');
-INSERT INTO compvuelos VALUES (2, 'CompañiaPrueba2', 'España', 'Sede2');
-INSERT INTO compvuelos VALUES (3, 'CompañiaPrueba3', 'España', 'Sede3');
+INSERT INTO compvuelos VALUES (1, 'Iberia', 'España', 'Madrid');
+INSERT INTO compvuelos VALUES (2, 'Ryanair', 'Irlanda', 'Dublin');
+INSERT INTO compvuelos VALUES (3, 'American Airlines', 'EEUU', 'Texas');
 
 INSERT INTO users_actividades(username, actividades_id) VALUES ('enrmorvaz', 3);
 INSERT INTO users_habitaciones(username, nhabitacion) VALUES ('enrmorvaz', 789);
@@ -100,4 +86,3 @@ INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,nume
 INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,numero_plazas,compvuelo_id) VALUES (4, 2, 'Jaen', '2021-12-18', '2021-12-23', 'Sevilla', 70,2,3);
 INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,numero_plazas,compvuelo_id) VALUES (5, 1, 'Malaga', '2021-12-17', '2021-12-24', 'Sevilla', 69,3,3);
 
-INSERT INTO users_vuelos(username, vuelos_id) VALUES ('enrmorvaz', 3);

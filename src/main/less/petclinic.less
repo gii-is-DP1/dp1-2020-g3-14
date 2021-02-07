@@ -19,43 +19,44 @@
 @spring-grey:       #838789;
 @spring-light-grey: #f1f1f1;
 
-@body-bg:                           @spring-light-grey;
-@text-color:                        @spring-brown;
-@link-color:                        @spring-dark-green;
-@link-hover-color:                  @spring-dark-green;
+@body-bg:                            rgb(230, 248, 255);
+@text-color:                        rgb(0, 64, 64);
+@link-color:                         rgb(255, 128, 0);
+@btn-default-border:              rgb(128, 0, 128);
 
-@navbar-default-link-color:         rgb(216, 216, 216); //Color normal texto
-@navbar-default-link-active-color:  @spring-light-grey;
+@navbar-default-link-color:         rgb(255, 255, 255); //Color normal texto
+@navbar-default-link-active-color: rgb(255, 255, 255);
 @navbar-default-link-hover-color:   rgb(234, 243, 244); //Color texto (Pasa el raton por encima)
 @navbar-default-link-hover-bg:      rgb(40, 75, 81); //Pagina a la que queremos seleccionar(Pasar el raton)
 @navbar-default-toggle-icon-bar-bg: rgb(0, 255, 64); //No sabemos
 @navbar-default-toggle-hover-bg:    transparent;
-@navbar-default-link-active-bg:     rgb(28, 51, 55); //Pagina en la que estamos
+@navbar-default-link-active-bg:     rgb(28, 49, 53); //Pagina en la que estamos
 
 @border-radius-base:             0;
 @border-radius-large:            0;
 @border-radius-small:            0;
 
-@btn-default-color:              @spring-light-grey;
-@btn-default-bg:                 @spring-brown;
-@btn-default-border:             @spring-green;
+@btn-default-color:             rgb(255, 255, 255);
+@btn-default-bg:                  rgb(81, 81, 255);
+@btn-default-border:              rgb(0, 0, 0);
 
 @nav-tabs-active-link-hover-color:         rgb(128, 0, 64);
-@nav-tabs-active-link-hover-bg:            rgb(255, 128, 0);
+@nav-tabs-active-link-hover-bg:            rgb(128, 255, 128);
 @nav-tabs-active-link-hover-border-color:  rgb(0, 128, 255);
 @nav-tabs-border-color:                    rgb(0, 128, 0);
 
 @pagination-active-bg:                    @spring-brown;
 @pagination-active-border:                @spring-green;
-@table-border-color:                      @spring-brown;
+@table-border-color:                     rgb(0, 0, 45);
 
 .table > thead > tr > th {
-  background-color: lighten(@spring-brown, 3%);
-  color: @spring-light-grey;
+  background-color: lighten( rgb(0, 47, 47), 25%);
+  color:   rgb(25, 25, 25);
 }
 
+
 .table-filter {
-  background-color: @spring-brown;
+  background-color:  rgb(128, 255, 128);
   padding: 9px 12px;
 }
 
@@ -65,6 +66,7 @@
 
 .btn-default {
   border-width: 2px;
+  border-radius: 2em/7em;
   transition: border 0.15s;
   -webkit-transition: border 0.15s;
   -moz-transition: border 0.15s;
@@ -76,8 +78,8 @@
   &:active,
   &.active,
   .open .dropdown-toggle& {
-    background-color: @spring-brown;
-    border-color: @spring-brown;
+    background-color:  lighten( rgb(2, 6, 155), 15%);
+    border-color:  rgb(0, 0, 0);
   }
 }
 
