@@ -30,7 +30,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @DataJpaTest(includeFilters = @ComponentScan.Filter(Service.class))
 class HotelServiceTests {                
-        @Autowired
+    @Autowired
 	protected HotelService hotelService;
         
     //Prueba H1+E1 Busqueda general de hoteles
