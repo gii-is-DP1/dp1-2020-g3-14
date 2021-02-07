@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
@@ -61,6 +62,9 @@ public class Actividad extends BaseEntity{
 	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "actividad")
 	private List<ComentarioActividad> comentarios;
 	
+	@OneToOne
+	@JoinColumn(name = "reservaactividad")
+	private ReservaActividad reservaactividad;
 	
 	public List<ComentarioActividad> getComentarios() {
 		return comentarios;
@@ -161,5 +165,15 @@ public class Actividad extends BaseEntity{
 	public void setUsersInternal(Set<User> users) {
 		this.users = users;
 	}
+
+	public ReservaActividad getReservaactividad() {
+		return reservaactividad;
+	}
+
+	public void setReservaactividad(ReservaActividad reservaactividad) {
+		this.reservaactividad = reservaactividad;
+	}
+	
+	
 
 }
