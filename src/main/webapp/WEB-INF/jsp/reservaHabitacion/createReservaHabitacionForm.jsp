@@ -29,8 +29,7 @@
             <petclinic:inputField label="Fecha de salida" name="salida"/>
             <petclinic:inputField label="Número de tarjeta" name="numeroTarjeta"/>
             <petclinic:inputField label="CVC" name="cvc"/>
-            <p>¿Tienes codigo de bienvenida?</p>
-        	<petclinic:inputField label="Codigo" name="codigo"/>
+            
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">

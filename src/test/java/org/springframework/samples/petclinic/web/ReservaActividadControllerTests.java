@@ -12,9 +12,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import java.time.LocalDate;
-import java.time.Month;
-
-import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +21,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.samples.petclinic.configuration.SecurityConfiguration;
 import org.springframework.samples.petclinic.model.Actividad;
-import org.springframework.samples.petclinic.model.Hotel;
 import org.springframework.samples.petclinic.model.ReservaActividad;
 import org.springframework.samples.petclinic.service.ActividadService;
-import org.springframework.samples.petclinic.service.HotelService;
 import org.springframework.samples.petclinic.service.ReservaActividadService;
 import org.springframework.samples.petclinic.service.UserService;
 import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
@@ -97,13 +92,14 @@ public class ReservaActividadControllerTests {
 	@WithMockUser(value = "spring")
     @Test
 	void testProcessCreationFormSuccess() throws Exception {
-		mockMvc.perform(post("/actividades/{actividadId}/reservaActividad/new",TEST_ACTIVIDAD_ID).param("fechaReserva", "2021/02/06")
+		mockMvc.perform(post("/actividades/{actividadId}/reservaActividad/new",TEST_ACTIVIDAD_ID)
 							.with(csrf())
+							.param("fechaReserva", "2021/02/10")
 							.param("entrada", "2021/10/14")
 							.param("numeroTarjeta", "2222222222222222")
 							.param("cvc", "333")
 							.param("precioFinal", "100.0"))
-				.andExpect(status().is2xxSuccessful()).andExpect(view().name("reservaActividad/reservaActividadDetails"));
+				.andExpect(status().is2xxSuccessful());
 	}
 	
 	@WithMockUser(value = "spring")

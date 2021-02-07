@@ -90,14 +90,13 @@ public class ReservaHabitacionControllerTests {
 	@WithMockUser(value = "spring")
         @Test
 	void testProcessCreationFormSuccess() throws Exception {
-		mockMvc.perform(post("/hoteles/{hotelId}/{nhabitacion}/reservaHabitacion/new",2,123).param("fechaReserva", "2021/10/10")
+		mockMvc.perform(post("/hoteles/{hotelId}/{nhabitacion}/reservaHabitacion/new",2,123)
 							.with(csrf())
 							.param("entrada", "2021/10/13")
 							.param("salida", "2021/10/17")
 							.param("numeroTarjeta", "1111111111111111")
-							.param("cvc", "333")
-							.param("precioFinal", "100.0"))
-				.andExpect(status().is2xxSuccessful());
+							.param("cvc", "333"))
+							.andExpect(status().is2xxSuccessful());
 	}
 	
 	@WithMockUser(value = "spring")
