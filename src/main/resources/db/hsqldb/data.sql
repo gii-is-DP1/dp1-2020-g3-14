@@ -54,12 +54,12 @@ INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VA
 INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (9,'Calle Magistrado Ruiz',3,'CazorlaPueblo Hotel','Jaen','639789955', true);
 INSERT INTO hoteles(id,direccion,estrellas,nombre,provincia,telefono, valido) VALUES (16,'Av Juan Carlos',3,'Hotel Don Angel','Almeria','950328350', true);
 
-INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (123,2,20,true,2);
-INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (456,2,20,true,2);
-INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (789,2,20,false,3);
-INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (012,2,20,false,2);
-INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (756,2,20,true,3);
-INSERT INTO habitaciones(nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (345,2,20,true,3);
+INSERT INTO habitaciones(id,nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (1,123,2,20,true,2);
+INSERT INTO habitaciones(id,nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (2,456,2,20,true,2);
+INSERT INTO habitaciones(id,nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (3,789,2,20,false,3);
+INSERT INTO habitaciones(id,nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (4,012,2,20,false,2);
+INSERT INTO habitaciones(id,nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (5,756,2,20,true,3);
+INSERT INTO habitaciones(id,nhabitacion,ncamas,precio,disponible,hotel_id) VALUES (6,345,2,20,true,3);
 
 INSERT INTO inscripcionhoteles(id,actividades,direccion,nombre,provincia) VALUES (2,'Spa en Sevilla','Calle Aire','INSCRIPCION1','Sevilla');
 INSERT INTO inscripcionhoteles(id,actividades,direccion,nombre,provincia) VALUES (3,'Spa en Malaga','Calle Padel','INSCRIPCION2','Sevilla');
@@ -78,7 +78,7 @@ INSERT INTO compvuelos VALUES (2, 'Ryanair', 'Irlanda', 'Dublin');
 INSERT INTO compvuelos VALUES (3, 'American Airlines', 'EEUU', 'Texas');
 
 INSERT INTO users_actividades(username, actividades_id) VALUES ('enrmorvaz', 3);
-INSERT INTO users_habitaciones(username, nhabitacion) VALUES ('enrmorvaz', 789);
+INSERT INTO users_habitaciones(username, habitacion_id) VALUES ('enrmorvaz', 3);
 
 INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,numero_plazas,compvuelo_id) VALUES (1, 2, 'Malaga', '2021-12-17', '2021-12-24', 'Sevilla', 70,1,1);
 INSERT INTO vuelos(id,billetes,destino,fecha_ida,fecha_vuelta,origen,precio,numero_plazas,compvuelo_id) VALUES (2, 1, 'Almeria', '2021-12-16', '2021-12-25', 'Malaga', 40,50,2);

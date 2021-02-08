@@ -51,6 +51,7 @@ public class HabitacionController {
 		}
 		else {
 			hab.setHotel(hotel);
+			hab.setDisponible(true);
 			this.habitacionService.saveHabitacion(hab);
 			return "redirect:/hoteles/"+hotelId;
 		}

@@ -30,6 +30,10 @@
             <td><c:out value="${actividades.direccion}"/></td>
         </tr>
         <tr>
+            <th>Provincia</th>
+            <td><c:out value="${actividades.provincia}"/></td>
+        </tr>
+        <tr>
             <th>Precio</th>
             <td><c:out value="${actividades.precio}"/></td>
         </tr>

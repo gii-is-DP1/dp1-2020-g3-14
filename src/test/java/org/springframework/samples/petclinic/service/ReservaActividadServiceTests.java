@@ -69,7 +69,7 @@ class ReservaActividadServiceTests {
     	ReservaActividad reservaActividad = new ReservaActividad();
     	reservaActividad.setFechaReserva(LocalDate.now());
     	reservaActividad.setEntrada(actividad.getFecha());
-    	reservaActividad.setNumeroTarjeta("1111111111111111");
+    	reservaActividad.setNumeroTarjeta("371449635398431");
     	reservaActividad.setCvc("123");
     	reservaActividad.setPrecioFinal(20.0);
     	reservaActividad.setActivdad(actividad);
@@ -157,7 +157,7 @@ class ReservaActividadServiceTests {
     	ReservaActividad reservaActividad = new ReservaActividad();
     	reservaActividad.setFechaReserva(LocalDate.now());
     	reservaActividad.setEntrada(actividad.getFecha());
-    	reservaActividad.setNumeroTarjeta("1111111111111111");
+    	reservaActividad.setNumeroTarjeta("371449635398431");
     	reservaActividad.setCvc("123");
     	reservaActividad.setPrecioFinal(20.0);
     	reservaActividad.setActivdad(actividad);

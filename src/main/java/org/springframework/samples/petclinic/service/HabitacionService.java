@@ -20,7 +20,7 @@ public class HabitacionService {
 	}
 	
 	@Transactional(readOnly = true)
-	public Habitacion findHabitacionById(int id) throws DataAccessException {
+	public Habitacion findHabitacionByNhabitacion(int id) throws DataAccessException {
 		return habitacionRepository.findByNhabitacionLike(id);
 	}
 	

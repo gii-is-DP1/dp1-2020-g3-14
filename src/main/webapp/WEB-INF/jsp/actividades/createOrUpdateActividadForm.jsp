@@ -13,18 +13,20 @@
             });
         </script>
     </jsp:attribute>
-    <jsp:body>
+<jsp:body>
     <h2>
         <c:if test="${actividades['new']}">Añadir </c:if> Actividad
     </h2>
     <form:form modelAttribute="actividades" class="form-horizontal" id="add-actividades-form">
         <div class="form-group has-feedback">
-        	<petclinic:inputField label="Dirección" name="direccion"/>
-        	<petclinic:inputField label="Nombre de la actividad" name="nombre"/>
         	<petclinic:inputField label="Descripcion" name="descripcion"/>
+        	<petclinic:inputField label="Dirección" name="direccion"/>
+        	<petclinic:inputField label="Fecha" name="fecha"/>
+        	<petclinic:inputField label="Nombre de la actividad" name="nombre"/>
+        	<petclinic:inputField label="Provincia" name="provincia"/>
         	<petclinic:inputField label="Precio" name="precio"/>
         	<petclinic:inputField label="Valoración" name="valoracion"/>
-        	<petclinic:inputField label="Fecha" name="fecha"/>
+        	
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
@@ -39,5 +41,5 @@
             </div>
         </div>
     </form:form>
-    </jsp:body>
+</jsp:body>
 </petclinic:layout>

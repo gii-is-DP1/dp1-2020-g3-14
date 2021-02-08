@@ -41,11 +41,11 @@ public class ReservaHabitacion extends BaseEntity{
 		private LocalDate salida;
 		
 		@Column(name = "numeroTarjeta")
-		@Pattern(regexp="\\d{16}")
+		@CreditCardNumber
 		private String numeroTarjeta;
 		
 		@Column(name = "cvc")
-		@Pattern(regexp="\\d{3}")
+		@Pattern(regexp="\\d{3}",message = "Debe contener 3 dígitos")
 		private String cvc;
 		
 		@Column(name="precio")

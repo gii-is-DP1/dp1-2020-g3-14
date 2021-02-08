@@ -63,7 +63,7 @@
 				<petclinic:menuItem active="${name eq 'compvuelos'}" url="/compvuelos/find"
 					title="find compvuelos">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					<span>CompaÃ±ia de Vuelos</span>
+					<span>Compañía de Vuelos</span>
 				</petclinic:menuItem>
 				</sec:authorize>
 
@@ -88,7 +88,7 @@
 								<div class="navbar-login navbar-login-session">
 									<div class="row">
 										<div class="col-lg-12">
-												<a href="/login" class="btn btn-primary btn-block">Iniciar sesiÃ³n</a>
+												<a href="/login" class="btn btn-primary btn-block">Iniciar sesión</a>
 												<a href="/users/new" class="btn btn-primary btn-block">Registrarse</a>
 										</div>
 									</div>

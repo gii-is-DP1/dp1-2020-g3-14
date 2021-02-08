@@ -14,8 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Digits;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -43,13 +44,16 @@ public class Actividad extends BaseEntity{
 	private String direccion;
 
 	@Column(name = "provincia")
+	@NotEmpty
 	private String provincia;
 	
 	@Column(name = "precio")
+	@NotNull
 	private Integer precio;
 	
 	@Column(name = "fecha")
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	@FutureOrPresent
 	private LocalDate fecha;
 	
 	@ManyToOne
@@ -72,15 +76,6 @@ public class Actividad extends BaseEntity{
 	
 	public void setComentarios(List<ComentarioActividad> comentarios) {
 		this.comentarios = comentarios;
-	}
-
-	
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getNombre() {

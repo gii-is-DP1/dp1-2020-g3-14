@@ -60,7 +60,7 @@ public class ReservaHabitacionController {
 				}
 			String userName = userDetails.getUsername();
 			User user= this.userService.findByUsername(userName);
-			Habitacion h = this.habitacionService.findHabitacionById(nhabitacion);
+			Habitacion h = this.habitacionService.findHabitacionByNhabitacion(nhabitacion);
 			Set<User> ls = h.getUsers();
 			ls.add(user);
 			h.setUsers(ls);

@@ -10,6 +10,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.CreditCardNumber;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -32,11 +34,11 @@ public class ReservaVuelo extends BaseEntity{
 		private LocalDate vuelta;
 		
 		@Column(name = "numeroTarjeta")
-		@Pattern(regexp="\\d{16}")
+		@CreditCardNumber
 		private String numeroTarjeta;
 		
 		@Column(name = "cvc")
-		@Pattern(regexp="\\d{3}")
+		@Pattern(regexp="\\d{3}",message = "Debe contener 3 dígitos")
 		private String cvc;
 		
 		@Column(name="precio")

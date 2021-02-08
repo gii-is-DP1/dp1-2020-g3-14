@@ -36,12 +36,12 @@ public class User {
 	
 	@Column(name = "telefono")
 	@NotEmpty
-	@Digits(fraction = 0, integer = 10)
+	@Digits(fraction = 0, integer = 10, message = "Debe contener 9 números")
 	private String telefono;
 	
 	@Column(name = "dni")
 	@NotEmpty
-	@Pattern(regexp = "^[0-9]{8,8}[A-Za-z]$")
+	@Pattern(regexp = "^[0-9]{8,8}[A-Za-z]$", message="El DNI debe contener 8 números y una letra mayúscula.")
 	private String dni;
 		
 	boolean enabled;
@@ -72,7 +72,7 @@ public class User {
 	@JoinTable(
 			name = "users_habitaciones",
 			joinColumns = {@JoinColumn(name = "username")},
-	        inverseJoinColumns = {@JoinColumn(name = "nhabitacion")}
+	        inverseJoinColumns = {@JoinColumn(name = "habitacion_id")}
 			)
 	private Set<Habitacion> habitaciones;
 	

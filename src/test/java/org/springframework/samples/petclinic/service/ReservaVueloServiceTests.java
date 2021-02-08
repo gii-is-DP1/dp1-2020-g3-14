@@ -60,7 +60,7 @@ class ReservaVueloServiceTests {
     	reservaVuelo.setFechaReserva(LocalDate.now());
     	reservaVuelo.setIda(vuelo.getFechaIda());
     	reservaVuelo.setVuelta(vuelo.getFechaVuelta());
-    	reservaVuelo.setNumeroTarjeta("1111111111111111");
+    	reservaVuelo.setNumeroTarjeta("371449635398431");
     	reservaVuelo.setCvc("123");
     	reservaVuelo.setPrecioFinal(20.0);
     	User usuario = new User();
@@ -126,7 +126,7 @@ class ReservaVueloServiceTests {
     	reservaVuelo.setFechaReserva(LocalDate.now());
     	reservaVuelo.setIda(vuelo.getFechaIda());
     	reservaVuelo.setVuelta(vuelo.getFechaVuelta());
-    	reservaVuelo.setNumeroTarjeta("1111111111111111");
+    	reservaVuelo.setNumeroTarjeta("371449635398431");
     	reservaVuelo.setCvc("123");
     	reservaVuelo.setPrecioFinal(20.0);
     	User usuario = new User();

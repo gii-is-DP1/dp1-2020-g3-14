@@ -66,5 +66,7 @@ public class CompVuelos extends BaseEntity {
 		return "CompVuelos [nombre=" + nombre + ", sede=" + sede + ", pais=" + pais + "]";
 	}
 	
-
+	public boolean isNew() {
+		return this.id == null;
+	}
 }

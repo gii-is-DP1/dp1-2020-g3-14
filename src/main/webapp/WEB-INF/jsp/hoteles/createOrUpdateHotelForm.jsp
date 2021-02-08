@@ -8,7 +8,7 @@
 
 <petclinic:layout pageName="hoteles">
     <h2>
-        <c:if test="${hoteles['new']}">New </c:if> Hotel
+        <c:if test="${hotel['new']}">New </c:if> Hotel
     </h2>
     <form:form modelAttribute="hotel" class="form-horizontal" id="add-hotel-form">
         <div class="form-group has-feedback">
@@ -21,7 +21,7 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>
-                    <c:when test="${hoteles['new']}">
+                    <c:when test="${hotel['new']}">
                         <button class="btn btn-default" type="submit">Add Hotel</button>
                     </c:when>
                     <c:otherwise>

@@ -37,6 +37,10 @@ import org.springframework.transaction.annotation.Transactional;
 class ReservaHabitacionServiceTests {                
         @Autowired
 	protected ReservaHabitacionService reservaHabitacionService; 
+        @Autowired
+    protected HabitacionService habitacionService;
+        @Autowired
+    protected HotelService hotelService;
 
     @Test
     @Transactional
@@ -53,7 +57,7 @@ class ReservaHabitacionServiceTests {
     	reservaHabitacion.setFechaReserva(LocalDate.now());
     	reservaHabitacion.setEntrada(LocalDate.of(2021, 3, 3));
     	reservaHabitacion.setSalida(LocalDate.of(2021, 3, 22));
-    	reservaHabitacion.setNumeroTarjeta("1111111111111111");
+    	reservaHabitacion.setNumeroTarjeta("371449635398431");
     	reservaHabitacion.setCvc("123");
     	reservaHabitacion.setPrecioFinal(20.0);
     	//Creamos usuario
@@ -67,6 +71,7 @@ class ReservaHabitacionServiceTests {
 		hotel.setEstrellas(2);
 		hotel.setProvincia("Sevilla");
 		hotel.setTelefono("322222222");
+		hotelService.saveHotel(hotel);
     	//Creamos habitacion
 		Habitacion habitacion = new Habitacion();
     	habitacion.setNhabitacion(123);
@@ -74,6 +79,7 @@ class ReservaHabitacionServiceTests {
     	habitacion.setDisponible(true);
     	habitacion.setNcamas(2);
     	habitacion.setHotel(hotel);
+    	habitacionService.saveHabitacion(habitacion);
     	//Creamos un set añadimos la habitacion
     	Set<Habitacion> habitaciones= new HashSet<Habitacion>();
 		habitaciones.add(habitacion);
@@ -139,7 +145,7 @@ class ReservaHabitacionServiceTests {
     	reservaHabitacion.setFechaReserva(LocalDate.now());
     	reservaHabitacion.setEntrada(LocalDate.of(2021, 3, 3));
     	reservaHabitacion.setSalida(LocalDate.of(2021, 3, 22));
-    	reservaHabitacion.setNumeroTarjeta("1111111111111111");
+    	reservaHabitacion.setNumeroTarjeta("371449635398431");
     	reservaHabitacion.setCvc("123");
     	reservaHabitacion.setPrecioFinal(20.0);
     	//Creamos usuario
@@ -153,6 +159,7 @@ class ReservaHabitacionServiceTests {
 		hotel.setEstrellas(2);
 		hotel.setProvincia("Sevilla");
 		hotel.setTelefono("322222222");
+		hotelService.saveHotel(hotel);
     	//Creamos habitacion
 		Habitacion habitacion = new Habitacion();
     	habitacion.setNhabitacion(123);
@@ -160,6 +167,7 @@ class ReservaHabitacionServiceTests {
     	habitacion.setDisponible(true);
     	habitacion.setNcamas(2);
     	habitacion.setHotel(hotel);
+    	habitacionService.saveHabitacion(habitacion);
     	//Creamos un set añadimos la habitacion
     	Set<Habitacion> habitaciones= new HashSet<Habitacion>();
 		habitaciones.add(habitacion);

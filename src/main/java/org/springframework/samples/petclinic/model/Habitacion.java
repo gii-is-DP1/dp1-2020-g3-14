@@ -10,21 +10,25 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Table(name = "habitaciones")
-public class Habitacion{
+public class Habitacion extends BaseEntity{
 	
-	@Id
-	Integer nhabitacion;
+	@Column(name = "nhabitacion")
+	@NotNull
+	private Integer nhabitacion;
 	
 	@Column(name = "ncamas")
 	@Range(min=1,max=5)
 	private Integer ncamas;
 	
 	@Column(name = "precio")
+	@NotNull
 	private Integer precio;
 	
 	@Column(name = "disponible")

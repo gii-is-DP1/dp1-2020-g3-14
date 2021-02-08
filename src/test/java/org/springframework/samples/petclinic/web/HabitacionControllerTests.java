@@ -59,7 +59,7 @@ public class HabitacionControllerTests {
 		habitacion.setDisponible(true);
 		
 		//Deberá devolver la habitacion
-		given(this.habitacionService.findHabitacionById(TEST_HABITACION_ID)).willReturn(habitacion);
+		given(this.habitacionService.findHabitacionByNhabitacion(TEST_HABITACION_ID)).willReturn(habitacion);
 
 	}
 
@@ -87,11 +87,9 @@ public class HabitacionControllerTests {
 		mockMvc.perform(post("/hoteles/2/habitaciones/new").param("nhabitacion", "666")
 						.with(csrf())
 						.param("ncamas", "78")
-						.param("precio", "60")
-						.param("disponible", "true"))
+						.param("precio", "60"))
 						.andExpect(status().isOk())
 						.andExpect(model().attributeHasErrors("habitacion"))
-						.andExpect(model().attributeHasFieldErrors("habitacion","ncamas"))
 						.andExpect(view().name("habitaciones/createOrUpdateHabitacionForm"));
 	}
 	

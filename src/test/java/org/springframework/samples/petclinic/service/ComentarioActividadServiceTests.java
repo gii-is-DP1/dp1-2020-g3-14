@@ -33,6 +33,7 @@ class ComentarioActividadServiceTests {
 		actividad.setDescripcion("Buena ruta de escala con amigos");
 		actividad.setValoracion(4);
 		actividad.setDireccion("Sierra de Grazalema");
+		actividad.setProvincia("Sevilla");
 		actividad.setPrecio(2);
 		this.actividadService.saveActividad(actividad);
 		assertThat(actividad.getId()).isNotEqualTo(0);

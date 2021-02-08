@@ -46,6 +46,7 @@ class ActividadServiceTests {
     	actividad.setNombre("Escalada");
     	actividad.setDescripcion("Muy buena ruta para realizar con los amigos y muy facil");
     	actividad.setDireccion("Sierra de Grazalema");
+    	actividad.setProvincia("Sevilla");
     	actividad.setValoracion(4);
     	actividad.setPrecio(2);
     		  
@@ -83,6 +84,7 @@ class ActividadServiceTests {
 		actividad.setNombre("Escalada");
 		actividad.setDescripcion("Muy buena ruta para realizar con los amigos y muy facil");
 		actividad.setDireccion("Sierra de Grazalema");
+		actividad.setProvincia("Sevilla");
 		actividad.setValoracion(4);
 		actividad.setPrecio(2);           
                 

@@ -72,6 +72,7 @@ public class ActividadControllerTests {
 							.with(csrf())
 							.param("direccion", "123 Prueba Street")
 							.param("descripcion", "Buena ruta")
+							.param("provincia", "Sevilla")
 							.param("valoracion", "4")
 							.param("precio", "4175"))
 				.andExpect(status().is3xxRedirection());
@@ -86,6 +87,7 @@ public class ActividadControllerTests {
 							.param("descripcion", "")
 							.param("valoracion", "4")
 							.param("direccion", "123 Prueba Street")
+							.param("provincia", "Sevilla")
 							.param("precio", "4175"))
 				.andExpect(status().isOk())
 				.andExpect(model().attributeHasErrors("actividad"))

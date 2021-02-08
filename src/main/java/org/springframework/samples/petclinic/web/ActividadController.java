@@ -6,7 +6,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Actividad;
 import org.springframework.samples.petclinic.service.ActividadService;
-import org.springframework.samples.petclinic.service.AgenActService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -22,16 +21,14 @@ public class ActividadController {
 	
 	private static final String VIEWS_ACTIVIDAD_CREATE_OR_UPDATE_FORM = "actividades/createOrUpdateActividadForm";
 	private final ActividadService actividadService;
-	private final AgenActService agenactsService;
 	
 	@Autowired
-	public ActividadController(ActividadService actividadService,AgenActService agenactsService) {
+	public ActividadController(ActividadService actividadService) {
 			this.actividadService = actividadService;
-			this.agenactsService = agenactsService;
-   	}
+	}
 
-	@InitBinder("agenact")
-	public void intagenactBinder(WebDataBinder dataBinder) {
+	@InitBinder
+	public void setAllowedFields(WebDataBinder dataBinder) {
 		dataBinder.setDisallowedFields("id");
 	}
 	

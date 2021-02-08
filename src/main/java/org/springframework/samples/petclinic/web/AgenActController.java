@@ -42,7 +42,7 @@ public class AgenActController {
 	}
 	
 	@PostMapping(value = "/agenacts/new")
-    public String processCreationForm(@Valid AgenAct agenAct, BindingResult result, ModelMap model) {
+    public String processCreationForm(@Valid AgenAct agenAct, BindingResult result, Map<String, Object> model) {
         if (result.hasErrors()) {
             model.put("agenact",agenAct);
             return VIEWS_AGENACTS_CREATE_OR_UPDATE_FORM;

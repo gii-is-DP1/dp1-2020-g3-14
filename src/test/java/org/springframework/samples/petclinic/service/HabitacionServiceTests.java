@@ -38,7 +38,7 @@ public class HabitacionServiceTests {
 	
 	@Test
 	void shouldFindHabitacionById() {
-		Habitacion hab= this.habitacionService.findHabitacionById(444);
+		Habitacion hab= this.habitacionService.findHabitacionByNhabitacion(444);
 		Set<Habitacion> habitaciones= new HashSet<Habitacion>();
 		habitaciones.add(hab);
 		assertThat(habitaciones.size()).isEqualTo(1);
@@ -46,7 +46,7 @@ public class HabitacionServiceTests {
 	
 	@Test
 	void shouldNotFindHabitacionById() {
-		Habitacion hab= this.habitacionService.findHabitacionById(0000);
+		Habitacion hab= this.habitacionService.findHabitacionByNhabitacion(0000);
 		assertThat(hab).isNull();
 	}
 	
@@ -60,7 +60,7 @@ public class HabitacionServiceTests {
 		habitacion1.setPrecio(25);
 		
 		this.habitacionService.saveHabitacion(habitacion1);
-		Habitacion hab = this.habitacionService.findHabitacionById(444);
+		Habitacion hab = this.habitacionService.findHabitacionByNhabitacion(444);
 		assertThat(hab.getNhabitacion()).isEqualTo(444);
 		
 	}
@@ -74,13 +74,11 @@ public class HabitacionServiceTests {
 		hab1.setDisponible(true);
 		
 		this.habitacionService.saveHabitacion(hab1);
-		Habitacion hab = this.habitacionService.findHabitacionById(001);
+		Habitacion hab = this.habitacionService.findHabitacionByNhabitacion(001);
 		assertThat(hab.getNhabitacion()).isEqualTo(001);
 		
 		this.habitacionService.deleteHabitacion(hab);
-		hab = this.habitacionService.findHabitacionById(001);
+		hab = this.habitacionService.findHabitacionByNhabitacion(001);
 		assertThat(hab).isNull();
 	}
-	
-
 }

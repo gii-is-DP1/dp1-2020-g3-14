@@ -35,7 +35,7 @@ public class Hotel extends BaseEntity{
 	
 	@Column(name = "telefono")
 	@NotEmpty
-	@Digits(fraction = 0, integer = 10)
+	@Digits(fraction = 0, integer = 10, message = "Debe contener 9 dígitos")
 	private String telefono;
 	
 	@Column(name = "valido")
@@ -112,4 +112,5 @@ public class Hotel extends BaseEntity{
 	public void setValido(Boolean valido) {
 		this.valido = valido;
 	}
+	
 }
