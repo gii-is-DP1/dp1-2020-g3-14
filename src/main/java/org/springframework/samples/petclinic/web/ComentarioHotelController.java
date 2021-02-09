@@ -42,18 +42,19 @@ public class ComentarioHotelController {
 	
 	@GetMapping(value = "hoteles/{hotelId}/comentarios/new")
 	public String initCreationForm(Map<String, Object> model) {
-		ComentarioHotel comentario = new ComentarioHotel();
-		model.put("comentario", comentario);
+		ComentarioHotel comentarioHotel = new ComentarioHotel();
+		model.put("comentarioHotel", comentarioHotel);
 		return VIEWS_COMENTARIO_FORM;
 	}
 	
 	@PostMapping(value = "hoteles/{hotelId}/comentarios/new")
-	public String processCreationForm(@PathVariable("hotelId") int hotelId, @Valid ComentarioHotel comentario, BindingResult result) {		
+	public String processCreationForm(@PathVariable("hotelId") int hotelId, @Valid ComentarioHotel comentarioHotel, BindingResult result,Map<String, Object> model) {		
 		if (result.hasErrors()) {
+			model.put("comentarioHotel", comentarioHotel);
 			return VIEWS_COMENTARIO_FORM;
 		}
 		else {
-			this.comentarioService.savec(hotelId, comentario);
+			this.comentarioService.savec(hotelId, comentarioHotel);
             return "redirect:/hoteles/"+hotelId;
 		}
 	}

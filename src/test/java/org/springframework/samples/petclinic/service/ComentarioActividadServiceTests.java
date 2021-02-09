@@ -30,10 +30,11 @@ class ComentarioActividadServiceTests {
 	
 		Actividad actividad = new Actividad();
 		actividad.setNombre("Escalada");
-		actividad.setOpinion("Buena ruta de escala con amigos");
+		actividad.setDescripcion("Buena ruta de escala con amigos");
 		actividad.setValoracion(4);
 		actividad.setDireccion("Sierra de Grazalema");
-		actividad.setPrecio("2");
+		actividad.setProvincia("Sevilla");
+		actividad.setPrecio(2);
 		this.actividadService.saveActividad(actividad);
 		assertThat(actividad.getId()).isNotEqualTo(0);
 		

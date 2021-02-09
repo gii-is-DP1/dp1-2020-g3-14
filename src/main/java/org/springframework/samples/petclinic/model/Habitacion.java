@@ -1,9 +1,5 @@
 package org.springframework.samples.petclinic.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -12,27 +8,27 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Range;
-import org.springframework.beans.support.MutableSortDefinition;
-import org.springframework.beans.support.PropertyComparator;
-
-
-
 
 @Entity
 @Table(name = "habitaciones")
-public class Habitacion{
+public class Habitacion extends BaseEntity{
 	
-	@Id
-	Integer nhabitacion;
+	@Column(name = "nhabitacion")
+	@NotNull
+	private Integer nhabitacion;
 	
 	@Column(name = "ncamas")
 	@Range(min=1,max=5)
 	private Integer ncamas;
 	
 	@Column(name = "precio")
+	@NotNull
 	private Integer precio;
 	
 	@Column(name = "disponible")
@@ -45,6 +41,9 @@ public class Habitacion{
 	@ManyToMany(mappedBy = "habitaciones")
 	private Set<User> users;
 	
+	@OneToOne
+	@JoinColumn(name = "reservahabitacion")
+	private ReservaHabitacion reservahabitacion;
 	
 	
 	public Hotel getHotel() {
@@ -86,25 +85,20 @@ public class Habitacion{
 	public void setDisponible(Boolean disponible) {
 		this.disponible = disponible;
 	}
-	
-	protected Set<User> getUsersInternal() {
-		if (this.users == null) {
-			this.users = new HashSet<>();
-		}
-		return this.users;
+
+	public Set<User> getUsers() {
+		return users;
 	}
 
-	public List<User> getUsers() {
-		List<User> sortedUsers = new ArrayList<>(getUsersInternal());
-		PropertyComparator.sort(sortedUsers, new MutableSortDefinition("username", true, true));
-		return Collections.unmodifiableList(sortedUsers);
-	}
-
-	public void setUsersInternal(Set<User> users) {
+	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
 
-	
-	
+	public ReservaHabitacion getReservaHabitacion() {
+		return reservahabitacion;
+	}
 
+	public void setReservaHabitacion(ReservaHabitacion reservaHabitacion) {
+		this.reservahabitacion = reservaHabitacion;
+	}
 }

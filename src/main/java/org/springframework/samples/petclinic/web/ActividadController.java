@@ -6,7 +6,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Actividad;
 import org.springframework.samples.petclinic.service.ActividadService;
-import org.springframework.samples.petclinic.service.AgenActService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -22,16 +21,14 @@ public class ActividadController {
 	
 	private static final String VIEWS_ACTIVIDAD_CREATE_OR_UPDATE_FORM = "actividades/createOrUpdateActividadForm";
 	private final ActividadService actividadService;
-	private final AgenActService agenactsService;
 	
 	@Autowired
-	public ActividadController(ActividadService actividadService,AgenActService agenactsService) {
+	public ActividadController(ActividadService actividadService) {
 			this.actividadService = actividadService;
-			this.agenactsService = agenactsService;
-   	}
+	}
 
-	@InitBinder("agenact")
-	public void intagenactBinder(WebDataBinder dataBinder) {
+	@InitBinder
+	public void setAllowedFields(WebDataBinder dataBinder) {
 		dataBinder.setDisallowedFields("id");
 	}
 	
@@ -43,8 +40,9 @@ public class ActividadController {
 	}
 	
 	@PostMapping(value = "/actividades/new")
-	public String processCreationForm(@Valid Actividad actividad, BindingResult result) {		
+	public String processCreationForm(@Valid Actividad actividad, BindingResult result, Map<String, Object> model) {		
 		if (result.hasErrors()) {
+			model.put("actividades", actividad);
 			return VIEWS_ACTIVIDAD_CREATE_OR_UPDATE_FORM;
 		}
 		else {
@@ -100,6 +98,34 @@ public class ActividadController {
 		else {
 			model.put("selections", results);
 			return "actividades/actividadesList";
+		}
+	}
+	
+	@GetMapping(value = "/actividades/findActividadesPrecio")
+	public String initFindFormPrecio(Map<String, Object> model) {
+		model.put("actividad", new Actividad()); 
+		return "actividades/findActividadesPrecio";
+	}
+	
+	@GetMapping(value = "/actividades/precio")
+	public String processFindFormPrecio(Actividad actividad, BindingResult result, Map<String, Object> model) {
+
+		if (actividad.getPrecio() == null) {
+			actividad.setPrecio(999999); // empty string signifies broadest possible search
+		}
+
+		Collection<Actividad> results = this.actividadService.findByPrecio(actividad.getPrecio());
+		if (results.isEmpty()) {
+			result.rejectValue("precio", "notFound", "not found");
+			return "actividades/findActividadesPrecio";
+		}
+		else if (results.size() == 1) {
+			actividad = results.iterator().next();
+			return "redirect:/actividades/" + actividad.getId();
+		}
+		else {
+			model.put("selections", results);
+			return "actividades/actividadesListPrecio";
 		}
 	}
 	

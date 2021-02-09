@@ -14,12 +14,12 @@
             <th style="width: 150px;">Nombre</th>
             <th style="width: 200px;">Direccion</th>
             <th style="width: 120px">Telefono</th>
-            <th style="width: 120px">Precio</th>
             <th style="width: 120px">Provincia</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${selections}" var="hotel">
+        <c:if test="${hotel.valido}">
             <tr>
                 <td>
                     <spring:url value="/hoteles/{hotelId}" var="hotelUrl">
@@ -35,12 +35,10 @@
                 	<c:out value="${hotel.telefono}"/>
                 </td>
                 <td>
-                	<c:out value="${hotel.precio}"/>
-                </td>  
-                <td>
                 	<c:out value="${hotel.provincia}"/>
                 </td>              
             </tr>
+            </c:if>
         </c:forEach>
         </tbody>
     </table>

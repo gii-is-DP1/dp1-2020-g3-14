@@ -9,7 +9,6 @@
 
 <petclinic:layout pageName="compvuelos">
 
-
     <h2>Información de Compañía de vuelos</h2>
 
 	<spring:url value="/compvuelos/{compVuelosId}/edit" var="editUrl">

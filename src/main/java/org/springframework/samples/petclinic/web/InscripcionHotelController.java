@@ -1,25 +1,18 @@
 package org.springframework.samples.petclinic.web;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.petclinic.model.Hotel;
 import org.springframework.samples.petclinic.model.InscripcionHotel;
-import org.springframework.samples.petclinic.service.HotelService;
 import org.springframework.samples.petclinic.service.InscripcionHotelService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -46,8 +39,9 @@ public class InscripcionHotelController {
 	}
 	
 	@PostMapping(value = "/inscripciones/new")
-	public String processCreationForm(@Valid InscripcionHotel inscripcionHotel, BindingResult result) {		
+	public String processCreationForm(@Valid InscripcionHotel inscripcionHotel, BindingResult result, Map<String, Object> model) {		
 		if (result.hasErrors()) {
+			model.put("inscripcionHotel", inscripcionHotel);
 			return VIEWS_INSCRIPCIONES_CREATE_OR_UPDATE_FORM;
 		}
 		else {

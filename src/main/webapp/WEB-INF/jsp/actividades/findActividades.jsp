@@ -30,6 +30,18 @@
             </div>
         </div>
     </form:form>	
+    
+     <form:form  modelAttribute="actividad" action="/actividades/findActividadesPrecio" method="get" class="form-horizontal"
+               id="search-hotelesprov-form" >
+       
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Buscar por precio</button>
+            </div>
+        </div>
+    </form:form>
+    
+    
     <br/> 
     <sec:authorize access="hasAuthority('admin')">
 		<a class="btn btn-default" href='<spring:url value="/actividades/new" htmlEscape="true"/>'>Añadir Actividad</a>

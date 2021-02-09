@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
@@ -37,21 +36,18 @@ public class User {
 	
 	@Column(name = "telefono")
 	@NotEmpty
-	@Digits(fraction = 0, integer = 10)
+	@Digits(fraction = 0, integer = 10, message = "Debe contener 9 números")
 	private String telefono;
 	
 	@Column(name = "dni")
 	@NotEmpty
-	@Pattern(regexp = "^[0-9]{8,8}[A-Za-z]$")
+	@Pattern(regexp = "^[0-9]{8,8}[A-Za-z]$", message="El DNI debe contener 8 números y una letra mayúscula.")
 	private String dni;
-	
+		
 	boolean enabled;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private Set<Authorities> authorities;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-	private Set<Reserva> reservas;
 	
 	@ManyToMany(cascade = {
 			CascadeType.ALL})
@@ -76,11 +72,62 @@ public class User {
 	@JoinTable(
 			name = "users_habitaciones",
 			joinColumns = {@JoinColumn(name = "username")},
-	        inverseJoinColumns = {@JoinColumn(name = "nhabitacion")}
+	        inverseJoinColumns = {@JoinColumn(name = "habitacion_id")}
 			)
-	
 	private Set<Habitacion> habitaciones;
 	
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	private Set<ReservaHabitacion> reservaHabitacion;
+	
+	public Set<ReservaHabitacion> getReservaHabitacion() {
+		return reservaHabitacion;
+	}
+
+	public void setReservaHabitacion(Set<ReservaHabitacion> reservaHabitacion) {
+		this.reservaHabitacion = reservaHabitacion;
+	}
+
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	private Set<ReservaVuelo> reservaVuelo;
+	
+	public Set<ReservaVuelo> getReservaVuelo() {
+		return reservaVuelo;
+	}
+
+	public void setReservaVuelo(Set<ReservaVuelo> reservaVuelo) {
+		this.reservaVuelo = reservaVuelo;
+	}
+	
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	private Set<ReservaActividad> reservaActividad;
+	
+	public Set<ReservaActividad> getReservaActividad() {
+		return reservaActividad;
+	}
+
+	public void setReservaActividad(Set<ReservaActividad> reservaActividad) {
+		this.reservaActividad = reservaActividad;
+	}
+	
+	
+	
+	
+	
+	public void setActividades(Set<Actividad> actividades) {
+		this.actividades = actividades;
+	}
+
+	public void setVuelos(Set<Vuelo> vuelos) {
+		this.vuelos = vuelos;
+	}
+
+	public void setHabitaciones(Set<Habitacion> habitaciones) {
+		this.habitaciones = habitaciones;
+	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -112,7 +159,7 @@ public class User {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
-
+	
 	public boolean isEnabled() {
 		return enabled;
 	}
@@ -128,32 +175,7 @@ public class User {
 	public void setAuthorities(Set<Authorities> authorities) {
 		this.authorities = authorities;
 	}
-	
-	protected Set<Reserva> getReservasInternal() {
-		if (this.reservas == null) {
-			this.reservas = new HashSet<>();
-		}
-		return this.reservas;
-	}
 
-	protected void setReservasInternal(Set<Reserva> reservas) {
-		this.reservas = reservas;
-	}
-	
-	public List<Reserva> getReservas() {
-		List<Reserva> sortedReservas = new ArrayList<>(getReservasInternal());
-		PropertyComparator.sort(sortedReservas, new MutableSortDefinition("fecha", true, true));
-		return Collections.unmodifiableList(sortedReservas);
-	}
-
-	public void addReserva(Reserva reserva) {
-		getReservasInternal().add(reserva);
-		reserva.setUser(this);
-	}
-	
-	public boolean removeReserva(Reserva reserva) {
-		return getReservasInternal().remove(reserva);
-	}
 	
 	protected Set<Habitacion> getHabitacionesInternal() {
 		if (this.habitaciones == null) {
@@ -180,6 +202,8 @@ public class User {
 		return getHabitacionesInternal().remove(habitacion);
 	}
 	
+	
+	
 	protected Set<Actividad> getActividadesInternal() {
 		if (this.actividades == null) {
 			this.actividades = new HashSet<>();
@@ -205,6 +229,8 @@ public class User {
 		return getActividadesInternal().remove(actividad);
 	}
 	
+	
+	
 	protected Set<Vuelo> getVuelosInternal() {
 		if (this.vuelos == null) {
 			this.vuelos = new HashSet<>();
@@ -221,6 +247,12 @@ public class User {
 		PropertyComparator.sort(sortedVuelo, new MutableSortDefinition("origen", true, true));
 		return Collections.unmodifiableList(sortedVuelo);
 	}
+
+	
+	
+	
+	
+	
 	
 	public boolean isNew() {
 		return this.username == null;

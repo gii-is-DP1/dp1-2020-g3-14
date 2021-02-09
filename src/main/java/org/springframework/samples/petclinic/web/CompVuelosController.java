@@ -39,8 +39,9 @@ public class CompVuelosController {
 	}
 	
 	@PostMapping(value = "/compvuelos/new")
-	public String processCreationForm(@Valid CompVuelos compVuelos, BindingResult result) {		
+	public String processCreationForm(@Valid CompVuelos compVuelos, BindingResult result, Map<String, Object> model) {		
 		if (result.hasErrors()) {
+			model.put("compvuelos", compVuelos);
 			return VIEWS_COMPVUELOS_CREATE_OR_UPDATE_FORM;
 		}
 		else {

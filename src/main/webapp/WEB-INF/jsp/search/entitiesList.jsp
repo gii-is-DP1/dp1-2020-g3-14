@@ -6,7 +6,7 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <petclinic:layout pageName="search">
-    <h2>Estos son los hoteles y vuelos de vacaciones </h2> 
+    <h2>Estos son los hoteles encontrados </h2> 
 
     <table id="hotelesTable" class="table table-striped" align="left">
         <thead>
@@ -19,6 +19,7 @@
         </thead>
         <tbody>
         <c:forEach items="${selectionsH}" var="hotel">
+        <c:if test="${hotel.valido}">
             <tr>
                 <td>
                     <spring:url value="/hoteles/{hotelId}" var="hotelUrl">
@@ -37,9 +38,12 @@
                 	<c:out value="${hotel.provincia}"/>
                 </td>              
             </tr>
+            </c:if>
         </c:forEach>
         </tbody>
     </table>
+    
+    <h2>Estos son los vuelos encontrados </h2> 
     <table id="vuelosTable" class="table table-striped" align="right">
         <thead>
         <tr>
@@ -48,7 +52,7 @@
             <th style="width: 120px">Precio</th>
             <th style="width: 150px">Fecha ida</th>
             <th style="width: 150px">Fecha vuelta</th>
-            <th style="width: 150px">Compaï¿½ï¿½a aï¿½rea</th>
+            <th style="width: 150px">Compañía aérea</th>
         </tr>
         </thead>
         <tbody>

@@ -1,7 +1,6 @@
 package org.springframework.samples.petclinic.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -9,18 +8,18 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Digits;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Range;
-import org.springframework.beans.support.MutableSortDefinition;
-import org.springframework.beans.support.PropertyComparator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -32,9 +31,9 @@ public class Actividad extends BaseEntity{
 	@NotEmpty
 	private String nombre;
 
-	@Column(name = "opinion")
+	@Column(name = "descripcion")
 	@NotEmpty
-	private String opinion;
+	private String descripcion;
 	
 	@Column(name = "valoracion")
 	@Range(min=1,max=5)
@@ -43,11 +42,19 @@ public class Actividad extends BaseEntity{
 	@Column(name = "direccion")
 	@NotEmpty
 	private String direccion;
+
+	@Column(name = "provincia")
+	@NotEmpty
+	private String provincia;
 	
 	@Column(name = "precio")
-	@NotEmpty
-	@Digits(fraction = 0, integer = 8)
-	private String precio;
+	@NotNull
+	private Integer precio;
+	
+	@Column(name = "fecha")
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	@FutureOrPresent
+	private LocalDate fecha;
 	
 	@ManyToOne
 	@JoinColumn(name = "agenact_id")
@@ -59,6 +66,9 @@ public class Actividad extends BaseEntity{
 	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "actividad")
 	private List<ComentarioActividad> comentarios;
 	
+	@OneToOne
+	@JoinColumn(name = "reservaactividad")
+	private ReservaActividad reservaactividad;
 	
 	public List<ComentarioActividad> getComentarios() {
 		return comentarios;
@@ -66,15 +76,6 @@ public class Actividad extends BaseEntity{
 	
 	public void setComentarios(List<ComentarioActividad> comentarios) {
 		this.comentarios = comentarios;
-	}
-
-	
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getNombre() {
@@ -85,12 +86,12 @@ public class Actividad extends BaseEntity{
 		this.nombre = nombre;
 	}
 
-	public String getOpinion() {
-		return opinion;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setOpinion(String opinion) {
-		this.opinion = opinion;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	public Integer getValoracion() {
@@ -109,12 +110,28 @@ public class Actividad extends BaseEntity{
 		this.direccion = direccion;
 	}
 
-	public String getPrecio() {
+	public Integer getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(String precio) {
+	public void setPrecio(Integer precio) {
 		this.precio = precio;
+	}
+	
+	public String getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
+	}
+
+	public LocalDate getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(LocalDate fecha) {
+		this.fecha = fecha;
 	}
 
 	public AgenAct getAgenact() {
@@ -132,14 +149,26 @@ public class Actividad extends BaseEntity{
 		return this.users;
 	}
 
-	public List<User> getUsers() {
-		List<User> sortedUsers = new ArrayList<>(getUsersInternal());
-		PropertyComparator.sort(sortedUsers, new MutableSortDefinition("username", true, true));
-		return Collections.unmodifiableList(sortedUsers);
+	public Set<User> getUsers() {
+		return users;
 	}
 
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
+	
 	public void setUsersInternal(Set<User> users) {
 		this.users = users;
 	}
+
+	public ReservaActividad getReservaactividad() {
+		return reservaactividad;
+	}
+
+	public void setReservaactividad(ReservaActividad reservaactividad) {
+		this.reservaactividad = reservaactividad;
+	}
+	
+	
 
 }

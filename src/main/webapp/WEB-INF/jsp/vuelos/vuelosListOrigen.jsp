@@ -19,7 +19,7 @@
             <th style="width: 120px">Precio</th>
             <th style="width: 150px">Fecha ida</th>
             <th style="width: 150px">Fecha vuelta</th>
-            <th style="width: 150px">Compaï¿½ï¿½a aï¿½rea</th>
+            <th style="width: 150px">Compañía aérea</th>
         </tr>
         </thead>
         <tbody>

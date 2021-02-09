@@ -30,7 +30,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @DataJpaTest(includeFilters = @ComponentScan.Filter(Service.class))
 class HotelServiceTests {                
-        @Autowired
+    @Autowired
 	protected HotelService hotelService;
         
     //Prueba H1+E1 Busqueda general de hoteles
@@ -56,7 +56,7 @@ class HotelServiceTests {
                 
 		this.hotelService.saveHotel(hotel);
 		Collection<Hotel> hoteles = this.hotelService.findByNombre("HOTEL 2");
-		assertThat(hoteles.size()).isEqualTo(2);
+		assertThat(hoteles.size()).isEqualTo(1);
 	}
 	
 	//Prueba H1+E2 Busqueda de hotel dentro de una provincia
@@ -64,7 +64,7 @@ class HotelServiceTests {
 	void shouldFindHotelByProvincia() {
 		Collection<Hotel> hoteles = this.hotelService.findByProvincia("Sevilla");
 		int encontrados= hoteles.size();
-		assertThat(encontrados).isEqualTo(2);
+		assertThat(encontrados).isEqualTo(3);
 	}
 	
 	//Prueba H1-E1 Busqueda de hotel no existente

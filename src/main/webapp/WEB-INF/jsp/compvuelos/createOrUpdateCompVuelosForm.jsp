@@ -6,11 +6,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
-<petclinic:layout pageName="agenacts">
+<petclinic:layout pageName="compvuelos">
     <h2>
         <c:if test="${compvuelos['new']}">Añadir </c:if> Compañía de vuelos
     </h2>
-    <form:form modelAttribute="compvuelos" class="form-horizontal" id="add-agenact-form">
+    <form:form modelAttribute="compvuelos" class="form-horizontal" id="add-compvuelos-form">
         <div class="form-group has-feedback">
             <petclinic:inputField label="Nombre" name="nombre"/>
             <petclinic:inputField label="Sede" name="sede"/>

@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -46,12 +47,30 @@ public class Vuelo extends BaseEntity {
 	@Column(name = "precio")
 	private Integer precio;
 	
+	@Column(name = "numeroPlazas")
+	private Integer numeroPlazas;
+	
 	@ManyToOne
 	@JoinColumn(name = "compvuelo_id")
 	private CompVuelos compVuelo;
 	
 	@ManyToMany(mappedBy = "vuelos")
 	private Set<User> users;
+	
+	
+	@OneToOne
+	@JoinColumn(name = "reservavuelo")
+	private ReservaVuelo reservavuelo;
+	
+	public ReservaVuelo getReservaVuelo() {
+		return reservavuelo;
+	}
+
+	public void setReservaVuelo(ReservaVuelo reservavuelo) {
+		this.reservavuelo = reservavuelo;
+	}
+	
+	
 	
 			
 	public CompVuelos getCompVuelo() {
@@ -110,23 +129,34 @@ public class Vuelo extends BaseEntity {
 		this.precio = precio;
 	}
 	
-	protected Set<User> getUsersInternal() {
+	public Integer getNumeroPlazas() {
+		return numeroPlazas;
+	}
+
+	public void setNumeroPlazas(Integer numeroPlazas) {
+		this.numeroPlazas = numeroPlazas;
+	}
+	
+	
+	public Set<User> getUsersInternal() {
 		if (this.users == null) {
 			this.users = new HashSet<>();
 		}
 		return this.users;
 	}
 
-	public List<User> getUsers() {
-		List<User> sortedUsers = new ArrayList<>(getUsersInternal());
-		PropertyComparator.sort(sortedUsers, new MutableSortDefinition("username", true, true));
-		return Collections.unmodifiableList(sortedUsers);
-	}
-
 	public void setUsersInternal(Set<User> users) {
 		this.users = users;
 	}
 	
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
+
 	public String toString() {
 		return new ToStringCreator(this)
 
