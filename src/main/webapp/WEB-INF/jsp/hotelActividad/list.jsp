@@ -6,7 +6,7 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <petclinic:layout pageName="search">
-    <h2>Estos son los hoteles y actividades para vacaciones </h2> 
+    <h2>Estos son los hoteles encontrados </h2> 
 
     <table id="hotelesTable" class="table table-striped" align="left">
         <thead>
@@ -42,12 +42,14 @@
         </c:forEach>
         </tbody>
     </table>
+    
+    <h2>Estas son las actividades encontradas </h2>
     <table id="actividadesTable" class="table table-striped" align="right">
         <thead>
         <tr>
             <th style="width: 150px;">Nombre</th>
-            <th style="width: 120px">Valoraci�n</th>
-            <th style="width: 150px">Direcci�n</th>
+            <th style="width: 120px">Valoracion</th>
+            <th style="width: 150px">Direccion</th>
             <th style="width: 150px">Precio</th>
         </tr>
         </thead>
